@@ -5,7 +5,7 @@ import com.sh.db.map.ImgFile
 import com.sh.utils.ImageResizer
 import com.sh.utils.ImageType
 import grails.plugin.springsecurity.annotation.Secured
-import org.grails.web.json.JSONObject
+import org.grails.web.json.JSONObject;
 import org.springframework.web.multipart.commons.CommonsMultipartFile
 
 import javax.servlet.http.HttpServletResponse

@@ -6,8 +6,6 @@
     </if>
     <g:if test="${'none'!= module.params?.filtertype?.value}">
         <g:if test="${module.params?.filtertype?.value=='filterUserStats' || module.params?.filtertype?.value=='filterTabUserStats'}" ><g:render template="/article/statusPanel"/></g:if>
-
-        %{--<g:render template="/layouts/breadcrumb"/>--}%
         <g:if test="${module.params?.filtertype?.value=='filterTab' || module.params?.filtertype?.value=='filterTabUserStats'}" ><g:render template="/article/filterTab"/></g:if>
         <g:else><g:render template="/article/sorter"/></g:else>
     </g:if>

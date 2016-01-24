@@ -57,6 +57,7 @@ class ModulesTagLib {
         }
 
     }
+
     def wikiList = { attrs ->
         def params = attrs.params
         def knowledgeForums = webServicesSession.getForumByType(params.project.id, ForumType.Knowledgebase)
@@ -103,6 +104,11 @@ class ModulesTagLib {
         }
     }
 
+    def articleTags= {attrs ->
+        def params = attrs.params
+        def tags=webServicesSession.getArticleTags( params.project.id ,  params.article.id )
+        out << render(template: "/article/articleTags", model: [tags:tags ])
+    }
     def projectLogo = { attrs ->
         def params = attrs.params
         def project = params.project;
@@ -122,7 +128,8 @@ class ModulesTagLib {
     def articleControlePanel = { attrs ->
         def params = attrs.params
         params.articleStatuses=webServicesSession.getArticleStatusByForumId(params.project.id , params.forum.id )
-
+        params.tags=webServicesSession.getTagsByForumId(params.forum.id)
+        params.categorys=webServicesSession.getCategoryByForumId(params.project.id , params.forum.id )
         params.staffs = webServicesSession.getProjectStaffs(attrs.params.project.id, 0)
         out << render(template: "/widgets/articleControlPanel", model: params)
     }

@@ -8,7 +8,7 @@
                 <a  class="accordion-toggle" href="#collapse-status" data-toggle="collapse"><i class="fa fa-exchange"></i> <g:message code="article.action.change.status"/></a>
             <ul id="collapse-status" class="collapse">
                 <g:each in="${articleStatuses}" var="articleStatus">
-                    <li><a  data-content="${article.id}" data-action="articleChangeStatus" data-status-value="${articleStatus?.id}"  data-forumid="${article.forumDTO.id}">
+                    <li><a  href="#" data-content="${article.id}" data-action="articleChangeStatus" data-status-value="${articleStatus?.id}"  data-forumid="${article.forumDTO.id}">
                         <locale:message  proj="${project}" code="article.status.name.${articleStatus?.id}" default="${articleStatus?.name}" /></a></li>
                 </g:each>
             </ul>
@@ -19,6 +19,23 @@
             <li class="list-group-item">
                 <a  data-toggle="modal" href="/article/edit/${article.forumDTO.id}/${article.id}" data-target="#myModal" data-content="${article.id}" data-action="articleEdit"  ><i class="fa fa-edit"></i> <g:message code="article.action.Edit"/></a>
             </li>
+            <li class="list-group-item list-toggle">
+                <a  class="accordion-toggle" href="#collapse-tags" data-toggle="collapse"><i class="fa fa-tags"></i> <g:message code="setting.leftMenu.community.tags"/></a>
+                <ul id="collapse-tags" class="collapse">
+                    <g:each in="${tags}" var="tag">
+                        <li><a href="#" data-assignid="${tag?.id}" data-action="articleAssignTags" ><locale:message  proj="${project}" code="tag.name.${tag?.id}" default="${tag?.name}" /> </a></li>
+                    </g:each>
+                </ul>
+            </li>
+            <li class="list-group-item list-toggle">
+                <a  class="accordion-toggle" href="#collapse-categorys" data-toggle="collapse"><i class="fa fa-folder-open"></i> <g:message code="setting.leftMenu.community.categories"/></a>
+                <ul id="collapse-categorys" class="collapse">
+                    <g:each in="${categorys}" var="category">
+                        <li><a href="#" data-assignid="${category?.id}" data-action="articleAssignCategory" ><locale:message  proj="${project}" code="category.name.${category?.id}" default="${category?.name}" /> </a></li>
+                    </g:each>
+                </ul>
+            </li>
+
             <li class="list-group-item list-toggle">
                 <a  class="accordion-toggle" href="#collapse-forms" data-toggle="collapse"><i class="fa fa-users"></i> <g:message code="article.action.AssignTo"/></a>
                 <ul id="collapse-forms" class="collapse">
@@ -34,7 +51,7 @@
                 <a href="#" data-content="${article.id}" data-action="getAditionalInfo" data-status-value="${articleStatus?.id}" ><i class="fa fa-info"></i> <g:message code="article.action.Additional.information"/></a>
             </li>
             <li class="list-group-item">
-                <a  data-toggle="modal" href="/article/delete/${article.id}" data-target="#myModalDelete" ><i class="fa fa-trash"></i> <g:message code="article.action.Delete"/></a>
+                <a  data-toggle="modal" href="/article/delete/${article.forumDTO.id}/${article.id}" data-target="#myModalDelete" ><i class="fa fa-trash"></i> <g:message code="article.action.Delete"/></a>
             </li>
         </ul>
     </div>

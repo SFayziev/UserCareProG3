@@ -1,6 +1,7 @@
 package com.sh.messaging.amqp;
 
 import org.apache.log4j.Logger;
+
 import org.grails.web.json.JSONObject;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageListener;

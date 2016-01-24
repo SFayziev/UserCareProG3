@@ -3,7 +3,7 @@ package usercareproj.translation
 import com.sh.db.map.I18nMessageDTO
 import com.sh.db.map.I18nMessageValueDTO
 import com.sh.db.map.LanguagesDTO
-import org.grails.web.json.JSONObject
+import org.grails.web.json.JSONObject;
 
 class ProjecttransController {
 

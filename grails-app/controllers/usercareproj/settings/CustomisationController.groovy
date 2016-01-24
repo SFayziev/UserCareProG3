@@ -7,7 +7,7 @@ import com.sh.db.map.ModuleParamsType4DTO
 import com.sh.utils.ModuleDisplay
 import com.sh.utils.ModulePosType
 import grails.plugin.springsecurity.annotation.Secured
-import org.grails.web.json.JSONObject
+import org.grails.web.json.JSONObject;
 
 @Secured(['ROLE_MANAGER'])
 class CustomisationController {

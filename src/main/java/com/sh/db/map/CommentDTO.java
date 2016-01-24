@@ -2,7 +2,6 @@ package com.sh.db.map;
 
 import com.sh.utils.TimeAgo;
 import org.grails.web.json.JSONObject;
-import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.util.Date;

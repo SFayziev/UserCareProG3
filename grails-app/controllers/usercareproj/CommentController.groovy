@@ -2,7 +2,7 @@ package usercareproj
 
 import com.sh.db.map.CommentDTO
 import com.sh.utils.ModuleDisplay
-import org.grails.web.json.JSONObject
+import org.grails.web.json.JSONObject;
 
 
 class CommentController {
@@ -68,9 +68,10 @@ class CommentController {
         def article = webServicesSession.getProjectArticle(project.id, id);
         def comments= webServicesSession.getArticleComments(id)
         def answer = webServicesSession.getArticleAnswer(comments);
-
+        def forum= article.forumDTO;
+        def module=[params: [showTopicAvatar:1, topicPresentation:"full"]]
         JSONObject resultJson = new JSONObject();
-        def contents = g.render(template:"/article/itemAndReplies", model:[project:project, comments:comments , article:article,answer:answer ])
+        def contents = g.render(template:"/article/itemAndReplies", model:[project:project, comments:comments ,forum:forum, module:module,  article:article,answer:answer ])
         resultJson.put("status","success");
         resultJson.put("contentid",id);
         resultJson.put("value", contents)

@@ -15,6 +15,11 @@
                 <tbody>
                 <tr>
                     <td class="center" style="padding: 10px ; font-size: 16px; color: #687074; font-weight: bold;  font-family: Arial, Helvetica, sans-serif; line-height: 20px; vertical-align: middle; "  width="100%">
+                        <p align="right"><span style="border-radius: 4px !important;   background-color: ${comment?.statusDTO?.color};color:#FFFFFF;padding:5px;"><strong><locale:message  proj="${project}" code="article.status.name.${comment?.statusDTO?.id}" default="${comment?.statusDTO?.name}" /> </strong></span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="center" style="padding: 10px ; font-size: 16px; color: #687074; font-weight: bold;  font-family: Arial, Helvetica, sans-serif; line-height: 20px; vertical-align: middle; "  width="100%">
                         <g:message code="email.template.dear" /> ${user.name}
                     </td>
                 </tr>
@@ -31,6 +36,11 @@
                             <tr>
                                 <td bgcolor="#A1A1A1" style="padding: 10px ;text-align: center; font-size: 18px; color: #eeeeee; font-weight: bold;  font-family: Arial, Helvetica, sans-serif; line-height: 20px; vertical-align: middle; "  >
                                     <a target="_blank"  onclick="null" href="<modules:mainProjectUrl/>/article/item?id=${article?.id}" > <g:message code="email.template.topic.open.link"  /></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td bgcolor="#f7f7f7" style="padding: 10px ;" >
+                                    <p>${comment?.text.encodeAsRaw() } </p>
                                 </td>
                             </tr>
                             </tbody>

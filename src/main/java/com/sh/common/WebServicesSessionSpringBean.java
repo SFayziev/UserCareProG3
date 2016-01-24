@@ -118,12 +118,15 @@ public class WebServicesSessionSpringBean {
     public UserPermissionsDTO saveUserPermission(UserPermissionsDTO userPermissionsDTO) throws Exception {return  userDAO.saveUserPermission(userPermissionsDTO);}
     public void  deleteUserPermission(UserPermissionsDTO userPermissionsDTO) throws Exception { userDAO.deleteUserPermission(userPermissionsDTO);}
     public UserPermissionsDTO getUserPermission(Integer projid, Integer userid ) { return  userDAO.getUserPermission( projid, userid); }
-    public List<UserDTO> getUsersList(Integer projId, Integer type, Integer status, String username , String email ) {return  userDAO.getUsersList(projId, type, status, username , email);}
+    public List<UserDTO> getUsersList(Integer projId, Integer type, Integer status, String username , String email ) {return  userDAO.getUsersList(projId, type, status, username, email);}
     public UserDTO createAgentUser(Integer projid,  String email){return  userDAO.createAgentUser(projid, email);}
 
     public ArticleDTO assignArticle (Integer articid, Integer assignedUserId ){return articleDAO.assignArticTo(articid, assignedUserId); }
+    public ArticleDTO assignArticleCategory(Integer articID, Integer catid) {return  articleDAO.assignArticleCategory(articID, catid);}
     public void deleteArticle(ArticleDTO article) { articleDAO.delArticle(article);}
-
+    public List<ArticleTagsDTO> getArticleTags(Integer projid, Integer articid) { return articleDAO.getArticleTags(projid, articid ) ;}
+    public void addTagtoArticle(Integer projid,  Integer articid, Integer tagid){ articleDAO.addTagtoArticle( projid, articid, tagid);}
+    public void  delArticleTag(Integer projid,  Integer articid, Integer tagid) {articleDAO.delArticleTag(projid, articid, tagid);}
 //     Forum
 
     public List<ForumDTO> getForumByType(Integer projId, ForumType forumType) {return  forumDAO.getForumbyType(projId, forumType);}
@@ -148,6 +151,7 @@ public class WebServicesSessionSpringBean {
     public boolean moveForumType(Integer projId, Integer forunid, Integer forumTypeID, String direction){ return  forumDAO.moveForumType(projId, forunid, forumTypeID, direction); }
     public boolean delTypeStatusDTOs(Integer projid, Integer forumid, Integer typeid){return  forumDAO.delTypeStatusDTOs(projid, forumid, typeid);}
     public boolean delForumType(ForumTypeDTO forumTypeDTO){return  forumDAO.delForumType(forumTypeDTO); }
+
 
     public ArticleStatusDTO getArticleStatusById(Integer projid ,  Integer forumid,   Integer id  ){return  forumDAO.getArticleStatusById(projid, forumid, id);}
     public List<ArticleStatusDTO> getArticleStatusByForumId(Integer projid,  Integer forumid  ){return  forumDAO.getArticleStatusByForumId(projid, forumid);}

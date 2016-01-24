@@ -33,7 +33,6 @@ import java.util.UUID;
  * Created by shuhrat on 05.09.2015.
  */
 @Controller
-@Transactional
 public class UserDAO extends GenericDaoImpl<UserDTO> {
     private static final Logger LOG = Logger.getLogger(UserDAO.class);
     @Value("${image.catalog}")
