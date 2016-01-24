@@ -1,0 +1,226 @@
+<ehcache>
+    <diskStore path="java.io.tmpdir"/>
+
+    <!-- Default cache. Many classes use this, they are NONSTRICT_READ_WRITE -->
+    <defaultCache
+            maxElementsInMemory="5000"
+            eternal="false"
+            timeToIdleSeconds="3000"
+            timeToLiveSeconds="6000"
+            overflowToDisk="false"
+    />
+
+    <cache
+            name="ProjectDTO"
+            maxElementsInMemory="1000"
+            eternal="false"
+            timeToIdleSeconds="30000"
+            timeToLiveSeconds="60000"
+            overflowToDisk="true"
+    />
+
+    <cache name="projecalias"
+           maxEntriesLocalHeap="1000"
+           maxEntriesLocalDisk="1000"
+           eternal="false"
+           diskSpoolBufferSizeMB="20"
+           timeToIdleSeconds="3000" timeToLiveSeconds="6000"
+           memoryStoreEvictionPolicy="LFU"
+           transactionalMode="off">
+        <persistence strategy="localTempSwap" />
+    </cache>
+
+    <cache name="itemCount"
+           maxEntriesLocalHeap="1000"
+           maxEntriesLocalDisk="1000"
+           eternal="false"
+           diskSpoolBufferSizeMB="20"
+           timeToIdleSeconds="300000" timeToLiveSeconds="60000"
+           memoryStoreEvictionPolicy="LFU"
+           transactionalMode="off">
+        <persistence strategy="localTempSwap" />
+    </cache>
+
+
+
+    <cache name="modules"
+           maxEntriesLocalHeap="1000"
+           maxEntriesLocalDisk="1000"
+           eternal="false"
+           diskSpoolBufferSizeMB="20"
+           timeToIdleSeconds="3000" timeToLiveSeconds="6000"
+           memoryStoreEvictionPolicy="LFU"
+           transactionalMode="off">
+        <persistence strategy="localTempSwap" />
+    </cache>
+
+
+
+    <cache name="projectid"
+           maxEntriesLocalHeap="1000"
+           maxEntriesLocalDisk="1000"
+           eternal="false"
+           diskSpoolBufferSizeMB="20"
+           timeToIdleSeconds="3000" timeToLiveSeconds="6000"
+           memoryStoreEvictionPolicy="LFU"
+           transactionalMode="off">
+        <persistence strategy="localTempSwap" />
+    </cache>
+
+    <cache name="imgDTO"
+           maxEntriesLocalHeap="10000"
+           maxEntriesLocalDisk="10000"
+           eternal="false"
+           diskSpoolBufferSizeMB="20"
+           timeToIdleSeconds="300000" timeToLiveSeconds="600000"
+           memoryStoreEvictionPolicy="LFU"
+           transactionalMode="off">
+        <persistence strategy="localTempSwap" />
+    </cache>
+
+    <cache name="articleDTO"
+           maxEntriesLocalHeap="10000"
+           maxEntriesLocalDisk="10000"
+           eternal="false"
+           diskSpoolBufferSizeMB="20"
+           timeToIdleSeconds="300000" timeToLiveSeconds="600000"
+           memoryStoreEvictionPolicy="LFU"
+           transactionalMode="off">
+        <persistence strategy="localTempSwap" />
+    </cache>
+
+    <cache name="projectStatsDTO"
+           maxEntriesLocalHeap="1000"
+           maxEntriesLocalDisk="1000"
+           eternal="false"
+           diskSpoolBufferSizeMB="20"
+           timeToIdleSeconds="300000" timeToLiveSeconds="600000"
+           memoryStoreEvictionPolicy="LFU"
+           transactionalMode="off">
+        <persistence strategy="localTempSwap" />
+    </cache>
+
+    <cache name="languagesDTO"
+           maxEntriesLocalHeap="100"
+           maxEntriesLocalDisk="1000"
+           eternal="false"
+           diskSpoolBufferSizeMB="20"
+           timeToIdleSeconds="300000" timeToLiveSeconds="600000"
+           memoryStoreEvictionPolicy="LFU"
+           transactionalMode="off">
+        <persistence strategy="localTempSwap" />
+    </cache>
+
+    <cache name="forumDTO"
+           maxEntriesLocalHeap="1000"
+           maxEntriesLocalDisk="1000"
+           eternal="false"
+           diskSpoolBufferSizeMB="20"
+           timeToIdleSeconds="300000" timeToLiveSeconds="600000"
+           memoryStoreEvictionPolicy="LFU"
+           transactionalMode="off">
+        <persistence strategy="localTempSwap" />
+    </cache>
+
+
+    <cache name="categoriesDTO"
+           maxEntriesLocalHeap="10000"
+           maxEntriesLocalDisk="1000"
+           eternal="false"
+           diskSpoolBufferSizeMB="20"
+           timeToIdleSeconds="300000" timeToLiveSeconds="600000"
+           memoryStoreEvictionPolicy="LFU"
+           transactionalMode="off">
+        <persistence strategy="localTempSwap" />
+    </cache>
+
+    <cache name="userDTO"
+           maxEntriesLocalHeap="10000"
+           maxEntriesLocalDisk="10000"
+           eternal="false"
+           diskSpoolBufferSizeMB="20"
+           timeToIdleSeconds="300000" timeToLiveSeconds="600000"
+           memoryStoreEvictionPolicy="LFU"
+           transactionalMode="off">
+        <persistence strategy="localTempSwap" />
+    </cache>
+
+    <cache name="i18nMessageDTO"
+           maxEntriesLocalHeap="10000"
+           maxEntriesLocalDisk="1000"
+           eternal="false"
+           diskSpoolBufferSizeMB="20"
+           timeToIdleSeconds="300000" timeToLiveSeconds="600000"
+           memoryStoreEvictionPolicy="LFU"
+           transactionalMode="off">
+        <persistence strategy="localTempSwap" />
+    </cache>
+
+
+    <cache name="forumTagsDTO"
+           maxEntriesLocalHeap="1000"
+           maxEntriesLocalDisk="1000"
+           eternal="false"
+           diskSpoolBufferSizeMB="20"
+           timeToIdleSeconds="300000" timeToLiveSeconds="600000"
+           memoryStoreEvictionPolicy="LFU"
+           transactionalMode="off">
+        <persistence strategy="localTempSwap" />
+    </cache>
+
+    <cache name="forumTypeDTO"
+           maxEntriesLocalHeap="1000"
+           maxEntriesLocalDisk="1000"
+           eternal="false"
+           diskSpoolBufferSizeMB="20"
+           timeToIdleSeconds="300000" timeToLiveSeconds="600000"
+           memoryStoreEvictionPolicy="LFU"
+           transactionalMode="off">
+        <persistence strategy="localTempSwap" />
+    </cache>
+
+    <cache name="forumStatusDTO"
+           maxEntriesLocalHeap="1000"
+           maxEntriesLocalDisk="1000"
+           eternal="false"
+           diskSpoolBufferSizeMB="20"
+           timeToIdleSeconds="300000" timeToLiveSeconds="600000"
+           memoryStoreEvictionPolicy="LFU"
+           transactionalMode="off">
+        <persistence strategy="localTempSwap" />
+    </cache>
+
+    <cache name="articleStatusDTO"
+           maxEntriesLocalHeap="1000"
+           maxEntriesLocalDisk="1000"
+           eternal="false"
+           diskSpoolBufferSizeMB="20"
+           timeToIdleSeconds="300000" timeToLiveSeconds="600000"
+           memoryStoreEvictionPolicy="LFU"
+           transactionalMode="off">
+        <persistence strategy="localTempSwap" />
+    </cache>
+
+    <cache name="forumSpamProtectionDTO"
+           maxEntriesLocalHeap="1000"
+           maxEntriesLocalDisk="1000"
+           eternal="false"
+           diskSpoolBufferSizeMB="20"
+           timeToIdleSeconds="300000" timeToLiveSeconds="600000"
+           memoryStoreEvictionPolicy="LFU"
+           transactionalMode="off">
+        <persistence strategy="localTempSwap" />
+    </cache>
+
+    <cache name="notificationsDTO"
+           maxEntriesLocalHeap="1000"
+           maxEntriesLocalDisk="1000"
+           eternal="false"
+           diskSpoolBufferSizeMB="20"
+           timeToIdleSeconds="300000" timeToLiveSeconds="600000"
+           memoryStoreEvictionPolicy="LFU"
+           transactionalMode="off">
+        <persistence strategy="localTempSwap" />
+    </cache>
+
+</ehcache>

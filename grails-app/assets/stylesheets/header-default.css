@@ -1,0 +1,206 @@
+/*--------------------------------------------------
+    [1. Header - Topbar]
+----------------------------------------------------*/
+
+/*Top Bar (login, search etc.)
+------------------------------------*/
+.header .topbar {
+	z-index: 12;
+	padding: 8px 0;
+	position: relative;
+}
+
+@media (max-width: 991px) {
+	.header .topbar {
+		margin-bottom: 20px;
+	}
+}
+
+.header .topbar ul.loginbar {
+	margin: 0;
+}
+
+.header .topbar ul.loginbar > li {
+	display: inline;
+	list-style: none;
+	position: relative;
+	padding-bottom: 15px;
+}
+
+.header .topbar ul.loginbar > li > a, 
+.header .topbar ul.loginbar > li > a:hover {
+	color: #7c8082;
+	font-size: 11px;
+	text-transform: uppercase;
+}
+
+.header .topbar ul.loginbar li i.fa { 
+	color: #bbb;
+}
+
+.header .topbar ul.loginbar li.topbar-devider { 
+	top: -1px;
+	padding: 0;
+	font-size: 8px;
+	position: relative;
+	margin: 0 9px 0 5px;
+	font-family: Tahoma;
+	border-right: solid 1px #bbb;
+}
+
+/*languages*/
+.header .topbar ul.languages {
+	top: 25px;
+	left: -5px;
+	display: none;
+	padding: 4px 0;
+	padding-left: 0; 
+	list-style: none;
+	min-width: 100px;
+	position: absolute;
+	background: #f0f0f0;
+}
+
+.header .topbar li:hover ul.languages {
+	display: block;
+}
+
+.header .topbar ul.languages:after {
+	top: -4px;
+	width: 0; 
+	height: 0;
+	left: 8px;
+	content: " "; 
+	display: block; 
+	position: absolute;
+	border-bottom: 6px solid #f0f0f0;	
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-left-style: inset; /*FF fixes*/
+	border-right-style: inset; /*FF fixes*/
+}
+
+.header .topbar ul.languages li a {
+	color: #555;
+	display: block;
+	font-size: 10px;
+	padding: 2px 12px;
+	margin-bottom: 1px;
+	text-transform: uppercase; 
+}
+
+.header .topbar ul.languages li.active a i {
+	color: #999;
+	float: right;
+	margin-top: 2px;
+}
+
+.header .topbar ul.languages li a:hover, 
+.header .topbar ul.languages li.active a {
+	background: #fafafa;
+}
+
+.header .topbar ul.languages li a:hover {
+	text-decoration: none; 
+}
+
+/*No Topbar*/
+.header.no-topbar .navbar-toggle {
+	margin-top: 25px;
+}
+
+/*--------------------------------------------------
+    [2. Header - Navbar]
+----------------------------------------------------*/
+
+/*Navbar*/
+.header {
+	z-index: 99;
+	background: #fff;
+	position: relative;
+	border-bottom: solid 2px #eee;
+}
+
+/*Header Container*/
+.header > .container {
+	display: table;
+	margin-bottom: -40px;
+}
+
+@media (max-width: 768px) {
+	.header > .container {
+		width: 100%;
+	}
+}
+
+@media (max-width: 991px) {
+	.header > .container {
+		margin-bottom: 0;
+	}
+}
+
+/*Logo*/
+.header .logo {
+	height: 100%;
+	min-width: 100px;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.header .logo img {
+	z-index: 1;
+	margin: 20px 0;
+	position: relative;
+}
+
+/*Big Logo Style*/
+@media (max-width: 1200px) {
+	.header img.big-logo {
+		width: 120px;
+		height: auto;
+	}
+}
+
+/*Navbar Toggle*/
+.header .navbar-toggle {
+	border-color: #5fb611;
+}
+
+@media (max-width: 991px) {
+	.header .navbar-toggle {
+		margin-right: 0;
+	}
+}
+
+.header .navbar-toggle .fa {
+	color: #fff;
+	font-size: 19px;
+}
+
+.header .navbar-toggle,
+.header .navbar-toggle:hover, 
+.header .navbar-toggle:focus {
+	background: #72c02c;
+	padding: 6px 10px 2px;
+	margin: 0px;
+}
+
+.header .navbar-toggle:hover {
+	background: #5fb611 !important;
+}
+
+/*Navbar Collapse*/
+.header .navbar-collapse {
+	position: relative;
+}
+
+/*Navbar Collapse*/
+@media (max-width: 991px) {
+  	.header .navbar-collapse,
+	.header .navbar-collapse .container {
+		padding-left: 0;
+		padding-right: 0;
+        padding-top: 50px;
+	}
+}
+
