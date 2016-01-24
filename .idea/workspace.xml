@@ -2,37 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ae094633-52cd-40e3-8d28-f13632cea276" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.asscache" afterPath="$PROJECT_DIR$/.asscache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/usercareproj/ArticleController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/usercareproj/ArticleController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/usercareproj/CommentController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/usercareproj/CommentController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/usercareproj/FileController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/usercareproj/FileController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/usercareproj/ForumController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/usercareproj/ForumController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/usercareproj/IndexController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/usercareproj/IndexController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/usercareproj/MessagingController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/usercareproj/MessagingController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/usercareproj/UserController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/usercareproj/UserController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/usercareproj/settings/CommunityController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/usercareproj/settings/CommunityController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/usercareproj/settings/CustomisationController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/usercareproj/settings/CustomisationController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/usercareproj/settings/UsersController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/usercareproj/settings/UsersController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/usercareproj/translation/ProjecttransController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/usercareproj/translation/ProjecttransController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/i18n/messages.properties" afterPath="$PROJECT_DIR$/grails-app/i18n/messages.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/taglib/usercareproj/ModulesTagLib.groovy" afterPath="$PROJECT_DIR$/grails-app/taglib/usercareproj/ModulesTagLib.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/article/_articleItem1.gsp" afterPath="$PROJECT_DIR$/grails-app/views/article/_articleItem1.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/article/_delete.gsp" afterPath="$PROJECT_DIR$/grails-app/views/article/_delete.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/article/_itemAndReplies.gsp" afterPath="$PROJECT_DIR$/grails-app/views/article/_itemAndReplies.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/comment/_repliesItem.gsp" afterPath="$PROJECT_DIR$/grails-app/views/comment/_repliesItem.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/layouts/_login.gsp" afterPath="$PROJECT_DIR$/grails-app/views/layouts/_login.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/messaging/topicUpdated.gsp" afterPath="$PROJECT_DIR$/grails-app/views/messaging/topicUpdated.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/project/_lastArticle.gsp" afterPath="$PROJECT_DIR$/grails-app/views/project/_lastArticle.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/widgets/_articleControlPanel.gsp" afterPath="$PROJECT_DIR$/grails-app/views/widgets/_articleControlPanel.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/sh/common/WebServicesSessionSpringBean.java" afterPath="$PROJECT_DIR$/src/main/java/com/sh/common/WebServicesSessionSpringBean.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/sh/db/map/ArticleDTO.java" afterPath="$PROJECT_DIR$/src/main/java/com/sh/db/map/ArticleDTO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/sh/db/map/CommentDTO.java" afterPath="$PROJECT_DIR$/src/main/java/com/sh/db/map/CommentDTO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/sh/db/service/ArticleDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/sh/db/service/ArticleDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/sh/db/service/UserDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/sh/db/service/UserDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/sh/messaging/amqp/MailListener.java" afterPath="$PROJECT_DIR$/src/main/java/com/sh/messaging/amqp/MailListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/sh/messaging/amqp/TopicListener.java" afterPath="$PROJECT_DIR$/src/main/java/com/sh/messaging/amqp/TopicListener.java" />
     </list>
     <ignored path="UserCareProj.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -1831,12 +1801,19 @@
       <workItem from="1453541026410" duration="975000" />
       <workItem from="1453554927611" duration="13055000" />
       <workItem from="1453617171897" duration="9863000" />
-      <workItem from="1453658280268" duration="2892000" />
+      <workItem from="1453658280268" duration="2953000" />
     </task>
+    <task id="LOCAL-00001">
+      <created>1453662265508</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1453662265508</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39247000" />
+    <option name="totallyTimeSpent" value="39308000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1370" height="754" extended-state="0" />
@@ -1972,6 +1949,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="65" column="13" selection-start-line="65" selection-start-column="13" selection-end-line="65" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2020,6 +1998,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="35" column="12" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2091,6 +2070,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.807693">
           <caret line="18" column="41" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>
