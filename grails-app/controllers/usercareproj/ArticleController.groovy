@@ -2,7 +2,7 @@ package usercareproj
 
 import com.sh.db.map.ArticleDTO
 import com.sh.utils.ModuleDisplay
-import org.grails.web.json.JSONObject
+import org.grails.web.json.JSONObject;
 
 class ArticleController {
 
@@ -72,7 +72,8 @@ class ArticleController {
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         def id= params.int("id")
         def article = webServicesSession.getProjectArticle(project.id, id);
-        def contents = g.render(template:"/article/articleItem"+article.getForumDTO().type.ordinal(), model: [project:project, article:article ])
+        def module=[params: [showTopicAvatar:1, topicPresentation:"full"]]
+        def contents = g.render(template:"/modules/articleDetails", model: [project:project, module:module,  forum:article.getForumDTO(),  article:article ])
         JSONObject resultJson = new JSONObject();
         resultJson.put("status","success");
         resultJson.put("contentid",article.getId());
@@ -83,9 +84,7 @@ class ArticleController {
     }
 
     def getArticleJson(article, prject){
-
-
-         JSONObject resultJson = new JSONObject();
+        JSONObject resultJson = new JSONObject();
         resultJson.put("status","success");
         resultJson.put("contentid",article.getId());
         resultJson.put("value", contents)
@@ -96,17 +95,60 @@ class ArticleController {
     def assignToUser(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         def id=params.getInt("id");
-        def userid=params.getInt("userid");
-        def article = webServicesSession.assignArticle(id, userid);
-        def contents = g.render(template:"/article/articleItem"+article.getForumDTO().type.ordinal() , model: [project:project, article:article ])
+        def article = webServicesSession.assignArticle(id, params.getInt("userid"));
+//        def contents = g.render(template:"/article/articleItem"+article.getForumDTO().type.ordinal() , model: [project:project, forum:article.getForumDTO(), article:article ])
         JSONObject resultJson = new JSONObject();
         resultJson.put("status","success");
         resultJson.put("contentid",article.getId());
-        resultJson.put("value", contents);
+//        resultJson.put("value", contents);
         resultJson.put("massage",  message(code: "article.assigne.change.massage"))
 
         response.contentType = "application/json; charset=UTF-8"
         render   resultJson.toString()
+
+    }
+
+    def assignToCategory(){
+        def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
+        def id=params.getInt("id");
+        def article = webServicesSession.assignArticleCategory(id , params.getInt("categoryid", -1) )
+//        def contents = g.render(template:"/article/articleItem"+article.getForumDTO().type.ordinal() , model: [project:project, forum:article.getForumDTO(), article:article ])
+        JSONObject resultJson = new JSONObject();
+        resultJson.put("status","success");
+        resultJson.put("contentid",article.getId());
+//        resultJson.put("value", contents);
+        resultJson.put("massage",  message(code: "article.assigne.category.change.massage"))
+        response.contentType = "application/json; charset=UTF-8"
+        render   resultJson.toString()
+
+    }
+
+    def assignToTag(){
+        def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
+        def id=params.getInt("id");
+        webServicesSession.addTagtoArticle(project.id , id , params.getInt("tagid", -1) )
+//        def contents = g.render(template:"/article/articleItem"+article.getForumDTO().type.ordinal() , model: [project:project, forum:article.getForumDTO(), article:article ])
+        JSONObject resultJson = new JSONObject();
+        resultJson.put("status","success");
+//        resultJson.put("contentid",article.getId());
+//        resultJson.put("value", contents);
+        resultJson.put("massage",  message(code: "article.assigne.category.change.massage"))
+        response.contentType = "application/json; charset=UTF-8"
+        render   resultJson.toString()
+
+    }
+
+    def deleteAssignTags(){
+        def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
+        def id=params.getInt("id");
+
+        if (params.submit=="save"){
+            webServicesSession.delArticleTag( project.id, id , params.getInt("tag",0))
+            redirect(controller: "article",  action:  "item" , params: [id:  params.id ,forumid: 2] )
+        }
+        else{
+            render template:"/modal/deleteModal"
+        }
 
     }
 
@@ -154,7 +196,7 @@ class ArticleController {
 
         if (action=="delete"){
             webServicesSession.deleteArticle(article)
-            redirect("list")
+            redirect(controller: "forum",  action:  "list" , params: [id:  params.forumid] )
         }
         else{
             render template:"delete" , model: [project:project, article:article ]

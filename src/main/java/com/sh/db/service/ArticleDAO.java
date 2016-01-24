@@ -18,6 +18,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.dao.DataAccessResourceFailureException;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -209,8 +210,6 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
         if ( commentDTO.getStatusDTO()!= null && !Objects.equals(commentDTO.getStatusDTO().getId(), commentDTO.getArticleDTO().getStatusDTO().getId())){
            commentDTO.getArticleDTO().setStatusDTO(commentDTO.getStatusDTO());
 
-            topicListener.sendTopicAmqpCommand( AmqpConstants.TOPICUPDATED, commentDTO.getArticleDTO().getProjid(), commentDTO.getArticleDTO().getForumDTO().getId(), commentDTO.getArticleDTO().getId());
-
         }
 
         commentDTO.getArticleDTO().setLastchange(new Date());
@@ -226,10 +225,14 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
         }
         if (id== null){
             statisticDAO.increaseArticleComments(commentDTO.getArticleDTO());
+            if (commentDTO.getStatusDTO()== null) {
+                topicListener.sendCommentAmqpCommand(AmqpConstants.COMMNETCREATED, commentDTO.getArticleDTO().getProjid(), commentDTO.getArticleDTO().getForumDTO().getId(), commentDTO.getArticleDTO().getId(),  commentDTO.getId());
+            }
+            else {
+                topicListener.sendCommentAmqpCommand(AmqpConstants.TOPICUPDATED, commentDTO.getArticleDTO().getProjid(), commentDTO.getArticleDTO().getForumDTO().getId(), commentDTO.getArticleDTO().getId(), commentDTO.getId());
+            }
         }
-
         return commentDTO;
-
     }
 
     @Transactional
@@ -276,7 +279,7 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
         CommentVoteDTO commentVoteDTO=isCommentVotedByMe(commentid, username, Ip);
 
         if (commentVoteDTO!= null){
-            if(commentVoteDTO.getValue()==value){return commentDTO;}
+            if(Objects.equals(commentVoteDTO.getValue(), value)){return commentDTO;}
             else {
                 commentDTO.voteUndo(commentVoteDTO.getValue());
                 getSessionFactory().getCurrentSession().delete(commentVoteDTO);
@@ -314,11 +317,23 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
      public ArticleDTO assignArticTo(Integer articID, Integer userAssigId){
          ArticleDTO articleDTO= find(articID);
          if (articleDTO== null) return null;
-         articleDTO.setAssignedUserDTO( userDAO.getProjectUserByid(userAssigId, articleDTO.getProjid()) );
+         UserDTO userDTO= userDAO.getProjectUserByid(articleDTO.getProjid(), userAssigId);
+         if (userDTO== null) return  articleDTO;
+         articleDTO.setAssignedUserDTO( userDTO );
          getSessionFactory().getCurrentSession() .save(articleDTO);
          return articleDTO;
 
      }
+
+    public ArticleDTO assignArticleCategory(Integer articID, Integer catid){
+        ArticleDTO articleDTO= find(articID);
+        CategoriesDTO categoriesDTO=forumDAO.getCategoryById(articleDTO.getProjid(), catid);
+        if ((articleDTO== null) && (categoriesDTO== null)) return null;
+        articleDTO.setCategoriesDTO(categoriesDTO);
+        currentSession().save(articleDTO);
+        return articleDTO;
+
+    }
 
     private boolean clearProjectAnswer( Integer articid){
         currentSession().createQuery("update CommentDTO co  set co.answer=false where co.articleDTO.id = :articid")
@@ -364,11 +379,13 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
             articleDTO.setUserDTO(getCurrentLoggedUser());
         }
         if (articleDTO.getStatusDTO().getId()== null){
-            articleDTO.setStatusDTO(forumDAO.getArticleStatusById(articleDTO.getProjid(), forumDTO.getId(), forumDTO.getFirstreplystatus() ));
+            articleDTO.setStatusDTO(forumDAO.getArticleStatusById(articleDTO.getProjid(), forumDTO.getId(), forumDTO.getFirstreplystatus()));
         }
         statisticDAO.increaseForumArticles(forumDTO);
         articleDTO= save(articleDTO);
-        topicListener.sendTopicAmqpCommand( previd== null? AmqpConstants.TOPICCREATED :  AmqpConstants.TOPICUPDATED , articleDTO.getProjid(), forumDTO.getId(), articleDTO.getId());
+        if (previd== null){
+            topicListener.sendTopicAmqpCommand( AmqpConstants.TOPICCREATED , articleDTO.getProjid(), forumDTO.getId(), articleDTO.getId());
+        }
        return articleDTO;
     }
 
@@ -412,7 +429,29 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
         }
     }
 
+    public List<ArticleTagsDTO> getArticleTags(Integer projid, Integer articid){
+        return  currentSession().createQuery("select at.forumTagsDTO from ArticleTagsDTO as at where at.articleDTO.projid=:projid and  at.articleDTO.id=:articid ")
+                .setParameter("projid", projid).setParameter("articid", articid).list();
 
+    }
+
+    public void  delArticleTag(Integer projid,  Integer articid, Integer tagid){
+        currentSession().createQuery("delete from ArticleTagsDTO  as at where at.articleDTO.id=:articid and at.forumTagsDTO.id =:tagid")
+                .setParameter("articid", articid).setParameter("tagid", tagid)
+                .executeUpdate();
+    }
+    public void addTagtoArticle(Integer projid,  Integer articid, Integer tagid){
+        try {
+            ArticleDTO articleDTO= getArticle(projid, articid);
+            ArticleTagsDTO articleTagsDTO= new ArticleTagsDTO();
+
+            articleTagsDTO.setArticleDTO(getArticle(projid, articid) );
+            articleTagsDTO.setForumTagsDTO(forumDAO.getTagById(projid, articleDTO.getForumDTO().getId(), tagid));
+            currentSession().save(articleTagsDTO);
+        } catch (Exception ignored) {
+
+        }
+    }
 
     public List<CommentDTO> getArticleComments(Integer articid){
           return  currentSession().createSQLQuery("select * from comment as com where com.articid=:articid order by ( IF (parentid = 0 ,id  , parentid)) , level").addEntity(CommentDTO.class)

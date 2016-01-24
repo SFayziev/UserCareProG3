@@ -11,12 +11,13 @@ class MessagingController {
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         def id=params.getInt("id", 0)
         def userid=params.getInt("userid", 0)
-        def article=webServicesSession.getProjectArticle(project.id , id );
+        def comment=webServicesSession.getCommentbyId( id );
+        def article=webServicesSession.getProjectArticle(project.id , comment.articleDTO.id );
 
         def user=webServicesSession.getUser(project.id , userid)
 
         if(article!=null && user!= null){
-            render view: 'topicUpdated', model: [project:project, article:article , user:user ]
+            render view: 'topicUpdated', model: [project:project, article:article , user:user , comment:comment ]
         }
         else{
             response.sendError HttpServletResponse.SC_NO_CONTENT
@@ -43,6 +44,21 @@ class MessagingController {
 
     }
 
+    def commentCreated(){
+        def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
+        def id=params.getInt("id", 0)
+        def userid=params.getInt("userid", 0)
+        def comment=webServicesSession.getCommentbyId( id );
+        def user=webServicesSession.getUser(project.id , userid)
+
+        if(comment!=null && user!= null){
+            render view: 'commentCreated', model: [project:project, comment:comment , user:user ]
+        }
+        else{
+            response.sendError HttpServletResponse.SC_NO_CONTENT
+        }
+
+    }
 
 
 }

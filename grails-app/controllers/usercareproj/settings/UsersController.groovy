@@ -2,8 +2,7 @@ package usercareproj.settings
 
 import com.sh.db.map.UserPermissionsDTO
 import grails.plugin.springsecurity.annotation.Secured
-import org.grails.web.json.JSONObject
-//import org.springsource.loaded.Log
+import org.grails.web.json.JSONObject;
 
 @Secured(['ROLE_MANAGER', 'ROLE_MANGEUSERS'])
 class UsersController {

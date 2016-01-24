@@ -2,6 +2,7 @@ package com.sh.db.map;
 
 import com.sh.utils.TimeAgo;
 import org.grails.web.json.JSONObject;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -180,6 +181,17 @@ public class ArticleDTO extends IntEntity{
     @ManyToOne(fetch = FetchType.LAZY , cascade = CascadeType.MERGE )
     @JoinColumn(name = "updateduser")
     private UserDTO updatedUserDTO;
+
+    @OneToMany(fetch = FetchType.LAZY , cascade = CascadeType.MERGE, mappedBy = "articleDTO")
+    private List<ArticleTagsDTO> articleTagsDTOs;
+
+    public List<ArticleTagsDTO> getArticleTagsDTOs() {
+        return articleTagsDTOs;
+    }
+
+    public void setArticleTagsDTOs(List<ArticleTagsDTO> articleTagsDTOs) {
+        this.articleTagsDTOs = articleTagsDTOs;
+    }
 
     @ManyToOne(fetch = FetchType.LAZY ,cascade = CascadeType.MERGE )
     @JoinColumn(name = "assigneduser")

@@ -2,7 +2,7 @@ package usercareproj
 
 import com.sh.utils.ForumType
 import com.sh.utils.ModuleDisplay
-import org.grails.web.json.JSONObject
+import org.grails.web.json.JSONObject;
 
 import javax.servlet.http.HttpServletResponse
 

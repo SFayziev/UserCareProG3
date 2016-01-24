@@ -15,7 +15,7 @@ class IndexController {
     }
     def robots(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
-        def robotText = project.params?.get("robotstxt")?.value
+        def robotText = project?.params?.get("robotstxt")?.value
         render(text: robotText!= null?robotText:"" , contentType: "text/xml", encoding: "UTF-8")
     }
 

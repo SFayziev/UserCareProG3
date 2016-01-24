@@ -1,19 +1,13 @@
 package usercareproj
 
-import com.sh.db.map.CategoriesDTO
-import com.sh.db.map.ForumDTO
-import com.sh.db.map.ModuleDTO
-import com.sh.db.map.ModuleParamsType1DTO
-import com.sh.db.map.ModuleParamsType3DTO
+
 import com.sh.db.map.UserDTO
-import com.sh.utils.ForumType
+
 import grails.plugin.springsecurity.annotation.Secured
-import org.grails.web.json.JSONObject
-import org.hibernate.validator.internal.engine.ConstraintViolationImpl
+import org.grails.web.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value
 
 import javax.servlet.http.HttpServletResponse
-import javax.validation.Constraint
 import javax.validation.ConstraintViolation
 import javax.validation.ConstraintViolationException
 
