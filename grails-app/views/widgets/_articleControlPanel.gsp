@@ -1,0 +1,70 @@
+
+    <div  id="linksForm" data-moduleid="${module?.id}"  data-article-id="${article?.id}">
+        <div class="headline">
+            <h2><g:message code="article.controlPanel.Title"/></h2>
+        </div>
+        <ul class="list-group sidebar-nav-v1" id="sidebar-nav">
+            <li class="list-group-item  list-toggle">
+                <a  class="accordion-toggle" href="#collapse-status" data-toggle="collapse"><i class="fa fa-exchange"></i> <g:message code="article.action.change.status"/></a>
+            <ul id="collapse-status" class="collapse">
+                <g:each in="${articleStatuses}" var="articleStatus">
+                    <li><a  data-content="${article.id}" data-action="articleChangeStatus" data-status-value="${articleStatus?.id}"  data-forumid="${article.forumDTO.id}">
+                        <locale:message  proj="${project}" code="article.status.name.${articleStatus?.id}" default="${articleStatus?.name}" /></a></li>
+                </g:each>
+            </ul>
+            </li>
+            <li class="list-group-item">
+                <a href="#" data-action="replycomment" ><i class="fa fa-reply"></i> <g:message code="article.action.Reply"/></a>
+            </li>
+            <li class="list-group-item">
+                <a  data-toggle="modal" href="/article/edit/${article.forumDTO.id}/${article.id}" data-target="#myModal" data-content="${article.id}" data-action="articleEdit"  ><i class="fa fa-edit"></i> <g:message code="article.action.Edit"/></a>
+            </li>
+            <li class="list-group-item list-toggle">
+                <a  class="accordion-toggle" href="#collapse-forms" data-toggle="collapse"><i class="fa fa-users"></i> <g:message code="article.action.AssignTo"/></a>
+                <ul id="collapse-forms" class="collapse">
+                    <g:each in="${staffs}" var="staff">
+                        <li><a href="#" data-assignid="${staff?.id}" data-action="articleAssignTo" >${staff?.username} </a></li>
+                    </g:each>
+                </ul>
+            </li>
+            <li class="list-group-item">
+                <a href="#" data-content="${article.id}" data-action="articleTranslate" data-status-value="${articleStatus?.id}" ><i class="fa fa-globe"></i> <g:message code="article.action.Translations"/></a>
+            </li>
+            <li class="list-group-item">
+                <a href="#" data-content="${article.id}" data-action="getAditionalInfo" data-status-value="${articleStatus?.id}" ><i class="fa fa-info"></i> <g:message code="article.action.Additional.information"/></a>
+            </li>
+            <li class="list-group-item">
+                <a  data-toggle="modal" href="/article/delete/${article.id}" data-target="#myModalDelete" ><i class="fa fa-trash"></i> <g:message code="article.action.Delete"/></a>
+            </li>
+        </ul>
+    </div>
+
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Submit new feedback </h4>
+            </div>
+            Loading ...
+        </div><!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+<div class="modal fade" id="myModalDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Submit new feedback </h4>
+            </div>
+            Loading ...
+        </div><!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+%{--</sec:ifAllGranted>--}%
