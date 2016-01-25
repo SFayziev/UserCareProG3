@@ -417,7 +417,7 @@ function authAjax() {
     var form = $('#ajaxLoginForm');
     var config = {
         type: 'post',
-        url: getHost() + "/login/j_spring_security_check",
+        url: getHost() + "/login/login/authenticate",
         data: form.serialize(),
         async: false,
         dataType: 'JSON',

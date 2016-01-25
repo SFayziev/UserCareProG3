@@ -279,7 +279,10 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
         CommentVoteDTO commentVoteDTO=isCommentVotedByMe(commentid, username, Ip);
 
         if (commentVoteDTO!= null){
-            if(Objects.equals(commentVoteDTO.getValue(), value)){return commentDTO;}
+            if(Objects.equals(commentVoteDTO.getValue(), value))
+            {
+                return commentDTO;
+            }
             else {
                 commentDTO.voteUndo(commentVoteDTO.getValue());
                 getSessionFactory().getCurrentSession().delete(commentVoteDTO);

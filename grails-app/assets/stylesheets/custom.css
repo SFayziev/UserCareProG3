@@ -339,6 +339,7 @@ a.btn-u-xs {
 /*Button Groups*/
 .btn-group .dropdown-menu > li > a {
     padding: 3px 13px;
+    cursor: pointer;
 }
 
 .btn-group > .btn-u,
@@ -2458,4 +2459,39 @@ h3.heading-xs {
     padding-bottom: 5px;
     display: inline-block;
     border-bottom: 2px solid #72C02C;
+}
+
+.blog-post-tags ul.blog-tags a {
+    color: #555;
+    font-size: 11px;
+    display: inline;
+    padding: 3px 7px;
+    margin-right: 2px;
+    /* background: #f4f4f4; */
+}
+ul.blog-tags a {
+    font-size: 11px;
+    padding: 2px 7px;
+    background: #d4d4d4;
+    margin: 0 3px 6px 0;
+    display: inline-block;
+    border-radius: 0.25em;
+}
+
+ul.blog-tags a i {
+    color: #666;
+}
+
+ul.blog-tags a:hover {
+    background: #72c02c;
+}
+
+ul.blog-tags a:hover,
+ul.blog-tags a:hover i {
+    color: #fff !important;
+    text-decoration: none;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
 }

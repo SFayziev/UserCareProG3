@@ -13,11 +13,11 @@
             <div class="modal-body">
                 <div class="input-group margin-bottom-20">
                     <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                    <input type="text" name="j_username" class="form-control" placeholder="Email">
+                    <input type="text" name="username" class="form-control" placeholder="Email">
                 </div>
                 <div class="input-group margin-bottom-20">
                     <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                    <input type="password" name="j_password" class="form-control" placeholder="Password">
+                    <input type="password" name="password" class="form-control" placeholder="Password">
                 </div>
                 <hr>
 
