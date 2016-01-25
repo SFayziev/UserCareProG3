@@ -15,7 +15,7 @@
             <div class="col-xs-8 col-md-10">
 
             <div class="topbar">
-                <ul  class="loginbar pull-left">
+                %{--<ul  class="loginbar pull-left">--}%
                     %{--<g:each in="${project?.forumDTOs}" var="forum">--}%
                         %{--<g:if test="${forum?.type==ForumType.HelpDesk}">--}%
                             %{--<sec:ifLoggedIn> <li><i class="${forum.faclass}"></i>   <a href="/list/${forum?.id}/">${forum?.name}</a> </li></sec:ifLoggedIn>--}%
@@ -25,7 +25,7 @@
                         %{--</g:else>--}%
 
                     %{--</g:each>--}%
-                </ul>
+                %{--</ul>--}%
 
                 <ul class="loginbar pull-right">
                     <li class="hoverSelector">
