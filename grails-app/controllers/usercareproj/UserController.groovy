@@ -119,16 +119,19 @@ class UserController {
 
     def comments(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
+        def forum=webServicesSession.getForumById(project.id ,  project.defaultforum  )
+
+//        def module= webServicesSession.getModuleById(0,uTmoduleid )
 
         def id = params.getInt('id', 0)
         def userdto=id!= 0? webServicesSession.getUser(project.id , id  ):null
         if (id!=0 || (userdto!= null)){
-            render view: "topics", model: [user: userdto]
+            params.filter_user_id=id
+            render view: "comments", model: [user: userdto, forum:forum, project: project]
         }
         else{
             response.sendError HttpServletResponse.SC_BAD_REQUEST
         }
-
     }
 
     @Secured(["isAuthenticated()"])
