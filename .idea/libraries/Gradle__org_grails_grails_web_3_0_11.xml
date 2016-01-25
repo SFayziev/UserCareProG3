@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.grails:grails-web:3.0.11">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web/3.0.11/d3c8b4ffa9270b2418cfd94c9820ac0a41dc2427/grails-web-3.0.11.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web/3.0.11/dc3c9f8417987e336dd4f689f0498f15d6e5853d/grails-web-3.0.11-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

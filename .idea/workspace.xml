@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ae094633-52cd-40e3-8d28-f13632cea276" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/grails-app/views/article/_articleTags.gsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/grails-app/views/modules/_articleDetails.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.asscache" afterPath="$PROJECT_DIR$/.asscache" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/assets/javascripts/default.js" afterPath="$PROJECT_DIR$/grails-app/assets/javascripts/default.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/assets/stylesheets/custom.css" afterPath="$PROJECT_DIR$/grails-app/assets/stylesheets/custom.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/layouts/_header.gsp" afterPath="$PROJECT_DIR$/grails-app/views/layouts/_header.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/layouts/_login.gsp" afterPath="$PROJECT_DIR$/grails-app/views/layouts/_login.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/user/signin.gsp" afterPath="$PROJECT_DIR$/grails-app/views/user/signin.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/sh/db/service/ArticleDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/sh/db/service/ArticleDAO.java" />
     </list>
     <ignored path="UserCareProj.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -1849,7 +1840,7 @@
       <workItem from="1453554927611" duration="13055000" />
       <workItem from="1453617171897" duration="9863000" />
       <workItem from="1453658280268" duration="2953000" />
-      <workItem from="1453664894485" duration="12173000" />
+      <workItem from="1453664894485" duration="12786000" />
     </task>
     <task id="LOCAL-00001">
       <created>1453662265508</created>
@@ -1863,11 +1854,17 @@
       <option name="project" value="LOCAL" />
       <updated>1453701479266</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003">
+      <created>1453732029682</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1453732029682</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51481000" />
+    <option name="totallyTimeSpent" value="52094000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
