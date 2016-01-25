@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="Gradle: com.rabbitmq:http-client:1.0.0.RELEASE">
-    <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/rabbitmq/http-client/1.0.0.RELEASE/http-client-1.0.0.RELEASE.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
