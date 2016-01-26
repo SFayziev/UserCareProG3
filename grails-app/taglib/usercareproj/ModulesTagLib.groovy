@@ -36,7 +36,7 @@ class ModulesTagLib {
             params.maxRecords = module.params.maxRecords != null ? module.params.maxRecords.value : recordsInPage;
             params.forumTypes=webServicesSession.getForumTypeByForumid(params.project.id , params.forum.id,1 )
             params.articleStatuses=webServicesSession.getArticleStatusByForumId(params.project.id , params.forum.id )
-            def articleListParams = [count: params.maxRecords, offset: params.params.offset, type: params.params.int('type'), status: params.params.int('status'), order: params.params.order, userid :params.params.int('filter_user_id',0)]
+            def articleListParams = [count: params.maxRecords, offset: params.params.offset, type: params.params.int('type'), status: params.params.int('status'), order: params.params.order, performerid: params.params.int('filter_performer_id',0), userid :params.params.int('filter_user_id',0)]
             params.lastArticle = webServicesSession.getArticleList(params.project, params.forum, articleListParams)
             params.pageCount = webServicesSession.getLastArticleRecCount(params.project, params.forum, articleListParams)
             params.catalogParams = articleListParams
@@ -174,5 +174,16 @@ class ModulesTagLib {
         def domProtocol=grailsApplication.config.domain.protocol
         def mainurl= grailsApplication.config.domain.main.url
         writer << domProtocol + "://" + project.alias +"."+ mainurl
+    }
+
+    def forumCategories={ attrs ->
+        def params = attrs.params
+        def module = attrs.params.module
+        params.forum=attrs.forum
+        params.categories=webServicesSession.getCategoryByForumId(params.project.id, module.forumid )
+
+        out << render(template: "/widgets/forumCategories", model: params)
+
+
     }
 }

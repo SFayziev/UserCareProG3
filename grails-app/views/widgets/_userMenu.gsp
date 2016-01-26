@@ -17,7 +17,7 @@
             <span class="badge pull-right">0</span>  <g:message code="user.profile.user.updates" />
         </li>
         <li>
-            <span class="badge pull-right">0</span>  <g:message code="user.profile.user.assigned.topic" />
+            <span class="badge pull-right">0</span> <g:link controller="user" action="performer_topic" id="${user.id}"> <g:message code="user.profile.user.assigned.topic" /> </g:link>
         </li>
     </ul>
     <div class="headline">

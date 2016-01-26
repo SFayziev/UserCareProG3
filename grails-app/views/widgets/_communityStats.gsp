@@ -16,7 +16,7 @@
 
         <li>
             <span class="badge pull-right">${projectStats?.comments}</span>
-            <i class="fa fa-fw fa-comments"></i>  <g:message code="widget.community.stats.commnet" />
+            <i class="fa fa-fw fa-comments"></i> <g:message code="widget.community.stats.comment" />
         </li>
 
         <li>

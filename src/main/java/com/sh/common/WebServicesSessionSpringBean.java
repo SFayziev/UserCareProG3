@@ -97,8 +97,8 @@ public class WebServicesSessionSpringBean {
     public ProjectDesignDTO saveProjectDesign(ProjectDesignDTO projectDesignDTO) {return  projectDAO.saveProjectDesign(projectDesignDTO);}
 
     // Articles
-    public List<ArticleDTO> getLastArticle(Integer projectId, Integer start,Integer count, Integer status, Integer  type , String order,  Integer catid , ForumDTO  forumDTO , Integer langid){ return articleDAO.getLastArticle(projectId, start, count, status, type, order, catid, forumDTO, langid); }
-    public ItemCount getLastArticleRecCount(Integer projectId,  Integer status, Integer  type ,    Integer catid , ForumDTO  forumDTO, Integer langid) { return articleDAO.getLastArticleRecCount(projectId, status, type, catid, forumDTO, langid); }
+//    public List<ArticleDTO> getLastArticle(Integer projectId, Integer start,Integer count, Integer status, Integer  type , String order,  Integer catid , ForumDTO  forumDTO , Integer langid){ return articleDAO.getLastArticle(projectId, start, count, status, type, order, catid, forumDTO, langid ) ; }
+//    public ItemCount getLastArticleRecCount(Integer projectId,  Integer status, Integer  type ,    Integer catid , ForumDTO  forumDTO, Integer langid) { return articleDAO.getLastArticleRecCount(projectId, status, type, catid, forumDTO, langid); }
     public ItemCount getLastArticleRecCount(ProjectDTO  project,  ForumDTO  forumDTO, HashMap params) {return articleDAO.getLastArticleRecCount(project, forumDTO, params);}
     public  List<ArticleDTO> getArticleList(ProjectDTO  project,  ForumDTO  forumDTO, HashMap params) {return  articleDAO.getArticleList(project, forumDTO, params); }
 
@@ -171,6 +171,8 @@ public class WebServicesSessionSpringBean {
     public CommentDTO getArticleAnswer(List<CommentDTO> commentDTOList)  { return  articleDAO.getArticleAnswer(commentDTOList); }
     public void delArticleComment(Integer commid){ articleDAO.delArticleComment(commid);}
     public CommentDTO  getCommentbyId(Integer commid){return articleDAO.getCommentbyId(commid);}
+    public List<CommentDTO> getCommentbyUserId(Integer projid, Integer  userid, Integer start, Integer count ) {return articleDAO.getCommentbyUserId(projid, userid, start, count ) ;}
+    public Long getCommentbyUserCounts(Integer projid, Integer  userid ) {return  articleDAO.getCommentbyUserCounts(projid, userid);}
 
     public List<ArticleDTO> findTextInArticle(Integer projid ,String searchText, Integer forumid, ForumType forumType,  Integer count, String order ){return    articleDAO.findTextInArticle(projid, searchText, forumid, forumType, count, order);}
     public List<ModuleDTO> getModuleBydisplaypos(Integer projId, Integer id , Integer forumid, ModuleDisplay modulePosType){ return  moduleDAO.getModuleBydisplaypos(projId, id, forumid , modulePosType); }

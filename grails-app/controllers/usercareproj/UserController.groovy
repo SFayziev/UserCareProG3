@@ -19,6 +19,10 @@ class UserController {
     @Value('${default.user.topic.module.id}')
     int uTmoduleid
 
+
+    @Value('${default.user.topic.count.in.page}')
+    int uTopicCounts
+
     private invokeMe(model) {
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         model.project=project;
@@ -117,17 +121,32 @@ class UserController {
         }
     }
 
-    def comments(){
+    def performer_topic(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         def forum=webServicesSession.getForumById(project.id ,  project.defaultforum  )
 
-//        def module= webServicesSession.getModuleById(0,uTmoduleid )
+        def module= webServicesSession.getModuleById(0,uTmoduleid )
 
         def id = params.getInt('id', 0)
         def userdto=id!= 0? webServicesSession.getUser(project.id , id  ):null
         if (id!=0 || (userdto!= null)){
+            params.filter_performer_id=id
+            render view: "topics", model: [user: userdto, module:module, forum:forum, project: project]
+        }
+        else{
+            response.sendError HttpServletResponse.SC_BAD_REQUEST
+        }
+
+    }
+    def comments(){
+        def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
+        def id = params.getInt('id', 0)
+        def userdto=id!= 0? webServicesSession.getUser(project.id , id  ):null
+        if (id!=0 || (userdto!= null)){
+            def comments=webServicesSession.getCommentbyUserId(project.id, id, params.getInt("offset", 0) ,uTopicCounts )
+            def total=comments?.size()>0?webServicesSession.getCommentbyUserCounts(project.id, id):0
             params.filter_user_id=id
-            render view: "comments", model: [user: userdto, forum:forum, project: project]
+            render view: "comments", model: [ user: userdto,  comments:comments, project: project, total:total , maxRecords:uTopicCounts]
         }
         else{
             response.sendError HttpServletResponse.SC_BAD_REQUEST

@@ -111,7 +111,7 @@
             <g:form controller="community" action="spamprotection" id="${forum.id}" class="form-horizontal sky-form" role="form" data-toggle="validator" novalidate="novalidate" >
                 <input type="hidden" name="spamProtect.ftype" value="1">
                 <input type="hidden" name="spamProtect.id" value="${spamProtectComment?.id}">
-                <header><g:message code="setting.community.moderation.settings" />:  <b><g:message code="widget.community.stats.commnet" /></b> </header>
+                <header><g:message code="setting.community.moderation.settings" />:  <b><g:message code="widget.community.stats.comment" /></b> </header>
                 <div class="form-group">
                     <label class="checkbox state-success"><input id="sso"  name="spamProtect.sanonymousfeedback"  value="1" <g:if test="${spamProtectComment?.sanonymousfeedback}">checked=""</g:if>  type="checkbox"><i></i><g:message code="setting.community.moderation.setting.anonymous.feedback"/> </label>
                 </div>
