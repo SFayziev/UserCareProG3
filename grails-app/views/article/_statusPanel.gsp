@@ -19,13 +19,17 @@
     <tbody>
     <tr>
         <th onclick="setArticleListStatus(${module?.id}, -1)" style="background-color:rgb(214, 214, 214); cursor: pointer;">
+            <g:if test="${params.status== -1 ||  params.status=="-1" }"> <i class="text-highlights fa fa-arrow-circle-right"></i> </g:if>
             <span class="text-highlights" style="float: right;"> ${pageCount?.getCountByStatus(-1 )}</span>
+
         </th>
         <th onclick="setArticleListStatus(${module?.id}, 0)" style="background-color:rgb(160, 160, 160); cursor: pointer;">
+            <g:if test="${params.status=="0" }"> <i class="text-highlights fa fa-arrow-circle-right"></i> </g:if>
             <span class="text-highlights" style="float: right;"> ${pageCount?.getCountByStatus(0)}</span>
         </th>
         <g:each in="${articleStatuses}" var="articleStatus" >
             <th onclick="setArticleListStatus(${module?.id}, ${articleStatus?.id})" style="background-color:${articleStatus?.color}; cursor: pointer; ">
+               <g:if test="${params.status==(articleStatus?.id+"") }"> <i class="text-highlights fa fa-arrow-circle-right"></i> </g:if>
                 <span class="text-highlights" style="float: right;"> ${pageCount?.getCountByStatus(articleStatus?.id )}</span></th>
         </g:each>
 

@@ -345,10 +345,20 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
 
     public ArticleDTO assignArticleCategory(Integer articID, Integer catid){
         ArticleDTO articleDTO= find(articID);
-        CategoriesDTO categoriesDTO=forumDAO.getCategoryById(articleDTO.getProjid(), catid);
+
+        CategoriesDTO categoriesDTO=forumDAO.getCategoryById(articleDTO.getProjid(), catid , false);
         if ((articleDTO== null) && (categoriesDTO== null)) return null;
+        CategoriesDTO prevCategories= articleDTO.getCategoriesDTO();
         articleDTO.setCategoriesDTO(categoriesDTO);
+        articleDTO.getCategoriesDTO().increaseArticle(1);
+
+
         currentSession().save(articleDTO);
+        if (prevCategories!= null){
+            prevCategories.increaseArticle(-1);
+            forumDAO.saveCategories(prevCategories);
+        }
+
         return articleDTO;
 
     }
@@ -462,9 +472,9 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
         try {
             ArticleDTO articleDTO= getArticle(projid, articid);
             ArticleTagsDTO articleTagsDTO= new ArticleTagsDTO();
-
             articleTagsDTO.setArticleDTO(getArticle(projid, articid) );
             articleTagsDTO.setForumTagsDTO(forumDAO.getTagById(projid, articleDTO.getForumDTO().getId(), tagid));
+
             currentSession().save(articleTagsDTO);
         } catch (Exception ignored) {
 

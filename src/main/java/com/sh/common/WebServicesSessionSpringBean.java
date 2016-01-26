@@ -136,7 +136,7 @@ public class WebServicesSessionSpringBean {
     public ForumDTO saveForum(ForumDTO forumDTO){return forumDAO.saveForum(forumDTO); }
     public ForumDTO createForum(ProjectDTO projectDTO , String forumname, ForumType type){return forumDAO.createForum(projectDTO, type, forumname); }
     public List<CategoriesDTO> getCategoryByForumId(Integer projid, Integer forumid  ){return  forumDAO.getCategoryByForumId(projid, forumid);}
-    public CategoriesDTO getCategoryById(Integer projid, Integer catid  ){return  forumDAO.getCategoryById(projid, catid);}
+    public CategoriesDTO getCategoryById(Integer projid, Integer catid  ){return  forumDAO.getCategoryById(projid, catid, false);}
     public CategoriesDTO saveCategories(CategoriesDTO categoriesDTO){ return  forumDAO.saveCategories(categoriesDTO);}
     public boolean moveCategory(Integer projId, Integer catID, String direction){ return  forumDAO.moveCategory(projId, catID, direction);}
     public List<ForumTagsDTO> getTagsByForumId( Integer forumid  ){return forumDAO.getTagsByForumId(forumid);}

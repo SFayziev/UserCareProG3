@@ -142,7 +142,7 @@ public class ForumDAO extends GenericDaoImpl<ForumDTO> {
 
 
     @Cacheable( value = "categoriesDTO" )
-    public CategoriesDTO getCategoryById(Integer projid, Integer catid  ){
+    public CategoriesDTO getCategoryById(Integer projid, Integer catid , boolean forcache ){
         return (CategoriesDTO) getSessionFactory().getCurrentSession().createQuery("from CategoriesDTO  as cat where cat.id=:id and cat.projid=:projid")
                 .setParameter("id", catid)
                 .setParameter("projid", projid).uniqueResult();
@@ -150,7 +150,7 @@ public class ForumDAO extends GenericDaoImpl<ForumDTO> {
 
     @CacheEvict(value = "categoriesDTO" ,   allEntries = true)
     public boolean moveCategory(Integer projId, Integer catID, String direction){
-        CategoriesDTO categoriesDTO=getCategoryById(projId, catID);
+        CategoriesDTO categoriesDTO=getCategoryById(projId, catID, false);
         List<CategoriesDTO> categoriesDTOs=getCategoryByForumId(projId, categoriesDTO.getForumid());
         CategoriesDTO prevCategory = null;
         Boolean change=false;

@@ -1,5 +1,7 @@
 <%@ page import="com.sh.utils.ForumType" %>
+
 <div id="listItems" data-moduleid="${module?.id}"   data-forumid="${forum?.id}" data-statusid="${catalogParams?.status}" data-orderid="${catalogParams?.order}" data-typeid="${catalogParams?.type}" >
+    <g:render template="/forum/forumBreadcrumb"/>
     <if test="${module.params?.title && module.params?.title?.value !='' }"><h2>
         <locale:message  proj="${project}" code="forum.module.title.${module.id}" default="${module.params?.title?.value}" />
         <span class="badge badge-u rounded-2x">${pageCount?.getRowCount()}</span></h2>
