@@ -35,8 +35,8 @@ import java.util.UUID;
 @Controller
 public class UserDAO extends GenericDaoImpl<UserDTO> {
     private static final Logger LOG = Logger.getLogger(UserDAO.class);
-    @Value("${image.catalog}")
-    private  String imageCatalog;
+//    @Value("${image.catalog}")
+//    private  String imageCatalog;
 
 
     @Value("${default.user.topic.module.id}")

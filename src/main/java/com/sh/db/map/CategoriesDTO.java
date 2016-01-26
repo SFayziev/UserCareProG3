@@ -66,6 +66,9 @@ public class CategoriesDTO extends IntEntity{
         this.comments = comments;
     }
 
+    public void increaseArticle(int val){
+        setArticles(getArticles()+val);
+    }
     public Integer getVotes() {
         return votes;
     }

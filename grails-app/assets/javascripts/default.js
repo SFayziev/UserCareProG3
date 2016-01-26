@@ -13,8 +13,14 @@ iContainer.on("click","[data-action=voteshow]",voteShow);
 iContainer.on("click","[data-action=articleChangeStatus]",articleChangeStatus);
 iContainer.on("click","a[data-action=replycomment]",showCommentReply);
 iContainer.on("click","a[data-action=deletecomment]",deleteReply);
+
 //$("a[data-action=deletecomment]").click(showCommentReply);
 iContainer.on("click","a[data-action=articleAssignTo]",articleAssignTo);
+iContainer.on("click","a[data-action=articleAssignTags]",articleAssignTags);
+iContainer.on("click","a[data-action=deleteAssignTags]",deleteAssignTags);
+
+iContainer.on("click","a[data-action=articleAssignCategory]",articleAssignCategory);
+
 iContainer.on("click","a[data-action=pagination]",setArticlePageTo);
 
 $("input[data-action='searchArticle']").change(articleStartFind);
@@ -91,6 +97,16 @@ $('*[data-poload]').hover(function() {
     });
 });
 
+function deleteAssignTags(){
+    var articid=$(this).closest('[data-article-id]').attr('data-article-id');
+    var forumid=$(this).closest('[data-forum-id]').attr('data-forum-id');
+    var tagid= $(this).data('content');
+    var modal =$("#myModalDelete");
+    modal.removeData('bs.modal');
+    modal.modal({remote: '/article/deleteAssignTags/'+forumid +"/"+articid +"/?tag=" + tagid });
+    modal.modal('show');
+    return false;
+}
 
 function changeUserAvatar(userId){
     var modal =$("#imageSelector");
@@ -114,11 +130,9 @@ function  getArticleList(moduleid, status,type, offset, order){
     }
     var forumid=listItems.data('forumid');
     var filter_user_id =__uc_settings['module_'+ moduleid ]['filter_user_id'];
-    var filter_performer_id =__uc_settings['module_'+ moduleid ]['filter_performer_id'];
-
     var pagination=listItems.find(".pagination .active span").text();
 
-    var data={'moduleid':moduleid, 'status':status,'type':type, 'offset':offset , 'order': order, forum:forumid, 'filter_user_id': filter_user_id, 'filter_performer_id' : filter_performer_id  };
+    var data={'moduleid':moduleid, 'status':status,'type':type, 'offset':offset , 'order': order, forum:forumid, 'filter_user_id': filter_user_id };
     $.ajax({  dataType: "json", data:data, url:  "/forum/jsonlist/"})
         .done(function( data ) {
             if (data.status=='success') {
@@ -130,6 +144,35 @@ function  getArticleList(moduleid, status,type, offset, order){
 
 }
 
+function articleAssignCategory(){
+    var articid=$(this).closest('[data-article-id]').attr('data-article-id');
+    var categoryid= $(this).data('assignid');
+    var data={'id':articid,'categoryid': categoryid};
+
+    $.ajax({  dataType: "json", data:data, url:  "/article/assignToCategory/"})
+        .done(function( data ) {
+            if (data.status=='success') {
+                refreshArticle(articid);
+                showMassge(data.massage);
+            }
+        });
+    return false;
+}
+function articleAssignTags(){
+    var articid=$(this).closest('[data-article-id]').attr('data-article-id');
+    var tagid= $(this).data('assignid');
+    var data={'id':articid,'tagid': tagid};
+
+    $.ajax({  dataType: "json", data:data, url:  "/article/assignToTag/"})
+        .done(function( data ) {
+            if (data.status=='success') {
+                refreshArticle(articid);
+                showMassge(data.massage);
+            }
+        });
+    return false;
+
+}
 
 function articleAssignTo(){
     var articid=$(this).closest('[data-article-id]').attr('data-article-id');

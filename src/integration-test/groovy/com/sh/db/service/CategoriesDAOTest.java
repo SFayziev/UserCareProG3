@@ -23,7 +23,7 @@ ForumDAO forumDAO;
 
     @Test
     public void testGetCategoryWithArticle() throws Exception {
-        CategoriesDTO categoriesDTO = forumDAO.getCategoryById(2,1);
+        CategoriesDTO categoriesDTO = forumDAO.getCategoryById(2,1, false);
      }
 
     @Test
