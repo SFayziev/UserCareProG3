@@ -10,7 +10,7 @@
         </li>
 
         <li>
-            <span class="badge pull-right">${user.comments}</span>  <g:link controller="user" action="topics" id="${user.id}"> <g:message code="widget.community.stats.commnet" /></g:link>
+            <span class="badge pull-right">${user.comments}</span>  <g:link controller="user" action="comments" id="${user.id}"> <g:message code="widget.community.stats.comment" /></g:link>
         </li>
 
         <li>

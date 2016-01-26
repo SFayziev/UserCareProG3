@@ -261,6 +261,13 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
                 .setParameter("id", id).uniqueResult();
     }
 
+    public List<CommentDTO> getCommentbyUserId(Integer projid, Integer  userid, Integer start, Integer count ){
+        return  getSessionFactory().getCurrentSession().createQuery("from CommentDTO as com where com.userDTO.id=:userid and  com.articleDTO.projid =:projid  and com.articleDTO.deleted=false")
+                .setParameter("userid", userid).setParameter("projid", projid).setMaxResults(count).setFirstResult(start)
+                .list();
+    }
+
+
     protected CommentVoteDTO isCommentVotedByMe(Integer commitid, String username, String Ip){
         if(username== null && Ip==null) {return  null;};
         IpConvertor ipConvertor= new IpConvertor();

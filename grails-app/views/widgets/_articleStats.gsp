@@ -16,7 +16,7 @@
 
         <li>
             <span class="badge pull-right">${article?.comments}</span>
-            <i class="fa fa-fw fa-thumbs-up"></i> <g:message code="widget.article.stats.commnet" />
+            <i class="fa fa-fw fa-thumbs-up"></i> <g:message code="widget.article.stats.comment" />
         </li>
         <li>
             <span class="badge pull-right">${article?.followers}</span>
