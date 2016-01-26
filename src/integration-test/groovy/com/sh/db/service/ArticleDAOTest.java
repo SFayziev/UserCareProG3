@@ -34,10 +34,10 @@ public class ArticleDAOTest extends IntegrationTest{
     @Test
     public void getLastArticle(){
         System.out.println(ForumType.Community.ordinal());
-        for(ArticleDTO articleDTO:articleDAO.getLastArticle(2,null,null,null,null, null, null ,null,null)){
-            System.out.println(articleDTO);
-        }
-        ItemCount rowCount=articleDAO.getLastArticleRecCount(2, null, null,  null, null, null);
+//        for(ArticleDTO articleDTO:articleDAO.getLastArticle(2,null,null,null,null, null, null ,null,null)){
+//            System.out.println(articleDTO);
+//        }
+        ItemCount rowCount=null;
 
         System.out.println("All: " +  rowCount.getCountByStatus(-1 ));
         System.out.println("New: " + rowCount.getCountByStatus(0));
@@ -113,6 +113,8 @@ public class ArticleDAOTest extends IntegrationTest{
 
     @Test
     public void testGetCommentbyUserId() throws Exception {
+        System.out.println("count : " +  articleDAO.getCommentbyUserCounts(2,2) );
+
         for(CommentDTO commentDTO:articleDAO.getCommentbyUserId(2,2,0,4)){
             System.out.println( commentDTO );
         }

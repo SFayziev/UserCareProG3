@@ -65,7 +65,7 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
      * @return  list of Article
      */
     public List<ArticleDTO> getLastArticle(Integer projId, Integer start, Integer count, Integer status, Integer artictype , String order )  {
-        return   getLastArticle(projId, start, count, status, artictype, order, null, null, null);
+        return   getLastArticle(projId, start, count, status, artictype, order, null, null, null, null);
     }
 
     /**
@@ -79,16 +79,16 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
      */
     @Cacheable( value = "articleDTO" )
     @Transactional
-    public List<ArticleDTO> getLastArticle(Integer projId, Integer start, Integer count, Integer status, Integer artictype , String order, Integer catId , ForumDTO forumDTO, Integer userid )  {
+    public List<ArticleDTO> getLastArticle(Integer projId, Integer start, Integer count, Integer status, Integer artictype , String order, Integer catId , ForumDTO forumDTO, Integer userid, Integer performerid )  {
         UserDTO userDTO=getCurrentLoggedUser();
-        List<ArticleDTO> articleDTOList=getArticleCriteria(projId, start,count,status,artictype , order,  catId, forumDTO, userid).list();
+        List<ArticleDTO> articleDTOList=getArticleCriteria(projId, start,count,status,artictype , order,  catId, forumDTO, userid, performerid).list();
         for (ArticleDTO articleDTO:articleDTOList){
             if (articleDTO.getUserDTO()!= null &&  userDTO!=null && articleDTO.getUserDTO().getId()==userDTO.getId()    ) articleDTO.setCanVote(false);
         }
         return articleDTOList;
     }
 
-    private Criteria addArticleCriteriaRestrictions(Criteria cr, Integer projId, Integer artictype, Integer catId, ForumDTO forumDTO , Integer status , Integer userid ){
+    private Criteria addArticleCriteriaRestrictions(Criteria cr, Integer projId, Integer artictype, Integer catId, ForumDTO forumDTO , Integer status , Integer userid , Integer performerid ){
 
         cr.add(Restrictions.sqlRestriction("projid= " + projId));
         cr.add(Restrictions.sqlRestriction("deleted=false"));
@@ -97,6 +97,8 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
         if(catId != null && catId>0){ cr.add(Restrictions.sqlRestriction("catid= " +  catId));  }
 
         if (userid != null && (userid>0)) {cr.add(Restrictions.sqlRestriction("userid= " +  userid));}
+        if (performerid != null && (performerid>0)) {cr.add(Restrictions.sqlRestriction("assigneduser= " +  performerid));}
+
         if( forumDTO!= null){
             cr.add(Restrictions.sqlRestriction("forumid= " + forumDTO.getId() ) );
             if(forumDTO.getType().equals(ForumType.HelpDesk)){
@@ -116,9 +118,9 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
         return cr;
     }
 
-    private Criteria getArticleCriteria(Integer projId, Integer start, Integer count, Integer status, Integer artictype , String order,  Integer catId , ForumDTO  forumDTO, Integer userid ){
+    private Criteria getArticleCriteria(Integer projId, Integer start, Integer count, Integer status, Integer artictype , String order,  Integer catId , ForumDTO  forumDTO, Integer userid, Integer performerid  ){
         Criteria cr = getSessionFactory().getCurrentSession().createCriteria(ArticleDTO.class, "ad");
-        cr=addArticleCriteriaRestrictions(cr,projId,artictype,catId, forumDTO, status, userid );
+        cr=addArticleCriteriaRestrictions(cr,projId,artictype,catId, forumDTO, status, userid , performerid);
 
              if(Objects.equals(order, "top")) { cr.addOrder(Order.desc("votes"));}
         else if(Objects.equals(order, "bycomment")) {cr.addOrder(Order.desc("comments")); }
@@ -137,9 +139,9 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
 
     @Cacheable( value = "itemCount" )
     @Transactional
-    public ItemCount getLastArticleRecCount(Integer projId,  Integer status, Integer artictype ,  Integer catId , ForumDTO  forumDTO , Integer userid){
+    public ItemCount getLastArticleRecCount(Integer projId,  Integer status, Integer artictype ,  Integer catId , ForumDTO  forumDTO , Integer userid, Integer performerid){
         Criteria cr = getSessionFactory().getCurrentSession() .createCriteria(ItemStatDTO.class);
-        cr= addArticleCriteriaRestrictions(cr, projId, 0,catId, forumDTO, -1,userid);
+        cr= addArticleCriteriaRestrictions(cr, projId, 0,catId, forumDTO, -1,userid, performerid );
 //        cr.add(Restrictions.isNotNull("status"));
 
         cr.setProjection(Projections.projectionList().add(Projections.groupProperty("status"), "status")
@@ -262,9 +264,15 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
     }
 
     public List<CommentDTO> getCommentbyUserId(Integer projid, Integer  userid, Integer start, Integer count ){
-        return  getSessionFactory().getCurrentSession().createQuery("from CommentDTO as com where com.userDTO.id=:userid and  com.articleDTO.projid =:projid  and com.articleDTO.deleted=false")
+        return  getSessionFactory().getCurrentSession().createQuery("from CommentDTO as com where com.userDTO.id=:userid and  com.articleDTO.projid =:projid  and com.articleDTO.deleted=false  order by com.createdate desc ")
                 .setParameter("userid", userid).setParameter("projid", projid).setMaxResults(count).setFirstResult(start)
                 .list();
+    }
+
+    public Long getCommentbyUserCounts(Integer projid, Integer  userid ){
+        return (Long) getSessionFactory().getCurrentSession().createQuery("select  count(*) from CommentDTO as com where com.userDTO.id=:userid and  com.articleDTO.projid =:projid  and com.articleDTO.deleted=false")
+                .setParameter("userid", userid).setParameter("projid", projid)
+                .uniqueResult();
     }
 
 
@@ -475,7 +483,7 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
         if (searchText==null || searchText.length()<3 ) return null;
         SearchField searchField= new SearchField(searchText);
         if (searchField.getTextForSearch().length()<3 ) return null;
-        Criteria criteria= getArticleCriteria(projid, 0, count, null,null,null, null, null, null);
+        Criteria criteria= getArticleCriteria(projid, 0, count, null,null,null, null, null, null, null);
 
         criteria.add(Restrictions.sqlRestriction(" match ( title, text  ) against ( '" + searchField.getTextForSearch() + "')"));
         return  criteria.list();
@@ -484,7 +492,7 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
 
     }
 
-    @Cacheable( value = "itemCount" )
+
     public ItemCount getLastArticleRecCount(ProjectDTO project, ForumDTO forumDTO, HashMap params) {
         Integer offset= stringToInt(params.getOrDefault("offset", -1));
         Integer count= stringToInt(params.getOrDefault("count", 0));
@@ -493,10 +501,11 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
         String  order= (String) params.getOrDefault("order", "");
         Integer cat = stringToInt(params.getOrDefault("catid",-1));
         Integer userid = stringToInt(params.getOrDefault("userid",-1));
-        return getLastArticleRecCount(project.getId(), status, type, cat, forumDTO, userid);
+        Integer performerid= stringToInt(params.getOrDefault("performerid",-1));
+        return getLastArticleRecCount(project.getId(), status, type, cat, forumDTO, userid, performerid);
     }
 
-    @Cacheable( value = "articleDTO" )
+
     public List<ArticleDTO> getArticleList(ProjectDTO project, ForumDTO forumDTO, HashMap params) {
         Integer offset= stringToInt(params.getOrDefault("offset", -1));
         Integer count= stringToInt(params.getOrDefault("count", 0));
@@ -505,7 +514,8 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
         String  order= (String) params.getOrDefault("order", "");
         Integer cat = stringToInt(params.getOrDefault("catid",-1));
         Integer userid = stringToInt(params.getOrDefault("userid",-1));
-        return  getLastArticle(project.getId(), offset, count, status, type, order, cat, forumDTO, userid);
+        Integer performerid= stringToInt(params.getOrDefault("performerid",-1));
+        return  getLastArticle(project.getId(), offset, count, status, type, order, cat, forumDTO, userid, performerid);
 
     }
 
