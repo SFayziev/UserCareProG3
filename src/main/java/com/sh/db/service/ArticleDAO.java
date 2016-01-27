@@ -78,7 +78,7 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
      * @return  list of Article
      */
     @Cacheable( value = "articleDTO" )
-    @Transactional
+//    @Transactional
     public List<ArticleDTO> getLastArticle(Integer projId, Integer start, Integer count, Integer status, Integer artictype , String order, Integer catId , ForumDTO forumDTO, Integer userid, Integer performerid )  {
         UserDTO userDTO=getCurrentLoggedUser();
         List<ArticleDTO> articleDTOList=getArticleCriteria(projId, start,count,status,artictype , order,  catId, forumDTO, userid, performerid).list();
@@ -502,20 +502,17 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
 
     }
 
-
-    public ItemCount getLastArticleRecCount(ProjectDTO project, ForumDTO forumDTO, HashMap params) {
-        Integer offset= stringToInt(params.getOrDefault("offset", -1));
-        Integer count= stringToInt(params.getOrDefault("count", 0));
+    @Cacheable( value = "articleDTO" )
+    public ItemCount getLastArticleRecCount(ProjectDTO project, ForumDTO forumDTO, HashMap params, Boolean forcache) {
         Integer status= stringToInt(params.getOrDefault("status", -1));
         Integer type= stringToInt(params.getOrDefault("type", -1));
-        String  order= (String) params.getOrDefault("order", "");
         Integer cat = stringToInt(params.getOrDefault("catid",-1));
         Integer userid = stringToInt(params.getOrDefault("userid",-1));
         Integer performerid= stringToInt(params.getOrDefault("performerid",-1));
         return getLastArticleRecCount(project.getId(), status, type, cat, forumDTO, userid, performerid);
     }
 
-
+    @Cacheable( value = "articleDTO" )
     public List<ArticleDTO> getArticleList(ProjectDTO project, ForumDTO forumDTO, HashMap params) {
         Integer offset= stringToInt(params.getOrDefault("offset", -1));
         Integer count= stringToInt(params.getOrDefault("count", 0));

@@ -38,6 +38,9 @@ class ModulesTagLib {
             params.articleStatuses=webServicesSession.getArticleStatusByForumId(params.project.id , params.forum.id )
             def articleListParams = [count: params.maxRecords, offset: params.params.offset, type: params.params.int('type'), status: params.params.int('status'), order: params.params.order, performerid: params.params.int('filter_performer_id',0), userid :params.params.int('filter_user_id',0)]
             articleListParams.catid=params.params.int('category',0)
+            if (articleListParams.catid>0){
+                params.category=webServicesSession.getCategoryById(params.project.id, articleListParams.catid )
+            }
             params.lastArticle = webServicesSession.getArticleList(params.project, params.forum, articleListParams)
             params.pageCount = webServicesSession.getLastArticleRecCount(params.project, params.forum, articleListParams)
             params.catalogParams = articleListParams

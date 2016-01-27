@@ -99,7 +99,7 @@ public class WebServicesSessionSpringBean {
     // Articles
 //    public List<ArticleDTO> getLastArticle(Integer projectId, Integer start,Integer count, Integer status, Integer  type , String order,  Integer catid , ForumDTO  forumDTO , Integer langid){ return articleDAO.getLastArticle(projectId, start, count, status, type, order, catid, forumDTO, langid ) ; }
 //    public ItemCount getLastArticleRecCount(Integer projectId,  Integer status, Integer  type ,    Integer catid , ForumDTO  forumDTO, Integer langid) { return articleDAO.getLastArticleRecCount(projectId, status, type, catid, forumDTO, langid); }
-    public ItemCount getLastArticleRecCount(ProjectDTO  project,  ForumDTO  forumDTO, HashMap params) {return articleDAO.getLastArticleRecCount(project, forumDTO, params);}
+    public ItemCount getLastArticleRecCount(ProjectDTO  project,  ForumDTO  forumDTO, HashMap params) {return articleDAO.getLastArticleRecCount(project, forumDTO, params, true);}
     public  List<ArticleDTO> getArticleList(ProjectDTO  project,  ForumDTO  forumDTO, HashMap params) {return  articleDAO.getArticleList(project, forumDTO, params); }
 
     public ArticleDTO getProjectArticle(Integer projid , Integer id ){return  articleDAO.getArticle(projid, id);}
