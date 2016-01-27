@@ -51,6 +51,7 @@
         __uc_settings['module_${module?.id}']['action'] = '${params.action}';
         <g:if test="${params.filter_user_id}">__uc_settings['module_${module?.id}']['filter_user_id'] = '${params.filter_user_id}';</g:if>
         <g:if test="${params.filter_performer_id}">__uc_settings['module_${module?.id}']['filter_performer_id'] = '${params.filter_performer_id}';</g:if>
-
+        <g:if test="${params.category}">__uc_settings['module_${module?.id}']['category'] = '${params.category}';</g:if>
+        <g:if test="${params.tag}">__uc_settings['module_${module?.id}']['tag'] = '${params.tag}';</g:if>
     </script>
 </div>

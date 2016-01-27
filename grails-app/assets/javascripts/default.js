@@ -130,9 +130,12 @@ function  getArticleList(moduleid, status,type, offset, order){
     }
     var forumid=listItems.data('forumid');
     var filter_user_id =__uc_settings['module_'+ moduleid ]['filter_user_id'];
+    var category = __uc_settings['module_'+ moduleid ]['category'];
+    var tag = __uc_settings['module_'+ moduleid ]['tag'];
+
     var pagination=listItems.find(".pagination .active span").text();
 
-    var data={'moduleid':moduleid, 'status':status,'type':type, 'offset':offset , 'order': order, forum:forumid, 'filter_user_id': filter_user_id };
+    var data= { 'tag':tag, 'category':category,  'moduleid':moduleid, 'status':status,'type':type, 'offset':offset , 'order': order, forum:forumid, 'filter_user_id': filter_user_id };
     $.ajax({  dataType: "json", data:data, url:  "/forum/jsonlist/"})
         .done(function( data ) {
             if (data.status=='success') {
