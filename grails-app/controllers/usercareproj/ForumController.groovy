@@ -36,7 +36,9 @@ class ForumController {
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         def forum= webServicesSession.getForumById(project.id, params.int("id", project.getDefaultforum() ))
         def modulPos=webServicesSession.getModuleBydisplaypos(project.id, 0 , forum.id, ModuleDisplay.List )
-        render view: '/article/list' , model: [modulPos:modulPos,  project: project,  forum:forum]
+        def model =[project: project, modulPos:modulPos, forum:forum]
+        model.customize=params.customize
+        render view: '/article/list' ,   model: model
     }
 
     def dashboard(){
@@ -104,6 +106,7 @@ class ForumController {
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         module.forum= webServicesSession.getForumById(project.id, params.int("id", project.getDefaultforum() ))
         module.modulPos=webServicesSession.getModuleBydisplaypos(module.project.id, 0 , module.forum.id , ModuleDisplay.Widget )
+        module.customize=params.customize
         render view: 'popup' , model: module
     }
 }

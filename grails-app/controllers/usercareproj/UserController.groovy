@@ -97,7 +97,7 @@ class UserController {
                 }
             }
 
-            render view: "profile", model: [user: userdto]
+            render view: "profile", model: [user: userdto,  project:project]
         }
         else{
             response.sendError HttpServletResponse.SC_UNAUTHORIZED
@@ -178,7 +178,7 @@ class UserController {
                 def forums = webServicesSession.getForumbyProject(project.id)
 //                def notify=webServicesUser.getNotifyByUserId(project.id, userdto.id )
                 def followArtics=webServicesUser.getUserFollowsArticles(project.id, userdto.id )
-                render view: "notification", model: [user: userdto, notify:notify, followArtics: followArtics, notifyForums:notifyForums, forums:forums ]
+                render view: "notification", model: [user: userdto , project:project, notify:notify, followArtics: followArtics, notifyForums:notifyForums, forums:forums ]
             }
             else{
                 response.sendError HttpServletResponse.SC_BAD_REQUEST
