@@ -20,7 +20,7 @@ import java.util.*;
 @Entity
 @Table(name = "project",  catalog = "usercare")
 
-public class ProjectDTO extends IntEntity implements Serializable {
+public class ProjectDTO extends IntEntity {
     @Transient
     @Value("${category.content.count}")
     private  int CategoryCount;

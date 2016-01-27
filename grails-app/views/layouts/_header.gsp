@@ -7,7 +7,7 @@
         %{--<!-- Logo -->--}%
         <div class="row">
             <div class="col-xs-4 col-md-2">
-                <g:link controller="index" class="logo" ><h2><i class="fa fa-fw fa-home"></i> ${project?.name}</h2></g:link>
+                <h2>  <g:link controller="index" class="logo" ><i class="fa fa-fw fa-home"></i> ${project?.name} </g:link></h2>
             </div>
             <!-- End Logo -->
 
