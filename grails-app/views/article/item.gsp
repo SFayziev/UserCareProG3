@@ -6,6 +6,8 @@
     </content>
     <content tag="menuContent1">
         <div  class="col-xs-3  padding-right-5 padding-left-5">
+
+
             <div class=" tag-box tag-box-v1 margin-bottom-10">
                 <g:render template="/widgets/projectLogo"/>
             </div>

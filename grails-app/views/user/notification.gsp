@@ -1,4 +1,4 @@
-<g:applyLayout name="userMain">
+<g:applyLayout name="userLayout">
     <content tag="mainContent1">
         <div class=" tag-box tag-box-v1 margin-bottom-10">
             <h4><g:message code="user.notification.title" />  </h4>

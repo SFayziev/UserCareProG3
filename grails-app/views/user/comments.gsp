@@ -1,4 +1,4 @@
-<g:applyLayout name="userMain">
+<g:applyLayout name="userLayout">
     <content tag="mainContent1">
     <g:render template="profileBreadCrumb" model="${[btitle: 'widget.community.stats.comment']}"/>
     <div class="tag-box tag-box-v1 margin-bottom-10">
