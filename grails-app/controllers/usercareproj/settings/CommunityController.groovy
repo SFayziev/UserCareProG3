@@ -11,6 +11,7 @@ import com.sh.db.map.ForumTypeStatusDTO
 import com.sh.db.map.ModuleDTO
 import com.sh.utils.ForumType
 import grails.plugin.springsecurity.annotation.Secured
+import org.apache.commons.logging.Log
 import org.grails.web.json.JSONObject
 
 import javax.servlet.http.Cookie

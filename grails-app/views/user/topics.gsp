@@ -1,4 +1,4 @@
-<g:applyLayout name="userMain">
+<g:applyLayout name="userLayout">
     <head>
     </head>
     <content tag="mainContent1">
