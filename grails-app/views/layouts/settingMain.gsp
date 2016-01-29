@@ -21,11 +21,10 @@
 
             <g:render template="/layouts/header" />
             <div id="manuBar" class="col-xs-3  padding-right-5 padding-left-5">
-                %{--<g:render template="/settings/leftMenu" />--}%
-            <modules:settingLeftMenu />
+                 <modules:settingLeftMenu />
             </div>
             <div id="mainBar" class="col-xs-9  padding-right-5 padding-left-5" >
-                <g:layoutBody/>
+                <g:pageProperty name="page.mainContent1"/>
             </div>
         </div>
     </div>
