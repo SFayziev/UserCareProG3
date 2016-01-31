@@ -159,7 +159,7 @@ class ModulesTagLib {
         }
 
         if (module.selKnowledgebaseid !=0){
-            module.knowledgebas=webServicesSession.getForumById(project.id , selCommunityid ,  ForumType.Knowledgebase)
+            module.knowledgebas=webServicesSession.getForumById(project.id , module.selKnowledgebaseid ,  ForumType.Knowledgebase)
         }else{
             def communities=webServicesSession.getForumByType(project.id , ForumType.Knowledgebase)
             if (communities.size()>0) {

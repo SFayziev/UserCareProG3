@@ -46,6 +46,8 @@
                         </div>
                     </div>
 
+
+
                     <div class="form-group">
                         <label for="sharingon" class="col-lg-4 control-label"><g:message code="setting.community.setting.sharing.panel" /></label>
                         <div class="col-lg-8">
@@ -64,7 +66,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="defhelpdesk" class="col-lg-4 control-label"><g:message code="setting.community.setting.related.knowlage" /></label>
+                        <label for="defhelpdesk" class="col-lg-4 control-label"><g:message code="setting.community.setting.related.helpdesk" /></label>
                         <div class="col-lg-8">
                             <label for="defhelpdesk" class="select state-success">
                                 <g:select id="defhelpdesk" optionKey="id" value="${forum?.defhelpdesk}"

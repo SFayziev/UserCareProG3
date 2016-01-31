@@ -17,6 +17,15 @@ public class ForumPrivacyDTO extends IntEntity{
     private Boolean autosubscribe=false;
     private Integer assigntype;
     private  Integer assigntag;
+    private Integer commentshow=1;
+
+    public Integer getCommentshow() {
+        return commentshow;
+    }
+
+    public void setCommentshow(Integer commentshow) {
+        this.commentshow = commentshow;
+    }
 
     public Integer getAssigntag() {
         return assigntag;
