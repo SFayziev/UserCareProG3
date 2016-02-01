@@ -142,6 +142,7 @@ public class WebServicesSessionSpringBean {
     public List<ForumTagsDTO> getTagsByForumId( Integer forumid  ){return forumDAO.getTagsByForumId(forumid);}
     public ForumTagsDTO getTagById(Integer projid, Integer forumid ,  Integer tagid  ){return  forumDAO.getTagById(projid, forumid, tagid);}
     public ForumTagsDTO saveForumTag(ForumTagsDTO forumTagsDTO){return forumDAO.saveForumTag(forumTagsDTO);}
+    public boolean delTagbyId(Integer projid, Integer tagid){return forumDAO.delTagbyId(projid, tagid);}
     public ForumSpamProtectionDTO getForumSpamProtectionById(Integer projid, Integer forumid, Integer protectType ){return forumDAO.getForumSpamProtectionById(projid, forumid, protectType);}
     public ForumSpamProtectionDTO saveForumSpamProtection(ForumSpamProtectionDTO forumSpamProtectionDTO){return  forumDAO.saveForumSpamProtection(forumSpamProtectionDTO);}
 

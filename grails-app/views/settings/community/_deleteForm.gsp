@@ -5,7 +5,7 @@
 <div class="modal-body">
     <p><g:message code="setting.community.customize.delete.msg" /></p>
 </div>
-<g:form controller="community" action="${params.action}" id="${params.id}">
+<g:form controller="${params.controller}" action="${params.action}" id="${params.id}">
 <div class="modal-footer">
     <button type="button" class="btn btn-default" data-dismiss="modal"><g:message code="button.cancel" /></button>
 

@@ -28,7 +28,7 @@ public class I18nMessageDAOTest extends IntegrationTest{
 
 
     @Test
-    @Rollback(false)
+//    @Rollback(false)
     public void CreateMassage(){
         ProjectDTO projectDTO=projectDAO.getProjectbyId(2);
         I18nMessageDTO i18nMessageDTO= new I18nMessageDTO("default.doesnt.match.message", projectDTO );
@@ -45,7 +45,7 @@ public class I18nMessageDAOTest extends IntegrationTest{
     }
 
     @Test
-    @Rollback(false)
+//    @Rollback(false)
     public void AddMessageValue(){
         ProjectDTO projectDTO=projectDAO.getProjectbyId(2);
         I18nMessageDTO i18nMessageDTO= projectDTO.getI18nMessages().get( "default.doesnt.match.message");

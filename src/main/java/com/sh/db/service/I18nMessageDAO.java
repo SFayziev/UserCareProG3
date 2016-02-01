@@ -46,11 +46,16 @@ public class I18nMessageDAO extends GenericDaoImpl<I18nMessageDTO> {
                 .setParameter("projid", projectDTO.getId()).list();
     }
 
-    public I18nMessageDTO getI18nMessageKey (ProjectDTO projectDTO,String  mkey ){
+    public I18nMessageDTO getI18nMessageKey (Integer projid,String  mkey ){
         return (I18nMessageDTO) currentSession().createQuery("from I18nMessageDTO i18n where i18n.projectDTO.id=:projid and i18n.mkey=:mkey ")
-                .setParameter("projid", projectDTO.getId()).setParameter("mkey", mkey).uniqueResult();
+                .setParameter("projid", projid).setParameter("mkey", mkey).uniqueResult();
 
     }
 
+    public boolean delI18ByKey(Integer projid, String i18key){
+        I18nMessageDTO i18nMessageDTO= getI18nMessageKey(projid, i18key);
+        if(i18nMessageDTO!= null) this.delete(i18nMessageDTO);
+        return  true;
+    }
 
 }

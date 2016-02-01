@@ -128,7 +128,7 @@ def delete(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
 
         if (params.get("submit")=="save" ){
-
+            webServicesSession.delTagbyId(project.id, params.getInt('id', 0)  )
             redirect action: 'tag'
         }
         else{

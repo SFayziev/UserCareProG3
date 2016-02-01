@@ -15,7 +15,7 @@
         <button type="button" class="close" onClick = "window.parent.postMessage('Hello From IFrame', '*');" >×</button>
     </div>
     <g:each in="${modulPos}" var="module">
-        <g:applyLayout name="moduleLayout">
+        <g:applyLayout name="moduleLayout" model="${[module:module]}">
             <content tag="moduleContent">
                 <g:render template="${module?.moduleTypeDTO?.template}" model="${[module:module]}"/>
             </content>

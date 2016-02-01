@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Cacheable
 public class ArticleTagsDTO extends IntEntity {
 
-    @ManyToOne(fetch = FetchType.LAZY , cascade = CascadeType.MERGE )
+    @ManyToOne(fetch = FetchType.LAZY , cascade =  CascadeType.DETACH )
     @JoinColumn(name = "articid")
     private ArticleDTO articleDTO;
 
