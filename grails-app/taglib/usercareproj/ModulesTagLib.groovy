@@ -145,8 +145,10 @@ class ModulesTagLib {
 
         def selCom=g.cookie(name: 'selCommunity') as String
         def selKnow=g.cookie(name: 'selKnowledgebase') as String
+        def selHelp=g.cookie(name: 'selHelpDesk') as String
         module.selCommunityid = selCom==''?0: Integer.parseInt(selCom)
         module.selKnowledgebaseid = selKnow==''?0: Integer.parseInt(selKnow)
+        module.selHelpDeskid = selHelp==''?0: Integer.parseInt(selHelp)
 
         if (module.selCommunityid!=0){
             module.community=webServicesSession.getForumById(project.id , module.selCommunityid ,  ForumType.Community)
@@ -157,6 +159,17 @@ class ModulesTagLib {
                 module.selCommunityid=module.community.id
             }
         }
+
+        if (module.selHelpDeskid!=0){
+            module.helpDesk=webServicesSession.getForumById(project.id , module.selCommunityid ,  ForumType.HelpDesk)
+        }else{
+            def communities=webServicesSession.getForumByType(project.id , ForumType.HelpDesk)
+            if (communities.size()>0) {
+                module.helpDesk=communities.get(0)
+                module.selHelpDeskid=module.helpDesk.id
+            }
+        }
+
 
         if (module.selKnowledgebaseid !=0){
             module.knowledgebas=webServicesSession.getForumById(project.id , module.selKnowledgebaseid ,  ForumType.Knowledgebase)

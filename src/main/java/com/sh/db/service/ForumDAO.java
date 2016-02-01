@@ -230,6 +230,19 @@ public class ForumDAO extends GenericDaoImpl<ForumDTO> {
         i18nMessageDAO.delI18ByKey(projid, I18Prefix.TagName + tagid);
         return true;
     }
+
+    @Transactional
+    @CacheEvict(value = "categoriesDTO" ,   allEntries = true)
+    public Boolean delCategoryById(Integer projid, Integer catid){
+        CategoriesDTO categoriesDTO= getCategoryById(projid, catid , false);
+        if (categoriesDTO!= null) {
+           currentSession().createQuery("update ArticleDTO  set categoriesDTO.id=null where categoriesDTO.id=:catid and projid=:projid")
+                    .setParameter("projid", projid).setParameter("catid", catid).executeUpdate();
+            currentSession().delete(categoriesDTO);
+            i18nMessageDAO.delI18ByKey(projid, I18Prefix.CategoryName + catid);
+        }
+        return true;
+    }
     private   boolean swapPos(CategoriesDTO categoriesDTO1, CategoriesDTO categoriesDTO2){
         int pos= categoriesDTO1.getPos();
         categoriesDTO1.setPos(categoriesDTO2.getPos());

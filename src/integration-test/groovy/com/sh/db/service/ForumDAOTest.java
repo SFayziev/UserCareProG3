@@ -72,10 +72,12 @@ public class ForumDAOTest extends IntegrationTest{
         }
     }
 
+
+
     @Test
-    public void forumTags(){
-
-
+    @Rollback(false)
+    public void testDelCategoryById() throws Exception {
+        forumDAO.delCategoryById(2,13);
 
     }
 }

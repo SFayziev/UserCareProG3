@@ -5,7 +5,7 @@
         <g:else><g:message code="default.button.add.label" /></g:else>
     </h4>
 </div>
-<g:form controller="community" action="addNewTag"  id="${params.id}" class="sky-form" style="border: none;" >
+<g:form controller="${params.controller}"  action="addNewTag"  id="${params.id}" class="sky-form" style="border: none;" >
     <div class="modal-body">
         <input type="hidden" name="tagid" value="${params.tagid}">
         <section>

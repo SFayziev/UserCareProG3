@@ -49,23 +49,13 @@
     <li class="list-group-item list-toggle <g:if test="${params.controller=='helpdesk'}">active</g:if>">
         <a aria-expanded="false" class="collapsed" data-toggle="collapse" data-parent="#sidebar-nav" href="#collapse-helpdesk"><i class="fa fa-ticket"></i> <g:message code="forum.type0" /></a>
         <ul  aria-expanded="false" id="collapse-helpdesk" class="collapse <g:if test="${params.controller=='helpdesk'}">in</g:if>">
-            <li>
-                <span class="badge badge-u">New</span>
-                <g:link controller="helpdesk" action="index"><i class="fa fa-chevron-circle-right"></i> <g:message code="setting.leftMenu.community.control" /></g:link>
-            </li>
-            <li><g:link controller="community" action="setting" ><i class="fa fa-chevron-circle-right"></i> <g:message code="setting.leftMenu.project.settings" /></g:link></li>
+            <li><g:link controller="helpdesk" action="index"><i class="fa fa-chevron-circle-right"></i> <g:message code="setting.leftMenu.community.control" /></g:link></li>
+            <li><g:link controller="helpdesk" action="setting"  id="${selHelpDeskid}"><i class="fa fa-cog"></i> <g:message code="setting.leftMenu.project.settings" /></g:link></li>
+            <li ><g:link controller="helpdesk" action="category"  id="${selHelpDeskid}" ><i class="fa fa-folder-open"></i> <g:message code="setting.leftMenu.community.categories" /></g:link></li>
+            <li><g:link controller="helpdesk" action="tag"  id="${selHelpDeskid}" > <i class="fa fa-tags"></i> <g:message code="setting.leftMenu.community.tags" /></g:link></li>
+            <li><g:link controller="helpdesk" action="topicStatus"  id="${selHelpDeskid}" > <i class="fa fa-chevron-circle-right"></i> <g:message code="setting.leftMenu.community.statuses" /></g:link></li>
+            <li><g:link controller="helpdesk" action="topicType"  id="${selHelpDeskid}" >  <i class="fa fa-chevron-circle-right"></i> <g:message code="setting.leftMenu.community.types" /></g:link></li>
 
-            <li><a  class="disabled" ><i class="fa fa-chevron-circle-right"></i> <g:message code="setting.leftMenu.community.privacy" /></a></li>
-            <li>
-                <span class="badge badge-u">New</span>
-                <a  class="disabled" ><i class="fa fa-chevron-circle-right"></i> <g:message code="setting.leftMenu.community.categories" /></a>
-            </li>
-            <li><a  class="disabled" ><i class="fa fa-chevron-circle-right"></i> <g:message code="setting.leftMenu.community.tags" /></a></li>
-            <li><a  class="disabled" ><i class="fa fa-chevron-circle-right"></i> <g:message code="setting.leftMenu.community.statuses" /></a></li>
-            <li><a  class="disabled" ><i class="fa fa-chevron-circle-right"></i> <g:message code="setting.leftMenu.community.types" /></a></li>
-            <li><a  class="disabled" ><i class="fa fa-chevron-circle-right"></i> <g:message code="setting.leftMenu.community.spam.protection" /></a></li>
-            <li><a  class="disabled" ><i class="fa fa-chevron-circle-right"></i> <g:message code="setting.leftMenu.community.customisation" /></a></li>
-            %{--<li><a  class="disabled" ><i class="fa fa-list"></i><g:message code="setting.leftMenu.users.custom.fields" /></a></li>--}%
         </ul>
     </li>
     <!-- end HelpDesk -->

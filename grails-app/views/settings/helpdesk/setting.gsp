@@ -32,7 +32,7 @@
                 <div class="col-lg-8">
                     <label for="firstreplystatus" class="select state-success">
                         <g:select id="firstreplystatus" optionKey="id" value="${forum?.firstreplystatus}"
-                                  name="forum.firstreplystatus"  optionValue="name" from="${project.articleStatusDTOs}" />
+                                  name="forum.firstreplystatus"  optionValue="name" from="${topicStatuses}" />
                         <i></i>
                     </label>
                 </div>
