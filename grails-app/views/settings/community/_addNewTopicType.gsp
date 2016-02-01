@@ -5,7 +5,7 @@
         <g:else><g:message code="setting.community.topic.type.addnew" /></g:else>
     </h4>
 </div>
-<g:form controller="community" action="addNewTopicType"  id="${params.id}" class="form-horizontal sky-form" role="form" data-toggle="validator" novalidate="novalidate" >
+<g:form controller="${params.controller}"  action="addNewTopicType"  id="${params.id}" class="form-horizontal sky-form" role="form" data-toggle="validator" novalidate="novalidate" >
     <div class="modal-body">
         <input type="hidden" name="topicType" value="${topicType?.id}">
         <div class="form-group">

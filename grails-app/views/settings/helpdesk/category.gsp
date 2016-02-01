@@ -4,13 +4,30 @@
 <div class="tag-box tag-box-v1 margin-bottom-10">
 
     <ol class="breadcrumb hidden-xs">
-        <li><g:link controller="knowledgebase" ><g:message code="forum.type1" /></g:link> </li>
-        <li class="active"><g:link controller="knowledgebase" action="control" > <g:message code="setting.leftMenu.community.categories" /></g:link></li>
+        <li><g:link controller="community" ><g:message code="forum.type0" /></g:link> </li>
+        <li class="active"><g:link controller="helpdesky" action="control" > <g:message code="setting.leftMenu.community.categories" /></g:link></li>
     </ol>
+    <div class="panel-body">
+    <g:form controller="community" action="helpdesk"  id="${params.id}" class="sky-form" style="border: none;" >
+        <section>
+            <label class="label"><g:message code="setting.community.category.assigne.mode.text" /></label>
+            <label class="select state-success">
+                <g:select name="assigntype" from="${['0', '1' ,'2']}" value="${forum?.privacy?.assigntype }"
+                          valueMessagePrefix="setting.community.category.assigne.mode" />
+                <i></i>
+            </label>
+        </section>
+        <section>
+            <button  type="submit"  name="submit" value="save" class="btn btn-primary"><g:message code="button.change" /></button>
+        </section>
+
+    </g:form>
+    </div>
+
 
     <div class="panel-body">
         <div >
-            <a data-toggle="modal" href="/settings/knowledgebase/addNewCategory/${forum.id}" data-target="#myModal"  class="btn-u btn-brd rounded btn-u-default btn-u-xs" ><i class="fa fa-plus"></i> <g:message code="setting.community.category.addnew" />  </a>
+            <a data-toggle="modal" href="/settings/helpdesk/addNewCategory/${forum.id}" data-target="#myModal"  class="btn-u btn-brd rounded btn-u-default btn-u-xs" ><i class="fa fa-plus"></i> <g:message code="setting.community.category.addnew" />  </a>
             %{--<button class="btn-u btn-brd rounded btn-u-default btn-u-xs" type="button"><i class="fa fa-download"></i> <g:message code="setting.community.categoru.addnew" />  </button>--}%
         </div>
         <table class="table table-striped">
@@ -31,10 +48,10 @@
                     <td>
                         <div class="btn-group">
                             <a class="btn btn-primary" href="#" onclick="changeCategoryImg(${category.id})" > <g:message code="setting.change.logo"/></a>
-                            <a data-toggle="modal" href="/settings/knowledgebase/editCategory/${forum.id}/?catid=${category.id}" data-target="#myModal"  id="${category.id}" class="btn btn-info "><i class="fa fa-pencil"></i> <g:message code="default.button.edit.label"/></a>
+                            <a data-toggle="modal" href="/settings/helpdesk/editCategory/${forum.id}/?catid=${category.id}" data-target="#myModal"  id="${category.id}" class="btn btn-info "><i class="fa fa-pencil"></i> <g:message code="default.button.edit.label"/></a>
                             <a class="btn btn-primary" onclick="categoryUP(${category.id}); return false; "><i class="fa  fa-arrow-up"></i></a>
                             <a class="btn btn-primary" onclick="categoryDOWN(${category.id}); return false; " ><i class="fa  fa-arrow-down"></i></a>
-                            <a class="btn btn-danger" data-toggle="modal" href="/settings/knowledgebase/delcategory/${category.id}" data-target="#myModal"  ><i class="fa fa-trash-o"></i></a>
+                            <a class="btn btn-danger" data-toggle="modal" href="/settings/helpdesk/delcategory/${category.id}" data-target="#myModal"  ><i class="fa fa-trash-o"></i></a>
                         </div>
                     </td>
                 </tr>

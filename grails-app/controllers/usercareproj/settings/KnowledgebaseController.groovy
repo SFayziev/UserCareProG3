@@ -204,4 +204,16 @@ class KnowledgebaseController {
             render template: '/settings/knowledgebase/addNewCategory' , model: model
         }
     }
+
+    def delcategory(){
+        def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
+        if (params.get("submit")=="save" ){
+            webServicesSession.delCategoryById(project.id, params.getInt("id",0))
+
+            redirect action: 'category'
+        }
+        else{
+            render template: '/settings/community/deleteForm'
+        }
+    }
 }

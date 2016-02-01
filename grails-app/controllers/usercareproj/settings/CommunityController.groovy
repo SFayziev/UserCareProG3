@@ -123,6 +123,17 @@ def delete(){
             render template: '/settings/community/deleteForm'
         }
     }
+    def delcategory(){
+        def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
+        if (params.get("submit")=="save" ){
+            webServicesSession.delCategoryById(project.id, params.getInt("id",0))
+
+            redirect action: 'category'
+        }
+        else{
+            render template: '/settings/community/deleteForm'
+        }
+    }
 
     def deltag(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())

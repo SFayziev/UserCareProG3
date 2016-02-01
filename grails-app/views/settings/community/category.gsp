@@ -51,7 +51,7 @@
                             <a data-toggle="modal" href="/settings/community/editCategory/${forum.id}/?catid=${category.id}" data-target="#myModal"  id="${category.id}" class="btn btn-info "><i class="fa fa-pencil"></i> <g:message code="default.button.edit.label"/></a>
                             <a class="btn btn-primary" onclick="categoryUP(${category.id}); return false; "><i class="fa  fa-arrow-up"></i></a>
                             <a class="btn btn-primary" onclick="categoryDOWN(${category.id}); return false; " ><i class="fa  fa-arrow-down"></i></a>
-                            <a class="btn btn-danger" data-toggle="modal" href="/settings/community/delete/${category.id}" data-target="#myModal"  ><i class="fa fa-trash-o"></i></a>
+                            <a class="btn btn-danger" data-toggle="modal" href="/settings/community/delcategory/${category.id}" data-target="#myModal"  ><i class="fa fa-trash-o"></i></a>
                         </div>
                     </td>
                 </tr>

@@ -5,7 +5,7 @@
         <g:else><g:message code="setting.community.category.addnew" /></g:else>
         </h4>
 </div>
-<g:form controller="community" action="addNewCategory"  id="${params.id}" class="sky-form" style="border: none;" >
+<g:form controller="${params.controller}"  action="addNewCategory"  id="${params.id}" class="sky-form" style="border: none;" >
     <div class="modal-body">
         <input type="hidden" name="catid" value="${category?.id}">
         <section>
