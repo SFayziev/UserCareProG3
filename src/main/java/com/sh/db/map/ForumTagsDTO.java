@@ -1,7 +1,8 @@
 package com.sh.db.map;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Lenovo on 29.11.2015.
@@ -20,6 +21,18 @@ private  String name;
 
     public ForumTagsDTO() {
 
+    }
+
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "forumTagsDTO")
+    private List<ArticleTagsDTO> articleTagsDTOList;
+
+    public List<ArticleTagsDTO> getArticleTagsDTOList() {
+        return articleTagsDTOList;
+    }
+
+    public void setArticleTagsDTOList(List<ArticleTagsDTO> articleTagsDTOList) {
+        this.articleTagsDTOList = articleTagsDTOList;
     }
 
     public Integer getForumid() {

@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class I18nMessageValueDTO extends IntEntity{
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE )
-    @JoinColumn( name="mesid",  referencedColumnName = "id" , updatable = false)
+    @JoinColumn( name="mesid",  referencedColumnName = "id" )
     private I18nMessageDTO i18nMessageDTO;
 
     private  Integer lanid;

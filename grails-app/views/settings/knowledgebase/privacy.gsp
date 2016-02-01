@@ -4,7 +4,7 @@
 <div class="tag-box tag-box-v1 margin-bottom-10">
 
     <ol class="breadcrumb hidden-xs">
-        <li><g:link controller="community" ><g:message code="setting.leftMenu.community" /></g:link> </li>
+        <li><g:link controller="knowledgebase" ><g:message code="forum.type1" /></g:link> </li>
         <li class="active"><g:link controller="community" action="control" > <g:message code="setting.leftMenu.community.privacy" /></g:link></li>
     </ol>
 

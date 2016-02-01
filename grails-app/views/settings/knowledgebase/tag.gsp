@@ -28,7 +28,7 @@
                     <td> ${tag.name}</td>
                     <td>
                         <div class="btn-group">
-                            <a data-toggle="modal" href="/settings/knowlage/edittag/${forum.id}/?tagid=${tag.id}" data-target="#myModal"  id="${tag.id}" class="btn btn-info "><i class="fa fa-pencil"></i> <g:message code="default.button.edit.label"/></a>
+                            <a data-toggle="modal" href="/settings/knowledgebase/edittag/${forum.id}/?tagid=${tag.id}" data-target="#myModal"  id="${tag.id}" class="btn btn-info "><i class="fa fa-pencil"></i> <g:message code="default.button.edit.label"/></a>
                             %{--<a class="btn btn-primary"  ><i class="fa  fa-globe"></i></a>--}%
                             <a class="btn btn-danger" data-toggle="modal" href="/settings/knowledgebase/deltag/${tag.id}" data-target="#myModal"  ><i class="fa fa-trash-o"></i></a>
                         </div>

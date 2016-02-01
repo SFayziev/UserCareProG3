@@ -2,6 +2,7 @@ package usercareproj.settings
 
 import com.sh.db.map.CategoriesDTO
 import com.sh.db.map.ForumDTO
+import com.sh.db.map.ForumTagsDTO
 import com.sh.utils.ForumType
 import grails.plugin.springsecurity.annotation.Secured
 import groovy.util.logging.Log
@@ -20,8 +21,24 @@ class KnowledgebaseController {
     def customisation(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession()).clone()
         def model=[project:project]
-        render view: '/settings/community/customisation', model: model
+        render view: '/settings/knowledgebase/customisation', model: model
 
+    }
+    def addNewTag(){
+        def id = getId();
+        def project=webServicesSession.getProject(getResponse(), getRequest(), getSession()).clone()
+        def forum=webServicesSession.getForumById(project.id , id)
+        def model=[project: project]
+        model.tag=params.getInt("tagid")?webServicesSession.getTagById(project.id, id , params.getInt("tagid")): new ForumTagsDTO(forum.id,"")
+
+        if (  params.get("submit")=="save" ) {
+            bindData(model.tag , params, 'tag')
+            webServicesSession.saveForumTag(model.tag )
+            redirect action: 'tag', params: [id:id]
+        }
+        else {
+            render template: '/settings/knowledgebase/addNewTag' , model: model
+        }
     }
 
     def privacy(){
@@ -142,6 +159,22 @@ class KnowledgebaseController {
     def editCategory(){
         addNewCategory()
     }
+    def edittag(){
+        addNewTag()
+    }
+
+    def deltag(){
+        def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
+
+        if (params.get("submit")=="save" ){
+            webServicesSession.delTagbyId(project.id, params.getInt('id', 0)  )
+            redirect action: 'tag'
+        }
+        else{
+            render template: '/settings/community/deleteForm'
+        }
+    }
+
 
     def addNewCategory(){
         def id = getId();

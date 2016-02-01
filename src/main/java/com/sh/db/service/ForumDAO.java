@@ -3,6 +3,7 @@ package com.sh.db.service;
 import com.sh.db.GenericDaoImpl;
 import com.sh.db.map.*;
 import com.sh.utils.ForumType;
+import com.sh.utils.I18Prefix;
 import com.sh.utils.ModuleDisplay;
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
@@ -48,6 +49,9 @@ public class ForumDAO extends GenericDaoImpl<ForumDTO> {
 
     @Autowired
     ModuleDAO moduleDAO;
+
+    @Autowired
+    I18nMessageDAO i18nMessageDAO;
 
     @Autowired
     public ForumDAO(SessionFactory sessionFactory) {
@@ -213,6 +217,19 @@ public class ForumDAO extends GenericDaoImpl<ForumDTO> {
         return false;
     }
 
+
+    @CacheEvict(value = "forumTagsDTO" ,   allEntries = true)
+    @Transactional
+    public boolean delTagbyId(Integer projid, Integer tagid){
+
+        currentSession().createQuery("delete from ArticleTagsDTO as at where  at.forumTagsDTO.id=:tagid").setParameter("tagid", tagid)
+                .executeUpdate();
+        currentSession().createQuery("delete from ForumTagsDTO as ft where  ft.id=:tagid").setParameter("tagid", tagid)
+                .executeUpdate();
+
+        i18nMessageDAO.delI18ByKey(projid, I18Prefix.TagName + tagid);
+        return true;
+    }
     private   boolean swapPos(CategoriesDTO categoriesDTO1, CategoriesDTO categoriesDTO2){
         int pos= categoriesDTO1.getPos();
         categoriesDTO1.setPos(categoriesDTO2.getPos());
