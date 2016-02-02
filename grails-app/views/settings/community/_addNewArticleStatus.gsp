@@ -5,7 +5,7 @@
         <g:else><g:message code="default.button.add.label" /></g:else>
     </h4>
 </div>
-<g:form controller="community" action="addNewArticleStatus"  id="${params.id}" class="sky-form" style="border: none;" >
+<g:form controller="${params.controller}" action="addNewArticleStatus"  id="${params.id}" class="sky-form" style="border: none;" >
     <div class="modal-body">
         <input type="hidden" name="topicStatus" value="${params.topicStatus}">
         <section>
@@ -31,7 +31,7 @@
         <section>
             <label class="label"><g:message code="setting.community.status.collor" /></label>
             <label class="input state-success">
-                <input name="articleStatus.collor" id="selColor" class="form-control" value="${articleStatus?.color}" required  type="text">
+                <input name="articleStatus.color" id="selColor" class="form-control" value="${articleStatus?.color}" required  type="text">
             </label>
         </section>
     </div>
