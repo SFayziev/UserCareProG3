@@ -98,7 +98,7 @@ public class ForumDAO extends GenericDaoImpl<ForumDTO> {
     }
 
     @Cacheable( value = "forumStatusDTO" )
-    public ForumStatusDTO getForumStatusByid(Integer projid,  Integer id  ){
+    public ForumStatusDTO getForumStatusByid(Integer projid,  Integer id, Boolean forcache   ){
         return  (ForumStatusDTO) getSessionFactory().getCurrentSession().createQuery("from ForumStatusDTO  as fs where  fs.id=:id and  fs.forumid in (select  id from ForumDTO as fd where fd.projectDTO.id=:projid )")
                 .setParameter("projid", projid)
                 .setParameter("id", id)
@@ -107,7 +107,7 @@ public class ForumDAO extends GenericDaoImpl<ForumDTO> {
 
     @Cacheable( value = "forumStatusDTO" )
     public List<ForumStatusDTO> getForumStatusByForumId(Integer projid,  Integer forumid  ){
-        return   getSessionFactory().getCurrentSession().createQuery("from ForumStatusDTO  as fs where  fs.forumid=:forumid and  fs.forumid in (select  id from ForumDTO as fd where fd.projectDTO.id=:projid )")
+        return   getSessionFactory().getCurrentSession().createQuery("from ForumStatusDTO  as fs where  fs.forumid=:forumid and  fs.forumid in (select  id from ForumDTO as fd where fd.projectDTO.id=:projid  ) order by pos")
                 .setParameter("projid", projid)
                 .setParameter("forumid", forumid)
                 .list();
@@ -348,6 +348,15 @@ public class ForumDAO extends GenericDaoImpl<ForumDTO> {
         return  forumStatusDTO;
     }
 
+    public Boolean delForumStatusbyId(Integer projid, Integer forumstatusid ){
+        ForumStatusDTO forumStatusDTO=getForumStatusByid(projid, forumstatusid, false);
+        if (forumStatusDTO!= null && forumStatusDTO.getArticleStatusDTO().getForumid()!= 0 ){
+            currentSession().delete(forumStatusDTO);
+
+        }
+        else return false;
+        return true;
+    }
     protected Integer getMaxPos(Integer forumid, Class cl){
         Criteria criteria = currentSession()
                 .createCriteria(cl)

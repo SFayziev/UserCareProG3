@@ -159,6 +159,11 @@ public class WebServicesSessionSpringBean {
     public ArticleStatusDTO getArticleStatusById(Integer projid ,  Integer forumid,   Integer id  ){return  forumDAO.getArticleStatusById(projid, forumid, id);}
     public List<ArticleStatusDTO> getArticleStatusByForumId(Integer projid,  Integer forumid  ){return  forumDAO.getArticleStatusByForumId(projid, forumid);}
     public ArticleStatusDTO saveArticleStatus(ArticleStatusDTO articleStatusDTO){ return forumDAO.saveArticleStatus(articleStatusDTO); }
+    public List<ForumStatusDTO> getForumStatusByForumId(Integer projid,  Integer forumid  ){return  forumDAO.getForumStatusByForumId(projid, forumid ); }
+    public ForumStatusDTO getForumStatusByid(Integer projid,  Integer id ){ return  forumDAO.getForumStatusByid( projid, id, true );}
+    public ForumStatusDTO saveForumStatus(ForumStatusDTO forumStatusDTO){ return  forumDAO.saveForumStatus(forumStatusDTO); }
+
+
     public Boolean isFollow(Integer articid) { return  articleDAO.isfollow(articid);}
     public Boolean followArticle(Integer projid , Integer articid) { return  articleDAO.followArticle(projid, articid);}
 
