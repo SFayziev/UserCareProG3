@@ -1,14 +1,13 @@
 package usercareproj.settings
 
 import com.sh.db.map.ArticleStatusDTO
-import com.sh.db.map.ArticleTypeDTO
 import com.sh.db.map.CategoriesDTO
 import com.sh.db.map.ForumDTO
 import com.sh.db.map.ForumSpamProtectionDTO
+import com.sh.db.map.ForumStatusDTO
 import com.sh.db.map.ForumTagsDTO
 import com.sh.db.map.ForumTypeDTO
 import com.sh.db.map.ForumTypeStatusDTO
-import com.sh.db.map.ModuleDTO
 import com.sh.utils.ForumType
 import grails.plugin.springsecurity.annotation.Secured
 import org.apache.commons.logging.Log
@@ -314,8 +313,8 @@ def delete(){
         addNewTopicType()
     }
 
-    def editTopicStatus(){
-        addNewArticleStatus()
+    def editforumstatus(){
+        addForumStatus()
     }
 
     def addNewTag(){
@@ -377,17 +376,25 @@ def delete(){
 
     }
 
-    def addNewArticleStatus(){
+    def addForumStatus(){
         def id = getId();
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession()).clone()
         def forum=webServicesSession.getForumById(project.id , id)
         def model=[project: project]
-        def articleStatus=params.getInt("topicStatus")?webServicesSession.getArticleStatusById(project.id, forum.id , params.getInt("topicStatus")):new ArticleStatusDTO(project.id, forum.id )
-        model.articleStatus=articleStatus
+        def forumStatus=params.getInt("forumStatus")?webServicesSession.getForumStatusByid(project.id,  params.getInt("forumStatus")):new ForumStatusDTO(forum.id)
+        model.forumStatus=forumStatus
 
-        if (model.articleStatus.atype!= 0 &&  params.get("submit")=="save" ) {
-            bindData(model.articleStatus , params, 'articleStatus')
-            webServicesSession.saveArticleStatus(model.articleStatus)
+        if (params.submit=="save"  ) {
+            def articlestatus=forumStatus.articleStatusDTO
+            if (articlestatus== null){
+                articlestatus=new ArticleStatusDTO(project.id , forum.id)
+                forumStatus.articleStatusDTO=articlestatus;
+            }
+
+            bindData(articlestatus , params, 'articleStatus')
+            forumStatus.articleStatusDTO=articlestatus;
+            webServicesSession.saveForumStatus(forumStatus)
+
             redirect action: 'topicStatus', params: [id:id]
         }
         else{
@@ -444,7 +451,7 @@ def delete(){
         def forum=webServicesSession.getForumById(project.id , id)
         def model=[project: project]
         model.forum=forum
-        model.topicStatuses=webServicesSession.getArticleStatusByForumId(project.id,  forum.id);
+        model.forumStatuses=webServicesSession.getForumStatusByForumId(project.id,  forum.id);
 
         render view: '/settings/community/topicStatus' , model: model
 

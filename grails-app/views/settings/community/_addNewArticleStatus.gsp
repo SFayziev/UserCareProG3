@@ -1,18 +1,18 @@
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     <h4 class="modal-title">
-        <g:if test="${articleStatus?.id}"><g:message code="default.button.edit.label" /> </g:if>
+        <g:if test="${forumStatus?.id}"><g:message code="default.button.edit.label" /> </g:if>
         <g:else><g:message code="default.button.add.label" /></g:else>
     </h4>
 </div>
-<g:form controller="${params.controller}" action="addNewArticleStatus"  id="${params.id}" class="sky-form" style="border: none;" >
+<g:form controller="${params.controller}" action="${params.action}"  id="${params.id}" class="sky-form" style="border: none;" >
     <div class="modal-body">
-        <input type="hidden" name="topicStatus" value="${params.topicStatus}">
+        <input type="hidden" name="forumStatus" value="${params.forumStatus}">
         <section>
             <label class="label"><g:message code="setting.name" /></label>
             <label class="input state-success">
-                <g:if test="${articleStatus?.id}"><i class="icon-append fa fa-globe" onclick="translationArticSatus('article.status.name',${params.id},   ${articleStatus?.id});"></i></g:if>
-                <input name="articleStatus.name" class="form-control" value="${articleStatus?.name}" required  type="text">
+                <g:if test="${forumStatus?.id}"><i class="icon-append fa fa-globe" onclick="translationArticSatus('article.status.name',${params.id},   ${forumStatus?.articleStatusDTO?.id});"></i></g:if>
+                <input name="articleStatus.name" class="form-control" value="${forumStatus?.articleStatusDTO?.name}" required  type="text">
             </label>
         </section>
 
@@ -20,7 +20,7 @@
             <label class="label"><g:message code="article.type" /></label>
             <label class="select state-success">
                 %{--<label for="firstreplystatus" class="select state-success">--}%
-                <g:select name="articleStatus.logicalgroup" from="${['0', '1' ]}" value="${articleStatus?.logicalgroup }"
+                <g:select name="articleStatus.logicalgroup" from="${['0', '1' ]}" value="${forumStatus?.articleStatusDTO?.logicalgroup }"
                           valueMessagePrefix="setting.community.status.logical.group.type" />
                 <i></i>
 
@@ -31,7 +31,7 @@
         <section>
             <label class="label"><g:message code="setting.community.status.collor" /></label>
             <label class="input state-success">
-                <input name="articleStatus.color" id="selColor" class="form-control" value="${articleStatus?.color}" required  type="text">
+                <input name="articleStatus.color" id="selColor" class="form-control" value="${forumStatus?.articleStatusDTO?.color}" required  type="text">
             </label>
         </section>
     </div>

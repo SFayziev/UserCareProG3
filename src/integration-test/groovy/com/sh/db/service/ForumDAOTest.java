@@ -67,7 +67,7 @@ public class ForumDAOTest extends IntegrationTest{
     public void getForumStatus(){
         ForumStatusDTO forumStatusDTO= new ForumStatusDTO(2, forumDAO.getArticleStatusById(2,2,2) );
         forumDAO.saveForumStatus(forumStatusDTO);
-        for (ForumStatusDTO forumStatusDTO1: forumDAO.getForumStatusByForumId(2, 2)){
+        for (ForumStatusDTO forumStatusDTO1: forumDAO.getForumStatusByForumId(2, 4)){
             System.out.println(forumStatusDTO1);
         }
     }

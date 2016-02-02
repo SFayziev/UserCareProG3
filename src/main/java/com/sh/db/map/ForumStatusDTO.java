@@ -13,7 +13,7 @@ public class ForumStatusDTO extends  IntEntity{
     @NotNull
     private Integer forumid;
 
-    @OneToOne(fetch = FetchType.EAGER , cascade = CascadeType.MERGE )
+    @OneToOne(fetch = FetchType.EAGER , cascade = CascadeType.ALL)
     @JoinColumn(name = "articstatusid")
     private ArticleStatusDTO articleStatusDTO;
 
@@ -29,7 +29,10 @@ public class ForumStatusDTO extends  IntEntity{
     public ForumStatusDTO() {
 
     }
+    public ForumStatusDTO(Integer forumid) {
+        this.forumid = forumid;
 
+    }
 
     public void setPos(Integer pos) {
         this.pos = pos;
