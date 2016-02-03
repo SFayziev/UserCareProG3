@@ -32,21 +32,23 @@
             <label class="label"><g:message code="setting.community.status.collor" /></label>
             <label class="input state-success">
                 <input name="articleStatus.color" id="selColor" class="form-control" value="${forumStatus?.articleStatusDTO?.color}" required  type="text">
+
             </label>
         </section>
+
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal"><g:message code="button.cancel" /></button>
         <button  type="submit"  name="submit" value="save" class="btn btn-primary"><g:message code="button.save" /></button>
     </div>
 </g:form>
-<script>
-$('#selCollor').colorpicker({format:'hex'}).on('changeColor.colorpicker', function(event){
-      $("#selCollor").attr("style", "color: white ; background: "  +  event.color.toHex() );
+<script language="JavaScript">
+$('#selColor').colorpicker({format:'hex'}).on('changeColor.colorpicker', function(event){
+      $("#selColor").attr("style", "color: white ; background: "  +  event.color.toHex() );
 
   });
 
-  $(document).ready(function() {  $("#selCollor").attr("style", "color: white ; background: "  +  $('#selCollor').val() ) });
+  $(document).ready(function() {  $("#selColor").attr("style", "color: white ; background: "  +  $('#selColor').val() ) });
 
 
 </script>

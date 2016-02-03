@@ -58,6 +58,22 @@ function topicTypeDOWN(forumid,  id) {
     return false;
 }
 
+function statusMove(id , direction){
+    var dparent=$('#forumStatus'+id );
+    var data={'id':id ,'direction':direction};
+    $.ajax({  dataType: "json", data:data, url:  "/settings/community/moveForumStatus"})
+        .done(function( data ) {
+            if (data.status=='success') {
+                if(direction=='up'){
+                    dparent.prev('tr').before(dparent)
+                }
+                else{
+                    dparent.next('tr').after(dparent)
+                }
+            }
+        });
+    return false;
+}
 
 function categoryUP(id) {
     var dparent=$('#category'+id );

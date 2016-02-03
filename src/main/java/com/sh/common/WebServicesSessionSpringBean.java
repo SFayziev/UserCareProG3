@@ -162,7 +162,8 @@ public class WebServicesSessionSpringBean {
     public List<ForumStatusDTO> getForumStatusByForumId(Integer projid,  Integer forumid  ){return  forumDAO.getForumStatusByForumId(projid, forumid ); }
     public ForumStatusDTO getForumStatusByid(Integer projid,  Integer id ){ return  forumDAO.getForumStatusByid( projid, id, true );}
     public ForumStatusDTO saveForumStatus(ForumStatusDTO forumStatusDTO){ return  forumDAO.saveForumStatus(forumStatusDTO); }
-
+    public boolean moveForumStatus(Integer projId, Integer forumStatusId, String direction){ return forumDAO.moveForumStatus(projId, forumStatusId, direction); }
+    public Boolean delForumStatusbyId(Integer projid, Integer forumstatusid ){return  forumDAO.delForumStatusbyId(projid, forumstatusid);}
 
     public Boolean isFollow(Integer articid) { return  articleDAO.isfollow(articid);}
     public Boolean followArticle(Integer projid , Integer articid) { return  articleDAO.followArticle(projid, articid);}

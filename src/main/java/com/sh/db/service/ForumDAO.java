@@ -176,6 +176,31 @@ public class ForumDAO extends GenericDaoImpl<ForumDTO> {
         return false;
     }
 
+    @CacheEvict( value = "forumStatusDTO" ,   allEntries = true)
+    public boolean moveForumStatus(Integer projId, Integer forumStatusId, String direction){
+        ForumStatusDTO forumStatusDTO=getForumStatusByid(projId, forumStatusId, false);
+        List<ForumStatusDTO> forumStatusDTOs=getForumStatusByForumId(projId, forumStatusDTO.getForumid());
+        ForumStatusDTO prevForumStatusDTO = null;
+        Boolean change=false;
+        for (ForumStatusDTO forumStatusDTO1 : forumStatusDTOs){
+            if (change){
+                swapPos(forumStatusDTO1, prevForumStatusDTO);
+                return true;
+            }
+
+            if (Objects.equals(forumStatusDTO1.getId(), forumStatusId)){
+                if (Objects.equals(direction, "up")){
+                    if (prevForumStatusDTO != null ){swapPos(forumStatusDTO1, prevForumStatusDTO);}
+                    return true;
+                }
+                change=true;
+            }
+            prevForumStatusDTO=forumStatusDTO1;
+        }
+        return false;
+    }
+
+
     @CacheEvict(value = "forumTypeDTO" ,   allEntries = true)
     public boolean moveForumType(Integer projId, Integer forunid,  Integer forumTypeID, String direction){
         ForumTypeDTO  forumTypeDTO=getForumTypeByid(projId,  forumTypeID);
@@ -249,6 +274,15 @@ public class ForumDAO extends GenericDaoImpl<ForumDTO> {
         categoriesDTO2.setPos(pos);
         this.saveCategories(categoriesDTO1);
         this.saveCategories(categoriesDTO2);
+        return true;
+    }
+
+    private   boolean swapPos(ForumStatusDTO categoriesDTO1, ForumStatusDTO categoriesDTO2){
+        int pos= categoriesDTO1.getPos();
+        categoriesDTO1.setPos(categoriesDTO2.getPos());
+        categoriesDTO2.setPos(pos);
+        this.saveForumStatus(categoriesDTO1);
+        this.saveForumStatus(categoriesDTO2);
         return true;
     }
 
@@ -347,7 +381,7 @@ public class ForumDAO extends GenericDaoImpl<ForumDTO> {
         currentSession().saveOrUpdate(forumStatusDTO);
         return  forumStatusDTO;
     }
-
+    @CacheEvict(value = "forumStatusDTO",  allEntries = true)
     public Boolean delForumStatusbyId(Integer projid, Integer forumstatusid ){
         ForumStatusDTO forumStatusDTO=getForumStatusByid(projid, forumstatusid, false);
         if (forumStatusDTO!= null && forumStatusDTO.getArticleStatusDTO().getForumid()!= 0 ){
