@@ -113,9 +113,10 @@ def delete(){
         }
     }
 
-    def deltopicstatus(){
+    def delforumstatus(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         if (params.get("submit")=="save" ){
+            webServicesSession.delForumStatusbyId(project.id, params.getInt("id",0) )
             redirect action: 'topicStatus'
         }
         else{
@@ -273,6 +274,25 @@ def delete(){
         response.contentType = "application/json; charset=UTF-8"
         render   resultJson.toString()
 
+    }
+
+    def moveForumStatus(){
+        def id=params.getInt("id")
+        def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
+//        def category=webServicesSession.getCategoryById(project.id, id )
+        def direction = params.get('direction')
+        JSONObject resultJson = new JSONObject();
+        resultJson.put("forumStatus",id );
+        resultJson.put("direction",direction);
+        if (webServicesSession.moveForumStatus(project.id, id , direction as String)){
+            resultJson.put("status","success");
+        }
+        else {
+            resultJson.put("status","error");
+        }
+
+        response.contentType = "application/json; charset=UTF-8"
+        render   resultJson.toString()
     }
 
     def moveTopicType(){

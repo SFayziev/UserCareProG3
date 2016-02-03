@@ -35,6 +35,8 @@
                         <g:if test="${forumStatus.articleStatusDTO.atype!=0}">
                         <div class="btn-group">
                             <a data-toggle="modal" href="/settings/community/editforumstatus/${forum.id}/?forumStatus=${forumStatus.id}" data-target="#myModal"  id="${forumStatus.id}" class="btn btn-info "><i class="fa fa-pencil"></i> <g:message code="default.button.edit.label"/></a>
+                            <a class="btn btn-primary" onclick="statusMove(${forumStatus.id} , 'up'); return false; "><i class="fa  fa-arrow-up"></i></a>
+                            <a class="btn btn-primary" onclick="statusMove(${forumStatus.id}, 'down'); return false; " ><i class="fa  fa-arrow-down"></i></a>
                             <a class="btn btn-danger" data-toggle="modal" href="/settings/community/delforumstatus/${forumStatus.id}" data-target="#myModal"  ><i class="fa fa-trash-o"></i></a>
                         </div>
                         </g:if>
