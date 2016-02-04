@@ -48,9 +48,9 @@ public class ForumDAOTest extends IntegrationTest{
 //    @Rollback(false)
     public void getForumTypeByid(){
         forumDAO.delTypeStatusDTOs(2,2,1 );
-        ArticleStatusDTO articleStatusDTO= forumDAO.getArticleStatusById(2,1,-1);
+        ForumStatusDTO forumStatusDTO= forumDAO.getForumStatusByid(2,1,true);
         ForumTypeDTO forumTypeDTO3= forumDAO.getForumTypeByid(2, 1);
-        ForumTypeStatusDTO forumTypeStatusDTO=new ForumTypeStatusDTO(articleStatusDTO , forumTypeDTO3, "Test:  3" );
+        ForumTypeStatusDTO forumTypeStatusDTO=new ForumTypeStatusDTO(2, forumStatusDTO , forumTypeDTO3, "Test:  3" );
         forumTypeDTO3.addTypeStatusDTO(forumTypeStatusDTO);
 
         forumDAO.saveForumType(forumTypeDTO3);

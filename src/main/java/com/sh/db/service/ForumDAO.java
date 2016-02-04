@@ -226,7 +226,8 @@ public class ForumDAO extends GenericDaoImpl<ForumDTO> {
     }
 
     public boolean delTypeStatusDTOs(Integer projid, Integer forumid, Integer typeid){
-        currentSession().createQuery("delete from ForumTypeStatusDTO  fts where fts.articleStatusDTO.id>10 and   fts.forumid=:forumid and fts.forumTypeDTO.id=:typeid and fts.projid=:projid ")
+
+        currentSession().createQuery("delete from ForumTypeStatusDTO  fts where fts.forumStatusDTO.articleStatusDTO.id>10 and   fts.forumid=:forumid and fts.forumTypeDTO.id=:typeid and fts.projid=:projid ")
                 .setParameter("forumid", forumid).setParameter("typeid", typeid).setParameter("projid", projid)
                 .executeUpdate();
         return true;
@@ -385,6 +386,8 @@ public class ForumDAO extends GenericDaoImpl<ForumDTO> {
     public Boolean delForumStatusbyId(Integer projid, Integer forumstatusid ){
         ForumStatusDTO forumStatusDTO=getForumStatusByid(projid, forumstatusid, false);
         if (forumStatusDTO!= null && forumStatusDTO.getArticleStatusDTO().getForumid()!= 0 ){
+            currentSession().createQuery("delete from ForumTypeStatusDTO  fts where fts.projid=:projid and fts.forumStatusDTO.id=: forumstatusid ")
+                .setParameter("projid", projid).setParameter("forumstatusid",  forumstatusid).executeUpdate();
             currentSession().delete(forumStatusDTO);
 
         }

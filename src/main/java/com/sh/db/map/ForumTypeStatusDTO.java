@@ -18,16 +18,16 @@ public class ForumTypeStatusDTO extends IntEntity {
     public ForumTypeStatusDTO() {
     }
 
-    public ForumTypeStatusDTO(ArticleStatusDTO articleStatusDTO, ForumTypeDTO forumTypeDTO, String custname) {
-        this.articleStatusDTO = articleStatusDTO;
+    public ForumTypeStatusDTO(Integer projid , ForumStatusDTO forumStatusDTO, ForumTypeDTO forumTypeDTO, String custname) {
+        this.forumStatusDTO = forumStatusDTO;
         this.forumTypeDTO = forumTypeDTO;
         this.custname = custname;
         this.forumid=forumTypeDTO.getForumid();
-        this.projid=articleStatusDTO.getProjid();
+        this.projid=projid;
     }
 
     public ForumTypeStatusDTO(ArticleStatusDTO articleStatusDTO,  String custname) {
-        this.articleStatusDTO = articleStatusDTO;
+        this.forumStatusDTO = forumStatusDTO;
         this.custname = custname;
         this.projid=articleStatusDTO.getProjid();
     }
@@ -46,15 +46,15 @@ public class ForumTypeStatusDTO extends IntEntity {
     }
 
     @OneToOne(fetch = FetchType.EAGER , cascade = CascadeType.MERGE)
-    @JoinColumn(name = "articstatusid")
-    private ArticleStatusDTO articleStatusDTO;
+    @JoinColumn(name = "forumstatusid")
+    private ForumStatusDTO forumStatusDTO;
 
-    public ArticleStatusDTO getArticleStatusDTO() {
-        return articleStatusDTO;
+    public ForumStatusDTO getForumStatusDTO() {
+        return forumStatusDTO;
     }
 
-    public void setArticleStatusDTO(ArticleStatusDTO articleStatusDTO) {
-        this.articleStatusDTO = articleStatusDTO;
+    public void setForumStatusDTO(ForumStatusDTO forumStatusDTO) {
+        this.forumStatusDTO = forumStatusDTO;
     }
 
     public Integer getProjid() {

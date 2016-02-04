@@ -42,7 +42,7 @@ public class ForumTypeDTO extends IntEntity {
         for (ArticleStatusDTO articleStatusDTO: articleStatusDTOList ){
             articleStatusDTO.setIsInForumType(false);
             for(ForumTypeStatusDTO forumTypeStatusDTO:getTypeStatusDTOList()){
-                if (articleStatusDTO.getId()==forumTypeStatusDTO.getArticleStatusDTO().getId() ) articleStatusDTO.setIsInForumType(true);
+                if (articleStatusDTO.getId()==forumTypeStatusDTO.getForumStatusDTO().getArticleStatusDTO().getId() ) articleStatusDTO.setIsInForumType(true);
             }
         }
 
@@ -51,7 +51,7 @@ public class ForumTypeDTO extends IntEntity {
 
     public ForumTypeStatusDTO getTypeStatusbyArticStatusid(Integer articiStatusid){
         for(ForumTypeStatusDTO forumTypeStatusDTO:getTypeStatusDTOList()){
-            if (articiStatusid==forumTypeStatusDTO.getArticleStatusDTO().getId() ) return forumTypeStatusDTO;
+            if (articiStatusid==forumTypeStatusDTO.getForumStatusDTO().getArticleStatusDTO().getId() ) return forumTypeStatusDTO;
         }
         return  null;
     }
@@ -64,7 +64,7 @@ public class ForumTypeDTO extends IntEntity {
         forumTypeStatusDTO.setForumTypeDTO(this);
         Boolean changed=false;
         for(ForumTypeStatusDTO forumTypeStatusDTO1: getTypeStatusDTOList() ){
-            if (forumTypeStatusDTO.getArticleStatusDTO()==forumTypeStatusDTO1.getArticleStatusDTO()){
+            if (forumTypeStatusDTO.getForumStatusDTO().getArticleStatusDTO()==forumTypeStatusDTO1.getForumStatusDTO().getArticleStatusDTO()){
                 changed=true;
                 forumTypeStatusDTO1.setCustname(forumTypeStatusDTO.getCustname());
             }
