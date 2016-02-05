@@ -2,6 +2,8 @@ package com.sh.db.map;
 
 import com.sh.utils.TimeAgo;
 import org.grails.web.json.JSONObject;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
@@ -137,7 +139,7 @@ public class ArticleDTO extends IntEntity{
         this.forumDTO = forumDTO;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY , cascade = CascadeType.MERGE )
+    @ManyToOne(fetch = FetchType.LAZY , cascade = CascadeType.MERGE  )
     @JoinColumn(name = "catid")
     CategoriesDTO categoriesDTO;
 
@@ -151,6 +153,7 @@ public class ArticleDTO extends IntEntity{
 
     @ManyToOne(fetch = FetchType.LAZY , cascade = CascadeType.MERGE )
     @JoinColumn(name = "status")
+    @NotFound(action = NotFoundAction.IGNORE)
     private ArticleStatusDTO statusDTO;
 
     public ArticleStatusDTO getStatusDTO() {

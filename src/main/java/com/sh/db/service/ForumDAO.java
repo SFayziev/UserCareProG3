@@ -227,7 +227,7 @@ public class ForumDAO extends GenericDaoImpl<ForumDTO> {
 
     public boolean delTypeStatusDTOs(Integer projid, Integer forumid, Integer typeid){
 
-        currentSession().createQuery("delete from ForumTypeStatusDTO  fts where fts.forumStatusDTO.articleStatusDTO.id>10 and   fts.forumid=:forumid and fts.forumTypeDTO.id=:typeid and fts.projid=:projid ")
+        currentSession().createQuery("delete from ForumTypeStatusDTO  fts where   fts.forumid=:forumid and fts.forumTypeDTO.id=:typeid and fts.projid=:projid ")
                 .setParameter("forumid", forumid).setParameter("typeid", typeid).setParameter("projid", projid)
                 .executeUpdate();
         return true;

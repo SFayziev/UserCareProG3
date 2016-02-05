@@ -358,11 +358,11 @@ def delete(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession()).clone()
         def forum=webServicesSession.getForumById(project.id , id)
         def model=[project: project]
-        def topicStatuses=webServicesSession.getArticleStatusByForumId(project.id,  forum.id);
+        def forumStatuses=webServicesSession.getForumStatusByForumId(project.id,  forum.id);
         def topicTypeid=params.getInt("topicType")
         def topicType=topicTypeid?webServicesSession.getForumTypeByid(project.id,   topicTypeid):new ForumTypeDTO()
         model.topicType=topicType
-        model.topicStatuses=topicType.markIsinType(topicStatuses);
+        model.forumStatuses=topicType.markIsinType(forumStatuses);
         if (  params.get("submit")=="save" ) {
             if (topicType.id!= null ){
 
@@ -370,11 +370,11 @@ def delete(){
                 topicType.getTypeStatusDTOList().clear()
 
             }
-            def statuses= params.list('topicStatus.id')
+            def statuses= params.list('forumStatus.id')
             for(statusid in statuses){
-                def articStatus=webServicesSession.getArticleStatusById(project.id ,forum.id,  Integer.parseInt(statusid) )
-                if (articStatus.atype==1){
-                    topicType.addTypeStatusDTO(new ForumTypeStatusDTO(articStatus,  topicType , null ))
+                def forumStatus=webServicesSession.getForumStatusByid(project.id ,  Integer.parseInt(statusid) )
+                if (forumStatus.articleStatusDTO.atype==1){
+                    topicType.addTypeStatusDTO(new ForumTypeStatusDTO (project.id, forumStatus ,  topicType , null ))
                 }
             }
 

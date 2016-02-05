@@ -2,6 +2,8 @@ package com.sh.db.map;
 
 import com.sh.utils.TimeAgo;
 import org.grails.web.json.JSONObject;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -121,6 +123,7 @@ public class CommentDTO extends IntEntity  {
 
     @ManyToOne(fetch = FetchType.LAZY , cascade = CascadeType.MERGE   )
     @JoinColumn(name = "status")
+    @NotFound(action = NotFoundAction.IGNORE)
     private ArticleStatusDTO statusDTO;
 
     @ManyToOne(fetch = FetchType.LAZY , cascade = CascadeType.MERGE )

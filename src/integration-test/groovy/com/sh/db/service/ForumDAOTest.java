@@ -48,17 +48,17 @@ public class ForumDAOTest extends IntegrationTest{
 //    @Rollback(false)
     public void getForumTypeByid(){
         forumDAO.delTypeStatusDTOs(2,2,1 );
-        ForumStatusDTO forumStatusDTO= forumDAO.getForumStatusByid(2,1,true);
+        ForumStatusDTO forumStatusDTO= forumDAO.getForumStatusByid(2,21,true);
         ForumTypeDTO forumTypeDTO3= forumDAO.getForumTypeByid(2, 1);
         ForumTypeStatusDTO forumTypeStatusDTO=new ForumTypeStatusDTO(2, forumStatusDTO , forumTypeDTO3, "Test:  3" );
         forumTypeDTO3.addTypeStatusDTO(forumTypeStatusDTO);
 
         forumDAO.saveForumType(forumTypeDTO3);
 
-        List<ArticleStatusDTO> articleStatusDTOList = forumDAO.getArticleStatusByForumId(2, 2 );
-       for (ArticleStatusDTO articleStatusDTO1:forumTypeDTO3.markIsinType(articleStatusDTOList)  ){
-           System.out.println( articleStatusDTO1);
-           System.out.println( articleStatusDTO1.getIsInForumType());
+        List<ForumStatusDTO> forumStatusDTOs= forumDAO.getForumStatusByForumId(2, 2 );
+       for (ForumStatusDTO forumStatusDTO1:forumTypeDTO3.markIsinType(forumStatusDTOs)  ){
+           System.out.println( forumStatusDTO1);
+           System.out.println( forumStatusDTO1.getArticleStatusDTO().getIsInForumType());
 
        }
     }
