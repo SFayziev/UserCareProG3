@@ -37,10 +37,10 @@
         </div>
 <hr>
     <div class="form-group">
-    <g:each in="${topicStatuses}" var="topicStatus">
+    <g:each in="${forumStatuses}" var="forumStatus">
                 <label class="col-lg-6 checkbox state-success">
-                    <input  name="topicStatus.id" value="${topicStatus.id}" <g:if test="${topicStatus?.isInForumType}">checked=""</g:if> type="checkbox"><i></i>
-                    <span class="rounded  label " style="color: white; background: ${topicStatus?.color}" > ${topicStatus.name}</span>
+                    <input  name="forumStatus.id" value="${forumStatus.id}" <g:if test="${forumStatus.articleStatusDTO?.isInForumType}">checked=""</g:if> type="checkbox"><i></i>
+                    <span class="rounded  label " style="color: white; background: ${forumStatus?.articleStatusDTO?.color}" > ${forumStatus.articleStatusDTO.name}</span>
                 </label>
     </g:each>
     </div>

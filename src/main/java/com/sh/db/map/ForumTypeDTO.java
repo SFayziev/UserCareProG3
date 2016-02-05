@@ -38,15 +38,15 @@ public class ForumTypeDTO extends IntEntity {
         return typeStatusDTOList;
     }
 
-    public List<ArticleStatusDTO> markIsinType(List<ArticleStatusDTO> articleStatusDTOList){
-        for (ArticleStatusDTO articleStatusDTO: articleStatusDTOList ){
-            articleStatusDTO.setIsInForumType(false);
+    public List<ForumStatusDTO> markIsinType(List<ForumStatusDTO> forumStatusesList){
+        for (ForumStatusDTO forumStatusDTO: forumStatusesList ){
+            forumStatusDTO.getArticleStatusDTO().setIsInForumType(false);
             for(ForumTypeStatusDTO forumTypeStatusDTO:getTypeStatusDTOList()){
-                if (articleStatusDTO.getId()==forumTypeStatusDTO.getForumStatusDTO().getArticleStatusDTO().getId() ) articleStatusDTO.setIsInForumType(true);
+                if (forumStatusDTO.getArticleStatusDTO().getId()==forumTypeStatusDTO.getForumStatusDTO().getArticleStatusDTO().getId() ) forumStatusDTO.getArticleStatusDTO().setIsInForumType(true);
             }
         }
 
-        return articleStatusDTOList;
+        return forumStatusesList;
     }
 
     public ForumTypeStatusDTO getTypeStatusbyArticStatusid(Integer articiStatusid){
