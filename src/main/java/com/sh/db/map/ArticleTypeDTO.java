@@ -27,7 +27,7 @@ public class ArticleTypeDTO extends  IntEntity{
         this.ttype = ttype;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER , cascade = CascadeType.MERGE )
+    @ManyToOne(fetch = FetchType.EAGER , cascade = CascadeType.ALL )
     @JoinColumn(name = "logoimg")
     private ImgDTO imgDTO;
 

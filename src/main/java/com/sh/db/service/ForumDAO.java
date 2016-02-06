@@ -357,6 +357,7 @@ public class ForumDAO extends GenericDaoImpl<ForumDTO> {
     }
 
     @CacheEvict(value = "forumTypeDTO",  allEntries = true)
+
     public ForumTypeDTO saveForumType(ForumTypeDTO forumTypeDTO ){
         if (forumTypeDTO.getId()== null ){
             forumTypeDTO.setPos(getMaxPos(forumTypeDTO.getForumid(), ForumTypeDTO.class));
@@ -386,7 +387,7 @@ public class ForumDAO extends GenericDaoImpl<ForumDTO> {
     public Boolean delForumStatusbyId(Integer projid, Integer forumstatusid ){
         ForumStatusDTO forumStatusDTO=getForumStatusByid(projid, forumstatusid, false);
         if (forumStatusDTO!= null && forumStatusDTO.getArticleStatusDTO().getForumid()!= 0 ){
-            currentSession().createQuery("delete from ForumTypeStatusDTO  fts where fts.projid=:projid and fts.forumStatusDTO.id=: forumstatusid ")
+            currentSession().createQuery("delete from ForumTypeStatusDTO  fts where fts.projid=:projid and fts.forumStatusDTO.id=:forumstatusid ")
                 .setParameter("projid", projid).setParameter("forumstatusid",  forumstatusid).executeUpdate();
             currentSession().delete(forumStatusDTO);
 

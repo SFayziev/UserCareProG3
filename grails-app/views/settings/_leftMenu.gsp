@@ -78,23 +78,9 @@
     <li class="list-group-item list-toggle">
         <a aria-expanded="false" class="collapsed" data-toggle="collapse" data-parent="#sidebar-nav" href="#collapse-Chat"><i class="fa fa-comments"></i> <g:message code="forum.type3" /></a>
         <ul style="height: 0px;" aria-expanded="false" id="collapse-Chat" class="collapse">
-            <li><a  class="disabled" ><i class="fa fa-chevron-circle-right"></i> <g:message code="setting.leftMenu.project.settings" /></a></li>
-            <li>
-                <span class="badge badge-u">New</span>
-                <a  class="disabled" ><i class="fa fa-chevron-circle-right"></i> <g:message code="setting.leftMenu.community.control" /></a>
-            </li>
-            <li><a  class="disabled" ><i class="fa fa-chevron-circle-right"></i> <g:message code="setting.leftMenu.community.privacy" /></a></li>
-            <li>
-                <span class="badge badge-u">New</span>
-                <a  class="disabled" ><i class="fa fa-chevron-circle-right"></i> <g:message code="setting.leftMenu.community.categories" /></a>
-            </li>
-            <li><a  class="disabled" ><i class="fa fa-chevron-circle-right"></i> <g:message code="setting.leftMenu.community.tags" /></a></li>
-            <li><a  class="disabled" ><i class="fa fa-chevron-circle-right"></i> <g:message code="setting.leftMenu.community.statuses" /></a></li>
-            <li><a  class="disabled" ><i class="fa fa-chevron-circle-right"></i> <g:message code="setting.leftMenu.community.types" /></a></li>
-            <li><a  class="disabled" ><i class="fa fa-chevron-circle-right"></i> <g:message code="setting.leftMenu.community.spam.protection" /></a></li>
-            <li><a  class="disabled" ><i class="fa fa-chevron-circle-right"></i> <g:message code="setting.leftMenu.community.customisation" /></a></li>
+            <li><g:link controller="chat" action="control"> <i class="fa fa-chevron-circle-right"></i> <g:message code="setting.leftMenu.community.control" /></g:link></li>
+            <li><g:link controller="chat" action="setting" id="${selKnowledgebaseid}"  > <i class="fa  fa-cog "></i> <g:message code="setting.leftMenu.chat.triggers" /></g:link></li>
 
-            <li><a  class="disabled" ><i class="fa fa-list"></i> <g:message code="setting.leftMenu.users.custom.fields" /></a></li>
         </ul>
     </li>
     <!-- End Chat -->
