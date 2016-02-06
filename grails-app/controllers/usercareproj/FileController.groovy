@@ -198,6 +198,7 @@ class FileController {
         if (forumType!= null){
             delimg(forumType.articleTypeDTO.imgDTO )
             forumType.articleTypeDTO.imgDTO=imgdto;
+
             webServicesSession.saveForumType( forumType );
         }
 

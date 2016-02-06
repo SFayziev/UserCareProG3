@@ -3,7 +3,10 @@ package usercareproj.settings
 import com.sh.db.map.ArticleStatusDTO
 import com.sh.db.map.CategoriesDTO
 import com.sh.db.map.ForumDTO
+import com.sh.db.map.ForumStatusDTO
 import com.sh.db.map.ForumTagsDTO
+import com.sh.db.map.ForumTypeDTO
+import com.sh.db.map.ForumTypeStatusDTO
 import com.sh.utils.ForumType
 import grails.plugin.springsecurity.annotation.Secured
 import org.apache.commons.logging.Log
@@ -197,6 +200,46 @@ class HelpdeskController {
         }
     }
 
+    def delforumstatus(){
+        def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
+        if (params.get("submit")=="save" ){
+            webServicesSession.delForumStatusbyId(project.id, params.getInt("id",0) )
+            redirect action: 'topicStatus'
+        }
+        else{
+            render template: '/settings/community/deleteForm'
+        }
+    }
+    def editforumstatus(){
+        addForumStatus()
+    }
+
+    def addForumStatus(){
+        def id = getId();
+        def project=webServicesSession.getProject(getResponse(), getRequest(), getSession()).clone()
+        def forum=webServicesSession.getForumById(project.id , id)
+        def model=[project: project]
+        def forumStatus=params.getInt("forumStatus")?webServicesSession.getForumStatusByid(project.id,  params.getInt("forumStatus")):new ForumStatusDTO(forum.id)
+        model.forumStatus=forumStatus
+
+        if (params.submit=="save"  ) {
+            def articlestatus=forumStatus.articleStatusDTO
+            if (articlestatus== null){
+                articlestatus=new ArticleStatusDTO(project.id , forum.id)
+                forumStatus.articleStatusDTO=articlestatus;
+            }
+
+            bindData(articlestatus , params, 'articleStatus')
+            forumStatus.articleStatusDTO=articlestatus;
+            webServicesSession.saveForumStatus(forumStatus)
+
+            redirect action: 'topicStatus', params: [id:id]
+        }
+        else{
+            render template: '/settings/community/addNewArticleStatus' , model: model
+        }
+    }
+
 
     def topicStatus(){
         def id = getId();
@@ -204,42 +247,83 @@ class HelpdeskController {
         def forum=webServicesSession.getForumById(project.id , id)
         def model=[project: project]
         model.forum=forum
-        model.topicStatuses=webServicesSession.getArticleStatusByForumId(project.id,  forum.id);
+        model.forumStatuses=webServicesSession.getForumStatusByForumId(project.id,  forum.id);
 
         render view: '/settings/helpdesk/topicStatus' , model: model
 
     }
 
-    def deltopicstatus(){
+    def topicType(){
+        def id = getId();
+        def project=webServicesSession.getProject(getResponse(), getRequest(), getSession()).clone()
+        def forum=webServicesSession.getForumById(project.id , id)
+        def model=[project: project]
+        model.forum=forum
+        model.topicTypes=webServicesSession.getForumTypeByForumid(project.id,  forum.id,-1);
+
+        render view: '/settings/community/topicType' , model: model
+
+    }
+
+    def deleteforumType(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         if (params.get("submit")=="save" ){
-            redirect action: 'topicStatus'
+            def id = params.getInt("id")
+            def forumtype=webServicesSession.getForumTypeByid(project.id, id )
+
+            webServicesSession.delForumType(forumtype)
+
+            redirect action: 'topicType'
         }
         else{
             render template: '/settings/community/deleteForm'
         }
     }
 
-    def editTopicStatus(){
-        addNewArticleStatus()
+    def edittopicType(){
+        addNewTopicType()
     }
-
-    def addNewArticleStatus(){
+    def addNewTopicType(){
         def id = getId();
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession()).clone()
         def forum=webServicesSession.getForumById(project.id , id)
         def model=[project: project]
-        def articleStatus=params.getInt("topicStatus")?webServicesSession.getArticleStatusById(project.id, forum.id , params.getInt("topicStatus")):new ArticleStatusDTO(project.id, forum.id )
-        model.articleStatus=articleStatus
+        def forumStatuses=webServicesSession.getForumStatusByForumId(project.id,  forum.id);
+        def topicTypeid=params.getInt("topicType")
+        def topicType=topicTypeid?webServicesSession.getForumTypeByid(project.id,   topicTypeid):new ForumTypeDTO()
+        model.topicType=topicType
+        model.forumStatuses=topicType.markIsinType(forumStatuses);
+        if (  params.get("submit")=="save" ) {
+            if (topicType.id!= null ){
 
-        if (model.articleStatus.atype!= 0 &&  params.get("submit")=="save" ) {
-            bindData(model.articleStatus , params, 'articleStatus')
-            webServicesSession.saveArticleStatus(model.articleStatus)
-            redirect action: 'topicStatus', params: [id:id]
+                webServicesSession.delTypeStatusDTOs(project.id , forum.id, topicType.id )
+                topicType.getTypeStatusDTOList().clear()
+
+            }
+            def statuses= params.list('forumStatus.id')
+            for(statusid in statuses){
+                def forumStatus=webServicesSession.getForumStatusByid(project.id ,  Integer.parseInt(statusid) )
+                if (forumStatus.articleStatusDTO.atype==1){
+                    topicType.addTypeStatusDTO(new ForumTypeStatusDTO (project.id, forumStatus ,  topicType , null ))
+                }
+            }
+
+            topicType.useraccess=params.getBoolean('topicType.useraccess')?:false
+            topicType.enable=params.getBoolean('topicType.enable')?:false
+            topicType.forumid=forum.id
+            def articleTypeDTO=topicType.articleTypeDTO;
+
+            if (topicType.articleTypeDTO.id== null  || topicType.articleTypeDTO.id>10 ){
+                articleTypeDTO.name= params.get('name') as String
+            }
+            webServicesSession.saveForumType(topicType)
+            redirect action: 'topicType', params: [id:id]
         }
         else{
-            render template: '/settings/community/addNewArticleStatus' , model: model
+            render template: '/settings/community/addNewTopicType' , model: model
         }
+
+
     }
 
 }
