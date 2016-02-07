@@ -115,7 +115,7 @@ public class ForumDAO extends GenericDaoImpl<ForumDTO> {
 
     @Cacheable( value = "articleStatusDTO" )
     public List<ArticleStatusDTO> getArticleStatusByForumId(Integer projid,  Integer forumid  ){
-        return   getSessionFactory().getCurrentSession().createQuery("from ArticleStatusDTO  as asd where (asd.forumid=:forumid or asd.forumid=0) and  asd.projid=:projid order by asd.atype, asd.pos ")
+        return   getSessionFactory().getCurrentSession().createQuery("from ArticleStatusDTO  as asd where  asd.forumid=0 or (asd.forumid=:forumid or  asd.projid=:projid) order by asd.atype, asd.pos ")
                 .setParameter("projid", projid)
                 .setParameter("forumid", forumid)
                 .list();
@@ -123,8 +123,8 @@ public class ForumDAO extends GenericDaoImpl<ForumDTO> {
 
     @Cacheable( value = "articleStatusDTO" )
     public ArticleStatusDTO getArticleStatusById(Integer projid ,  Integer forumid,  Integer id  ){
-        return (ArticleStatusDTO) getSessionFactory().getCurrentSession().createQuery("from ArticleStatusDTO  as asd where (asd.forumid=:forumid or asd.forumid=0) and  asd.id=:id and  asd.projid=:projid ")
-                .setParameter("projid", projid)
+        return (ArticleStatusDTO) getSessionFactory().getCurrentSession().createQuery("from ArticleStatusDTO  as asd where (asd.forumid=:forumid or asd.forumid=0) and  asd.id=:id ")
+//                .setParameter("projid", projid)
                 .setParameter("id", id)
                 .setParameter("forumid", forumid)
                 .uniqueResult();
@@ -438,6 +438,7 @@ public class ForumDAO extends GenericDaoImpl<ForumDTO> {
     private void createModules(ForumDTO forumDTO, String modules, ModuleDisplay display ){
         for (ModuleTypeDTO moduleTypeDTO: moduleDAO.getModuleTypebyIds(modules)){
             ModuleDTO moduleDTO= new ModuleDTO(forumDTO.getId(), moduleTypeDTO , display);
+            moduleDTO.setDispos(moduleTypeDTO.getDispos());
             moduleDAO.saveModule(moduleDTO);
         }
     }

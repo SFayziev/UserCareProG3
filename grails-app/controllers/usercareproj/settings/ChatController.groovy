@@ -25,6 +25,7 @@ class ChatController {
         try {
             id=params.id as int;
         } catch (Exception e) {
+
             response.sendError(HttpServletResponse.SC_NOT_FOUND);
             return null;
         }

@@ -24,6 +24,19 @@ class KnowledgebaseController {
         render view: '/settings/knowledgebase/customisation', model: model
 
     }
+
+    def add(){
+        def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
+        if (params.get("submit")=="save" ){
+            def fname= params.get("name") as String
+            webServicesSession.createForum(project , fname, ForumType.Knowledgebase)
+            redirect action: 'control'
+        }
+        else{
+            render template: '/settings/community/addNewCommunity'
+        }
+    }
+
     def addNewTag(){
         def id = getId();
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession()).clone()

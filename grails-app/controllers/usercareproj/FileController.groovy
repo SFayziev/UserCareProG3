@@ -130,7 +130,10 @@ class FileController {
                 filedto=webServicesSession.createImageFile(ImageType.LOGO , f.inputStream )
                 imgdto= new ImgFile(project.id ,"projlogo" , "imglogo", filedto, filedto)
             }
-                delimg(project.getProjectDesignDTO().getLogoFileDTO() )
+                if (project?.getProjectDesignDTO()?.getLogoFileDTO()!= null) {
+                    delimg(project.getProjectDesignDTO().getLogoFileDTO() )
+                }
+
                 project.getProjectDesignDTO().setLogoFileDTO(imgdto)
                 webServicesSession.saveProjectDesign(project.getProjectDesignDTO())
                  def contents = g.render(template:"/article/imageByType", model: [imgid: "imglogo", imgclass: "img-responsive", img:imgdto ])

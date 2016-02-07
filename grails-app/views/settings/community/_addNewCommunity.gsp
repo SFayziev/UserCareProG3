@@ -3,7 +3,7 @@
     <h4 class="modal-title">
         <g:message code="setting.community.add.new" /></h4>
 </div>
-<g:form controller="community" action="add" class="sky-form" style="border: none;" >
+<g:form controller="${params.controller}"  action="add" class="sky-form" style="border: none;" >
 <div class="modal-body">
     <section>
         <label class="label"><g:message code="setting.name" /></label>

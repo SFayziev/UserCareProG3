@@ -26,7 +26,7 @@ public class StatisticDAOTest extends IntegrationTest{
         statisticDAO.increaseArticleComments(articleDTO );
         statisticDAO.increaseArticleVotes(articleDTO);
         statisticDAO.increaseArticleViews(articleDTO);
-        statisticDAO.increaseForumArticles(articleDTO.getForumDTO());
+        statisticDAO.increaseForumArticles(2 , articleDTO.getForumDTO());
         statisticDAO.decreaseForumArticles(articleDTO.getForumDTO());
     }
 }

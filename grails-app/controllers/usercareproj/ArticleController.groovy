@@ -161,6 +161,10 @@ class ArticleController {
         render voteVal.toJson(message(code: "article.vote.change.massage") as String);
     }
 
+    def moveto(){
+
+        render template: "moveTo"
+    }
     def edit(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         def id=params.getInt("id");
