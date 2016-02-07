@@ -48,8 +48,13 @@ public abstract class GenericDaoImpl< T > extends HibernateDaoSupport {
     public UserDTO getCurrentLoggedUser(){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (user.isEnabled()){
-            return (UserDTO) getSessionFactory().getCurrentSession().createQuery("from UserDTO as ud where username=:username ")
-                    .setParameter("username", user.getUsername()).setCacheable(true).uniqueResult();
+            String[] sl= user.getUsername().split("/");
+            if ((sl.length<2)) return  null;
+            return (UserDTO) getSessionFactory().getCurrentSession().createQuery("from UserDTO as ud where projid in (select id  from ProjectDTO where alias=:alias) and  username=:username ")
+                    .setParameter("username", sl[1])
+                    .setParameter("alias", sl[0])
+                    .setCacheable(true).uniqueResult();
+
         }
         return null;
     }

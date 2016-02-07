@@ -27,9 +27,9 @@ public class ForumDAOTest extends IntegrationTest{
     ProjectDAO projectDAO;
 
     @Test
-//    @Rollback(false)
+  @Rollback(false)
     public void testCreateForum() throws Exception {
-        ProjectDTO projectDTO= projectDAO.getProjectbyId(2);
+        ProjectDTO projectDTO= projectDAO.getProjectbyId(6);
         forumDAO.createForum(projectDTO, ForumType.Community, "test ");
     }
 

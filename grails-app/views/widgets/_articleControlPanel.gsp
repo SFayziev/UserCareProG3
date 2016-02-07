@@ -51,6 +51,9 @@
                 <a href="#" data-content="${article.id}" data-action="getAditionalInfo" data-status-value="${articleStatus?.id}" ><i class="fa fa-info"></i> <g:message code="article.action.Additional.information"/></a>
             </li>
             <li class="list-group-item">
+                <a  data-toggle="modal" href="/article/moveto/${article.forumDTO.id}/${article.id}" data-target="#myModal" data-content="${article.id}" data-action="articleEdit" ><i class="fa fa-info"></i> <g:message code="article.action.MoveTo"/></a>
+            </li>
+            <li class="list-group-item">
                 <a  data-toggle="modal" href="/article/delete/${article.forumDTO.id}/${article.id}" data-target="#myModalDelete" ><i class="fa fa-trash"></i> <g:message code="article.action.Delete"/></a>
             </li>
         </ul>

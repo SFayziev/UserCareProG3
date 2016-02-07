@@ -3,7 +3,7 @@
     <div class="panel panel-sea margin-bottom-40">
         <div class="panel-heading">
             <h3 class="panel-title"><i class="fa fa-edit"></i><g:message code="setting.leftMenu.community" />
-                <a class="btn btn-info" data-toggle="modal" href="/settings/knowlagebase/add" data-target="#myModal" ><i class="fa fa-plus" ></i>  <g:message code="default.button.add.label"/></a>
+                <a class="btn btn-info" data-toggle="modal" href="/settings/knowledgebase/add" data-target="#myModal" ><i class="fa fa-plus" ></i>  <g:message code="default.button.add.label"/></a>
             </h3>
         </div>
         <table class="table table-striped">

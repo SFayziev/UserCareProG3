@@ -137,6 +137,10 @@ public class ProjectDTO extends IntEntity {
     private ProjectDesignDTO projectDesignDTO;
 
     public ProjectDesignDTO getProjectDesignDTO() {
+        if (projectDesignDTO== null){
+            projectDesignDTO= new ProjectDesignDTO();
+            projectDesignDTO.setProjectDTO(this);
+        }
         return projectDesignDTO;
     }
 

@@ -28,6 +28,20 @@ class HelpdeskController {
 
     }
 
+
+    def add(){
+        def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
+        if (params.get("submit")=="save" ){
+            def fname= params.get("name") as String
+            webServicesSession.createForum(project , fname, ForumType.HelpDesk)
+            redirect action: 'control'
+        }
+        else{
+            render template: '/settings/community/addNewCommunity'
+        }
+    }
+
+
     def setting(){
         def id;
         try {

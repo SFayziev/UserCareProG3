@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>Remote file for Bootstrap Modal</title>
-</head>
-<body>
+
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
     <h4 class="modal-title">Submit new feedback </h4>
@@ -54,5 +48,3 @@
         });
     });
 </g:javascript>
-</body>
-</html>

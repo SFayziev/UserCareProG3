@@ -35,6 +35,10 @@ public class FileDAO extends GenericDaoImpl<FileDTO> {
     @Value("${image.catalog}")
     private  String imageCatalog;
 
+
+    @Value("${path.to.webapp}")
+    private String webAppPath;
+
     private static final Logger LOG = Logger.getLogger(FileDAO.class);
 
     @Autowired
@@ -50,7 +54,7 @@ public class FileDAO extends GenericDaoImpl<FileDTO> {
             String  filename=uuid.substring(1,12)+itype.getTheFileExtension();
             String filedir= uuid.substring(13,16) ;
             String outPAth=System.getProperty("user.dir");
-            outPAth=outPAth +"/web-app"+imageCatalog;
+            outPAth=outPAth + webAppPath + imageCatalog;
 
             ImageResizer imageResizer= new ImageResizer(itype.getTheWidthSize() ,itype.getTheHeightSize() , streamp );
             File outputDir= new File(outPAth + "/"+ filedir);

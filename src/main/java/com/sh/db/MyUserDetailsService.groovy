@@ -54,7 +54,7 @@ public class MyUserDetailsService implements  UserDetailsService{
             boolean credentialsNonExpired = true;
             boolean accountNonLocked = true;
 
-            UserDetails userDetails = new User(user.username, user.password , enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, a);
+            UserDetails userDetails = new User(s, user.password , enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, a);
             return userDetails;
         }
         else {

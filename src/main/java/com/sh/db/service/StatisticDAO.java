@@ -86,8 +86,8 @@ public class StatisticDAO extends GenericDaoImpl<ArticleDTO> {
     public Integer decreaseForumComments(ForumDTO forumDTO ){return  increaseForum(forumDTO.getId(), "comments", -1);}
     public Integer increaseForumVotes(ForumDTO forumDTO ){  return  increaseForum(forumDTO.getId(), "votes", 1); }
     public Integer decreaseForumVotes(ForumDTO forumDTO ){return  increaseForum(forumDTO.getId(), "votes", -1);}
-    public Integer increaseForumArticles(ForumDTO forumDTO ){
-        increaseProjectArticles(forumDTO.getProjectDTO().getId());
+    public Integer increaseForumArticles(Integer projid,  ForumDTO forumDTO ){
+        increaseProjectArticles(projid);
         return  increaseForum(forumDTO.getId(), "articles", 1);
     }
     public Integer decreaseForumArticles(ForumDTO forumDTO ){
