@@ -162,8 +162,15 @@ class ArticleController {
     }
 
     def moveto(){
+        def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
+        def id=params.getInt("id");
 
-        render template: "moveTo"
+        if (params.submit=="save"){
+        }
+        else{
+            render template: "moveTo"
+        }
+
     }
     def edit(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
