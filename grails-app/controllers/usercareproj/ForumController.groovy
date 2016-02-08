@@ -54,7 +54,7 @@ class ForumController {
             def forumoptions="";
             def forumcategory="";
             for (ForumTypeDTO forumTypeDTO:forumTypes) forumoptions=forumoptions+ String.format("<option value='%s'> %s</option>", forumTypeDTO.id, forumTypeDTO.articleTypeDTO.name )
-            for (CategoriesDTO categoriesDTO:forumCategorys) forumcategory= String.format("<option value='%s'> %s</option>", categoriesDTO.id, categoriesDTO.name )
+            for (CategoriesDTO categoriesDTO:forumCategorys) forumcategory=forumcategory+ String.format("<option value='%s'> %s</option>", categoriesDTO.id, categoriesDTO.name )
             resultJson.put("forumoptions",forumoptions);
             resultJson.put("forumcategory",forumcategory);
             resultJson.put("status","success");

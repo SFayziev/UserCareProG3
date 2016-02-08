@@ -2,8 +2,11 @@
 <div class="col-md-12">
     <div class="panel panel-sea margin-bottom-40">
         <div class="panel-heading">
-            <h3 class="panel-title"><i class="fa fa-edit"></i><g:message code="setting.leftMenu.community" /> </h3>
+            <h3 class="panel-title"><i class="fa fa-edit"></i><g:message code="setting.leftMenu.community" />
+                <a class="btn btn-info" data-toggle="modal" href="/settings/helpdesk/add" data-target="#myModal" ><i class="fa fa-plus" ></i>  <g:message code="default.button.add.label"/></a>
+            </h3>
         </div>
+
         <table class="table table-striped">
             <thead>
             <tr>
@@ -22,8 +25,13 @@
                 <td><g:render template="/article/imageByType" model="${[imgid: "forumlogo${forum.id}", imgclass: "img-responsive", iconclass: 'icon-sm', img:forum?.imgDTO]}" /></td>
                 <td> ${forum.name}</td>
                 <td> </td>
-                <td><g:link controller="helpdesk" action="setting" id="${forum.id}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> <g:message code="default.button.edit.label"/></g:link>
-                    </td>
+                <td>
+                    <div class="btn-group">
+                        <a class="btn btn-primary" href="#" onclick="changeForumImg(${forum.id})" > <g:message code="setting.change.logo"/></a>
+                        <g:link controller="helpdesk" action="setting" id="${forum.id}" class="btn btn-info "><i class="fa fa-pencil"></i> <g:message code="default.button.edit.label"/></g:link>
+                        <a class="btn btn-danger" data-toggle="modal" href="/settings/helpdesk/delete/${forum.id}" data-target="#myModal"  ><i class="fa fa-trash-o"></i></a>
+                    </div>
+                </td>
             </tr>
             </g:each>
             </tbody>

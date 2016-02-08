@@ -119,4 +119,11 @@ public class ArticleDAOTest extends IntegrationTest{
             System.out.println( commentDTO );
         }
     }
+
+    @Test
+    public void testMoveToArticle() throws Exception {
+        ArticleDTO articleDTO= articleDAO.getArticle(6, 672);
+        articleDAO.moveToArticle(articleDTO, 38,1,0);
+
+    }
 }

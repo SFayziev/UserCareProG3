@@ -3,7 +3,7 @@
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
     <h4 class="modal-title"><g:message code="article.action.MoveTo.title" /></h4>
 </div>			<!-- /modal-header -->
-<g:form controller="article" action="moveto" method="post" id="${article?.id}" params="${[forumid:forumid]}" >
+<g:form controller="article" action="moveto" method="post" id="${params.id}"  >
     <div class="modal-body">
         <div class="form-group">
             <label for="forumid"><g:message code="forum.title" /></label>
@@ -32,7 +32,7 @@
     </div>			<!-- /modal-body -->
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
+        <button type="submit" name="submit" value="save" class="btn btn-primary">Save changes</button>
     </div>			<!-- /modal-footer -->
 </g:form>
 <g:javascript>

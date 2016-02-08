@@ -93,7 +93,7 @@ class HelpdeskController {
             return id
         } catch (Exception e) {
             response.sendError(HttpServletResponse.SC_NOT_FOUND);
-            Log.error(e.message)
+
             return null;
         }
     }
