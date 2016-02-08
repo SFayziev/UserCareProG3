@@ -1,5 +1,7 @@
 package usercareproj
 
+import com.sh.db.map.CategoriesDTO
+import com.sh.db.map.ForumTypeDTO
 import com.sh.utils.ForumType
 import com.sh.utils.ModuleDisplay
 import org.grails.web.json.JSONObject;
@@ -41,6 +43,25 @@ class ForumController {
         render view: '/article/list' ,   model: model
     }
 
+    def getforumparams(){
+        def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
+        def forum= webServicesSession.getForumById(project.id, params.int("id", project.getDefaultforum() ))
+        JSONObject resultJson = new JSONObject();
+        resultJson.put("status","error");
+        if (forum){
+            def forumTypes=webServicesSession.getForumTypeByForumid(project.id , forum.id, 1)
+            def forumCategorys=webServicesSession.getCategoryByForumId(project.id, forum.id)
+            def forumoptions="";
+            def forumcategory="";
+            for (ForumTypeDTO forumTypeDTO:forumTypes) forumoptions=forumoptions+ String.format("<option value='%s'> %s</option>", forumTypeDTO.id, forumTypeDTO.articleTypeDTO.name )
+            for (CategoriesDTO categoriesDTO:forumCategorys) forumcategory= String.format("<option value='%s'> %s</option>", categoriesDTO.id, categoriesDTO.name )
+            resultJson.put("forumoptions",forumoptions);
+            resultJson.put("forumcategory",forumcategory);
+            resultJson.put("status","success");
+        }
+        render   resultJson.toString()
+
+    }
     def dashboard(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         def defaultForum= webServicesSession.getForumById(project.id, params.int("id", project.getDefaultforum() ))

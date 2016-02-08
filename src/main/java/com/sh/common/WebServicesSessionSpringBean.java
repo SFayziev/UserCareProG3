@@ -127,6 +127,8 @@ public class WebServicesSessionSpringBean {
     public List<ArticleTagsDTO> getArticleTags(Integer projid, Integer articid) { return articleDAO.getArticleTags(projid, articid ) ;}
     public void addTagtoArticle(Integer projid,  Integer articid, Integer tagid){ articleDAO.addTagtoArticle( projid, articid, tagid);}
     public void  delArticleTag(Integer projid,  Integer articid, Integer tagid) {articleDAO.delArticleTag(projid, articid, tagid);}
+    public ArticleDTO moneToArticle(ArticleDTO articleDTO, Integer forumid, Integer forumType, Integer forumCategory) { return  articleDAO.moneToArticle(articleDTO, forumid, forumType, forumCategory ); }
+
 //     Forum
 
     public List<ForumDTO> getForumByType(Integer projId, ForumType forumType) {return  forumDAO.getForumbyType(projId, forumType);}
