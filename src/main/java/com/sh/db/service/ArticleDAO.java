@@ -537,7 +537,7 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
         }
     }
 
-    public ArticleDTO moneToArticle(ArticleDTO articleDTO, Integer forumid, Integer forumType, Integer forumCategory){
+    public ArticleDTO moveToArticle(ArticleDTO articleDTO, Integer forumid, Integer forumType, Integer forumCategory){
         if (articleDTO.getForumDTO().getId()!= forumid ){
             ForumDTO forumDTO=forumDAO.getForumById(articleDTO.getProjid(), forumid );
             if (forumDTO!= null) articleDTO.setForumDTO(forumDTO);

@@ -1,5 +1,7 @@
 package com.sh.db.map;
 
+import com.sh.utils.ForumType;
+
 import javax.persistence.*;
 
 /**
@@ -11,6 +13,7 @@ public class ArticleTypeDTO extends  IntEntity{
     private  String name;
     private  String  custname;
     private Integer ttype=1;
+    private ForumType ftype;
 
     public Integer getTtype() {
         return ttype;

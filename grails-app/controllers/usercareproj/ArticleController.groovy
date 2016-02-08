@@ -166,6 +166,13 @@ class ArticleController {
         def id=params.getInt("id");
 
         if (params.submit=="save"){
+            def article = webServicesSession.getProjectArticle(project.id , id)
+            if (article!= null){
+               article= webServicesSession .moveToArticle(article, params.getInt("forumid",0 ) , params.getInt("forumtypeid", 0), params.getInt("forumcategoryid", 0) )
+
+            }
+            redirect(action: "item", params: [id: article.getId(), forumid: article.forumDTO.id ])
+
         }
         else{
             render template: "moveTo"
