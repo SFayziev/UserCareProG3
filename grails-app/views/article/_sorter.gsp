@@ -63,7 +63,7 @@
 </g:if>
 <g:if test="${forum?.type?.compareTo(ForumType.Community)==0  || forum?.type?.compareTo(ForumType.HelpDesk)==0}">
 <div class="btn-group pull-right">
-    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    <button type="button" class="btn btn-u btn-default dropdown-toggle" data-toggle="dropdown">
         <i class="fa fa-sort-alpha-desc"></i>
         <g:if test="${catalogParams?.order!= null && catalogParams?.order!=''}">
             <g:message code="order.type.${catalogParams?.order}" default="" />

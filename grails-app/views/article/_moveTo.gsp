@@ -8,15 +8,34 @@
         <div class="form-group">
             <label for="forumid"><g:message code="forum.title" /></label>
             <select class="form-control" id="forumid" name="forumid">
-                <optgroup label="HELPDESK">
-                    <option value="37">Helpdesk</option>
+                <g:if test="${communitys}">
+                    <optgroup label="<g:message code="forum.type2"/>">
+                    <g:each in="${communitys}" var="community">
+                        <option <g:if test="${forumid==community.id}">selected</g:if> value="${community.id}">
+                            <locale:message  proj="${project}" code="forum.title.${community.id}" default="${community.name}" />
+                        </option>
+                    </g:each>
+                    </optgroup>
+                </g:if>
+                <g:if test="${knowledgebases}">
+                <optgroup label="<g:message code="forum.type1"/>">
+                    <g:each in="${knowledgebases}" var="knowledgebase">
+                        <option <g:if test="${forumid==knowledgebase.id}">selected</g:if> value="${knowledgebase.id}">
+                            <locale:message  proj="${project}" code="forum.title.${knowledgebase.id}" default="${knowledgebase.name}" />
+                        </option>
+                    </g:each>
                 </optgroup>
-                <optgroup label="KNOWLEDGEBASE">
-                    <option value="38">Knowledge base</option>
-                </optgroup>
-                <optgroup label="CHAT">
-                    <option value="49572">Chat history</option>
-                </optgroup>
+            </g:if>
+                <g:if test="${helpdesks}">
+                    <optgroup label="<g:message code="forum.type0"/>">
+                        <g:each in="${helpdesks}" var="helpdesk">
+                            <option <g:if test="${forumid==helpdesk.id}">selected</g:if>  value="${helpdesk.id}">
+                                <locale:message  proj="${project}" code="forum.title.${helpdesk.id}" default="${helpdesk.name}" />
+                            </option>
+                        </g:each>
+                    </optgroup>
+                </g:if>
+
             </select>
         </div>
         <div class="form-group">

@@ -1,6 +1,7 @@
 package usercareproj
 
 import com.sh.db.map.ArticleDTO
+import com.sh.utils.ForumType
 import com.sh.utils.ModuleDisplay
 import org.grails.web.json.JSONObject;
 
@@ -175,7 +176,12 @@ class ArticleController {
 
         }
         else{
-            render template: "moveTo"
+            def communitys = webServicesSession.getForumByType(project.id, ForumType.Community)
+            def knowledgebases = webServicesSession.getForumByType(project.id, ForumType.Knowledgebase)
+            def helpdesks= webServicesSession.getForumByType(project.id, ForumType.HelpDesk)
+
+
+            render template: "moveTo" , model: [forumid: params.getInt("forumid",0 ), project:project,  communitys:communitys , knowledgebases:knowledgebases, helpdesks:helpdesks]
         }
 
     }
