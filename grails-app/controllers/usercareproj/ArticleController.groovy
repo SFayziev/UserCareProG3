@@ -196,7 +196,11 @@ class ArticleController {
         }
         article.id=params.int("id")
         article.setProjid(project.getId() )
-        article. setForumDTO(webServicesSession.getForumById(project.getId(), project.getDefaultforum()))
+        def forum=params.getInt("forumid",0)
+        if (forum== null) {
+            forum=project.getDefaultforum()
+        }
+        article.setForumDTO(webServicesSession.getForumById(project.getId(), forum))
         article.setTitle(params.get("title") as String);
         article.setText(params.get("description") as String);
         article.setType(webServicesSession.getForumTypeByid(project.id ,  params.getInt("postType", 0)))
