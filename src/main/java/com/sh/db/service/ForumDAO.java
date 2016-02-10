@@ -123,6 +123,7 @@ public class ForumDAO extends GenericDaoImpl<ForumDTO> {
 
     @Cacheable( value = "articleStatusDTO" )
     public ArticleStatusDTO getArticleStatusById(Integer projid ,  Integer forumid,  Integer id  ){
+        if (id== null) return null;
         return (ArticleStatusDTO) getSessionFactory().getCurrentSession().createQuery("from ArticleStatusDTO  as asd where (asd.forumid=:forumid or asd.forumid=0) and  asd.id=:id ")
 //                .setParameter("projid", projid)
                 .setParameter("id", id)

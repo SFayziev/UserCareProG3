@@ -408,7 +408,7 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
         }
         if (articleDTO.getStatusDTO().getId()== null){
             articleDTO.setStatusDTO(forumDAO.getArticleStatusById(articleDTO.getProjid(), forumDTO.getId(), forumDTO.getFirstreplystatus()));
-
+            if (articleDTO.getStatusDTO().getId()== null) articleDTO.setStatusDTO(forumDAO.getArticleStatusById(0,0,0) );
         }
         statisticDAO.increaseForumArticles(articleDTO.getProjid(),  forumDTO);
         articleDTO= save(articleDTO);
