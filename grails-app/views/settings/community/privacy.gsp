@@ -25,14 +25,15 @@
             <div class="form-group">
                 <label class="col-lg-4 control-label"><g:message code="setting.community.privacy.mode.public" /></label>
                 <div class="col-lg-8">
-                    <label class="radio state-success"><input id ="tpublic" name="privacy.type"  value="0" <g:if test="${forum.privacy.type==0}">checked=""</g:if>  type="radio"><i></i></label>
+                    <label class="radio state-success"><g:message code="setting.community.privacy.mode.public.note" /> <input id ="tpublic" name="privacy.type"  value="0" <g:if test="${forum.privacy.type==0}">checked=""</g:if>  type="radio"><i></i></label>
+
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="col-lg-4 control-label"><g:message code="setting.community.privacy.mode.private" /></label>
                 <div class="col-lg-8">
-                    <label class="radio state-success"><input id ="tprivate" name="privacy.type"  value="1"  <g:if test="${forum.privacy.type==1}">checked=""</g:if>  type="radio"><i></i></label>
+                    <label class="radio state-success"> <g:message code="setting.community.privacy.mode.private.note" /> <input id ="tprivate" name="privacy.type"  value="1"  <g:if test="${forum.privacy.type==1}">checked=""</g:if>  type="radio"><i></i></label>
 
                 </div>
             </div>
@@ -70,7 +71,8 @@
             <div class="form-group">
                 <label for="autosubscribe"  class="col-lg-4 control-label"></label>
                 <div class="col-lg-8">
-                    <label class="checkbox state-success"><input id ="autosubscribe"  name="privacy.autosubscribe"  value="1" <g:if test="${forum.privacy.autosubscribe}">checked=""</g:if>  type="checkbox"><i></i><g:message code="setting.community.privacy.autosubscribe.info"/> </label>
+                    <label class="checkbox state-success"><input id ="autosubscribe"  name="privacy.autosubscribe"  value="1" <g:if test="${forum.privacy.autosubscribe}">checked=""</g:if>  type="checkbox"><i></i><g:message code="setting.community.privacy.autosubscribe.text"/> </label>
+                    <div class="note"><g:message code="setting.community.privacy.autosubscribe.info"/></div>
                 </div>
             </div>
 
