@@ -210,7 +210,7 @@ function articleChangeStatus(){
  * @return {boolean}
  */
 function IsFollow(id){
-    $.ajax({  dataType: "json",  url:  "/article/isfollow/"+id})
+    $.ajax({  dataType: "json",  url:  "/article/isfollow/?id="+id})
         .done(function( data ) {
             if (data.status=='success') {
                 var follow=$('#follow-'+id);
@@ -222,13 +222,17 @@ function IsFollow(id){
 }
 function follow(articid){
 
-    $.ajax({  dataType: "json",  url:  "/article/follow/"+ articid})
+    $.ajax({  dataType: "json",  url:  "/article/follow/?id="+ articid})
         .done(function( data ) {
             if (data.status=='success') {
                 var follow=$('#follow-'+articid);
                 follow.html(data.value);
                 showMassge(data.massage);
             }
+            if (data.status=="error"){
+                showMassge(data.massage);
+            }
+
         });
     return false;
 }
@@ -253,6 +257,10 @@ function voteComment(){
         changeVotesum(article.find('#votesum-'+commentid),data.values.votesum );
         showMassge(data.massage);
     }
+    if (data.status=="error"){
+        showMassge(data.massage);
+    }
+
    });
 return false;
 }
@@ -287,6 +295,10 @@ function voteArticle(){
             article.find('#votedown-'+articid).html('<i class="expand-list rounded-x fa fa-thumbs-down"></i> ' + data.values.votedown);
             showMassge(data.massage)
         }
+        if (data.status=="error"){
+            showMassge(data.massage);
+        }
+
     });
     return false;
 }
