@@ -3,6 +3,7 @@ package usercareproj
 import com.sh.db.map.ArticleDTO
 import com.sh.utils.ForumType
 import com.sh.utils.ModuleDisplay
+import com.sh.utils.exception.N18iException
 import org.grails.web.json.JSONObject;
 
 class ArticleController {
@@ -55,13 +56,20 @@ class ArticleController {
     def follow(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         def id= params.int("id")
-        def isfol=webServicesSession.followArticle(project.id,  id)
-        def contents = g.render(template:"/article/follow", model: [ isfol:isfol,id:id ])
         JSONObject resultJson = new JSONObject();
-        resultJson.put("status","success");
-        resultJson.put("contentid",id);
-        resultJson.put("value", contents)
-        resultJson.put("massage",  message(code: isfol? "article.follow.subscribe.message":"article.follow.unsubscribe.message" ))
+
+
+        try {
+            def isfol=webServicesSession.followArticle(project.id,  id)
+            def contents = g.render(template:"/article/follow", model: [isfol:isfol, id:id ])
+            resultJson.put("status","success");
+            resultJson.put("contentid",id);
+            resultJson.put("value", contents)
+            resultJson.put("massage",  message(code: isfol? "article.follow.subscribe.message":"article.follow.unsubscribe.message" ))
+        } catch (N18iException ex) {
+            resultJson.put("status","error");
+            resultJson.put("massage",   message(code: ex.getN18IErrorCodes().n18nCode , default:ex.getN18IErrorCodes().defaultValue  ))
+        }
 
         response.contentType = "application/json; charset=UTF-8"
         render   resultJson.toString()
@@ -131,8 +139,6 @@ class ArticleController {
 //        def contents = g.render(template:"/article/articleItem"+article.getForumDTO().type.ordinal() , model: [project:project, forum:article.getForumDTO(), article:article ])
         JSONObject resultJson = new JSONObject();
         resultJson.put("status","success");
-//        resultJson.put("contentid",article.getId());
-//        resultJson.put("value", contents);
         resultJson.put("massage",  message(code: "article.assigne.category.change.massage"))
         response.contentType = "application/json; charset=UTF-8"
         render   resultJson.toString()
@@ -157,9 +163,20 @@ class ArticleController {
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         def id=params.getInt("id");
         def value=params.getInt("value");
-        def voteVal=webServicesSession.articleVote(project.id, id, value, "", request.getRemoteAddr()) ;
+        JSONObject resultJson = new JSONObject();
         response.contentType = "application/json; charset=UTF-8"
-        render voteVal.toJson(message(code: "article.vote.change.massage") as String);
+
+        try {
+            def voteVal=webServicesSession.articleVote(project.id, id, value, "", request.getRemoteAddr());
+            render voteVal.toJson(message(code: "article.vote.change.massage") as String);
+        } catch (N18iException ex) {
+            resultJson.put("status","error");
+            resultJson.put("massage",   message(code: ex.getN18IErrorCodes().n18nCode , default:ex.getN18IErrorCodes().defaultValue  ))
+
+            render   resultJson.toString()
+        }
+
+
     }
 
     def moveto(){

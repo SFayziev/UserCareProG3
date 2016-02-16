@@ -8,6 +8,8 @@ import com.sh.utils.ForumType;
 import com.sh.utils.IpConvertor;
 
 import com.sh.utils.SearchField;
+import com.sh.utils.exception.N18IErrorCodes;
+import com.sh.utils.exception.N18iException;
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
@@ -377,11 +379,14 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
         return null;
     }
 
-    public  ArticleDTO articleVote(Integer projId, Integer articid, Integer value , String username, String Ip ){
+    public  ArticleDTO articleVote(Integer projId, Integer articid, Integer value , String username, String Ip ) throws N18iException {
         ArticleDTO articleDTO =getArticle(projId, articid);
-
+        if(articleDTO== null)    throw  new N18iException(projId,N18IErrorCodes.ARTICLE_NOT_FOUND);
+        ForumDTO forumDTO=articleDTO.getForumDTO();
+        if (forumDTO.getVotetype()==0) throw  new N18iException(projId, forumDTO.getId(),N18IErrorCodes.VOTE_DISABLED);
+        if (forumDTO.getVotetype()==2 && value<0) throw  new N18iException(projId, forumDTO.getId(),N18IErrorCodes.VOTE_POSITIVE);
         ArticleVoteDTO articleVoteDTO=isArticleVotedByMe(articid, username, Ip);
-        if(articleVoteDTO!=null) {
+        if(articleVoteDTO!=null ) {
             if (Objects.equals(articleVoteDTO.getValue(), value)) {
                 return articleDTO;
             }
@@ -390,6 +395,7 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
                 getSessionFactory().getCurrentSession().delete(articleVoteDTO);
             }
         }
+
         if (value!=0)  {
             int voute = value > 0 ? articleDTO.votesPlus(value):articleDTO.votesDown(value);
             getSessionFactory().getCurrentSession().save(new ArticleVoteDTO(articid, value, Ip, 0));
@@ -419,10 +425,11 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
     }
 
 
-    public Boolean isfollow(Integer articid){
+    public Boolean isfollow(Integer articid) throws N18iException {
         UserDTO userDTO= null;
         try {
             userDTO = getCurrentLoggedUser();
+
         } catch (Exception ignored) {}
 
 
@@ -434,14 +441,14 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
         return followDTO != null;
     }
 
-    public boolean followArticle(Integer projid , Integer articid){
+    public boolean followArticle(Integer projid , Integer articid) throws N18iException {
 
         UserDTO userDTO= null;
         try {
             userDTO = getCurrentLoggedUser();
         } catch (Exception ignored) {}
 
-        if (userDTO== null) return false;
+        if (userDTO==null) throw new N18iException( projid, N18IErrorCodes.AJAX_YOU_MUST_SIGNIN );
         FollowDTO followDTO= (FollowDTO) getSessionFactory().getCurrentSession()
                 .createQuery("from FollowDTO as fol where fol.articleid=:articid and userid=:userid ")
                 .setParameter("articid", articid).setParameter("userid", userDTO.getId()).setCacheable(true).uniqueResult() ;

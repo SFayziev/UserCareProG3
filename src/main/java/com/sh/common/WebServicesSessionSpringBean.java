@@ -7,6 +7,7 @@ import com.sh.utils.ForumType;
 import com.sh.utils.ImageType;
 import com.sh.utils.ModuleDisplay;
 import com.sh.utils.ModulePosType;
+import com.sh.utils.exception.N18iException;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -107,7 +108,7 @@ public class WebServicesSessionSpringBean {
     public ArticleDTO addArticle(ArticleDTO  articleDTO) {return  articleDAO.saveArticle(articleDTO);}
 
     public CommentDTO commentVote(Integer commentId, Integer values, String userName, String remIP){ return  articleDAO.commentVote(commentId, values, userName, remIP); }
-    public ArticleDTO articleVote(Integer projid , Integer articId, Integer values , String userName, String remIP ){ return  articleDAO.articleVote(projid, articId, values, userName, remIP); }
+    public ArticleDTO articleVote(Integer projid , Integer articId, Integer values , String userName, String remIP ) throws N18iException { return  articleDAO.articleVote(projid, articId, values, userName, remIP); }
 
     public OauthidDTO findByProviderAndAccessToken(String providerName , String socialId ){ return userDAO.findByProviderAndAccessToken(providerName, socialId); }
 
@@ -167,8 +168,8 @@ public class WebServicesSessionSpringBean {
     public boolean moveForumStatus(Integer projId, Integer forumStatusId, String direction){ return forumDAO.moveForumStatus(projId, forumStatusId, direction); }
     public Boolean delForumStatusbyId(Integer projid, Integer forumstatusid ){return  forumDAO.delForumStatusbyId(projid, forumstatusid);}
 
-    public Boolean isFollow(Integer articid) { return  articleDAO.isfollow(articid);}
-    public Boolean followArticle(Integer projid , Integer articid) { return  articleDAO.followArticle(projid, articid);}
+    public Boolean isFollow(Integer articid) throws N18iException { return  articleDAO.isfollow(articid);}
+    public Boolean followArticle(Integer projid , Integer articid) throws N18iException { return  articleDAO.followArticle(projid, articid);}
 
     public UserDTO getCurentUser(){return  userDAO.getCurrentUser();}
 //    public UserDTO   createAvatar(Integer userid, InputStream stream) throws IOException {return    userDAO.createAvatar(userid, stream);}
