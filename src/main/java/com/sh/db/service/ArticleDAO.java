@@ -20,7 +20,6 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.dao.DataAccessResourceFailureException;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -67,7 +66,7 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
      * @return  list of Article
      */
     public List<ArticleDTO> getLastArticle(Integer projId, Integer start, Integer count, Integer status, Integer artictype , String order )  {
-        return   getLastArticle(projId, start, count, status, artictype, order, null, null, null, null);
+        return   getLastArticle(projId, start, count, status, artictype, order, null, null, null, null) ;
     }
 
     /**
@@ -90,22 +89,27 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
         return articleDTOList;
     }
 
-    private Criteria addArticleCriteriaRestrictions(Criteria cr, Integer projId, Integer artictype, Integer catId, ForumDTO forumDTO , Integer status , Integer userid , Integer performerid ){
-
+    private Criteria addArticleCriteriaRestrictions(Criteria cr, final Integer projId, Integer artictype, Integer catId, ForumDTO forumDTO , Integer status , Integer userid , Integer performerid ){
         cr.add(Restrictions.sqlRestriction("projid= " + projId));
         cr.add(Restrictions.sqlRestriction("deleted=false"));
         if (artictype != null  && artictype>0){ cr.add(Restrictions.sqlRestriction("type="+ artictype));  }
 
-        if(catId != null && catId>0){ cr.add(Restrictions.sqlRestriction("catid= " +  catId));  }
+        if (catId != null && catId > 0)
+            {cr.add(Restrictions.sqlRestriction("catid= " +  catId));
+            }
 
-        if (userid != null && (userid>0)) {cr.add(Restrictions.sqlRestriction("userid= " +  userid));}
-        if (performerid != null && (performerid>0)) {cr.add(Restrictions.sqlRestriction("assigneduser= " +  performerid));}
+        if (userid != null && (userid > 0)) {
+            cr.add(Restrictions.sqlRestriction("userid= " +  userid));
+        }
+        if (performerid != null && (performerid > 0)) {
+            cr.add(Restrictions.sqlRestriction("assigneduser= " +  performerid));
+        }
 
-        if( forumDTO!= null){
-            cr.add(Restrictions.sqlRestriction("forumid= " + forumDTO.getId() ) );
-            if(forumDTO.getType().equals(ForumType.HelpDesk)){
-                UserDTO userDTO= getCurrentLoggedUser();
-                cr.add(Restrictions.sqlRestriction("userid= " + (userDTO== null? -1: userDTO.getId()) ));
+        if (forumDTO != null) {
+            cr.add(Restrictions.sqlRestriction("forumid= " + forumDTO.getId()));
+            if (forumDTO.getType().equals(ForumType.HelpDesk)) {
+                UserDTO userDTO=getCurrentLoggedUser();
+                cr.add(Restrictions.sqlRestriction("userid= " + (userDTO == null?-1:userDTO.getId()) ));
             }
         }
 

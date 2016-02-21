@@ -74,4 +74,5 @@
     </div><!--/end container-->
     </div>
 </div>
-<g:render template="/layouts/login" />
+
+<g:render template="/modal/loginModal" />

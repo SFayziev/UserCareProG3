@@ -461,10 +461,16 @@ $.ajaxSetup({
 });
 
 function showLogin() {
-    var ajaxLogin = $('#ajaxLogin');
-    ajaxLogin.css('text-align','center');
+    //var ajaxLogin = $('#ajaxLogin');
+    //ajaxLogin.css('text-align','center');
     // use jqModal to show and align login panel
     //ajaxLogin.jqmShow();
+
+    var modal =$("#loginInModal");
+    modal.removeData('bs.modal');
+    modal.modal({remote: '/article/deleteAssignTags/'+forumid +"/"+articid +"/?tag=" + tagid });
+    modal.modal('show');
+    return false;
 }
 
 //function cancelLogin() {
