@@ -48,7 +48,7 @@
                     </sec:ifLoggedIn>
                     <sec:ifNotLoggedIn>
                         <li>
-                            <a href ="#" data-toggle="modal" data-target="#responsive"><i class="fa fa-lock"></i> <g:message code="user.signin" /> </a> /
+                            <a href ="#"  onclick="showLogin();"><i class="fa fa-lock"></i> <g:message code="user.signin" /> </a> /
                             <g:link controller="user" action="signup"> <g:message code="user.signout" /> </g:link>
                         </li>
                     </sec:ifNotLoggedIn>
@@ -74,5 +74,3 @@
     </div><!--/end container-->
     </div>
 </div>
-
-<g:render template="/modal/loginModal" />

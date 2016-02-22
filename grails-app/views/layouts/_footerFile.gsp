@@ -14,3 +14,4 @@
 <asset:javascript src="default.js"/>
 %{--<link  rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">--}%
 <asset:stylesheet  href="font-awesome.min.css"/>
+<g:render template="/modal/ucModal"/>
