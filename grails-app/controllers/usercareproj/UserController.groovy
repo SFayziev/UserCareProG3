@@ -68,6 +68,18 @@ class UserController {
 
     }
 
+    def loginIn(){
+        render template:"/modal/loginModal"
+//        def contents = g.render(template:"/modal/loginModal" )
+//        JSONObject resultJson = new JSONObject();
+//        resultJson.put("status","success");
+//        resultJson.put("value", contents)
+//        response.contentType = "application/json; charset=UTF-8"
+//        render   resultJson.toString()
+
+
+    }
+
     @Secured(["isAuthenticated()"])
     def profile(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())

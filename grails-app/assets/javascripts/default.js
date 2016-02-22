@@ -466,9 +466,9 @@ function showLogin() {
     // use jqModal to show and align login panel
     //ajaxLogin.jqmShow();
 
-    var modal =$("#loginInModal");
-    modal.removeData('bs.modal');
-    modal.modal({remote: '/article/deleteAssignTags/'+forumid +"/"+articid +"/?tag=" + tagid });
+    var modal =$("#ucmodal");
+    //modal.removeData('bs.modal');
+    modal.modal({remote: '/user/loginIn/' });
     modal.modal('show');
     return false;
 }
