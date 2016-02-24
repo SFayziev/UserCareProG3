@@ -27,7 +27,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn-u btn-u-default" data-dismiss="modal">Close</button>
-                <button class="btn-u btn-primary" type="submit" id="authAjax"><i class="fa fa-lock"></i> Log In</button>
+                <button class="btn-u btn-primary" type="submit" onclick="authAjax(); return false"><i class="fa fa-lock"></i> Log In</button>
             </div>
             <div class="row"><g:render template="/layouts/errorMessage" /></div>
         </div>
