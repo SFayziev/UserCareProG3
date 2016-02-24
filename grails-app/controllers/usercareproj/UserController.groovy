@@ -68,7 +68,7 @@ class UserController {
 
     }
 
-    def loginIn(){
+    def login(){
         render template:"/modal/loginModal"
 //        def contents = g.render(template:"/modal/loginModal" )
 //        JSONObject resultJson = new JSONObject();

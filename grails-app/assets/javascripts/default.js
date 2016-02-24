@@ -467,8 +467,8 @@ function showLogin() {
     //ajaxLogin.jqmShow();
 
     var modal =$("#ucmodal");
-    //modal.removeData('bs.modal');
-    modal.modal({remote: '/user/loginIn/' });
+    modal.removeData('bs.modal');
+    modal.modal({remote: '/user/login/' });
     modal.modal('show');
     return false;
 }
