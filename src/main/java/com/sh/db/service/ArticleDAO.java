@@ -108,16 +108,15 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
         if (forumDTO != null) {
             cr.add(Restrictions.sqlRestriction("forumid= " + forumDTO.getId()));
             if (forumDTO.getType().equals(ForumType.HelpDesk)) {
-                UserDTO userDTO=getCurrentLoggedUser();
+                UserDTO userDTO = getCurrentLoggedUser();
                 cr.add(Restrictions.sqlRestriction("userid= " + (userDTO == null?-1:userDTO.getId()) ));
             }
         }
 
-        if(status!= null && status>-1 ) {
-            if (status==0){
+        if (status != null && status > -1) {
+            if (status == 0) {
                 cr.add(Restrictions.sqlRestriction(" (status=0 || status is null)"));
-            }
-            else{
+            } else {
                 cr.add(Restrictions.sqlRestriction("status="+ status));
             }
         }
@@ -480,6 +479,7 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
                 .setParameter("articid", articid).setParameter("tagid", tagid)
                 .executeUpdate();
     }
+
     public void addTagtoArticle(Integer projid,  Integer articid, Integer tagid){
         try {
             ArticleDTO articleDTO= getArticle(projid, articid);
@@ -501,8 +501,8 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
 
 
     public List<ArticleDTO> findTextInArticle(Integer projid , String searchText, Integer forumid, ForumType forumType , Integer count, String order ){
-        if (count== null || count==0) {count=5;}
-        if (searchText==null || searchText.length()<3 ) return null;
+        if (count == null || count == 0) count = 5;
+        if (searchText == null || searchText.length()<3 ) return null;
         SearchField searchField= new SearchField(searchText);
         if (searchField.getTextForSearch().length()<3 ) return null;
         Criteria criteria= getArticleCriteria(projid, 0, count, null,null,null, null, null, null, null);
@@ -525,8 +525,8 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
     }
 
     @Cacheable( value = "articleDTO" )
-    public List<ArticleDTO> getArticleList(ProjectDTO project, ForumDTO forumDTO, HashMap params) {
-        Integer offset= stringToInt(params.getOrDefault("offset", -1));
+    public final List<ArticleDTO> getArticleList(final ProjectDTO project, final ForumDTO forumDTO, final HashMap params) {
+        Integer offset= stringToInt( params.getOrDefault("offset", -1));
         Integer count= stringToInt(params.getOrDefault("count", 0));
         Integer status= stringToInt(params.getOrDefault("status", -1));
         Integer type= stringToInt(params.getOrDefault("type", -1));
