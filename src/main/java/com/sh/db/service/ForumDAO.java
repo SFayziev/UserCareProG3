@@ -76,7 +76,7 @@ public class ForumDAO extends GenericDaoImpl<ForumDTO> {
 //        if (status>=0) {cr.add(Restrictions.eq("enable", status == 1));}
 //        return  cr.list();
         String sqlstatus="";
-        if (status>=0) { sqlstatus=( status==1)?" ft.enable=true and": " ft.enable=false and"; }
+        if (status >= 0) { sqlstatus=( status==1)?" ft.enable=true and": " ft.enable=false and"; }
 
         String sql="from ForumTypeDTO  as ft where ft.forumid=:forumid and "+ sqlstatus +"  ft.forumid in (select  id from ForumDTO as fd where fd.projectDTO.id=:projid ) order by ft.articleTypeDTO.ttype, ft.pos" ;
 
@@ -87,9 +87,9 @@ public class ForumDAO extends GenericDaoImpl<ForumDTO> {
     }
 
     @Cacheable( value = "forumTypeDTO" )
-    public ForumTypeDTO getForumTypeByid(Integer projid,  Integer id  ){
+    public ForumTypeDTO getForumTypeByid(Integer projid,  Integer id  ) {
 
-        ForumTypeDTO forumTypeDTO= (ForumTypeDTO) getSessionFactory().getCurrentSession().createQuery("from ForumTypeDTO  as ft where  ft.id=:id and    ft.forumid in (select  id from ForumDTO as fd where fd.projectDTO.id=:projid )")
+        ForumTypeDTO forumTypeDTO = (ForumTypeDTO) getSessionFactory().getCurrentSession().createQuery("from ForumTypeDTO  as ft where  ft.id=:id and    ft.forumid in (select  id from ForumDTO as fd where fd.projectDTO.id=:projid )")
                 .setParameter("projid", projid)
 //                .setParameter("forumid", forumid)
                 .setParameter("id", id)
@@ -97,7 +97,7 @@ public class ForumDAO extends GenericDaoImpl<ForumDTO> {
         return  forumTypeDTO;
     }
 
-    @Cacheable( value = "forumStatusDTO" )
+    @Cacheable ( value = "forumStatusDTO" )
     public ForumStatusDTO getForumStatusByid(Integer projid,  Integer id, Boolean forcache   ){
         return  (ForumStatusDTO) getSessionFactory().getCurrentSession().createQuery("from ForumStatusDTO  as fs where  fs.id=:id and  fs.forumid in (select  id from ForumDTO as fd where fd.projectDTO.id=:projid )")
                 .setParameter("projid", projid)

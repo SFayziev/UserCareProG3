@@ -38,9 +38,9 @@
 <div class="btn-group">
     <button type="button" class="btn btn-u btn-u-blue">
         <g:if test="${catalogParams?.status>0}">
-            <g:each in="${articleStatuses}" var="articleStatus" >
-                <g:if test="${catalogParams?.status==articleStatus?.id}">
-                    <locale:message  proj="${project}" code="article.status.name.${articleStatus?.id}" default="${articleStatus?.name}" />
+            <g:each in="${forumStatuses}" var="forumStatus" >
+                <g:if test="${catalogParams?.status==forumStatus.articleStatusDTO?.id}">
+                    <locale:message  proj="${project}" code="article.status.name.${forumStatus.articleStatusDTO?.id}" default="${forumStatus.articleStatusDTO?.name}" />
                 </g:if>
             </g:each>
         </g:if>
@@ -54,9 +54,9 @@
     </button>
     <ul class="dropdown-menu" role="menu">
         <li><a href="#" onclick="setArticleListStatus(${module?.id}, -1)"> All <span class="badge  badge-blue rounded-x">${pageCount?.getCountByStatus(-1 )}</span></a></li>
-        <li><a href="#" onclick="setArticleListStatus(${module?.id},0)"> New <span class="badge  badge-blue rounded-x">${pageCount?.getCountByStatus(0 )}</span></a></li>
-        <g:each in="${articleStatuses}" var="articleStatus" >
-            <li><a   data-action="listByStatus" data-status-value="${articleStatus?.id}" onclick="setArticleListStatus(${module?.id}, ${articleStatus?.id})"> <locale:message  proj="${project}" code="article.status.name.${articleStatus?.id}" default="${articleStatus?.name}" />  <span class="badge badge-blue rounded-x">${pageCount?.getCountByStatus(articleStatus?.id )}</span></a></li>
+        %{--<li><a href="#" onclick="setArticleListStatus(${module?.id},0)"> New <span class="badge  badge-blue rounded-x">${pageCount?.getCountByStatus(0 )}</span></a></li>--}%
+        <g:each in="${forumStatuses}" var="forumStatus" >
+            <li><a   data-action="listByStatus" data-status-value="${forumStatus.articleStatusDTO?.id}" onclick="setArticleListStatus(${module?.id}, ${forumStatus.articleStatusDTO?.id})"> <locale:message  proj="${project}" code="article.status.name.${forumStatus.articleStatusDTO?.id}" default="${forumStatus.articleStatusDTO?.name}" />  <span class="badge badge-blue rounded-x">${pageCount?.getCountByStatus(forumStatus.articleStatusDTO?.id )}</span></a></li>
         </g:each>
     </ul>
 </div>

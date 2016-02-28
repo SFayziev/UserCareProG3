@@ -35,7 +35,7 @@ class ModulesTagLib {
             }
             params.maxRecords = module.params.maxRecords != null ? module.params.maxRecords.value : recordsInPage;
             params.forumTypes=webServicesSession.getForumTypeByForumid(params.project.id , params.forum.id,1 )
-            params.articleStatuses=webServicesSession.getArticleStatusByForumId(params.project.id , params.forum.id )
+            params.forumStatuses=webServicesSession.getForumStatusByForumId(params.project.id , params.forum.id )
             def articleListParams = [count: params.maxRecords, offset: params.params.offset, type: params.params.int('type'), status: params.params.int('status'), order: params.params.order, performerid: params.params.int('filter_performer_id',0), userid :params.params.int('filter_user_id',0)]
             articleListParams.catid=params.params.int('category',0)
             if (articleListParams.catid>0){
@@ -131,7 +131,7 @@ class ModulesTagLib {
 
     def articleControlePanel = { attrs ->
         def params = attrs.params
-        params.articleStatuses=webServicesSession.getArticleStatusByForumId(params.project.id , params.forum.id )
+        params.forumStatuses=webServicesSession.getForumStatusByForumId(params.project.id , params.forum.id )
         params.tags=webServicesSession.getTagsByForumId(params.forum.id)
         params.categorys=webServicesSession.getCategoryByForumId(params.project.id , params.forum.id )
         params.staffs = webServicesSession.getProjectStaffs(attrs.params.project.id, 0)

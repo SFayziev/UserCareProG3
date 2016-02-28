@@ -70,7 +70,7 @@ function  setArticleListType(moduleid, type){
 }
 function  setArticleListStatus(moduleid, status){
     getArticleList(moduleid, status,-2, -2, -2)
-    return false
+    return false;
 }
 
 function setArticlePageTo(){
