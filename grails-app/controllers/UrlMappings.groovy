@@ -23,6 +23,8 @@ class UrlMappings {
         "/file/$action?/$id?(.$format)?"(controller: "file")
         "/forum/$action?/$id?(.$format)?"(controller: "forum")
         "/user/$action?/$id?(.$format)?"(controller: "user")
+        "/team"(controller: "user", action: "team")
+
         "/messaging/$action?/$id?(.$format)?"(controller: "messaging")
 
         "/"(controller: "index")

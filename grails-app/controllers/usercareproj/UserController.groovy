@@ -165,6 +165,11 @@ class UserController {
         }
     }
 
+
+    def team(){
+
+    }
+
     @Secured(["isAuthenticated()"])
     def notification(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())

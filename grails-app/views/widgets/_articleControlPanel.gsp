@@ -7,9 +7,9 @@
             <li class="list-group-item  list-toggle">
                 <a  class="accordion-toggle" href="#collapse-status" data-toggle="collapse"><i class="fa fa-exchange"></i> <g:message code="article.action.change.status"/></a>
             <ul id="collapse-status" class="collapse">
-                <g:each in="${articleStatuses}" var="articleStatus">
-                    <li><a  href="#" data-content="${article.id}" data-action="articleChangeStatus" data-status-value="${articleStatus?.id}"  data-forumid="${article.forumDTO.id}">
-                        <locale:message  proj="${project}" code="article.status.name.${articleStatus?.id}" default="${articleStatus?.name}" /></a></li>
+                <g:each in="${forumStatuses}" var="forumStatus">
+                    <li><a  href="#" data-content="${article.id}" data-action="articleChangeStatus" data-status-value="${forumStatus.articleStatusDTO?.id}"  data-forumid="${article.forumDTO.id}">
+                        <locale:message  proj="${project}" code="article.status.name.${forumStatus.articleStatusDTO?.id}" default="${forumStatus.articleStatusDTO?.name}" /></a></li>
                 </g:each>
             </ul>
             </li>

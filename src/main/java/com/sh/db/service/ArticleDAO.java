@@ -144,9 +144,9 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
 
     @Cacheable( value = "itemCount" )
     @Transactional
-    public ItemCount getLastArticleRecCount(Integer projId,  Integer status, Integer artictype ,  Integer catId , ForumDTO  forumDTO , Integer userid, Integer performerid){
-        Criteria cr = getSessionFactory().getCurrentSession() .createCriteria(ItemStatDTO.class);
-        cr= addArticleCriteriaRestrictions(cr, projId, 0,catId, forumDTO, -1,userid, performerid );
+    public ItemCount getLastArticleRecCount(Integer projId,  Integer status, Integer artictype ,  Integer catId , ForumDTO  forumDTO , Integer userid, Integer performerid)
+    {   Criteria cr = getSessionFactory().getCurrentSession() .createCriteria(ItemStatDTO.class);
+        cr = addArticleCriteriaRestrictions(cr, projId, 0, catId, forumDTO, -1, userid, performerid);
 //        cr.add(Restrictions.isNotNull("status"));
 
         cr.setProjection(Projections.projectionList().add(Projections.groupProperty("status"), "status")
@@ -154,7 +154,7 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
                         .add(Projections.rowCount(), "count")
         );
 
-        ItemCount itemCount=new ItemCount();
+        ItemCount itemCount = new ItemCount();
         itemCount.setSeltectedArticleType(artictype);
         itemCount.setSeltectedArticleStatus(status);
 
@@ -172,13 +172,15 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
      * @param id Article id
      * @return
      */
-    public  ArticleDTO getArticle(Integer projId ,  Integer id){
+    public  ArticleDTO getArticle( Integer projId,  Integer id) {
         Criteria cr = getSessionFactory().getCurrentSession().createCriteria(ArticleDTO.class);
         cr.add(Restrictions.eq("projid", projId));
         cr.add(Restrictions.ne("deleted", true));
         cr.add(Restrictions.eq("id", id));
         ArticleDTO articleDTO = (ArticleDTO) cr.uniqueResult();
-        if (articleDTO!= null){statisticDAO.increaseArticleViews(articleDTO);}
+        if (articleDTO != null){
+            statisticDAO.increaseArticleViews(articleDTO);
+        }
         return  articleDTO;
     }
 
@@ -191,7 +193,7 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
      * @return
      */
     @Transactional
-    public CommentDTO saveArticleComment(CommentDTO commentDTO){
+    public CommentDTO saveArticleComment( CommentDTO commentDTO){
         Integer articid= commentDTO.getArticleDTO().getId();
         CommentDTO parentDTO;
         if (commentDTO.getId()== null && (commentDTO.getParentid()!= null) && commentDTO.getParentid()>0){
@@ -201,7 +203,7 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
             while (parentDTO!= null && i<8){
                 commentDTO.setParentid(parentDTO.getId());
                 i++;
-                if (parentDTO.getParentid()==null){
+                if (parentDTO.getParentid() == null){
                     parentDTO=null;
                 }
                 else {
@@ -213,8 +215,8 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
         commentDTO.setUserDTO(getCurrentLoggedUser());
         commentDTO.getArticleDTO().setUpdatedUserDTO(getCurrentLoggedUser());
 
-        if (Objects.equals(commentDTO.getText(), "") && (commentDTO.getStatusDTO()== null  || Objects.equals(commentDTO.getStatusDTO().getId(), commentDTO.getArticleDTO().getStatusDTO().getId()))){ return  null;};
-        if ( commentDTO.getStatusDTO()!= null && !Objects.equals(commentDTO.getStatusDTO().getId(), commentDTO.getArticleDTO().getStatusDTO().getId())){
+        if (Objects.equals(commentDTO.getText(), "") && (commentDTO.getStatusDTO() == null  || Objects.equals(commentDTO.getStatusDTO().getId(), commentDTO.getArticleDTO().getStatusDTO().getId()))){ return  null;};
+        if (commentDTO.getStatusDTO() != null && !Objects.equals(commentDTO.getStatusDTO().getId(), commentDTO.getArticleDTO().getStatusDTO().getId())){
            commentDTO.getArticleDTO().setStatusDTO(commentDTO.getStatusDTO());
 
         }
@@ -223,16 +225,16 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
 
         if (commentDTO.getId() == null) {commentDTO.getArticleDTO().commentsPlus();}
 
-        Integer id=commentDTO.getId();
+        Integer id = commentDTO.getId();
         currentSession().saveOrUpdate(commentDTO);
         currentSession().flush();
         if (commentDTO.getAnswer())  {
             commentDTO.getArticleDTO().setAnswerCommentid(commentDTO.getId());
             clearProjectAnswer(articid);
         }
-        if (id== null){
+        if (id == null){
             statisticDAO.increaseArticleComments(commentDTO.getArticleDTO());
-            if (commentDTO.getStatusDTO()== null) {
+            if (commentDTO.getStatusDTO() == null) {
                 topicListener.sendCommentAmqpCommand(AmqpConstants.COMMNETCREATED, commentDTO.getArticleDTO().getProjid(), commentDTO.getArticleDTO().getForumDTO().getId(), commentDTO.getArticleDTO().getId(),  commentDTO.getId());
             }
             else {
@@ -244,7 +246,7 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
 
     @Transactional
     public void delArticleComment(Integer  commid){
-        CommentDTO commentDTO= getCommentbyId(commid);
+        CommentDTO commentDTO = getCommentbyId(commid);
         ArticleDTO articleDTO = commentDTO.getArticleDTO();
       this.save(articleDTO);
         currentSession().createQuery("delete from CommentVoteDTO  cv where cv.commentid=:commentid ")
