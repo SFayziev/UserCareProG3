@@ -2,7 +2,7 @@ package usercareproj
 
 
 import com.sh.db.map.UserDTO
-
+import com.sh.utils.ModuleDisplay
 import grails.plugin.springsecurity.annotation.Secured
 import org.grails.web.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value
@@ -167,7 +167,12 @@ class UserController {
 
 
     def team(){
-
+        def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
+        def defaultForum= webServicesSession.getForumById(project.id, params.int("id", project.getDefaultforum() ))
+        def model =[project: project, defaultForum:defaultForum]
+        if (defaultForum==null)   response.sendError(HttpServletResponse.SC_NOT_FOUND);
+        model.modulPos=webServicesSession.getModuleBydisplaypos(project.id, 0 ,  defaultForum.id , ModuleDisplay.Dashboard )
+        render view: "team", model: model
     }
 
     @Secured(["isAuthenticated()"])
