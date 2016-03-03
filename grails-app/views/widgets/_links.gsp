@@ -15,7 +15,7 @@
         <li>
             <i class="fa fa-fw fa-group" ></i>
 
-            <a href="">Наша команда</a>
+            <a href="/team">Наша команда</a>
         </li>
     </ul>
 </div>

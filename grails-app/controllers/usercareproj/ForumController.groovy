@@ -70,7 +70,7 @@ class ForumController {
         if (defaultForum==null)   response.sendError(HttpServletResponse.SC_NOT_FOUND);
 
         model.modulPos=webServicesSession.getModuleBydisplaypos(project.id, 0 ,  defaultForum.id , ModuleDisplay.Dashboard )
-        model.project=project;
+//        model.project=project;
 
         render view: '/index' , model: model
     }
