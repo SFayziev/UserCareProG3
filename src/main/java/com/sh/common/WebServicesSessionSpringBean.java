@@ -119,7 +119,7 @@ public class WebServicesSessionSpringBean {
     public UserPermissionsDTO saveUserPermission(UserPermissionsDTO userPermissionsDTO) throws Exception {return  userDAO.saveUserPermission(userPermissionsDTO);}
     public void  deleteUserPermission(UserPermissionsDTO userPermissionsDTO) throws Exception { userDAO.deleteUserPermission(userPermissionsDTO);}
     public UserPermissionsDTO getUserPermission(Integer projid, Integer userid ) { return  userDAO.getUserPermission( projid, userid); }
-    public List<UserDTO> getUsersList(Integer projId, Integer type, Integer status, String username , String email ) {return  userDAO.getUsersList(projId, type, status, username, email);}
+    public List<UserDTO> getUsersList(Integer projId, Integer type, Integer status, String username , String email , Integer  start, Integer limit, String order ){ return  userDAO.getUsersList(projId, type, status, username, email, start, limit, order);}
     public UserDTO createAgentUser(Integer projid,  String email){return  userDAO.createAgentUser(projid, email);}
 
     public ArticleDTO assignArticle (Integer articid, Integer assignedUserId ){return articleDAO.assignArticTo(articid, assignedUserId); }
