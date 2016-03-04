@@ -172,7 +172,7 @@ class UserController {
         def model =[project: project, defaultForum:defaultForum]
         if (defaultForum==null)   response.sendError(HttpServletResponse.SC_NOT_FOUND);
         model.modulPos=webServicesSession.getModuleBydisplaypos(project.id, 0 ,  defaultForum.id , ModuleDisplay.Dashboard )
-        render view: "team", model: model
+        render view: "team/team", model: model
     }
 
     @Secured(["isAuthenticated()"])

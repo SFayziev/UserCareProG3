@@ -11,6 +11,7 @@ import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Disjunction;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,6 +28,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 /**
@@ -153,7 +155,7 @@ public class UserDAO extends GenericDaoImpl<UserDTO> {
     }
 
     @Cacheable( value = "userDTO" )
-    public List<UserDTO> getUsersList(Integer projId, Integer type, Integer status, String username , String email ){
+    public List<UserDTO> getUsersList(Integer projId, Integer type, Integer status, String username , String email , Integer  start, Integer limit, String order ){
         Criteria criteria = currentSession()
                 .createCriteria(UserDTO.class);
         criteria.add(Restrictions.eq("projid", projId));
@@ -166,8 +168,17 @@ public class UserDAO extends GenericDaoImpl<UserDTO> {
         }
         if (username!= null && !username.isEmpty()) criteria.add(Restrictions.like("name", "%"+username.trim()+"%" ));
         if (email!= null && !email.isEmpty()) criteria.add(Restrictions.like("email", "%"+email.trim()+"%" ));
+        if (limit!= null && limit>0) criteria.setMaxResults(limit);
+        if(start!= null) criteria.setFirstResult(start);
+
+        if(Objects.equals(order, "bycomment")) { criteria.addOrder(Order.desc("comments"));}
+        else if(Objects.equals(order, "byraitings")) {criteria.addOrder(Order.desc("raitings")); }
+        else if(Objects.equals(order, "regdate")) { criteria.addOrder(Order.desc("regdate")); }
+
         return  criteria.list();
     }
+
+
 
     @Cacheable( value = "userDTO" )
     public UserDTO getCurrentUser(){
@@ -192,4 +203,6 @@ public class UserDAO extends GenericDaoImpl<UserDTO> {
 
 
     }
+
+
 }

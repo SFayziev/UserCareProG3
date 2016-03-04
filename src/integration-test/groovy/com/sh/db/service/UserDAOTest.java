@@ -21,7 +21,6 @@ public class UserDAOTest extends IntegrationTest{
     }
 
     @Test
-
     public void getUserpermission() throws Exception {
         UserDTO userDTO= userDAO.getProjectUserByUsername(2, "admin");
         userDTO.setPosition("admin");
@@ -33,16 +32,34 @@ public class UserDAOTest extends IntegrationTest{
     }
 
     @Test
-    @Rollback(false)
     public void getUserList() throws Exception {
-        for (UserDTO userDTO: userDAO.getUsersList(2,null, null , null, "sh")){
-            System.out.println( userDTO);
-        }
+        userDAO.getUsersList(2, null, null, null, "sh", 0, 0, "").forEach(System.out::println);
     }
+
     @Test
-    @Rollback(false)
+    public void getUserListByregDate() throws Exception {
+        System.out.println("User order by registration Date ");
+        userDAO.getUsersList(2, null, null, null, null , 0, 0, "regdate").forEach(System.out::println);
+    }
+
+    @Test
+    public void getUserListBycomments() throws Exception {
+        System.out.println("User order by comments ");
+        userDAO.getUsersList(2, null, null, null, null, 0, 0, "bycomment").forEach(System.out::println);
+    }
+
+
+    @Test
+    public void getUserListbyReitng() throws Exception {
+        System.out.println("User order by raitings  ");
+        userDAO.getUsersList(2, null, null, null, null, 0, 0, "byraitings").forEach(System.out::println);
+    }
+
+
+    @Test
+
     public void createUserAgent(){
-        userDAO.createAgentUser(2, "fshuhrat@mail.ru");
+        userDAO.createAgentUser(2, "sfshuhrat@mail.ru");
 
 
     }
