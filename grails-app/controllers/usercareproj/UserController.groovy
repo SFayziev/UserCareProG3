@@ -172,6 +172,11 @@ class UserController {
         def model =[project: project, defaultForum:defaultForum]
         if (defaultForum==null)   response.sendError(HttpServletResponse.SC_NOT_FOUND);
         model.modulPos=webServicesSession.getModuleBydisplaypos(project.id, 0 ,  defaultForum.id , ModuleDisplay.Dashboard )
+        model.usersOurStaff=webServicesSession.getProjectStaffs(project.id, 0 )
+        model.usersTopContributors=webServicesSession.getUsersList(project.id,null, null, null, null,0,10,"byraitings" )
+        model.usersTopCommenters=webServicesSession.getUsersList(project.id,null, null, null, null,0,10,"comments" )
+        model.usersNewFace=webServicesSession.getUsersList(project.id,null, null, null, null,0,10,"regdate" )
+
         render view: "team/team", model: model
     }
 
