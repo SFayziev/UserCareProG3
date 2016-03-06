@@ -9,7 +9,5 @@
         </div>
     </g:if>
     <g:pageProperty name="page.moduleContent"/>
-
     <g:if test="${customize}"><div class="overDiv" ></div></g:if>
 </div>
-
