@@ -2149,6 +2149,14 @@ img.avatar  {
     margin-right: 10px;
 }
 
+img.avatar2x  {
+    float: left;
+    width: 65px;
+    height: 65px;
+    margin-right: 10px;
+}
+
+
 .level0 {
     padding-left: 0;
 }
