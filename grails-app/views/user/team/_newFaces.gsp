@@ -4,8 +4,7 @@
     </div>
 
     <g:each in="${usersNewFace}" var="userDTO">
-        <g:render template="/user/popoverinfo" model="${[userDTO: userDTO]}" />
+        <g:render template="/user/team/topContributorsUserInfo" model="${[userDTO: userDTO, shownewface:true ]}" />
     </g:each>
-
 
 </div>

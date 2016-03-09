@@ -2151,9 +2151,9 @@ img.avatar  {
 
 img.avatar2x  {
     float: left;
-    width: 65px;
-    height: 65px;
-    margin-right: 10px;
+    width: 55px;
+    height: 55px;
+    margin: 5px;
 }
 
 
