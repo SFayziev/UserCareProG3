@@ -167,6 +167,7 @@ public class ArticleDTO extends IntEntity{
 
     @ManyToOne(fetch = FetchType.LAZY , cascade = CascadeType.MERGE )
     @JoinColumn(name = "type")
+    @NotFound(action = NotFoundAction.IGNORE)
     private ForumTypeDTO  type;
 
     public ForumTypeDTO getType() {

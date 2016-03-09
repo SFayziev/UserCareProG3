@@ -128,10 +128,12 @@ public class CommentDTO extends IntEntity  {
 
     @ManyToOne(fetch = FetchType.LAZY , cascade = CascadeType.MERGE )
     @JoinColumn(name = "articid")
+    @NotFound(action = NotFoundAction.IGNORE)
     private ArticleDTO articleDTO;
 
     @ManyToOne(fetch = FetchType.LAZY , cascade = CascadeType.MERGE )
     @JoinColumn(name = "userid")
+    @NotFound(action = NotFoundAction.IGNORE)
     private UserDTO userDTO;
 
 

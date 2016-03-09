@@ -1,4 +1,4 @@
-<div class="row" >
+<div class="row no-margin" >
     <g:render template="/article/userImage2x" model="${[userDTO: userDTO]}"  />
     <div class="media-body">
         <h4 class="media-heading">

@@ -33,14 +33,7 @@
                         <i class="fa fa-globe"></i>
                         <g:set var="lang" value="${RequestContextUtils.getLocale(request).displayLanguage}"/>
                         <a>${lang }</a>
-                        <ul class="languages hoverSelectorBlock">
-                            <li <g:if test="${lang=='English'}">class="active"</g:if> >
-                                <a href="?lang=en">English</a>
-                            </li>
-                            <li <g:if test="${lang=='Spanish'}">class="active"</g:if> ><a href="?lang=es">Spanish</a></li>
-                            <li  <g:if test="${lang=='Russian'}">class="active"</g:if> ><a href="?lang=ru">Russian</a></li>
-                            <li  <g:if test="${lang=='German'}">class="active"</g:if>><a href="?lang=de">German</a></li>
-                        </ul>
+                        <project:selectActiveLangs params="${[project:project,lang:lang]}" />
                     </li>
                     <li class="topbar-devider"></li>
                     <sec:ifLoggedIn>

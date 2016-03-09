@@ -174,7 +174,7 @@ class UserController {
         model.modulPos=webServicesSession.getModuleBydisplaypos(project.id, 0 ,  defaultForum.id , ModuleDisplay.Dashboard )
         model.usersOurStaff=webServicesSession.getProjectStaffs(project.id, 0 )
         model.usersTopContributors=webServicesSession.getUsersList(project.id,null, null, null, null,0,10,"byraitings" )
-        model.usersTopCommenters=webServicesSession.getUsersList(project.id,null, null, null, null,0,10,"comments" )
+        model.usersTopCommenters=webServicesSession.getUsersList(project.id,null, null, null, null,0,10,"bycomment" )
         model.usersNewFace=webServicesSession.getUsersList(project.id,null, null, null, null,0,10,"regdate" )
 
         render view: "team/team", model: model
