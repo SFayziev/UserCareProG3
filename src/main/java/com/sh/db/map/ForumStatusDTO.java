@@ -34,6 +34,7 @@ public class ForumStatusDTO extends  IntEntity{
 
     }
 
+
     public void setPos(Integer pos) {
         this.pos = pos;
     }

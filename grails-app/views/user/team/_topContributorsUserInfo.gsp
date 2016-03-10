@@ -11,7 +11,7 @@
             <i class="fa fa-comments"></i> ${userDTO.comments}
         </g:if>
         <g:if test="${shownewface}">
-            <i class="fa fa-clock-o"></i> ${userDTO.raitings}
+            <i class="fa fa-clock-o"></i> <g:message code="${userDTO?.regdateAgo?.i18nvalue}"  args="${userDTO?.regdateAgo?.agovalue}" />
         </g:if>
     </div>
 </div>

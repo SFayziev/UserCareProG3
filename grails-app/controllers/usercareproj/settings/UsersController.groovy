@@ -11,7 +11,7 @@ class UsersController {
     def support(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         def model=[project:project]
-        model.users=webServicesSession.getUsersList(project.id, 1,null, null, null )
+        model.users=webServicesSession.getUsersList(project.id, 1,null, null, null , 0, 0, null )
         render view: '/settings/users/support', model: model
 
     }
@@ -120,7 +120,7 @@ class UsersController {
     def list(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         def model=[project:project]
-        model.users=webServicesSession.getUsersList(project.id, null, null, params.uname, params.email )
+        model.users=webServicesSession.getUsersList(project.id, null, null, params.uname, params.email, 0, 0, null )
         render view: '/settings/users/list' , model: model
     }
 }
