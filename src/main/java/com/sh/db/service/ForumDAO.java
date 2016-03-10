@@ -115,8 +115,7 @@ public class ForumDAO extends GenericDaoImpl<ForumDTO> {
 
     @Cacheable( value = "articleStatusDTO" )
     public List<ArticleStatusDTO> getArticleStatusByForumId(Integer projid,  Integer forumid  ){
-        return   getSessionFactory().getCurrentSession().createQuery("from ArticleStatusDTO  as asd where   (asd.forumid=:forumid or  asd.projid=:projid) order by asd.atype, asd.pos ")
-                .setParameter("projid", projid)
+        return   getSessionFactory().getCurrentSession().createQuery("from ArticleStatusDTO  as asd where   asd.id in (select fs.articleStatusDTO.id from ForumStatusDTO as fs where fs.forumid=:forumid ) order by asd.atype, asd.pos ")
                 .setParameter("forumid", forumid)
                 .list();
     }

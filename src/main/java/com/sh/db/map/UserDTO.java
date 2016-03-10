@@ -1,5 +1,6 @@
 package com.sh.db.map;
 
+import com.sh.utils.TimeAgo;
 import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.*;
@@ -28,6 +29,14 @@ public class UserDTO extends IntEntity {
     private Integer  articles;
     private String name;
     private  String position;
+
+    @Transient
+    private TimeAgo regdateAgo;
+
+    public TimeAgo getRegdateAgo() {
+        if (regdateAgo== null){  regdateAgo= new TimeAgo(regdate);}
+        return regdateAgo;
+    }
 
     public UserDTO(String email) {
         this.email = email;

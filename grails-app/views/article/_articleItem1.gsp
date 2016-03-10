@@ -36,7 +36,7 @@
         </div>
 
     <g:if test="${'full'== module?.params?.topicPresentation}">
-        <div class="clearfix margin-bottom-20"><p>${article?.text.encodeAsRaw() } </p></div>
+        <div class="clearfix margin-bottom-20"><p>${article?.text.encodeAsRaw()}</p></div>
 
         <modules:articleTags params="${[project: project, article: article]}" />
         <g:render template="/article/articleVoter" model="${[article: article]}" />
