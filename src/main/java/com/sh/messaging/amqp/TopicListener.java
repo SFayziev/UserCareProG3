@@ -40,36 +40,14 @@ import java.util.List;
  */
 
 @Component
-public class TopicListener  {
+public class TopicListener  extends MassageListenerImpl{
 
-    @Value("${domain.main.url}")
-    String domainUrl;
-
-    @Value("${domain.protocol}")
-    String domainProtocol;
-
-
-    @Value("${email.noreply.address}")
-    String emailNoreplay;
+    private static final Logger LOG = Logger.getLogger(TopicListener.class);
 
     String topicCreatedUrl="/messaging/topicCreated/";
     String topicUpdatedUrl="/messaging/topicUpdated/";
     String topicMergedUrl="/messaging/topicMerged/";
     String commentCreatedUrl="/messaging/commentCreated/";
-
-
-    @Autowired
-    private AmqpTemplate template;
-
-    private static final Logger LOG = Logger.getLogger(TopicListener.class);
-    @Autowired
-    NotificationsDAO notificationsDAO;
-
-    @Autowired
-    ProjectDAO projectDAO;
-
-    @Autowired
-    UserDAO userDAO;
 
     @Autowired
     ArticleDAO articleDAO;
@@ -90,7 +68,6 @@ public class TopicListener  {
             }
             Integer forumid=resultJson.getInt("forumid");
             Integer commentid=resultJson.getInt("commentid");
-            String fromEmail=emailNoreplay+ "@"+ projectDTO.getAlias()+"."+ domainUrl;
 
             Integer topicid=resultJson.getInt("topicid");
             ArticleDTO articleDTO=articleDAO.getArticle(projoid, topicid);
@@ -104,7 +81,7 @@ public class TopicListener  {
                 String emailContent=getEmailTemplate(commentCreatedUrl, projectDTO, commentid , notificationsForumDTO.getNotificationsDTO().getUserid() );
 
                 if (emailContent!= null){
-                    sendEmailtoAmqp(fromEmail, userDTO.getEmail(), subject , emailContent );
+                    sendEmailtoAmqp(getNoreplayEmailAddress(projectDTO), userDTO.getEmail(), subject , emailContent );
                 }
             }
         } catch (Exception e) {
@@ -125,7 +102,7 @@ public class TopicListener  {
             }
             Integer forumid=resultJson.getInt("forumid");
             Integer topicid=resultJson.getInt("topicid");
-            String fromEmail=emailNoreplay+ "@"+ projectDTO.getAlias()+"."+ domainUrl;
+
             ArticleDTO articleDTO=articleDAO.getArticle(projoid, topicid);
             ForumDTO forumDTO=forumDAO.getForumById(projoid, forumid );
             String subject = "[" + projectDTO.getName()+" / " + forumDTO.getName() +"  ]  " + articleDTO.getTitle() ;
@@ -136,7 +113,7 @@ public class TopicListener  {
                 String emailContent=getEmailTemplate(topicCreatedUrl, projectDTO, topicid, notificationsForumDTO.getNotificationsDTO().getUserid() );
 
                 if (emailContent!= null){
-                    sendEmailtoAmqp(fromEmail, userDTO.getEmail(), subject , emailContent );
+                    sendEmailtoAmqp(getNoreplayEmailAddress(projectDTO), userDTO.getEmail(), subject , emailContent );
                 }
             }
         } catch (Exception e) {
@@ -145,49 +122,8 @@ public class TopicListener  {
     }
 
 
-    private  String getEmailTemplate(String partUrl, ProjectDTO projectDTO, Integer contentcid,  Integer userid) throws IOException {
-        try (CloseableHttpClient httpClient = HttpClientBuilder.create().build()) {
-            List<NameValuePair> arguments = new ArrayList();
-            arguments.add(new BasicNameValuePair("charset", "utf-8"));
-            arguments.add(new BasicNameValuePair("userid", ""+userid));
-            arguments.add(new BasicNameValuePair("id", "" + contentcid));
-            HttpPost post = new HttpPost(domainProtocol+ "://" + projectDTO.getAlias() +"."+ domainUrl + partUrl) ;
-            post.addHeader("content-type", "application/x-www-form-urlencoded; charset=utf-8");
-            post.setEntity(new UrlEncodedFormEntity(arguments, "utf-8"));
-            // use httpClient (no need to close it explicitly)
 
-            HttpResponse response = null;
-            response  =httpClient.execute(post);
-            if (response.getStatusLine().getStatusCode()!=HttpStatus.SC_OK ){
-                LOG.error("get status " + response.getStatusLine().getStatusCode());
-                return null;
-            }
-            BufferedReader rd = new BufferedReader(
-                    new InputStreamReader(response.getEntity().getContent()));
 
-            StringBuffer result = new StringBuffer();
-            String line = "";
-            while ((line = rd.readLine()) != null) {
-                result.append(line);
-            }
-
-            return result.toString();
-
-        } catch (IOException e) {
-            LOG.error(e.getMessage());
-        }
-        return null;
-
-    }
-
-    private void sendEmailtoAmqp(String from , String to, String subject, String emailText  ){
-        JSONObject resultJson = new JSONObject();
-        resultJson.put("from",from);
-        resultJson.put("to",to);
-        resultJson.put("subject", subject);
-        resultJson.put("text", emailText );
-        template.convertAndSend("mail.send", resultJson.toString());
-    }
 
     public void onUpdated (String message) {
         try {
@@ -202,7 +138,7 @@ public class TopicListener  {
             Integer forumid=resultJson.getInt("forumid");
             Integer topicid=resultJson.getInt("topicid");
             Integer commentid=resultJson.getInt("commentid");
-            String fromEmail=emailNoreplay+ "@"+ projectDTO.getAlias()+"."+ domainUrl;
+
             ArticleDTO articleDTO=articleDAO.getArticle(projoid, topicid);
             ForumDTO forumDTO=forumDAO.getForumById(projoid, forumid);
             String subject = "[" + projectDTO.getName()+" / " + forumDTO.getName() +"  ]  " + articleDTO.getTitle() ;
@@ -213,7 +149,7 @@ public class TopicListener  {
                 String emailContent=getEmailTemplate(topicUpdatedUrl, projectDTO, commentid, notificationsForumDTO.getNotificationsDTO().getUserid() );
 
                 if (emailContent!= null){
-                    sendEmailtoAmqp(fromEmail, userDTO.getEmail(), subject , emailContent );
+                    sendEmailtoAmqp(getNoreplayEmailAddress(projectDTO), userDTO.getEmail(), subject , emailContent );
                 }
             }
         } catch (Exception e) {
@@ -233,7 +169,6 @@ public class TopicListener  {
             }
             Integer forumid=resultJson.getInt("forumid");
             Integer topicid=resultJson.getInt("topicid");
-            String fromEmail=emailNoreplay+ "@"+ projectDTO.getAlias()+"."+ domainUrl;
             ArticleDTO articleDTO=articleDAO.getArticle(projoid, topicid);
             ForumDTO forumDTO=forumDAO.getForumById(projoid, forumid);
             String subject = "[" + projectDTO.getName()+" / " + forumDTO.getName() +"  ]  " + articleDTO.getTitle() ;
@@ -244,7 +179,7 @@ public class TopicListener  {
                 String emailContent=getEmailTemplate(topicMergedUrl, projectDTO, topicid, notificationsForumDTO.getNotificationsDTO().getUserid() );
 
                 if (emailContent!= null){
-                    sendEmailtoAmqp(fromEmail, userDTO.getEmail(), subject , emailContent );
+                    sendEmailtoAmqp(getNoreplayEmailAddress(projectDTO), userDTO.getEmail(), subject , emailContent );
                 }
             }
         } catch (Exception e) {
@@ -252,22 +187,8 @@ public class TopicListener  {
         }
     }
 
-    public void sendTopicAmqpCommand(String command, Integer projid , Integer forumid, Integer topicid ){
-        template.convertAndSend(command, toJson(projid, forumid, topicid, null) );
-    }
 
-    public void sendCommentAmqpCommand(String command, Integer projid , Integer forumid, Integer topicid, Integer commentid ){
-        template.convertAndSend(command, toJson(projid, forumid, topicid, commentid) );
-    }
-    private String toJson(Integer projid , Integer forumid, Integer topicid, Integer commentid){
-        JSONObject resultJson = new JSONObject();
-        resultJson.put("projectid",projid);
-        resultJson.put("forumid",forumid);
-        resultJson.put("topicid",topicid);
-        if (commentid!=null)  resultJson.put("commentid",commentid);
-        return resultJson.toString();
-    }
-
+ 
 
 
 }

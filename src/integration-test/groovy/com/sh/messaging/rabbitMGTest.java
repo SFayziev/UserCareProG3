@@ -22,6 +22,7 @@ import java.util.Date;
 public class rabbitMGTest extends IntegrationTest {
 
     @Autowired private AmqpAdmin admin;
+
     @Autowired
     private AmqpTemplate template;
 
