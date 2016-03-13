@@ -20,15 +20,16 @@ public class UserDTO extends IntEntity {
     private String username;
     @NotNull
     private String  password;
-    private Date regdate= new Date();
-    private Integer status=1;
+    private Date regdate = new Date();
+    private Integer status = 1;
     private Integer  openid;
     private BigDecimal raitings;
-    private Date  lastlogin=new Date();
+    private Date  lastlogin = new Date();
     private Integer  comments;
     private Integer  articles;
     private String name;
-    private  String position;
+    private String position;
+    private String token;
 
     @Transient
     private TimeAgo regdateAgo;

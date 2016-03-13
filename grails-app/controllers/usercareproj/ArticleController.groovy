@@ -4,7 +4,10 @@ import com.sh.db.map.ArticleDTO
 import com.sh.utils.ForumType
 import com.sh.utils.ModuleDisplay
 import com.sh.utils.exception.N18iException
-import org.grails.web.json.JSONObject;
+import grails.plugin.springsecurity.annotation.Secured
+import org.grails.web.json.JSONObject
+
+import javax.servlet.http.HttpServletResponse;
 
 class ArticleController {
 
@@ -202,12 +205,17 @@ class ArticleController {
         }
 
     }
+
+    @Secured(["isAuthenticated()"])
     def edit(){
+
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         def id=params.getInt("id");
         def forumid=params.getInt("forumid");
         def forumTypes=webServicesSession.getForumTypeByForumid(project.id, forumid, 1 )
         def article = webServicesSession.getProjectArticle(project.id, id);
+//        response.sendError(HttpServletResponse.SC_UNAUTHORIZED );
+
         render template:"edit" , model: [project:project, article:article,forumid:forumid, forumTypes:forumTypes ]
     }
 
