@@ -508,16 +508,31 @@ function authAjax() {
     $.ajax(config);
 }
 
+function logout(event) {
+    event.preventDefault();
+    $.ajax({
+        url: $("#logout").attr("href"),
+        method: "POST",
+        success: function(data, textStatus, jqXHR) {
+            window.location = "/";
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log("Logout error, textStatus: " + textStatus +
+                ", errorThrown: " + errorThrown);
+        }
+    });
+}
 
+$("#logout").click(logout);
 $('#authAjax').click(authAjax);
 
-$.ajaxSetup({
-    error: function(xhr, status, err) {
-        if (xhr.status == 401) {
-            authAjax()
-        }
-    }
-    });
+//$.ajaxSetup({
+//    error: function(xhr, status, err) {
+//        if (xhr.status == 401) {
+//            authAjax()
+//        }
+//    }
+//    });
 
 
 
