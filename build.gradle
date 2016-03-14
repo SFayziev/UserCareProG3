@@ -5,6 +5,9 @@ buildscript {
     repositories {
         mavenLocal()
         maven { url "https://repo.grails.org/grails/core"}
+        maven { url "http://repository.codehaus.org"}
+        maven { url "http://download.java.net/maven/2/"}
+        maven { url "http://repository.jboss.com/maven2/"}
 //        maven { url "https://repo.grails.org/grails/core" }
     }
     dependencies {
@@ -44,6 +47,13 @@ repositories {
     maven { url "https://repo.grails.org/grails/core"
 
     }
+    maven { url "http://dl.bintray.com/bluesliverx/grails-plugins" }
+    maven  {url 'https://raw.github.com/fernandezpablo85/scribe-java/mvn-repo/'}
+//    maven { url "https://repo.grails.org/grails/core"}
+//    maven { url "http://repository.codehaus.org"}
+//    maven { url "http://download.java.net/maven/2/"}
+//    maven { url "http://repository.jboss.com/maven2/"}
+
 }
 
 dependencyManagement {
@@ -80,8 +90,9 @@ dependencies {
 
     runtime "org.grails.plugins:asset-pipeline"
     compile 'org.grails.plugins:spring-security-core:3.0.3'
-    compile 'org.springframework.security.oauth:spring-security-oauth2:2.0.8.RELEASE'
-
+//    compile "org.grails.plugins:spring-security-oauth2-provider:2.0-RC5"
+//    compile ':grails-oauth-scribe:3.0.0'
+    compile "org.grails.plugins:spring-security-oauth2-provider:3.0.0-RC1"
     testCompile "org.grails:grails-plugin-testing"
     testCompile "org.grails.plugins:geb"
 
