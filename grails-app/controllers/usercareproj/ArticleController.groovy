@@ -206,7 +206,7 @@ class ArticleController {
 
     }
 
-    @Secured(["isAuthenticated()"])
+//    @Secured(["isAuthenticated()"])
     def edit(){
 
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
@@ -214,7 +214,7 @@ class ArticleController {
         def forumid=params.getInt("forumid");
         def forumTypes=webServicesSession.getForumTypeByForumid(project.id, forumid, 1 )
         def article = webServicesSession.getProjectArticle(project.id, id);
-//        response.sendError(HttpServletResponse.SC_UNAUTHORIZED );
+//        response.sendError(HttpServletResponse.SC_FORBIDDEN );
 
         render template:"edit" , model: [project:project, article:article,forumid:forumid, forumTypes:forumTypes ]
     }
