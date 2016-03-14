@@ -2,7 +2,6 @@ package com.sh.messaging;
 
 import com.sh.messaging.amqp.AmqpConstants;
 import db.controller.IntegrationTest;
-import org.apache.commons.io.IOUtils;
 import org.grails.web.json.JSONObject;
 import org.junit.Assert;
 import org.junit.Ignore;
@@ -49,7 +48,7 @@ public class rabbitMGTest extends IntegrationTest {
             System.out.println(resource.getFile());
             InputStream in= new FileInputStream(resource.getFile());
             StringWriter writer = new StringWriter();
-            IOUtils.copy(in, writer);
+//            IOUtils.copy(in, writer);
             theString = writer.toString();
 
         } catch (IOException e) {
