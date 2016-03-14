@@ -1,22 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title><g:if env="development">Grails Runtime Exception</g:if><g:else>Error</g:else></title>
-    <meta name="layout" content="main">
-    <g:if env="development"><asset:stylesheet src="errors.css"/></g:if>
+    <meta name="layout" content="main"/>
+    <title><g:layoutTitle/></title>
+    <g:layoutHead/>
 </head>
 <body>
 
-<header class="wrap-title">
-    <div class="container">
-        <h1 class="page-title">Error 403</h1>
-
-        <ol class="breadcrumb hidden-xs">
-            <li><a href="#">Home</a></li>
-            <li class="active">Error 403</li>
-        </ol>
-    </div>
-</header>
+<g:set var="pos" value="1"/>
 
 <div class="container">
     <div class="row">
@@ -34,3 +25,4 @@
 
 </body>
 </html>
+
