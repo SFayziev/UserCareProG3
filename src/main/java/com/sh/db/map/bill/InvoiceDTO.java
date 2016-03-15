@@ -12,4 +12,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "invoice",  catalog = "usercare")
 public class InvoiceDTO extends IntEntity {
+
+
 }

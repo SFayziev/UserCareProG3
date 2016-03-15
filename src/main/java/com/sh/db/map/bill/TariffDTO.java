@@ -4,18 +4,19 @@ import com.sh.db.map.IntEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.math.BigDecimal;
 import java.util.Currency;
 
 /**
  * Created by Admin on 15.03.2016.
  */
 @Entity
-@Table(name = "order",  catalog = "usercare")
+@Table(name = "tariff",  catalog = "usercare")
 public class TariffDTO extends IntEntity{
 
     private String name;
     private Integer status;
-    private Currency price;
+    private BigDecimal price;
 
     public String getName() {
         return name;
@@ -33,11 +34,11 @@ public class TariffDTO extends IntEntity{
         this.status = status;
     }
 
-    public Currency getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Currency price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

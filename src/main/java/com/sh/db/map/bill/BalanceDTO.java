@@ -4,6 +4,7 @@ import com.sh.db.map.IntEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.math.BigDecimal;
 import java.util.Currency;
 import java.util.Date;
 
@@ -17,8 +18,8 @@ public class BalanceDTO extends IntEntity {
     private Date lastinvoice;
     private  Date lastpayment;
     private  Integer  agents;
-    private Currency balance;
-    private Currency usage;
+    private BigDecimal balance;
+    private BigDecimal usage;
 
     public Integer getProjid() {
         return projid;
@@ -52,19 +53,19 @@ public class BalanceDTO extends IntEntity {
         this.agents = agents;
     }
 
-    public Currency getBalance() {
+    public BigDecimal getBalance() {
         return balance;
     }
 
-    public void setBalance(Currency balance) {
+    public void setBalance(BigDecimal balance) {
         this.balance = balance;
     }
 
-    public Currency getUsage() {
+    public BigDecimal getUsage() {
         return usage;
     }
 
-    public void setUsage(Currency usage) {
+    public void setUsage(BigDecimal usage) {
         this.usage = usage;
     }
 

@@ -4,6 +4,7 @@ import com.sh.db.map.IntEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.math.BigDecimal;
 import java.util.Currency;
 import java.util.Date;
 
@@ -15,18 +16,18 @@ import java.util.Date;
 @Table(name = "payment",  catalog = "usercare")
 public class PaymentDTO extends IntEntity {
 
-    private Currency amount;
+    private BigDecimal amount;
     private Date date1;
     private  String method;
     private  Integer balanceid;
     private  Integer  projid;
 
 
-    public Currency getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(Currency amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 
