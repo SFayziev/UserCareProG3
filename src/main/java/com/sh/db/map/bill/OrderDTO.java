@@ -17,9 +17,20 @@ public class OrderDTO extends IntEntity {
     private  Integer projid;
 
     private  Integer  tariffid;
-    private Date date1;
-    private Date date2;
-    private  Integer  status;
+    private  Date date1;
+    private  Date date2;
+    private  OrderStatus status;
+
+    public OrderDTO() {
+
+    }
+
+    public OrderDTO(Integer projid, Integer tariffid) {
+        this.projid = projid;
+        this.tariffid = tariffid;
+        this.date1= new Date();
+        this.status=OrderStatus.Wait;
+    }
 
     public Integer getProjid() {
         return projid;
@@ -53,11 +64,11 @@ public class OrderDTO extends IntEntity {
         this.date2 = date2;
     }
 
-    public Integer getStatus() {
+    public OrderStatus getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(OrderStatus status) {
         this.status = status;
     }
 
