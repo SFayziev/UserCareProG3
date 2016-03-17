@@ -30,10 +30,12 @@ public class OrderDAO extends GenericDaoImpl<OrderDTO> {
 
     @Cacheable( value = "orderDTO" )
     public List<OrderDTO> getOrderByProjId(Integer projid){
+
         return  currentSession().createQuery("from OrderDTO  od where od.projid=:projid")
             .setParameter("projid", projid).list();
 
     }
+
 
 
     @Cacheable( value = "orderDTO" )
