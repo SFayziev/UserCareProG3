@@ -28,4 +28,6 @@ public class OrderDAOTest extends IntegrationTest {
     public void testGetTariffById() throws Exception {
         System.out.println( orderDAO.getTariffById(2) );
     }
+
+
 }

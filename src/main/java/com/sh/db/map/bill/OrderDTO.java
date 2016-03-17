@@ -1,9 +1,10 @@
 package com.sh.db.map.bill;
 
+import com.sh.db.map.ForumDTO;
 import com.sh.db.map.IntEntity;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 /**
@@ -16,7 +17,7 @@ public class OrderDTO extends IntEntity {
 
     private  Integer projid;
 
-    private  Integer  tariffid;
+//    private  Integer  tariffid;
     private  Date date1;
     private  Date date2;
     private  OrderStatus status;
@@ -25,11 +26,12 @@ public class OrderDTO extends IntEntity {
 
     }
 
-    public OrderDTO(Integer projid, Integer tariffid) {
+
+    public OrderDTO(Integer projid, TariffDTO tariffDTO) {
         this.projid = projid;
-        this.tariffid = tariffid;
-        this.date1= new Date();
-        this.status=OrderStatus.Wait;
+        this.tariffDTO = tariffDTO;
+        this.date1 = new Date();
+        this.status = OrderStatus.Wait;
     }
 
     public Integer getProjid() {
@@ -40,12 +42,17 @@ public class OrderDTO extends IntEntity {
         this.projid = projid;
     }
 
-    public Integer getTariffid() {
-        return tariffid;
+    @NotNull
+    @ManyToOne(fetch = FetchType.EAGER , cascade = CascadeType.DETACH )
+    @JoinColumn(name = "tariffid")
+    TariffDTO tariffDTO;
+
+    public TariffDTO getTariffDTO() {
+        return tariffDTO;
     }
 
-    public void setTariffid(Integer tariffid) {
-        this.tariffid = tariffid;
+    public void setTariffDTO(TariffDTO tariffDTO) {
+        this.tariffDTO = tariffDTO;
     }
 
     public Date getDate1() {
@@ -76,7 +83,7 @@ public class OrderDTO extends IntEntity {
     public String toString() {
         return "OrderDTO{" +
                 "projid=" + projid +
-                ", tariffid=" + tariffid +
+                ", tariffDTO =" + tariffDTO +
                 ", date1=" + date1 +
                 ", date2=" + date2 +
                 ", status=" + status +
