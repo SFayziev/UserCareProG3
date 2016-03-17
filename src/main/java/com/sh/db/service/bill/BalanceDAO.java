@@ -77,8 +77,7 @@ public class BalanceDAO extends GenericDaoImpl<BalanceDTO> {
         List<OrderDTO> orderDTOList = orderDAO.getOrderByProjId(projid);
         InvoiceDTO invoiceDTO = new InvoiceDTO(balanceDTO, date2);
 
-
-        for(OrderDTO orderDTO: orderDTOList){
+        for ( OrderDTO orderDTO: orderDTOList){
 
 // TODO: math invoice price
         }
