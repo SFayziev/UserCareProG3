@@ -25,6 +25,8 @@ public class IntegrationTest {
     @Resource(name =  "sessionFactory")
     SessionFactory sessionFactory ;
 
+    public  Integer testProjectid=2;
+
     @Before
     @After
     public void befor(){

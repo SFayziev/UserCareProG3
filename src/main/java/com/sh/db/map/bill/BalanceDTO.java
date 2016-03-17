@@ -2,8 +2,10 @@ package com.sh.db.map.bill;
 
 import com.sh.db.map.IntEntity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.Currency;
 import java.util.Date;
@@ -14,12 +16,24 @@ import java.util.Date;
 @Entity
 @Table(name = "balance",  catalog = "usercare")
 public class BalanceDTO extends IntEntity {
+    @NotNull
     private  Integer projid;
     private Date lastinvoice;
     private  Date lastpayment;
-    private  Integer  agents;
-    private BigDecimal balance;
-    private BigDecimal usage;
+    private  Integer  agents=1;
+    private BigDecimal balance=BigDecimal.ZERO;
+
+    private BigDecimal usagecharge=BigDecimal.ZERO;
+
+    public BalanceDTO() {
+
+    }
+
+    public BalanceDTO(Integer projid) {
+        this.projid = projid;
+
+    }
+
 
     public Integer getProjid() {
         return projid;
@@ -61,13 +75,15 @@ public class BalanceDTO extends IntEntity {
         this.balance = balance;
     }
 
-    public BigDecimal getUsage() {
-        return usage;
+    public BigDecimal getUsagecharge() {
+        return usagecharge;
     }
 
-    public void setUsage(BigDecimal usage) {
-        this.usage = usage;
+    public void setUsagecharge(BigDecimal usagecharge) {
+        this.usagecharge = usagecharge;
     }
+
+
 
     @Override
     public String toString() {
@@ -77,7 +93,7 @@ public class BalanceDTO extends IntEntity {
                 ", lastpayment=" + lastpayment +
                 ", agents=" + agents +
                 ", balance=" + balance +
-                ", usage=" + usage +
+                ", usage=" + usagecharge +
                 '}';
     }
 }
