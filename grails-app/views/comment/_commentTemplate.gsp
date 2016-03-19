@@ -16,7 +16,7 @@
                <div class="input-group">
                    <select class="form-control"  name="articstatus" id="articstatus" >
                        <option></option>
-                       <g:each in="${articleStatuses}" var="status"><option value="${status.id}"><locale:message  proj="${project}" code="article.status.name.${status?.id}" default="${status?.name}" /></option></g:each>
+                       <g:each in="${articleStatuses}" var="status"><option value="${status.id}"><locale:message  proj="${UCproject}" code="article.status.name.${status?.id}" default="${status?.name}" /></option></g:each>
                    </select>
                 </div>
             </div>

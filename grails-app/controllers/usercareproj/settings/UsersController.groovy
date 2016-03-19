@@ -10,7 +10,7 @@ class UsersController {
     def index() {}
     def support(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
-        def model=[project:project]
+        def model=[UCproject:project]
         model.users=webServicesSession.getUsersList(project.id, 1,null, null, null , 0, 0, null )
         render view: '/settings/users/support', model: model
 
@@ -18,7 +18,7 @@ class UsersController {
 
     def editsupport(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
-        def model=[project:project]
+        def model=[UCproject:project]
         model.user=webServicesSession.getUser(project.id, params.int('id'))
 
         if (  params.get("submit")=="save"  ) {
@@ -119,7 +119,7 @@ class UsersController {
 
     def list(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
-        def model=[project:project]
+        def model=[UCproject:project]
         model.users=webServicesSession.getUsersList(project.id, null, null, params.uname, params.email, 0, 0, null )
         render view: '/settings/users/list' , model: model
     }

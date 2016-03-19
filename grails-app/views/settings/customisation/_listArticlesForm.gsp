@@ -48,7 +48,7 @@
                 %{--<label class="label"><g:message code="article.status.title" /></label>--}%
                 %{--<label class="select state-success">--}%
                     %{--<g:select  optionKey="id" value="${module.params?.status?.value }" noSelection="['-1':'-All-']"--}%
-                              %{--name="status"  optionValue="name" from="${project?.articleStatusDTOs}" />--}%
+                              %{--name="status"  optionValue="name" from="${UCproject?.articleStatusDTOs}" />--}%
                     %{--<i></i>--}%
                 %{--</label>--}%
             %{--</section>--}%

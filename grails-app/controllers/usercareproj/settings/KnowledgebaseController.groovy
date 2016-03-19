@@ -20,7 +20,7 @@ class KnowledgebaseController {
 
     def customisation(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession()).clone()
-        def model=[project:project]
+        def model=[UCproject:project]
         render view: '/settings/knowledgebase/customisation', model: model
 
     }
@@ -41,7 +41,7 @@ class KnowledgebaseController {
         def id = getId();
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession()).clone()
         def forum=webServicesSession.getForumById(project.id , id)
-        def model=[project: project]
+        def model=[UCproject: project]
         model.tag=params.getInt("tagid")?webServicesSession.getTagById(project.id, id , params.getInt("tagid")): new ForumTagsDTO(forum.id,"")
 
         if (  params.get("submit")=="save" ) {
@@ -66,10 +66,10 @@ class KnowledgebaseController {
             bindData(forum.getPrivacy() , params, 'privacy')
 
             webServicesSession.saveForum(forum);
-//            render view: '/settings/knowledgebase/privacy', model: [  project:project , forum:forum]
+//            render view: '/settings/knowledgebase/privacy', model: [  UCproject:project , forum:forum]
         }
 
-            render view: '/settings/knowledgebase/privacy', model: [  project:project , forum:forum]
+            render view: '/settings/knowledgebase/privacy', model: [  UCproject:project , forum:forum]
 
 
     }
@@ -77,7 +77,7 @@ class KnowledgebaseController {
     def control(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession()).clone()
         def forums=webServicesSession.getForumByType( project.id , ForumType.Knowledgebase )
-        render view: '/settings/knowledgebase/control', model: [project:project , forums:forums]
+        render view: '/settings/knowledgebase/control', model: [UCproject:project , forums:forums]
 
     }
 
@@ -109,7 +109,7 @@ class KnowledgebaseController {
     def tag(){
         def id=getId();
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
-        def model=[project:project]
+        def model=[UCproject:project]
         def forum=id? webServicesSession.getForumById( project.id , id ):getDefaultForum(project)
         if (params.get("submit")=="save" ) {
 //            forum.getPrivacy().setAssigntype(params.getInt('assigntype'))
@@ -126,7 +126,7 @@ class KnowledgebaseController {
     def category(){
         def id=getId();
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
-        def model=[project:project]
+        def model=[UCproject:project]
         def forum=id? webServicesSession.getForumById( project.id , id ):getDefaultForum(project)
         if (params.get("submit")=="save" ) {
             forum.getPrivacy().setAssigntype(params.getInt('assigntype'))
@@ -144,7 +144,7 @@ class KnowledgebaseController {
 
 
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession()).clone()
-        def model=[project:project]
+        def model=[UCproject:project]
         model.forum=webServicesSession.getForumById( project.id , id )
         model.activleLangs=webServicesSession.getProjectActiveLangs(project.id)
         model.helpdesks=webServicesSession.getForumByType(project.id, ForumType.HelpDesk)
@@ -193,7 +193,7 @@ class KnowledgebaseController {
         def id = getId();
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession()).clone()
         def forum=webServicesSession.getForumById(project.id , id)
-        def model=[project: project]
+        def model=[UCproject: project]
         model.categoris=webServicesSession.getCategoryByForumId(project.id , id).clone()
         def categoris=model.categoris.clone()
         def fcategory =params.getInt("catid")?webServicesSession.getCategoryById(project.id , params.getInt("catid")):new CategoriesDTO(project.id ,forum.id)

@@ -141,7 +141,7 @@ class ModulesTagLib {
 
     def settingLeftMenu={ attrs ->
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
-        def module =[project:project];
+        def module =[UCproject:project];
 
         def selCom=g.cookie(name: 'selCommunity') as String
         def selKnow=g.cookie(name: 'selKnowledgebase') as String

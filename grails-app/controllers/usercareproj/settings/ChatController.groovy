@@ -16,7 +16,7 @@ class ChatController {
     def control(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession()).clone()
         def forums=webServicesSession.getForumByType( project.id , ForumType.Chat )
-        render view: '/settings/helpdesk/control', model: [project:project , forums:forums]
+        render view: '/settings/helpdesk/control', model: [UCproject:project , forums:forums]
 
     }
 
@@ -31,7 +31,7 @@ class ChatController {
         }
 
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession()).clone()
-        def model=[project:project]
+        def model=[UCproject:project]
         model.forum=webServicesSession.getForumById( project.id , id )
         model.activleLangs=webServicesSession.getProjectActiveLangs(project.id)
         model.helpdesks=webServicesSession.getForumByType(project.id, ForumType.HelpDesk)

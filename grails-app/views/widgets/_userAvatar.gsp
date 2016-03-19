@@ -1,6 +1,6 @@
 <div  id="useravatar"  data-userid="${user?.id}" >
     <div class="simple-block text-center">
-        %{--<img class="img-responsive" src="${project.projectDesignDTO?.logoFileDTO?.svalue?.originalFilename }" alt="">--}%
+        %{--<img class="img-responsive" src="UCproject:.projectDesignDTO?.logoFileDTO?.svalue?.originalFilename }" alt="">--}%
         <g:render template="/article/imageByType" model="${[imgid: "userLogo${user?.id}", imgclass: "img-responsive rounded-x",iconclass:'icon-slg',  img:user?.imgDTO ]}" />
         <br>
         <a class="btn btn-primary" href="#" onclick="changeUserAvatar(${user?.id} )"> Change Avatar</a>

@@ -1,1 +1,1 @@
-<modules:projectLogo params="${[project:project, forum:forum , module:module,  params:params]}" />
+<modules:projectLogo params="${[project:UCproject, forum:forum , module:module,  params:params]}" />

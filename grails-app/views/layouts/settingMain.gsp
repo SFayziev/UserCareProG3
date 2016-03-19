@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="${project?.projectDesignDTO?.faviconFileDTO?.svalue?.originalFilename }">
+    <g:if test="${UCproject!= null}"> <link rel="icon" href="${UCUCproject?.projectDesignDTO?.faviconFileDTO?.svalue?.originalFilename }"></g:if>
     <g:render template="/layouts/headerFile" />
 
     <g:layoutHead/>
@@ -19,7 +19,7 @@
 
         <div class="row ">
 
-            <g:render template="/layouts/header" />
+            <g:if test="${UCproject!= null}"><g:render template="/layouts/header" /></g:if>
             <div id="manuBar" class="col-xs-3  padding-right-5 padding-left-5">
                  <modules:settingLeftMenu />
             </div>

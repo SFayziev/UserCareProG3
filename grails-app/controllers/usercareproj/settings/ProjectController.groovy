@@ -6,6 +6,7 @@ import com.sh.db.map.ProjectParamsDTO
 import com.sh.db.map.ProjectParamsType3DTO
 import com.sh.db.map.ProjectParamsType4DTO
 import grails.plugin.springsecurity.annotation.Secured
+import org.springframework.beans.factory.annotation.Value
 
 import javax.validation.ConstraintViolation
 import javax.validation.ConstraintViolationException
@@ -13,13 +14,17 @@ import javax.validation.ConstraintViolationException
 @Secured(['ROLE_MANAGER'])
 class ProjectController {
     def webServicesSession
+    @Value('${domain.main.url}')
+    String mainDomain
 
+    @Value('${email.noreply.address}')
+    emailNoReply
 
     def index() {
         settings()
     }
     def settings(){
-        def domainUrl=grailsApplication.config.domain.main.url
+//        def domainUrl=grailsApplication.config.domain.main.url
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession()).clone()
         def forums=webServicesSession.getForumbyProject(project.getId() )
         def langs = webServicesSession.getProjectLang(project.getId())
@@ -47,12 +52,12 @@ class ProjectController {
             }
             langs = webServicesSession.getProjectLang(project.getId())
         }
-        render view: '/settings/project/settings', model: [project:project,domainUrl:domainUrl,forums:forums, langs:langs  ]
+        render view: '/settings/project/settings', model: [UCproject:project,domainUrl:mainDomain,forums:forums, langs:langs  ]
     }
 
     def design(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession()).clone()
-        render view: '/settings/project/design', model: [project:project ]
+        render view: '/settings/project/design', model: [UCproject:project ]
     }
 
     def robots(){
@@ -63,7 +68,7 @@ class ProjectController {
             webServicesSession.addProjectParams(project, projectParams )
         }
 
-        render view: '/settings/project/robots', model: [project:project]
+        render view: '/settings/project/robots', model: [UCproject:project]
     }
 
     def aliasing(){
@@ -73,9 +78,9 @@ class ProjectController {
             projectParams.add(new ProjectParamsType3DTO(project,'aliasurl', params.get('aliasurl') as String ))
             webServicesSession.addProjectParams(project, projectParams )
         }
-        def domainUrl=grailsApplication.config.domain.main.url
-        def emailNoReply=grailsApplication.config.email.noreply.address
-        render view: '/settings/project/aliasing', model: [project:project, domainUrl:domainUrl, emailNoReply:emailNoReply ]
+//        def domainUrl=grailsApplication.config.domain.main.url
+//        def emailNoReply=grailsApplication.config.email.noreply.address
+        render view: '/settings/project/aliasing', model: [UCproject:project, domainUrl:mainDomain, emailNoReply:emailNoReply ]
     }
 
     def emailNotification(){
@@ -87,8 +92,8 @@ class ProjectController {
 
             webServicesSession.addProjectParams(project, projectParams )
         }
-        def domainUrl=grailsApplication.config.domain.main.url
-        def emailNoReply=grailsApplication.config.email.noreply.address
-        render view: '/settings/project/emailNotification', model: [project:project, domainUrl:domainUrl, emailNoReply:emailNoReply ]
+//        def domainUrl=grailsApplication.config.domain.main.url
+//        def emailNoReply=grailsApplication.config.email.noreply.address
+        render view: '/settings/project/emailNotification', model: [UCproject:project, domainUrl:mainDomain, emailNoReply:emailNoReply ]
     }
 }

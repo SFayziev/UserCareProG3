@@ -69,7 +69,7 @@ class ProjecttransController {
     }
     def forum(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
-        def model=[project:project]
+        def model=[UCproject:project]
         def id=params.getInt('id');
         def forum=webServicesSession.getForumById(project.getId(), id)
         model.curval=forum.name
@@ -165,7 +165,7 @@ class ProjecttransController {
 
     def category(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
-        def model=[project:project]
+        def model=[UCproject:project]
         def id=params.getInt('id');
         def category=webServicesSession.getCategoryById(project.getId(), id)
         def forum=webServicesSession.getForumById(project.id, category.forumid)
@@ -201,7 +201,7 @@ class ProjecttransController {
 
     def module(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
-        def model=[project:project]
+        def model=[UCproject:project]
         def id=params.getInt('id');
         def module=webServicesSession.getModuleById(project.id, id)
         def forum=webServicesSession.getForumById(project.id , module.forumid)

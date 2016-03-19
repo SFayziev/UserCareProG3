@@ -35,12 +35,17 @@ class ArticleController {
         def id= params.int("id")
         def forumid=params.int("forumid")
         def article = webServicesSession.getProjectArticle(project.id, id);
-        def comments= webServicesSession.getArticleComments(id)
-        def module=[params: [showTopicAvatar:1, topicPresentation:"full"]]
-        def articleStatuses=webServicesSession.getArticleStatusByForumId(project.id , forumid )
+        if (article!= null){
+            def comments= webServicesSession.getArticleComments(id)
+            def module=[params: [showTopicAvatar:1, topicPresentation:"full"]]
+            def articleStatuses=webServicesSession.getArticleStatusByForumId(project.id , forumid )
 
-        def answer = article.answerCommentid? webServicesSession.getCommentbyId(article.answerCommentid): null;
-        render view: 'item', model: [project:project, article:article ,forum:article.getForumDTO(),articleStatuses :articleStatuses, comments:comments, module:module,answer:answer ]
+            def answer = article.answerCommentid? webServicesSession.getCommentbyId(article.answerCommentid): null;
+            render view: 'item', model: [UCproject:project, article:article ,forum:article.getForumDTO(),articleStatuses :articleStatuses, comments:comments, module:module,answer:answer ]
+        }
+        else {
+            response.sendError HttpServletResponse.SC_NOT_FOUND
+        }
     }
 
 
@@ -85,7 +90,7 @@ class ArticleController {
         def id= params.int("id")
         def article = webServicesSession.getProjectArticle(project.id, id);
         def module=[params: [showTopicAvatar:1, topicPresentation:"full"]]
-        def contents = g.render(template:"/modules/articleDetails", model: [project:project, module:module,  forum:article.getForumDTO(),  article:article ])
+        def contents = g.render(template:"/modules/articleDetails", model: [UCproject:project, module:module,  forum:article.getForumDTO(),  article:article ])
         JSONObject resultJson = new JSONObject();
         resultJson.put("status","success");
         resultJson.put("contentid",article.getId());
@@ -108,7 +113,7 @@ class ArticleController {
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         def id=params.getInt("id");
         def article = webServicesSession.assignArticle(id, params.getInt("userid"));
-//        def contents = g.render(template:"/article/articleItem"+article.getForumDTO().type.ordinal() , model: [project:project, forum:article.getForumDTO(), article:article ])
+//        def contents = g.render(template:"/article/articleItem"+article.getForumDTO().type.ordinal() , model: [UCproject:project, forum:article.getForumDTO(), article:article ])
         JSONObject resultJson = new JSONObject();
         resultJson.put("status","success");
         resultJson.put("contentid",article.getId());
@@ -124,7 +129,7 @@ class ArticleController {
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         def id=params.getInt("id");
         def article = webServicesSession.assignArticleCategory(id , params.getInt("categoryid", -1) )
-//        def contents = g.render(template:"/article/articleItem"+article.getForumDTO().type.ordinal() , model: [project:project, forum:article.getForumDTO(), article:article ])
+//        def contents = g.render(template:"/article/articleItem"+article.getForumDTO().type.ordinal() , model: [UCproject:project, forum:article.getForumDTO(), article:article ])
         JSONObject resultJson = new JSONObject();
         resultJson.put("status","success");
         resultJson.put("contentid",article.getId());
@@ -139,7 +144,7 @@ class ArticleController {
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         def id=params.getInt("id");
         webServicesSession.addTagtoArticle(project.id , id , params.getInt("tagid", -1) )
-//        def contents = g.render(template:"/article/articleItem"+article.getForumDTO().type.ordinal() , model: [project:project, forum:article.getForumDTO(), article:article ])
+//        def contents = g.render(template:"/article/articleItem"+article.getForumDTO().type.ordinal() , model: [UCproject:project, forum:article.getForumDTO(), article:article ])
         JSONObject resultJson = new JSONObject();
         resultJson.put("status","success");
         resultJson.put("massage",  message(code: "article.assigne.category.change.massage"))
@@ -201,7 +206,7 @@ class ArticleController {
             def helpdesks= webServicesSession.getForumByType(project.id, ForumType.HelpDesk)
 
 
-            render template: "moveTo" , model: [forumid: params.getInt("forumid",0 ), project:project,  communitys:communitys , knowledgebases:knowledgebases, helpdesks:helpdesks]
+            render template: "moveTo" , model: [forumid: params.getInt("forumid",0 ), UCproject:project,  communitys:communitys , knowledgebases:knowledgebases, helpdesks:helpdesks]
         }
 
     }
@@ -216,7 +221,7 @@ class ArticleController {
         def article = webServicesSession.getProjectArticle(project.id, id);
 //        response.sendError(HttpServletResponse.SC_FORBIDDEN );
 
-        render template:"edit" , model: [project:project, article:article,forumid:forumid, forumTypes:forumTypes ]
+        render template:"edit" , model: [UCproject:project, article:article,forumid:forumid, forumTypes:forumTypes ]
     }
 
     def create(){
@@ -252,7 +257,7 @@ class ArticleController {
             redirect(controller: "forum",  action:  "list" , params: [id:  params.forumid] )
         }
         else{
-            render template:"delete" , model: [project:project, article:article ]
+            render template:"delete" , model: [UCproject:project, article:article ]
         }
 
     }

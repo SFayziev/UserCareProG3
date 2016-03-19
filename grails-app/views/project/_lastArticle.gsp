@@ -3,7 +3,7 @@
 <div id="listItems" data-moduleid="${module?.id}"   data-forumid="${forum?.id}" data-statusid="${catalogParams?.status}" data-orderid="${catalogParams?.order}" data-typeid="${catalogParams?.type}" >
     <g:render template="/forum/forumBreadcrumb"/>
     <if test="${module.params?.title && module.params?.title?.value !='' }"><h2>
-        <locale:message  proj="${project}" code="forum.module.title.${module.id}" default="${module.params?.title?.value}" />
+        <locale:message  proj="${UCproject}" code="forum.module.title.${module.id}" default="${module.params?.title?.value}" />
         <span class="badge badge-u rounded-2x">${pageCount?.getRowCount()}</span></h2>
     </if>
     <g:if test="${'none'!= module.params?.filtertype?.value}">
@@ -16,7 +16,7 @@
     <div class="profile ">
         <g:if test="${lastArticle?.size>0}">
             <g:each in="${lastArticle}" var="article">
-                <modules:articleDetails params="${[project:project, forum:forum ,  module:module, article:article,  params:params]}" />
+                <modules:articleDetails params="${[project:UCproject, forum:forum ,  module:module, article:article,  params:params]}" />
             </g:each>
         </g:if>
         <g:else>
@@ -36,7 +36,7 @@
             </g:if>
             <g:else>
                 <div class="text-center">
-                    <g:link controller="list" action="${forum.id}"><locale:message proj="${project}" code="widget.forumlist..browseall" /></g:link>
+                    <g:link controller="list" action="${forum.id}"><locale:message proj="${UCproject}" code="widget.forumlist..browseall" /></g:link>
                 </div>
             </g:else>
         </g:if>

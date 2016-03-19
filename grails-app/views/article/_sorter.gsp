@@ -9,7 +9,7 @@
                 <g:if test="${catalogParams?.type==forumTypeDTO?.id}">
                     %{--<g:render template="/article/imageByType" model="${[imgid: "forumtype${forumTypeDTO.id}", imgclass: "img-responsive avatar rounded-x", iconclass: 'icon-sm', img:forumTypeDTO?.articleTypeDTO?.imgDTO]}" />--}%
                     %{--<asset:image src="type/${forumTypeDTO?.imageurl}" width="16px" /> --}%
-                    <locale:message  proj="${project}" code="topictype.name.$forumTypeDTO.id" default="${forumTypeDTO?.articleTypeDTO?.name}" />
+                    <locale:message  proj="${UCproject}" code="topictype.name.$forumTypeDTO.id" default="${forumTypeDTO?.articleTypeDTO?.name}" />
                     %{--${forumTypeDTO?.articleTypeDTO?.name}--}%
                 </g:if>
             </g:each>
@@ -29,7 +29,7 @@
         <g:each in="${forumTypes}" var="forumTypeDTO">
             <li> <a   data-action="listByType" data-type-value="${forumTypeDTO?.id}" onclick="setArticleListType(${module?.id}, ${forumTypeDTO?.id})" >
                 %{--<g:render template="/article/imageByType" model="${[imgid: "forumtype${forumTypeDTO.id}", imgclass: "img-responsive avatar rounded-x", iconclass: 'icon-sm', img:forumTypeDTO?.articleTypeDTO?.imgDTO]}" />--}%
-                <locale:message  proj="${project}" code="topictype.name.$forumTypeDTO.id" default="${forumTypeDTO?.articleTypeDTO?.name}" /> <span class="badge badge-blue rounded-x">${pageCount?.getCountByType(forumTypeDTO?.id )}</span> </a></li>
+                <locale:message  proj="${UCproject}" code="topictype.name.$forumTypeDTO.id" default="${forumTypeDTO?.articleTypeDTO?.name}" /> <span class="badge badge-blue rounded-x">${pageCount?.getCountByType(forumTypeDTO?.id )}</span> </a></li>
         </g:each>
     </ul>
 </div>
@@ -40,7 +40,7 @@
         <g:if test="${catalogParams?.status>0}">
             <g:each in="${forumStatuses}" var="forumStatus" >
                 <g:if test="${catalogParams?.status==forumStatus.articleStatusDTO?.id}">
-                    <locale:message  proj="${project}" code="article.status.name.${forumStatus.articleStatusDTO?.id}" default="${forumStatus.articleStatusDTO?.name}" />
+                    <locale:message  proj="${UCproject}" code="article.status.name.${forumStatus.articleStatusDTO?.id}" default="${forumStatus.articleStatusDTO?.name}" />
                 </g:if>
             </g:each>
         </g:if>
@@ -56,7 +56,7 @@
         <li><a href="#" onclick="setArticleListStatus(${module?.id}, -1)"> All <span class="badge  badge-blue rounded-x">${pageCount?.getCountByStatus(-1 )}</span></a></li>
         %{--<li><a href="#" onclick="setArticleListStatus(${module?.id},0)"> New <span class="badge  badge-blue rounded-x">${pageCount?.getCountByStatus(0 )}</span></a></li>--}%
         <g:each in="${forumStatuses}" var="forumStatus" >
-            <li><a   data-action="listByStatus" data-status-value="${forumStatus.articleStatusDTO?.id}" onclick="setArticleListStatus(${module?.id}, ${forumStatus.articleStatusDTO?.id})"> <locale:message  proj="${project}" code="article.status.name.${forumStatus.articleStatusDTO?.id}" default="${forumStatus.articleStatusDTO?.name}" />  <span class="badge badge-blue rounded-x">${pageCount?.getCountByStatus(forumStatus.articleStatusDTO?.id )}</span></a></li>
+            <li><a   data-action="listByStatus" data-status-value="${forumStatus.articleStatusDTO?.id}" onclick="setArticleListStatus(${module?.id}, ${forumStatus.articleStatusDTO?.id})"> <locale:message  proj="${UCproject}" code="article.status.name.${forumStatus.articleStatusDTO?.id}" default="${forumStatus.articleStatusDTO?.name}" />  <span class="badge badge-blue rounded-x">${pageCount?.getCountByStatus(forumStatus.articleStatusDTO?.id )}</span></a></li>
         </g:each>
     </ul>
 </div>

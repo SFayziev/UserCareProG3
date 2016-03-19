@@ -22,7 +22,7 @@
                 <section>
                     <label class="label">   <h4>robots.txt</h4></label>
                     <label class="textarea state-success">
-                        <textarea name="robotstxt" rows="8">${project.params?.robotstxt?.value}</textarea>
+                        <textarea name="robotstxt" rows="8">${UCproject.params?.robotstxt?.value}</textarea>
                     </label>
                 </section>
             </fieldset>

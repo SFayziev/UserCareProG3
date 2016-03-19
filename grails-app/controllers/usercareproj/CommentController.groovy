@@ -71,7 +71,7 @@ class CommentController {
         def forum= article.forumDTO;
         def module=[params: [showTopicAvatar:1, topicPresentation:"full"]]
         JSONObject resultJson = new JSONObject();
-        def contents = g.render(template:"/article/itemAndReplies", model:[project:project, comments:comments ,forum:forum, module:module,  article:article,answer:answer ])
+        def contents = g.render(template:"/article/itemAndReplies", model:[UCproject:project, comments:comments ,forum:forum, module:module,  article:article,answer:answer ])
         resultJson.put("status","success");
         resultJson.put("contentid",id);
         resultJson.put("value", contents)

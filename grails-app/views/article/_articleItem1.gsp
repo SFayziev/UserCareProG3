@@ -13,7 +13,7 @@
             </div>
 
             <div class="topic-votes pull-right">
-                <span class="rounded  label" style="background: ${article?.statusDTO?.color}" ><locale:message  proj="${project}" code="article.status.name.${article?.statusDTO?.id}" default="${article?.statusDTO?.name}" /> </span>
+                <span class="rounded  label" style="background: ${article?.statusDTO?.color}" ><locale:message  proj="${UCproject}" code="article.status.name.${article?.statusDTO?.id}" default="${article?.statusDTO?.name}" /> </span>
             </div>
             <h2 class="heading-sm">
                 <span>

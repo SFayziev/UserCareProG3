@@ -75,7 +75,7 @@ class CustomisationController {
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         def id=params.id as int;
         def module=webServicesSession.getModuleById(project.id, id)
-        render template: module.moduleTypeDTO.edittemplate  , model: [id:id, module:module, project:project ]
+        render template: module.moduleTypeDTO.edittemplate  , model: [id:id, module:module, UCproject:project ]
     }
 
     def saveWidget(){
@@ -169,7 +169,7 @@ class CustomisationController {
     }
 
     def listwidget(){
-//        def model= [project: webServicesSession.getProject(getResponse(), getRequest(), getSession())]
+//        def model= [UCproject: webServicesSession.getProject(getResponse(), getRequest(), getSession())]
 //        def id=params.id as int;
         if (params.vtype== null || params.vtype==''){
             params.vtype="dushboard"

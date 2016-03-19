@@ -6,7 +6,7 @@
                 <dd>
                    <g:link  controller="list" action="${community.id}">
                        <span class="badge pull-right">${community.articles}</span>
-                       <locale:message  proj="${project}" code="forum.title.${community.id}" default="${community.name}" />
+                       <locale:message  proj="${UCproject}" code="forum.title.${community.id}" default="${community.name}" />
                    </g:link>
                 </dd>
             </g:each>
@@ -20,7 +20,7 @@
             <dd>
                 <g:link  controller="list" action="${knowledgebase.id}">
                     <span class="badge pull-right ">${knowledgebase.articles}</span>
-                    <locale:message  proj="${project}" code="forum.title.${knowledgebase.id}" default="${knowledgebase.name}" />
+                    <locale:message  proj="${UCproject}" code="forum.title.${knowledgebase.id}" default="${knowledgebase.name}" />
 
             </g:link>
             </dd>

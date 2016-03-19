@@ -1,36 +1,20 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title><g:if env="development">Grails Runtime Exception</g:if><g:else>Error</g:else></title>
-		%{--<meta name="layout" content="main">--}%
-		<g:if env="development"><asset:stylesheet src="errors.css"/></g:if>
-	</head>
-	<body>
+<g:applyLayout name="moduleContent">
+	<content tag="mainContent1">
+		<!--=== Content Part ===-->
+		<div class="container content-sm">
 
-	<header class="wrap-title">
-		<div class="container">
-			<h1 class="page-title">Error 404</h1>
-
-			<ol class="breadcrumb hidden-xs">
-				<li><a href="#">Home</a></li>
-				<li class="active">Error 404</li>
-			</ol>
-		</div>
-	</header>
-
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="center-block error-404">
-					<section class="text-center">
-						<h1>Error 404</h1>
-						<h2>Page not found</h2>
-					</section>
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<div class="error-v1">
+						<span class="error-v1-title">404</span>
+						<span>That’s an error!</span>
+						<p>The requested URL was not found on this server. That’s all we know.</p>
+						<g:link class="btn-u btn-bordered" controller="index"> Back Home</g:link>
+					</div>
 				</div>
 			</div>
-		</div> <!-- row -->
-	</div> <!-- container -->
+		</div>
+		<asset:stylesheet href="error.css"/>
+	</content>
+</g:applyLayout>
 
-
-	</body>
-</html>
