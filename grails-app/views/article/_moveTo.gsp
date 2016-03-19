@@ -12,7 +12,7 @@
                     <optgroup label="<g:message code="forum.type2"/>">
                     <g:each in="${communitys}" var="community">
                         <option <g:if test="${forumid==community.id}">selected</g:if> value="${community.id}">
-                            <locale:message  proj="${project}" code="forum.title.${community.id}" default="${community.name}" />
+                            <locale:message  proj="${UCproject}" code="forum.title.${community.id}" default="${community.name}" />
                         </option>
                     </g:each>
                     </optgroup>
@@ -21,7 +21,7 @@
                 <optgroup label="<g:message code="forum.type1"/>">
                     <g:each in="${knowledgebases}" var="knowledgebase">
                         <option <g:if test="${forumid==knowledgebase.id}">selected</g:if> value="${knowledgebase.id}">
-                            <locale:message  proj="${project}" code="forum.title.${knowledgebase.id}" default="${knowledgebase.name}" />
+                            <locale:message  proj="${UCproject}" code="forum.title.${knowledgebase.id}" default="${knowledgebase.name}" />
                         </option>
                     </g:each>
                 </optgroup>
@@ -30,7 +30,7 @@
                     <optgroup label="<g:message code="forum.type0"/>">
                         <g:each in="${helpdesks}" var="helpdesk">
                             <option <g:if test="${forumid==helpdesk.id}">selected</g:if>  value="${helpdesk.id}">
-                                <locale:message  proj="${project}" code="forum.title.${helpdesk.id}" default="${helpdesk.name}" />
+                                <locale:message  proj="${UCproject}" code="forum.title.${helpdesk.id}" default="${helpdesk.name}" />
                             </option>
                         </g:each>
                     </optgroup>

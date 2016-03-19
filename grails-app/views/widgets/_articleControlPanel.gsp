@@ -9,7 +9,7 @@
             <ul id="collapse-status" class="collapse">
                 <g:each in="${forumStatuses}" var="forumStatus">
                     <li><a  href="#" data-content="${article.id}" data-action="articleChangeStatus" data-status-value="${forumStatus.articleStatusDTO?.id}"  data-forumid="${article.forumDTO.id}">
-                        <locale:message  proj="${project}" code="article.status.name.${forumStatus.articleStatusDTO?.id}" default="${forumStatus.articleStatusDTO?.name}" /></a></li>
+                        <locale:message  proj="${UCproject}" code="article.status.name.${forumStatus.articleStatusDTO?.id}" default="${forumStatus.articleStatusDTO?.name}" /></a></li>
                 </g:each>
             </ul>
             </li>
@@ -23,7 +23,7 @@
                 <a  class="accordion-toggle" href="#collapse-tags" data-toggle="collapse"><i class="fa fa-tags"></i> <g:message code="setting.leftMenu.community.tags"/></a>
                 <ul id="collapse-tags" class="collapse">
                     <g:each in="${tags}" var="tag">
-                        <li><a href="#" data-assignid="${tag?.id}" data-action="articleAssignTags" ><locale:message  proj="${project}" code="tag.name.${tag?.id}" default="${tag?.name}" /> </a></li>
+                        <li><a href="#" data-assignid="${tag?.id}" data-action="articleAssignTags" ><locale:message  proj="${UCproject}" code="tag.name.${tag?.id}" default="${tag?.name}" /> </a></li>
                     </g:each>
                 </ul>
             </li>
@@ -31,7 +31,7 @@
                 <a  class="accordion-toggle" href="#collapse-categorys" data-toggle="collapse"><i class="fa fa-folder-open"></i> <g:message code="setting.leftMenu.community.categories"/></a>
                 <ul id="collapse-categorys" class="collapse">
                     <g:each in="${categorys}" var="category">
-                        <li><a href="#" data-assignid="${category?.id}" data-action="articleAssignCategory" ><locale:message  proj="${project}" code="category.name.${category?.id}" default="${category?.name}" /> </a></li>
+                        <li><a href="#" data-assignid="${category?.id}" data-action="articleAssignCategory" ><locale:message  proj="${UCproject}" code="category.name.${category?.id}" default="${category?.name}" /> </a></li>
                     </g:each>
                 </ul>
             </li>

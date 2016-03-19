@@ -2,8 +2,8 @@
     <div  class="col-md-4">
         <h2><g:message code="setting.project.design.logo"/></h2>
         <div  class="img_logo  thumbnail-style  text-center">
-            <g:render template="/article/imageByType" model="${[imgid: "imglogo", imgclass: "img-responsive", iconclass:'icon-slg' , img:project.projectDesignDTO?.logoFileDTO ]}" />
-        %{--<img  id="imglogo" class="img-responsive" src="${project.projectDesignDTO?.logoFileDTO?.svalue?.originalFilename }" alt="">--}%
+            <g:render template="/article/imageByType" model="${[imgid: "imglogo", imgclass: "img-responsive", iconclass:'icon-slg' , img:UCproject.projectDesignDTO?.logoFileDTO ]}" />
+        %{--<img  id="imglogo" class="img-responsive" src="UCproject:.projectDesignDTO?.logoFileDTO?.svalue?.originalFilename }" alt="">--}%
 
         </div>
         <span class="btn btn-success fileinput-button">
@@ -20,7 +20,7 @@
     <div  class="col-md-4">
         <h2><g:message code="setting.project.design.bgimage"/></h2>
         <div  class="img_logo  thumbnail-style">
-            <img  id="imgbg" class="img-responsive" src="${project.projectDesignDTO?.bgimageFileDTO?.svalue?.originalFilename }" alt="">
+            <img  id="imgbg" class="img-responsive" src="UCproject:.projectDesignDTO?.bgimageFileDTO?.svalue?.originalFilename }" alt="">
 
         </div>
         <span class="btn btn-success fileinput-button">
@@ -36,7 +36,7 @@
     <div  class="col-md-4">
         <h2><g:message code="setting.project.design.favicon"/></h2>
         <div  class="img_logo  thumbnail-style  text-center">
-            <img  id="imgicon" class="img-responsive" src="${project.projectDesignDTO?.faviconFileDTO?.svalue?.originalFilename }" alt="">
+            <img  id="imgicon" class="img-responsive" src="UCproject:.projectDesignDTO?.faviconFileDTO?.svalue?.originalFilename }" alt="">
 
         </div>
         <span class="btn btn-success fileinput-button">

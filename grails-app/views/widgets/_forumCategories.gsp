@@ -7,7 +7,7 @@
             <li>
                 <span class="badge pull-right">${category?.articles}</span>
                 <i class="fa fa-fw fa-rss-square"></i>
-                <g:link controller="forum" action="list" id="${module.forumid}" params="${[category:category?.id ]}"><locale:message  proj="${project}" code="category.name.${category?.id}" default="${category?.name}" /></g:link>
+                <g:link controller="forum" action="list" id="${module.forumid}" params="${[category:category?.id ]}"><locale:message  proj="${UCproject}" code="category.name.${category?.id}" default="${category?.name}" /></g:link>
             </li>
         </g:each>
     </ul>

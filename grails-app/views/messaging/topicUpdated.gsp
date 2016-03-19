@@ -15,7 +15,7 @@
                 <tbody>
                 <tr>
                     <td class="center" style="padding: 10px ; font-size: 16px; color: #687074; font-weight: bold;  font-family: Arial, Helvetica, sans-serif; line-height: 20px; vertical-align: middle; "  width="100%">
-                        <p align="right"><span style="border-radius: 4px !important;   background-color: ${comment?.statusDTO?.color};color:#FFFFFF;padding:5px;"><strong><locale:message  proj="${project}" code="article.status.name.${comment?.statusDTO?.id}" default="${comment?.statusDTO?.name}" /> </strong></span></p>
+                        <p align="right"><span style="border-radius: 4px !important;   background-color: ${comment?.statusDTO?.color};color:#FFFFFF;padding:5px;"><strong><locale:message  proj="${UCproject}" code="article.status.name.${comment?.statusDTO?.id}" default="${comment?.statusDTO?.name}" /> </strong></span></p>
                     </td>
                 </tr>
                 <tr>

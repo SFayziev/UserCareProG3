@@ -11,28 +11,28 @@
 
         <p><g:message code="setting.project.emailNotification.text1"/></p>
         <div class="tag-box tag-box-v6">
-            <p>${project.name}  ${emailNoReply}@${project.alias}.${domainUrl}</p>
+            <p>${UCproject.name}  ${emailNoReply}@${UCproject.alias}.${domainUrl}</p>
         </div>
 
         <h4><g:message code="setting.project.emailNotification.text2" /></h4>
 
         %{--<div class="tag-box tag-box-v6">--}%
-            %{--<p>feedback 14400  IN  CNAME  ${project.alias}.${domainUrl}.</p>--}%
+            %{--<p>feedback 14400  IN  CNAME  UCproject:.alias}.${domainUrl}.</p>--}%
         %{--</div>--}%
 
         <g:form controller="project" action="emailNotification"   class="sky-form" >
             <fieldset>
                 <section>
-                    <label class="label"><g:message code="setting.project.emailNotification.name" /></label>
+                    <label class="label"><g:message code="setting.name" /></label>
                     <label class="input state-success">
-                        <input type="text" name="emailname" value="${project.params?.emailname?.value}">
+                        <input type="text" name="emailname" value="${UCproject.params?.emailname?.value}">
                     </label>
-                    <div class="note note-success"><g:message code="setting.project.emailNotification.text3" /></div>
+                    <div class="note note-success"><g:message code="setting.project.emailNotification.name" /></div>
                 </section>
                 <section>
                     <label class="label"><g:message code="setting.project.emailNotification.footer" /></label>
                     <label class="input state-success">
-                        <textarea rows="4" id="emailFooter" name="emailFooter">${project.params?.emailFooter?.value}</textarea>
+                        <textarea rows="4" id="emailFooter" name="emailFooter">${UCproject.params?.emailFooter?.value}</textarea>
                     </label>
                 </section>
             </fieldset>

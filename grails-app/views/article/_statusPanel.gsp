@@ -10,7 +10,7 @@
         %{--</th>--}%
     <g:each in="${forumStatuses}" var="forumStatus" >
         <th width="${colwidth}%" onclick="setArticleListStatus(${module?.id}, ${forumStatus.articleStatusDTO?.id})" style="background-color:rgba(${forumStatus.articleStatusDTO?.rgbcolor?.red} , ${forumStatus.articleStatusDTO?.rgbcolor?.green}, ${forumStatus.articleStatusDTO?.rgbcolor?.blue}, 0.6); cursor: pointer;">
-            <span class="text-highlights" > <locale:message  proj="${project}" code="article.status.name.${forumStatus.articleStatusDTO?.id}" default="${forumStatus.articleStatusDTO?.name}" /></span>
+            <span class="text-highlights" > <locale:message  proj="${UCproject}" code="article.status.name.${forumStatus.articleStatusDTO?.id}" default="${forumStatus.articleStatusDTO?.name}" /></span>
         </th>
     </g:each>
 

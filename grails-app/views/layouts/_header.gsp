@@ -7,7 +7,7 @@
         %{--<!-- Logo -->--}%
         <div class="row">
             <div class="col-xs-4 col-md-2">
-                <h2>  <g:link controller="index" class="logo" ><i class="fa fa-fw fa-home"></i> ${project?.name} </g:link></h2>
+                <h2>  <g:link controller="index" class="logo" ><i class="fa fa-fw fa-home"></i> ${UCproject?.name} </g:link></h2>
             </div>
             <!-- End Logo -->
 
@@ -16,7 +16,7 @@
 
             <div class="topbar">
                 %{--<ul  class="loginbar pull-left">--}%
-                    %{--<g:each in="${project?.forumDTOs}" var="forum">--}%
+                    %{--<g:each in="${UCproject?.forumDTOs}" var="forum">--}%
                         %{--<g:if test="${forum?.type==ForumType.HelpDesk}">--}%
                             %{--<sec:ifLoggedIn> <li><i class="${forum.faclass}"></i>   <a href="/list/${forum?.id}/">${forum?.name}</a> </li></sec:ifLoggedIn>--}%
                         %{--</g:if>--}%
@@ -33,7 +33,7 @@
                         <i class="fa fa-globe"></i>
                         <g:set var="lang" value="${RequestContextUtils.getLocale(request).displayLanguage}"/>
                         <a>${lang }</a>
-                        <project:selectActiveLangs params="${[project:project,lang:lang]}" />
+                        <project:selectActiveLangs params="${[project:UCproject,lang:lang]}" />
                     </li>
                     <li class="topbar-devider"></li>
                     <sec:ifLoggedIn>

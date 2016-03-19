@@ -1,1 +1,1 @@
-<modules:communityStats params="${[project:project, forum:forum , module:module,  params:params]}" />
+<modules:communityStats params="${[project:UCproject, forum:forum , module:module,  params:params]}" />

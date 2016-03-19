@@ -53,16 +53,16 @@ public class BalanceDAO extends GenericDaoImpl<BalanceDTO> {
     }
 
 
-    public List<PaymentDTO> getPayments(Integer projid,Integer start ){
+    public List<PaymentDTO> getPayments(Integer projid,Integer start){
         Criteria cr = getSessionFactory().getCurrentSession().createCriteria(PaymentDTO.class, "od");
         cr.add(Restrictions.eq("projid", projid));
         cr.setFirstResult(start == 0 ? 0 : start);
-        cr.setMaxResults(defaultRecordsCount );
+        cr.setMaxResults(defaultRecordsCount);
         return  cr.list();
 
     }
 
-    public List<InvoiceDTO> getInvoice(Integer balanceid, Integer start ){
+    public List<InvoiceDTO> getInvoice(Integer balanceid, Integer start) {
         Criteria cr = getSessionFactory().getCurrentSession().createCriteria(InvoiceDTO.class, "od");
         cr.add(Restrictions.eq("balanceDTO.id", balanceid));
         cr.setFirstResult(start == 0 ? 0 : start);
@@ -77,7 +77,7 @@ public class BalanceDAO extends GenericDaoImpl<BalanceDTO> {
         List<OrderDTO> orderDTOList = orderDAO.getOrderByProjId(projid);
         InvoiceDTO invoiceDTO = new InvoiceDTO(balanceDTO, date2);
 
-        for ( OrderDTO orderDTO: orderDTOList){
+        for (OrderDTO orderDTO: orderDTOList){
 
 // TODO: math invoice price
         }

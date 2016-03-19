@@ -19,12 +19,13 @@ public class BalanceDAOTest extends IntegrationTest {
 
     @Test
     public void testGetBalance() throws Exception {
-        System.out.println(balanceDAO.getBalance(testProjectid));
+        assertNull("should be null", balanceDAO.getBalance(testProjectid));
+
     }
 
     @Test
     public void testCreateBalance() throws Exception {
-        System.out.println( balanceDAO.createBalance(testProjectid) );
+        assertNotNull("should not be null", balanceDAO.createBalance(testProjectid) );
     }
 
     @Test

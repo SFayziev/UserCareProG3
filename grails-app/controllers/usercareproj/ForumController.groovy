@@ -28,7 +28,7 @@ class ForumController {
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         def forum= webServicesSession.getForumById(project.id, getForumId(project) )
         def module=webServicesSession.getModuleById(project.getId(),moduleid);
-        def contents = g.render(template: module.getModuleTypeDTO().template  , model: [forum:forum, project: project, module:module ]  )
+        def contents = g.render(template: module.getModuleTypeDTO().template  , model: [forum:forum, UCproject: project, module:module ]  )
         JSONObject resultJson = new JSONObject();
         resultJson.put("status","success");
         resultJson.put("value", contents)
@@ -38,7 +38,7 @@ class ForumController {
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         def forum= webServicesSession.getForumById(project.id, params.int("id", project.getDefaultforum() ))
         def modulPos=webServicesSession.getModuleBydisplaypos(project.id, 0 , forum.id, ModuleDisplay.List )
-        def model =[project: project, modulPos:modulPos, forum:forum]
+        def model =[UCproject: project, modulPos:modulPos, forum:forum]
         model.customize=params.customize
         render view: '/article/list' ,   model: model
     }
@@ -65,7 +65,7 @@ class ForumController {
     def dashboard(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         def defaultForum= webServicesSession.getForumById(project.id, params.int("id", project.getDefaultforum() ))
-        def model =[project: project, defaultForum:defaultForum]
+        def model =[UCproject: project, defaultForum:defaultForum]
         model.customize=params.customize
         if (defaultForum==null)   response.sendError(HttpServletResponse.SC_NOT_FOUND);
 
@@ -106,11 +106,11 @@ class ForumController {
         def contents=""
         def articlesKNB=webServicesSession.findTextInArticle(project.id,  searchtext, forum, ForumType.Knowledgebase,  5, null )
         if(articlesKNB){
-            contents = g.render(template:"/forum/searchList", model: [project:project, lastArticle:articlesKNB, title: g.message(code: "forum.type1")   ])
+            contents = g.render(template:"/forum/searchList", model: [UCproject:project, lastArticle:articlesKNB, title: g.message(code: "forum.type1")   ])
         }
         def articlesCom=webServicesSession.findTextInArticle(project.id,  searchtext, forum,ForumType.Community,  5, null )
         if (articlesCom){
-            contents =contents +  g.render(template:"/forum/searchList", model: [project:project, lastArticle:articlesCom, title: g.message(code: "forum.type2")  ])
+            contents =contents +  g.render(template:"/forum/searchList", model: [UCproject:project, lastArticle:articlesCom, title: g.message(code: "forum.type2")  ])
         }
         if (!articlesCom && !articlesKNB){
             contents = g.render(template:"/forum/searchNotFound")
@@ -122,7 +122,7 @@ class ForumController {
     }
 
     def widgets(){
-        def module=[project:webServicesSession.getProject(getResponse(), getRequest(), getSession())]
+        def module=[UCproject:webServicesSession.getProject(getResponse(), getRequest(), getSession())]
         module.maxRecords=5
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         module.forum= webServicesSession.getForumById(project.id, params.int("id", project.getDefaultforum() ))

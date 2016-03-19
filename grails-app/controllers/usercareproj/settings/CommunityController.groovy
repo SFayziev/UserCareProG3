@@ -55,10 +55,10 @@ class CommunityController {
             bindData(forum.getPrivacy() , params, 'privacy')
 
             webServicesSession.saveForum(forum);
-            render view: '/settings/community/privacy', model: [  project:project , forum:forum]
+            render view: '/settings/community/privacy', model: [  UCproject:project , forum:forum]
         }
         else{
-            render view: '/settings/community/privacy', model: [  project:project , forum:forum]
+            render view: '/settings/community/privacy', model: [  UCproject:project , forum:forum]
         }
 
     }
@@ -67,7 +67,7 @@ class CommunityController {
 
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession()).clone()
         def forums=webServicesSession.getForumByType( project.id , ForumType.Community )
-        render view: '/settings/community/control', model: [  project:project , forums:forums]
+        render view: '/settings/community/control', model: [  UCproject:project , forums:forums]
 
     }
 
@@ -160,7 +160,7 @@ def delete(){
         def id=getId();
 
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession()).clone()
-        def model=[project:project]
+        def model=[UCproject:project]
         model.forum=id? webServicesSession.getForumById( project.id , id ):getDefaultForum(project)
         model.activleLangs=webServicesSession.getProjectActiveLangs(project.id)
         model.knowledgebases=webServicesSession.getForumByType(project.id, ForumType.Knowledgebase)
@@ -190,7 +190,7 @@ def delete(){
     def spamprotection() {
         def id=getId();
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
-        def model=[project:project]
+        def model=[UCproject:project]
         def forum=id? webServicesSession.getForumById( project.id , id ):getDefaultForum(project)
         if (params.get("submit")=="save" ) {
 
@@ -227,7 +227,7 @@ def delete(){
     def tag(){
         def id=getId();
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
-        def model=[project:project]
+        def model=[UCproject:project]
         def forum=id? webServicesSession.getForumById( project.id , id ):getDefaultForum(project)
         if (params.get("submit")=="save" ) {
 //            forum.getPrivacy().setAssigntype(params.getInt('assigntype'))
@@ -243,7 +243,7 @@ def delete(){
     def category(){
         def id=getId();
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
-        def model=[project:project]
+        def model=[UCproject:project]
         def forum=id? webServicesSession.getForumById( project.id , id ):getDefaultForum(project)
         if (params.get("submit")=="save" ) {
             forum.getPrivacy().setAssigntype(params.getInt('assigntype'))
@@ -317,7 +317,7 @@ def delete(){
 
     def customisation(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession()).clone()
-        def model=[project:project]
+        def model=[UCproject:project]
         render view: '/settings/community/customisation', model: model
 
     }
@@ -341,7 +341,7 @@ def delete(){
         def id = getId();
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession()).clone()
         def forum=webServicesSession.getForumById(project.id , id)
-        def model=[project: project]
+        def model=[UCproject: project]
         model.tag=params.getInt("tagid")?webServicesSession.getTagById(project.id, id , params.getInt("tagid")): new ForumTagsDTO(forum.id,"")
 
         if (  params.get("submit")=="save" ) {
@@ -357,7 +357,7 @@ def delete(){
         def id = getId();
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession()).clone()
         def forum=webServicesSession.getForumById(project.id , id)
-        def model=[project: project]
+        def model=[UCproject: project]
         def forumStatuses=webServicesSession.getForumStatusByForumId(project.id,  forum.id);
         def topicTypeid=params.getInt("topicType")
         def topicType=topicTypeid?webServicesSession.getForumTypeByid(project.id,   topicTypeid):new ForumTypeDTO()
@@ -400,7 +400,7 @@ def delete(){
         def id = getId();
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession()).clone()
         def forum=webServicesSession.getForumById(project.id , id)
-        def model=[project: project]
+        def model=[UCproject: project]
         def forumStatus=params.getInt("forumStatus")?webServicesSession.getForumStatusByid(project.id,  params.getInt("forumStatus")):new ForumStatusDTO(forum.id)
         model.forumStatus=forumStatus
 
@@ -426,7 +426,7 @@ def delete(){
         def id = getId();
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession()).clone()
         def forum=webServicesSession.getForumById(project.id , id)
-        def model=[project: project]
+        def model=[UCproject: project]
         model.categoris=webServicesSession.getCategoryByForumId(project.id , id).clone()
         def categoris=model.categoris.clone()
         def fcategory =params.getInt("catid")?webServicesSession.getCategoryById(project.id , params.getInt("catid")):new CategoriesDTO(project.id ,forum.id)
@@ -455,7 +455,7 @@ def delete(){
         def id = getId();
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession()).clone()
         def forum=webServicesSession.getForumById(project.id , id)
-        def model=[project: project]
+        def model=[UCproject: project]
         model.forum=forum
         model.topicTypes=webServicesSession.getForumTypeByForumid(project.id,  forum.id,-1);
         if (params.get("submit")=="save" ) {
@@ -469,7 +469,7 @@ def delete(){
         def id = getId();
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession()).clone()
         def forum=webServicesSession.getForumById(project.id , id)
-        def model=[project: project]
+        def model=[UCproject: project]
         model.forum=forum
         model.forumStatuses=webServicesSession.getForumStatusByForumId(project.id,  forum.id);
 

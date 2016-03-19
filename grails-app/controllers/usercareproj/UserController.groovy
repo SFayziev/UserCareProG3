@@ -61,7 +61,7 @@ class UserController {
             }
         }
 
-        render view: 'signup', model: [user:user, project:project]
+        render view: 'signup', model: [user:user, UCproject:project]
     }
 
     def signin(){
@@ -109,7 +109,7 @@ class UserController {
                 }
             }
 
-            render view: "profile", model: [user: userdto,  project:project]
+            render view: "profile", model: [user: userdto,  UCproject:project]
         }
         else{
             response.sendError HttpServletResponse.SC_UNAUTHORIZED
@@ -126,7 +126,7 @@ class UserController {
         def userdto=id!= 0? webServicesSession.getUser(project.id , id  ):null
         if (id!=0 || (userdto!= null)){
             params.filter_user_id=id
-            render view: "topics", model: [user: userdto, module:module, forum:forum, project: project]
+            render view: "topics", model: [user: userdto, module:module, forum:forum, UCproject: project]
         }
         else{
             response.sendError HttpServletResponse.SC_BAD_REQUEST
@@ -143,7 +143,7 @@ class UserController {
         def userdto=id!= 0? webServicesSession.getUser(project.id , id  ):null
         if (id!=0 || (userdto!= null)){
             params.filter_performer_id=id
-            render view: "topics", model: [user: userdto, module:module, forum:forum, project: project]
+            render view: "topics", model: [user: userdto, module:module, forum:forum, UCproject: project]
         }
         else{
             response.sendError HttpServletResponse.SC_BAD_REQUEST
@@ -158,7 +158,7 @@ class UserController {
             def comments=webServicesSession.getCommentbyUserId(project.id, id, params.getInt("offset", 0) ,uTopicCounts )
             def total=comments?.size()>0?webServicesSession.getCommentbyUserCounts(project.id, id):0
             params.filter_user_id=id
-            render view: "comments", model: [ user: userdto,  comments:comments, project: project, total:total , maxRecords:uTopicCounts]
+            render view: "comments", model: [ user: userdto,  comments:comments, UCproject: project, total:total , maxRecords:uTopicCounts]
         }
         else{
             response.sendError HttpServletResponse.SC_BAD_REQUEST
@@ -169,7 +169,7 @@ class UserController {
     def team(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         def defaultForum= webServicesSession.getForumById(project.id, params.int("id", project.getDefaultforum() ))
-        def model =[project: project, defaultForum:defaultForum]
+        def model =[UCproject: project, defaultForum:defaultForum]
         if (defaultForum==null)   response.sendError(HttpServletResponse.SC_NOT_FOUND);
         model.modulPos=webServicesSession.getModuleBydisplaypos(project.id, 0 ,  defaultForum.id , ModuleDisplay.Dashboard )
         model.usersOurStaff=webServicesSession.getProjectStaffs(project.id, 0 )
@@ -205,7 +205,7 @@ class UserController {
                 def forums = webServicesSession.getForumbyProject(project.id)
 //                def notify=webServicesUser.getNotifyByUserId(project.id, userdto.id )
                 def followArtics=webServicesUser.getUserFollowsArticles(project.id, userdto.id )
-                render view: "notification", model: [user: userdto , project:project, notify:notify, followArtics: followArtics, notifyForums:notifyForums, forums:forums ]
+                render view: "notification", model: [user: userdto , UCproject:project, notify:notify, followArtics: followArtics, notifyForums:notifyForums, forums:forums ]
             }
             else{
                 response.sendError HttpServletResponse.SC_BAD_REQUEST

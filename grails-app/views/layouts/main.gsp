@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="icon" href="${project?.projectDesignDTO?.faviconFileDTO?.svalue?.originalFilename }">
+    <link rel="icon" href="${UCproject?.projectDesignDTO?.faviconFileDTO?.svalue?.originalFilename }">
 	%{--<asset:link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>--}%
     <g:render template="/layouts/headerFile" />
 
@@ -17,7 +17,7 @@
 <div id="jGrowl-container1" class="jGrowl top-right"></div>
 
 <div class="wrapper">
-	<g:render template="/layouts/header" />
+    <g:if test="${UCproject!= null}"><g:render template="/layouts/header" /></g:if>
 	%{--<g:render template="/layouts/topMenu" />--}%
 	<g:layoutBody/>
 	<g:render template="/layouts/footer" />

@@ -24,7 +24,7 @@ class HelpdeskController {
     def control(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession()).clone()
         def forums=webServicesSession.getForumByType( project.id , ForumType.HelpDesk )
-        render view: '/settings/helpdesk/control', model: [project:project , forums:forums]
+        render view: '/settings/helpdesk/control', model: [UCproject:project , forums:forums]
 
     }
 
@@ -52,7 +52,7 @@ class HelpdeskController {
         }
 
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession()).clone()
-        def model=[project:project]
+        def model=[UCproject:project]
         model.forum=webServicesSession.getForumById( project.id , id )
         model.activleLangs=webServicesSession.getProjectActiveLangs(project.id)
         model.knowledgebases=webServicesSession.getForumByType(project.id, ForumType.HelpDesk)
@@ -108,7 +108,7 @@ class HelpdeskController {
     def category(){
         def id=getId();
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
-        def model=[project:project]
+        def model=[UCproject:project]
         def forum=id? webServicesSession.getForumById( project.id , id ):getDefaultForum(project)
         if (params.get("submit")=="save" ) {
             forum.getPrivacy().setAssigntype(params.getInt('assigntype'))
@@ -140,7 +140,7 @@ class HelpdeskController {
         def id = getId();
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession()).clone()
         def forum=webServicesSession.getForumById(project.id , id)
-        def model=[project: project]
+        def model=[UCproject: project]
         model.categoris=webServicesSession.getCategoryByForumId(project.id , id).clone()
         def categoris=model.categoris.clone()
         def fcategory =params.getInt("catid")?webServicesSession.getCategoryById(project.id , params.getInt("catid")):new CategoriesDTO(project.id ,forum.id)
@@ -168,7 +168,7 @@ class HelpdeskController {
     def tag(){
         def id=getId();
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
-        def model=[project:project]
+        def model=[UCproject:project]
         def forum=id? webServicesSession.getForumById( project.id , id ):getDefaultForum(project)
         if (params.get("submit")=="save" ) {
 //            forum.getPrivacy().setAssigntype(params.getInt('assigntype'))
@@ -201,7 +201,7 @@ class HelpdeskController {
         def id = getId();
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession()).clone()
         def forum=webServicesSession.getForumById(project.id , id)
-        def model=[project: project]
+        def model=[UCproject: project]
         model.tag=params.getInt("tagid")?webServicesSession.getTagById(project.id, id , params.getInt("tagid")): new ForumTagsDTO(forum.id,"")
 
         if (  params.get("submit")=="save" ) {
@@ -232,7 +232,7 @@ class HelpdeskController {
         def id = getId();
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession()).clone()
         def forum=webServicesSession.getForumById(project.id , id)
-        def model=[project: project]
+        def model=[UCproject: project]
         def forumStatus=params.getInt("forumStatus")?webServicesSession.getForumStatusByid(project.id,  params.getInt("forumStatus")):new ForumStatusDTO(forum.id)
         model.forumStatus=forumStatus
 
@@ -259,7 +259,7 @@ class HelpdeskController {
         def id = getId();
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession()).clone()
         def forum=webServicesSession.getForumById(project.id , id)
-        def model=[project: project]
+        def model=[UCproject: project]
         model.forum=forum
         model.forumStatuses=webServicesSession.getForumStatusByForumId(project.id,  forum.id);
 
@@ -271,7 +271,7 @@ class HelpdeskController {
         def id = getId();
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession()).clone()
         def forum=webServicesSession.getForumById(project.id , id)
-        def model=[project: project]
+        def model=[UCproject: project]
         model.forum=forum
         model.topicTypes=webServicesSession.getForumTypeByForumid(project.id,  forum.id,-1);
 
@@ -301,7 +301,7 @@ class HelpdeskController {
         def id = getId();
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession()).clone()
         def forum=webServicesSession.getForumById(project.id , id)
-        def model=[project: project]
+        def model=[UCproject: project]
         def forumStatuses=webServicesSession.getForumStatusByForumId(project.id,  forum.id);
         def topicTypeid=params.getInt("topicType")
         def topicType=topicTypeid?webServicesSession.getForumTypeByid(project.id,   topicTypeid):new ForumTypeDTO()

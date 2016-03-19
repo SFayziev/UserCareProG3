@@ -9,7 +9,7 @@
         </li>
         <li>
             <i class="fa fa-fw fa-link"></i>
-            <a target="_blank" href="${project.url}">Наш веб-сайт</a>
+            <a target="_blank" href="UCproject:.url}">Наш веб-сайт</a>
         </li>
 
         <li>

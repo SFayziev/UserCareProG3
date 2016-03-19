@@ -1,1 +1,1 @@
-<modules:articleList params="${[project:project, forum:forum , module:module,  params:params]}" />
+<modules:articleList params="${[project:UCproject, forum:forum , module:module,  params:params]}" />

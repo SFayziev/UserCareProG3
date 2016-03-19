@@ -21,7 +21,7 @@
                 <label for="name" class="col-lg-4 control-label"><g:message code="setting.project.settings.name" /></label>
                 <div class="col-lg-8">
                     <label for="name" class="input input-file state-success">
-                        <input  id="name" name="project.name" required type="text" value="${project?.name}">
+                        <input  id="name" name="project.name" required type="text" value="${UCproject?.name}">
                         <div class="help-block with-errors"></div>
                     </label>
                 </div>
@@ -30,7 +30,7 @@
                 <label for="defaultforum" class="col-lg-4 control-label"><g:message code="setting.project.settings.default.forum" /></label>
                 <div class="col-lg-8">
                     <label for="alias" class="select state-success">
-                        <g:select id="defaultforum" optionKey="id" value="${project?.defaultforum}"
+                        <g:select id="defaultforum" optionKey="id" value="${UCproject?.defaultforum}"
                                   name="project.defaultforum"  optionValue="name" from="${forums}" />
                         <i></i>
                     </label>
@@ -41,7 +41,7 @@
                 <div class="col-lg-8">
                     <label for="alias" class="input input-file state-success">
                         <div class="button"><input id="alias"  disabled type="text">.${domainUrl}</div>
-                        <input readonly=""  name="project.alias" value="${project?.alias}" type="text">
+                        <input readonly=""  name="project.alias" value="${UCproject?.alias}" type="text">
                     </label>
 
                 </div>
@@ -51,7 +51,7 @@
                 <label for="project.url"  class="col-lg-4 control-label"><g:message code="setting.project.settings.yoursite.url" /></label>
                 <div class="col-lg-8">
                     <label for="alias" class="input input-file state-success">
-                        <input  id="project.url" name="project.url" required type="text" value="${project?.url}">
+                        <input  id="project.url" name="project.url" required type="text" value="${UCproject?.url}">
 
                         <div class="help-block with-errors"></div>
                     </label>

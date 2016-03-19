@@ -16,7 +16,7 @@
                 </div>
                 <div class="topic-votes pull-right">
                     <g:if test="${comment?.statusDTO}">
-                        <span class="margin-left-5 rounded  label" style="background: ${comment?.statusDTO?.color}" ><locale:message  proj="${project}" code="article.status.name.${comment?.statusDTO?.id}" default="${comment?.statusDTO?.name}" /> </span>
+                        <span class="margin-left-5 rounded  label" style="background: ${comment?.statusDTO?.color}" ><locale:message  proj="${UCproject}" code="article.status.name.${comment?.statusDTO?.id}" default="${comment?.statusDTO?.name}" /> </span>
                     </g:if>
                 </div>
                 <div class="topic-votes pull-right">

@@ -17,7 +17,7 @@ class MessagingController {
         def user=webServicesSession.getUser(project.id , userid)
 
         if(article!=null && user!= null){
-            render view: 'topicUpdated', model: [project:project, article:article , user:user , comment:comment ]
+            render view: 'topicUpdated', model: [UCproject:project, article:article , user:user , comment:comment ]
         }
         else{
             response.sendError HttpServletResponse.SC_NO_CONTENT
@@ -32,7 +32,7 @@ class MessagingController {
         def user=webServicesSession.getUser(project.id , userid)
 
         if(article!=null && user!= null){
-            render view: 'topicCreated', model: [project:project, article:article , user:user ]
+            render view: 'topicCreated', model: [UCproject:project, article:article , user:user ]
         }
         else{
             response.sendError HttpServletResponse.SC_NO_CONTENT
@@ -52,7 +52,7 @@ class MessagingController {
         def user=webServicesSession.getUser(project.id , userid)
 
         if(comment!=null && user!= null){
-            render view: 'commentCreated', model: [project:project, comment:comment , user:user ]
+            render view: 'commentCreated', model: [UCproject:project, comment:comment , user:user ]
         }
         else{
             response.sendError HttpServletResponse.SC_NO_CONTENT
