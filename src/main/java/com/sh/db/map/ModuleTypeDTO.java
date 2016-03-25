@@ -16,6 +16,15 @@ public class ModuleTypeDTO extends IntEntity {
     private Boolean editable;
     private Boolean undeletable;
     private String  edittemplate;
+    private  Integer  status;
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
 
     public String getEdittemplate() {
         return edittemplate;

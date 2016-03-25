@@ -55,7 +55,7 @@ public class MassageListenerImpl extends MailListener {
 
 
 
-    public String getNoreplayEmailAddress(final ProjectDTO projectDTO){
+    public String getNoreplayEmailAddress(final ProjectDTO projectDTO) {
         return projectDTO.getName() + " <" + emailNoreplay+ "@"+ projectDTO.getAlias()+"."+ domainUrl + ">" ;
     }
 
@@ -63,23 +63,23 @@ public class MassageListenerImpl extends MailListener {
         try (CloseableHttpClient httpClient = HttpClientBuilder.create().build()) {
             List<NameValuePair> arguments = new ArrayList();
             arguments.add(new BasicNameValuePair("charset", "utf-8"));
-            arguments.add(new BasicNameValuePair("userid", ""+userid));
+            arguments.add(new BasicNameValuePair("userid", ""+ userid));
             arguments.add(new BasicNameValuePair("id", "" + contentcid));
-            HttpPost post = new HttpPost(domainProtocol+ "://" + projectDTO.getAlias() +"."+ domainUrl + partUrl) ;
+            HttpPost post = new HttpPost(domainProtocol + "://" + projectDTO.getAlias() +"."+ domainUrl + partUrl) ;
             post.addHeader("content-type", "application/x-www-form-urlencoded; charset=utf-8");
             post.setEntity(new UrlEncodedFormEntity(arguments, "utf-8"));
             // use httpClient (no need to close it explicitly)
 
             HttpResponse response = null;
-            response  =httpClient.execute(post);
-            if (response.getStatusLine().getStatusCode()!= HttpStatus.SC_OK ){
+            response  = httpClient.execute(post);
+            if (response.getStatusLine().getStatusCode() != HttpStatus.SC_OK ) {
                 LOG.error("get status " + response.getStatusLine().getStatusCode());
                 return null;
             }
             BufferedReader rd = new BufferedReader(
                     new InputStreamReader(response.getEntity().getContent()));
 
-            StringBuffer result = new StringBuffer();
+            StringBuilder result = new StringBuilder();
             String line = "";
             while ((line = rd.readLine()) != null) {
                 result.append(line);
@@ -94,16 +94,16 @@ public class MassageListenerImpl extends MailListener {
 
     }
 
-    public void sendEmailtoAmqp(String from , String to, String subject, String emailText  ){
+    public void sendEmailtoAmqp(String from, String to, String subject, String emailText  ) {
         JSONObject resultJson = new JSONObject();
-        resultJson.put("from",from);
-        resultJson.put("to",to);
+        resultJson.put("from", from);
+        resultJson.put("to", to);
         resultJson.put("subject", subject);
-        resultJson.put("text", emailText );
+        resultJson.put("text", emailText);
         template.convertAndSend("mail.send", resultJson.toString());
     }
 
-    public void sendTopicAmqpCommand(String command, Integer projid , Integer forumid, Integer topicid ){
+    public void sendTopicAmqpCommand(String command, Integer projid , Integer forumid, Integer topicid ) {
         template.convertAndSend(command, toJson(projid, forumid, topicid, null) );
     }
 
@@ -111,12 +111,12 @@ public class MassageListenerImpl extends MailListener {
         template.convertAndSend(command, toJson(projid, forumid, topicid, commentid) );
     }
 
-    private String toJson(Integer projid , Integer forumid, Integer topicid, Integer commentid){
+    private String toJson(Integer projid , Integer forumid, Integer topicid, Integer commentid) {
         JSONObject resultJson = new JSONObject();
-        resultJson.put("projectid",projid);
-        resultJson.put("forumid",forumid);
-        resultJson.put("topicid",topicid);
-        if (commentid!=null)  resultJson.put("commentid",commentid);
+        resultJson.put("projectid", projid);
+        resultJson.put("forumid", forumid);
+        resultJson.put("topicid", topicid);
+        if (commentid != null)  resultJson.put("commentid", commentid);
         return resultJson.toString();
     }
 

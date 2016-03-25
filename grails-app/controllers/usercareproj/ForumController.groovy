@@ -1,7 +1,7 @@
 package usercareproj
 
 import com.sh.db.map.CategoriesDTO
-import com.sh.db.map.ForumTypeDTO
+import com.sh.db.map.TopicTypeDTO
 import com.sh.utils.ForumType
 import com.sh.utils.ModuleDisplay
 import org.grails.web.json.JSONObject;
@@ -53,7 +53,7 @@ class ForumController {
             def forumCategorys=webServicesSession.getCategoryByForumId(project.id, forum.id)
             def forumoptions="";
             def forumcategory="";
-            for (ForumTypeDTO forumTypeDTO:forumTypes) forumoptions=forumoptions+ String.format("<option value='%s'> %s</option>", forumTypeDTO.id, forumTypeDTO.articleTypeDTO.name )
+            for (TopicTypeDTO topicTypeDTO:forumTypes) forumoptions=forumoptions+ String.format("<option value='%s'> %s</option>", topicTypeDTO.id, topicTypeDTO.articleTypeDTO.name )
             for (CategoriesDTO categoriesDTO:forumCategorys) forumcategory=forumcategory+ String.format("<option value='%s'> %s</option>", categoriesDTO.id, categoriesDTO.name )
             resultJson.put("forumoptions",forumoptions);
             resultJson.put("forumcategory",forumcategory);

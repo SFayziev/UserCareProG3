@@ -22,6 +22,8 @@
                     <label for="name" class="input input-file state-success">
                         <i class="icon-append fa fa-globe" onclick="translationModal('forum.title', ${forum?.id});"></i>
                         <input  id="name" name="forum.name" required type="text" value="${forum?.name}">
+                        <div class="note"><g:message code="setting.community.forum.name.info"/> </div>
+
                         <div class="help-block with-errors"></div>
                     </label>
                 </div>
@@ -33,6 +35,8 @@
                         <g:select id="forum.langid" optionKey="id" value="${forum?.langid}"
                                   name="forum.langid"  optionValue="name" from="${activleLangs}" />
                         <i></i>
+                        <div class="note"><g:message code="setting.default.language.note"/> </div>
+
                     </label>
                 </div>
             </div>
@@ -43,6 +47,7 @@
                         <g:select name="forum.votetype" from="${['0', '2', '3']}" value="${forum?.votetype}"
                                   valueMessagePrefix="community.voting.type" />
                         <i></i>
+                        <div class="note"><g:message code="setting.voting.note"/> </div>
                     </label>
                 </div>
             </div>
@@ -52,6 +57,7 @@
                 <div class="col-lg-8">
                     <label for="forum.votelimit" class="input input-file state-success">
                         <input  id="forum.votelimit" name="forum.votelimit" required type="text" value="${forum?.votelimit}">
+                        <div class="note"><g:message code="setting.community.setting.vote.limit.note"/> </div>
                         <div class="help-block with-errors"></div>
                     </label>
                 </div>
@@ -63,6 +69,8 @@
                     <label for="forum.votetopiclimit" class="select state-success">
                         <g:select name="forum.votetopiclimit" from="${1..9}" value=""/>
                         <i></i>
+                        <div class="note"><g:message code="setting.community.setting.vote.topic.limit.note"/> </div>
+
                     </label>
                 </div>
             </div>
@@ -86,22 +94,24 @@
                 <div class="col-lg-8">
                     <label for="meta" class="input input-file state-success">
                         <input  id="meta" name="forum.meta"  type="text" value="${forum?.meta}">
+                        <div class="note"><g:message code="setting.community.setting.meta.description.note"/> </div>
                         <div class="help-block with-errors"></div>
                     </label>
                 </div>
             </div>
 
 
-            <div class="form-group">
-                <label for="firstreplystatus" class="col-lg-4 control-label"><g:message code="setting.community.setting.status.first.reply" /></label>
-                <div class="col-lg-8">
-                    <label for="firstreplystatus" class="select state-success">
-                        <g:select id="firstreplystatus" optionKey="id" value="${forum?.firstreplystatus}"
-                                  name="forum.firstreplystatus"  optionValue="name" from="${topicStatuses}" />
-                        <i></i>
-                    </label>
-                </div>
-            </div>
+            %{--<div class="form-group">--}%
+        %{--<label for="firstreplystatus" class="col-lg-4 control-label"><g:message code="setting.community.setting.status.first.reply" /></label>--}%
+        %{--<div class="col-lg-8">--}%
+        %{--<label for="firstreplystatus" class="select state-success">--}%
+        %{--<g:select id="firstreplystatus" optionKey="id" value="${forum?.firstreplystatus}"--}%
+        %{--name="forum.firstreplystatus"  optionValue="name" from="${topicStatuses}" />--}%
+        %{--<i></i>--}%
+
+        %{--</label>--}%
+        %{--</div>--}%
+        %{--</div>--}%
             <div class="form-group">
                 <label for="defkhowlagebase" class="col-lg-4 control-label"><g:message code="setting.community.setting.related.knowlage" /></label>
                 <div class="col-lg-8">
@@ -109,6 +119,8 @@
                         <g:select id="defkhowlagebase" optionKey="id" value="${forum?.defkhowlagebase}"
                                   name="forum.defkhowlagebase"  optionValue="name" from="${knowledgebases}" />
                         <i></i>
+                        <div class="note"><g:message code="setting.community.setting.related.knowlage.note"/> </div>
+
                     </label>
                 </div>
             </div>
@@ -119,6 +131,8 @@
                         <g:select id="defhelpdesk" optionKey="id" value="${forum?.defhelpdesk}"
                                   name="forum.defhelpdesk"  optionValue="name" from="${helpdesks}" />
                         <i></i>
+                        <div class="note"><g:message code="setting.community.setting.related.helpdesk.note"/> </div>
+
                     </label>
                 </div>
             </div>

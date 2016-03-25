@@ -1,15 +1,14 @@
 package com.sh.db.service;
 
-import com.sh.db.map.ArticleDTO;
+import com.sh.db.map.*;
 
-import com.sh.db.map.CommentDTO;
-import com.sh.db.map.ItemCount;
-import com.sh.db.map.ItemStatDTO;
 import com.sh.utils.ForumType;
 import db.controller.IntegrationTest;
 import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 /**
  * Created by shuhrat on 27.08.2015.
@@ -18,6 +17,8 @@ public class ArticleDAOTest extends IntegrationTest{
     @Autowired
     ArticleDAO articleDAO;
 
+     @Autowired
+     ForumDAO forumDAO;
 
 
 //    @Test
@@ -33,20 +34,31 @@ public class ArticleDAOTest extends IntegrationTest{
 
     @Test
     public void getLastArticle(){
+        int topicTypeid=3 ;
+        int forumid=2 ;
         System.out.println(ForumType.Community.ordinal());
-//        for(ArticleDTO articleDTO:articleDAO.getLastArticle(2,null,null,null,null, null, null ,null,null)){
-//            System.out.println(articleDTO);
-//        }
-        ItemCount rowCount=null;
+
+        ForumDTO forumDTO = forumDAO.getForumById(testProjectid, forumid);
+        ItemCount rowCount = articleDAO.getLastArticleRecCount(testProjectid, -1, topicTypeid , -1, forumDTO, -1, -1);
+
+        List<TopicTypeStatusDTO> topicTypeStatusDTOs=forumDAO.getTopicTypeStatusByTopicId(testProjectid, topicTypeid);
+
+        System.out.println("Active topics : " +  rowCount.getActiveTopic());
+        System.out.println("Closed topic: " + rowCount.getClosedTopic());
+        System.out.println("Unmarked topic: " + rowCount.getUnmarkedTopic());
+
 
         System.out.println("All: " +  rowCount.getCountByStatus(-1 ));
         System.out.println("New: " + rowCount.getCountByStatus(0));
-        System.out.println("Status 1: " + rowCount.getCountByStatus(1));
-        System.out.println("Status 2: " + rowCount.getCountByStatus(2));
-        System.out.println("Status 3: " + rowCount.getCountByStatus(3));
-        System.out.println("Status 4: " + rowCount.getCountByStatus(4));
-        System.out.println("Status 5: " + rowCount.getCountByStatus(5));
-        System.out.println("Status 6: " + rowCount.getCountByStatus(6));
+        for(TopicTypeStatusDTO topicTypeStatusDTO: topicTypeStatusDTOs ){
+            System.out.println("Status  " +  topicTypeStatusDTO.getArticleStatusDTO().getName() + "  : " +  rowCount.getCountByStatus(topicTypeStatusDTO.getArticleStatusDTO().getId() )   );
+        }
+//        System.out.println("Status 1: " + rowCount.getCountByStatus(1));
+//        System.out.println("Status 2: " + rowCount.getCountByStatus(2));
+//        System.out.println("Status 3: " + rowCount.getCountByStatus(3));
+//        System.out.println("Status 4: " + rowCount.getCountByStatus(4));
+//        System.out.println("Status 5: " + rowCount.getCountByStatus(5));
+//        System.out.println("Status 6: " + rowCount.getCountByStatus(6));
 
 
         System.out.println("All: " +  rowCount.getCountByType(-1));

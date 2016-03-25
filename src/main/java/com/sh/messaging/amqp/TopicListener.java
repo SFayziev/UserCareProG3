@@ -44,10 +44,10 @@ public class TopicListener  extends MassageListenerImpl{
 
     private static final Logger LOG = Logger.getLogger(TopicListener.class);
 
-    String topicCreatedUrl="/messaging/topicCreated/";
-    String topicUpdatedUrl="/messaging/topicUpdated/";
-    String topicMergedUrl="/messaging/topicMerged/";
-    String commentCreatedUrl="/messaging/commentCreated/";
+    private String topicCreatedUrl="/messaging/topicCreated/";
+    private String topicUpdatedUrl="/messaging/topicUpdated/";
+    private String topicMergedUrl="/messaging/topicMerged/";
+    private String commentCreatedUrl="/messaging/commentCreated/";
 
     @Autowired
     ArticleDAO articleDAO;

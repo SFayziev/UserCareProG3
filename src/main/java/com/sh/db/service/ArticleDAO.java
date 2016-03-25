@@ -144,8 +144,8 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
 
     @Cacheable( value = "itemCount" )
     @Transactional
-    public ItemCount getLastArticleRecCount(Integer projId,  Integer status, Integer artictype ,  Integer catId , ForumDTO  forumDTO , Integer userid, Integer performerid)
-    {   Criteria cr = getSessionFactory().getCurrentSession() .createCriteria(ItemStatDTO.class);
+    public ItemCount getLastArticleRecCount(Integer projId,  Integer status, Integer topictype ,  Integer catId , ForumDTO  forumDTO , Integer userid, Integer performerid)
+    {   Criteria cr = getSessionFactory().getCurrentSession().createCriteria(ItemStatDTO.class);
         cr = addArticleCriteriaRestrictions(cr, projId, 0, catId, forumDTO, -1, userid, performerid);
 //        cr.add(Restrictions.isNotNull("status"));
 
@@ -154,9 +154,9 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
                         .add(Projections.rowCount(), "count")
         );
 
-        ItemCount itemCount = new ItemCount();
-        itemCount.setSeltectedArticleType(artictype);
-        itemCount.setSeltectedArticleStatus(status);
+        ItemCount itemCount = new ItemCount( forumDAO.getArticleStatusByTopicTypeId(projId, forumDTO.getId(), topictype) , topictype , status );
+//        itemCount.setSeltectedArticleType(topictype);
+//        itemCount.setSeltectedArticleStatus(status);
 
         for (Object o : cr.list()) {
             Object[] row = (Object[]) o;
@@ -172,13 +172,13 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
      * @param id Article id
      * @return
      */
-    public  ArticleDTO getArticle( Integer projId,  Integer id) {
+    public  ArticleDTO getArticle (Integer projId,  Integer id) {
         Criteria cr = getSessionFactory().getCurrentSession().createCriteria(ArticleDTO.class);
         cr.add(Restrictions.eq("projid", projId));
         cr.add(Restrictions.ne("deleted", true));
         cr.add(Restrictions.eq("id", id));
         ArticleDTO articleDTO = (ArticleDTO) cr.uniqueResult();
-        if (articleDTO != null){
+        if (articleDTO != null) {
             statisticDAO.increaseArticleViews(articleDTO);
         }
         return  articleDTO;
@@ -297,20 +297,18 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
     }
 
     public CommentDTO commentVote(Integer commentid, Integer value , String username, String Ip ){
-        CommentDTO commentDTO= getCommentbyId(commentid);
+        CommentDTO commentDTO = getCommentbyId(commentid);
         CommentVoteDTO commentVoteDTO=isCommentVotedByMe(commentid, username, Ip);
 
-        if (commentVoteDTO!= null){
-            if(Objects.equals(commentVoteDTO.getValue(), value))
-            {
+        if (commentVoteDTO != null) {
+            if(Objects.equals(commentVoteDTO.getValue(), value)) {
                 return commentDTO;
-            }
-            else {
+            } else {
                 commentDTO.voteUndo(commentVoteDTO.getValue());
                 getSessionFactory().getCurrentSession().delete(commentVoteDTO);
             }
         }
-        if (value!=0)  {
+        if (value != 0)  {
             int voute =  value>0?commentDTO.votesPlus(value):commentDTO.votesDown(value);
             getSessionFactory().getCurrentSession().save(new CommentVoteDTO(commentid, value, Ip, 0));
         }
@@ -414,16 +412,18 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
     public ArticleDTO saveArticle(ArticleDTO articleDTO) {
         Integer previd =articleDTO.getId();
         ForumDTO forumDTO=articleDTO.getForumDTO();
+
+
         if (articleDTO.getId()!= null) {
             articleDTO.setUserDTO(getCurrentLoggedUser());
         }
-        if (articleDTO.getStatusDTO().getId()== null){
-            articleDTO.setStatusDTO(forumDAO.getArticleStatusById(articleDTO.getProjid(), forumDTO.getId(), forumDTO.getFirstreplystatus()));
-            if (articleDTO.getStatusDTO().getId()== null) articleDTO.setStatusDTO(forumDAO.getArticleStatusById(0,0,0) );
+        if (articleDTO.getStatusDTO().getId() == null){
+            articleDTO.setStatusDTO(forumDAO.getArticleStatusById(articleDTO.getProjid(), forumDTO.getId(), articleDTO.getType().getFirstreplystatus(), true ));
+            if (articleDTO.getStatusDTO().getId() == null) articleDTO.setStatusDTO(forumDAO.getArticleStatusById(0, 0, 0, true));
         }
         statisticDAO.increaseForumArticles(articleDTO.getProjid(),  forumDTO);
-        articleDTO= save(articleDTO);
-        if (previd== null){
+        articleDTO = save(articleDTO);
+        if (previd == null){
             topicListener.sendTopicAmqpCommand( AmqpConstants.TOPICCREATED , articleDTO.getProjid(), forumDTO.getId(), articleDTO.getId());
         }
        return articleDTO;
@@ -557,8 +557,8 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
         }
 
         if (forumType!= null && (forumType != 0 )){
-            ForumTypeDTO forumTypeDTO=forumDAO.getForumTypeByid(articleDTO.getProjid(), forumType );
-            if (forumTypeDTO!= null) articleDTO.setType(forumTypeDTO);
+            TopicTypeDTO topicTypeDTO=forumDAO.getForumTypeByid(articleDTO.getProjid(), forumType );
+            if (topicTypeDTO!= null) articleDTO.setType(topicTypeDTO);
         }
 
         if (forumCategory!= null && forumCategory!= 0 ){

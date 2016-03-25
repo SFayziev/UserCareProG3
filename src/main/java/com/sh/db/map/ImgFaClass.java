@@ -56,4 +56,13 @@ public class ImgFaClass extends ImgDTO<String> {
     public void setOvalue(String ovalue) {
         this.ovalue = ovalue;
     }
+
+    @Override
+    public String toString() {
+        return "ImgFaClass{" +
+                "paramType=" + paramType +
+                ", svalue='" + svalue + '\'' +
+                ", ovalue='" + ovalue + '\'' +
+                "} " + super.toString();
+    }
 }

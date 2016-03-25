@@ -9,7 +9,7 @@
        <!-- Connection Factory -->
        <bean id="rabbitConnectionFactory"
              class="org.springframework.amqp.rabbit.connection.CachingConnectionFactory">
-              <constructor-arg><value>usercare.info</value></constructor-arg>
+              <constructor-arg value="usercare.info"/>
               <property name="username" value="${amgp.username}" />
               <property name="password" value="${amgp.password}" />
               <property name="virtualHost" value="${amgp.virtualhost}" />

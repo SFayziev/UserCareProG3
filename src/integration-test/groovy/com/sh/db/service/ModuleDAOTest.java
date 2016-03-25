@@ -81,7 +81,7 @@ public class ModuleDAOTest extends IntegrationTest {
 
     }
     @Test
-    @Rollback(false)
+//    @Rollback(false)
     public void createModule(){
         ModuleDTO module=moduleDAO.getModuleById(0,1);
         module.getModuleParamDTOList().add(new ModuleParamsType1DTO(module, "maxRecords", 10));

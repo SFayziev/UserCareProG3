@@ -168,7 +168,7 @@
         <persistence strategy="localTempSwap" />
     </cache>
 
-    <cache name="forumTypeDTO"
+    <cache name="topicTypeDTO"
            maxEntriesLocalHeap="1000"
            maxEntriesLocalDisk="1000"
            eternal="false"
@@ -179,7 +179,7 @@
         <persistence strategy="localTempSwap" />
     </cache>
 
-    <cache name="forumStatusDTO"
+    <cache name="topicTypeStatusDTO"
            maxEntriesLocalHeap="1000"
            maxEntriesLocalDisk="1000"
            eternal="false"
@@ -244,5 +244,17 @@
            transactionalMode="off">
         <persistence strategy="localTempSwap" />
     </cache>
+
+    <cache name="moduleLinkDTO"
+           maxEntriesLocalHeap="1000"
+           maxEntriesLocalDisk="1000"
+           eternal="false"
+           diskSpoolBufferSizeMB="20"
+           timeToIdleSeconds="300000" timeToLiveSeconds="600000"
+           memoryStoreEvictionPolicy="LFU"
+           transactionalMode="off">
+        <persistence strategy="localTempSwap" />
+    </cache>
+
 
 </ehcache>

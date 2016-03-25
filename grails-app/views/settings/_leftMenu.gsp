@@ -35,8 +35,8 @@
             <li><g:link controller="community" action="privacy"  id="${selCommunityid}" ><i class="fa fa-lock"></i> <g:message code="setting.leftMenu.community.privacy" /></g:link></li>
             <li ><g:link controller="community" action="category"  id="${selCommunityid}" ><i class="fa fa-folder-open"></i> <g:message code="setting.leftMenu.community.categories" /></g:link></li>
             <li><g:link controller="community" action="tag"  id="${selCommunityid}" > <i class="fa fa-tags"></i> <g:message code="setting.leftMenu.community.tags" /></g:link></li>
-            <li><g:link controller="community" action="topicStatus"  id="${selCommunityid}" > <i class="fa fa-chevron-circle-right"></i> <g:message code="setting.leftMenu.community.statuses" /></g:link></li>
-            <li><g:link controller="community" action="topicType"  id="${selCommunityid}" >  <i class="fa fa-chevron-circle-right"></i> <g:message code="setting.leftMenu.community.types" /></g:link></li>
+            %{--<li><g:link controller="community" action="topicStatus"  id="${selCommunityid}" > <i class="fa fa-chevron-circle-right"></i> <g:message code="setting.leftMenu.community.statuses" /></g:link></li>--}%
+            <li><g:link controller="community" action="topicType"  id="${selCommunityid}" >  <i class="fa fa-chevron-circle-right"></i> <g:message code="setting.leftMenu.community.types" /> / <g:message code="setting.leftMenu.community.statuses" /> </g:link></li>
             <li><g:link controller="community" action="spamprotection"  id="${selCommunityid}" > <i class="fa fa-chevron-circle-right"></i> <g:message code="setting.leftMenu.community.spam.protection" /></g:link></li>
             <li><g:link controller="community" action="customisation" id="${selCommunityid}" params="${[vtype="dushboard"]}"><i class="fa  fa-cubes "></i> <g:message code="setting.leftMenu.community.customisation" /></g:link></li>
 
@@ -53,8 +53,8 @@
             <li><g:link controller="helpdesk" action="setting"  id="${selHelpDeskid}"><i class="fa fa-cog"></i> <g:message code="setting.leftMenu.project.settings" /></g:link></li>
             <li ><g:link controller="helpdesk" action="category"  id="${selHelpDeskid}" ><i class="fa fa-folder-open"></i> <g:message code="setting.leftMenu.community.categories" /></g:link></li>
             <li><g:link controller="helpdesk" action="tag"  id="${selHelpDeskid}" > <i class="fa fa-tags"></i> <g:message code="setting.leftMenu.community.tags" /></g:link></li>
-            <li><g:link controller="helpdesk" action="topicStatus"  id="${selHelpDeskid}" > <i class="fa fa-chevron-circle-right"></i> <g:message code="setting.leftMenu.community.statuses" /></g:link></li>
-            <li><g:link controller="helpdesk" action="topicType"  id="${selHelpDeskid}" >  <i class="fa fa-chevron-circle-right"></i> <g:message code="setting.leftMenu.community.types" /></g:link></li>
+            %{--<li><g:link controller="helpdesk" action="topicStatus"  id="${selHelpDeskid}" > <i class="fa fa-chevron-circle-right"></i> <g:message code="setting.leftMenu.community.statuses" /></g:link></li>--}%
+            <li><g:link controller="helpdesk" action="topicType"  id="${selHelpDeskid}" >  <i class="fa fa-chevron-circle-right"></i> <g:message code="setting.leftMenu.community.types" /> / <g:message code="setting.leftMenu.community.statuses" /> </g:link></li>
 
         </ul>
     </li>

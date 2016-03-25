@@ -63,13 +63,13 @@ public class ModuleDAO extends GenericDaoImpl<ModuleDTO> {
         for (ModuleDTO module:moduleDTOList){
             if (module.getModuleTypeDTO().getDispos()!= moduleDTO.getModuleTypeDTO().getDispos() ) continue;
 
-            if (change){
+            if (change) {
                 swapPos(module, prevModule);
                 return true;
             }
 
-            if (Objects.equals(module.getId(), moduleID)){
-                if (Objects.equals(direction, "up")){
+            if (Objects.equals(module.getId(), moduleID)) {
+                if (Objects.equals(direction, "up")) {
                     if (prevModule != null ){swapPos(module, prevModule);}
                     return true;
                 }
@@ -93,12 +93,12 @@ public class ModuleDAO extends GenericDaoImpl<ModuleDTO> {
 
     @Cacheable( value = "modules")
     @Transactional
-    public ModuleDTO getModuleById(Integer projId, Integer id ){
+    public ModuleDTO getModuleById(Integer projId, Integer id ) {
         return (ModuleDTO) getModuleCriteria(projId, id, null, null, 0, 0).uniqueResult() ;
 
     }
 
-    public List<ModuleTypeDTO> getModuleTypebyIds(String ids){
+    public List<ModuleTypeDTO> getModuleTypebyIds(String ids) {
         return  currentSession().createSQLQuery("select * from module_type  as mt where  mt.id in (" + ids + " )")
                 .addEntity(ModuleTypeDTO.class).list();
     }
@@ -119,7 +119,10 @@ public class ModuleDAO extends GenericDaoImpl<ModuleDTO> {
         if(id!= null && id>0) criteria.add(Restrictions.eq("id", id));
 
         if(type!= null && type>0) criteria.add(Restrictions.eq("type", type));
-        if(status!= null && status>0) criteria.add(Restrictions.eq("status", status));
+        if(status!= null && status>0) {
+            criteria.add(Restrictions.eq("status", status));
+//            criteria.add(Restrictions.eq("moduleTypeDTO.status", status));
+        }
         if (display!= null)criteria.add(Restrictions.eq("display", display ));
         if (forumid!= null) criteria.add(Restrictions.eq("forumid", forumid ));
         criteria.addOrder(Order.asc("pos"));

@@ -35,18 +35,19 @@
                 </label>
             </div>
         </div>
-<hr>
-    <div class="form-group">
-    <g:each in="${forumStatuses}" var="forumStatus">
-                <label class="col-lg-6 checkbox state-success">
-                    <input  name="forumStatus.id" value="${forumStatus.id}" <g:if test="${forumStatus.articleStatusDTO?.isInForumType}">checked=""</g:if> type="checkbox"><i></i>
-                    <span class="rounded  label " style="color: white; background: ${forumStatus?.articleStatusDTO?.color}" > ${forumStatus.articleStatusDTO.name}</span>
+        <div class="form-group">
+            <label  class="col-lg-4 control-label"><g:message code="setting.community.setting.status.first.reply" /></label>
+            <div class="col-lg-8">
+                <label class="select state-success">
+                    <g:select id="firstreplystatus" optionKey="id" value="${topicType?.firstreplystatus}"
+                              name="topicType.firstreplystatus"  optionValue="name" from="${topicStatuses}" />
+                    <i></i>
+
                 </label>
-    </g:each>
-    </div>
-        <div class="tag-box tag-box-v6">
-            <p><g:message code="setting.community.topic.type.addnew.note" /></p>
+            </div>
         </div>
+
+
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal"><g:message code="button.cancel" /></button>

@@ -3,6 +3,7 @@ package com.sh.db.map;
 import org.hibernate.annotations.DiscriminatorOptions;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
 
 /**
  * Created by Lenovo on 05.11.2015.
