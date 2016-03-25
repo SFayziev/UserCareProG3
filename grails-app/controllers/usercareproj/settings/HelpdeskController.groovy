@@ -3,10 +3,9 @@ package usercareproj.settings
 import com.sh.db.map.ArticleStatusDTO
 import com.sh.db.map.CategoriesDTO
 import com.sh.db.map.ForumDTO
-import com.sh.db.map.ForumStatusDTO
 import com.sh.db.map.ForumTagsDTO
-import com.sh.db.map.ForumTypeDTO
-import com.sh.db.map.ForumTypeStatusDTO
+import com.sh.db.map.TopicTypeDTO
+import com.sh.db.map.TopicTypeStatusDTO
 import com.sh.utils.ForumType
 import grails.plugin.springsecurity.annotation.Secured
 import org.apache.commons.logging.Log
@@ -233,7 +232,7 @@ class HelpdeskController {
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession()).clone()
         def forum=webServicesSession.getForumById(project.id , id)
         def model=[UCproject: project]
-        def forumStatus=params.getInt("forumStatus")?webServicesSession.getForumStatusByid(project.id,  params.getInt("forumStatus")):new ForumStatusDTO(forum.id)
+        def forumStatus=params.getInt("forumStatus")?webServicesSession.getForumStatusByid(project.id,  params.getInt("forumStatus")):new TopicTypeStatusDTO(forum.id)
         model.forumStatus=forumStatus
 
         if (params.submit=="save"  ) {
@@ -304,7 +303,7 @@ class HelpdeskController {
         def model=[UCproject: project]
         def forumStatuses=webServicesSession.getForumStatusByForumId(project.id,  forum.id);
         def topicTypeid=params.getInt("topicType")
-        def topicType=topicTypeid?webServicesSession.getForumTypeByid(project.id,   topicTypeid):new ForumTypeDTO()
+        def topicType=topicTypeid?webServicesSession.getForumTypeByid(project.id,   topicTypeid):new TopicTypeDTO()
         model.topicType=topicType
         model.forumStatuses=topicType.markIsinType(forumStatuses);
         if (  params.get("submit")=="save" ) {
@@ -318,7 +317,7 @@ class HelpdeskController {
             for(statusid in statuses){
                 def forumStatus=webServicesSession.getForumStatusByid(project.id ,  Integer.parseInt(statusid) )
                 if (forumStatus.articleStatusDTO.atype==1){
-                    topicType.addTypeStatusDTO(new ForumTypeStatusDTO (project.id, forumStatus ,  topicType , null ))
+                    topicType.addTypeStatusDTO(new TopicTypeStatusDTO (project.id, forumStatus ,  topicType , null ))
                 }
             }
 

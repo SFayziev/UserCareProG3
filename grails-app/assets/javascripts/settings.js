@@ -59,9 +59,9 @@ function topicTypeDOWN(forumid,  id) {
 }
 
 function statusMove(id , direction){
-    var dparent=$('#forumStatus'+id );
+    var dparent=$('#topicStatus'+id );
     var data={'id':id ,'direction':direction};
-    $.ajax({  dataType: "json", data:data, url:  "/settings/community/moveForumStatus"})
+    $.ajax({  dataType: "json", data:data, url:  "/settings/community/moveTopicStatus"})
         .done(function( data ) {
             if (data.status=='success') {
                 if(direction=='up'){

@@ -41,7 +41,7 @@ public class MailListener implements MessageListener {
             helper.setText(resultJson.getString("text"), true);
             mailSender.send(emessage);
 
-        } catch (MessagingException e) {
+        } catch (Exception e) {
             LOG.error(e.getMessage());
         }
     }

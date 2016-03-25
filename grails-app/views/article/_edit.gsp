@@ -16,9 +16,9 @@
     <div class="form-group">
         <label >Post in*</label>
     <select name="postType" class="form-control" required>
-        <g:each in="${forumTypes}" var="forumTypeDTO"><option value="${forumTypeDTO.id}" <g:if test="${forumTypeDTO.id==article?.type?.id}"> selected </g:if> >
-            <locale:message  proj="${UCproject}" code="topictype.name.$forumTypeDTO.id" default="${forumTypeDTO?.articleTypeDTO?.name}" />
-            %{--<g:message code="${forumTypeDTO.i18nvalues}" default="${forumTypeDTO?.alias}"/>--}%
+        <g:each in="${forumTypes}" var="topicTypeDTO"><option value="${topicTypeDTO.id}" <g:if test="${topicTypeDTO.id==article?.type?.id}"> selected </g:if> >
+            <locale:message  proj="${UCproject}" code="topictype.name.$topicTypeDTO.id" default="${topicTypeDTO?.articleTypeDTO?.name}" />
+            %{--<g:message code="${topicTypeDTO.i18nvalues}" default="${topicTypeDTO?.alias}"/>--}%
         </option></g:each>
     </select>
     </div>

@@ -12,6 +12,10 @@ public class ItemCount  implements Serializable, Cloneable{
     private static Integer  newkey=0;
     private Integer seltectedArticleType=-1;
     private Integer seltectedArticleStatus=-1;
+    private List<ArticleStatusDTO> articleStatusDTOList;
+    private  Long activeTopic=0L;
+    private  Long closedTopic=0L;
+    private  Long unmarkedTopic=0L;
 
     public Integer getSeltectedArticleType() {
         return seltectedArticleType;
@@ -29,7 +33,14 @@ public class ItemCount  implements Serializable, Cloneable{
         this.seltectedArticleStatus = seltectedArticleStatus==null? allkey: seltectedArticleStatus;
     }
 
-    public ItemCount() {
+//    public ItemCount() {
+//        this.itemStatDTOList = new ArrayList<ItemStatDTO>();
+//    }
+
+    public ItemCount(List<ArticleStatusDTO> articleStatusDTOList,  Integer seltectedArticleType, Integer seltectedArticleStatus) {
+        this.articleStatusDTOList=articleStatusDTOList;
+        this.setSeltectedArticleStatus(seltectedArticleStatus);
+        this.setSeltectedArticleType(seltectedArticleType);
         this.itemStatDTOList = new ArrayList<ItemStatDTO>();
     }
 
@@ -45,65 +56,95 @@ public class ItemCount  implements Serializable, Cloneable{
         this.itemStatDTOList = itemStatDTOList;
     }
 
-   public Long getCountByStatus(Integer statusid){
+    public Long getCountByStatus(Integer statusid){
         if(articleStatuscount== null) {recalculateStatus();}
         Long val=articleStatuscount.get(statusid);
         return  val==null?0L:val;
     }
-    private void recalculateStatus(){
-        articleStatuscount= new HashMap<Integer,Long>();
+
+    public Long getActiveTopic() {
+        if(articleStatuscount== null) {recalculateStatus();}
+        return activeTopic;
+    }
+
+    public Long getClosedTopic() {
+        if(articleStatuscount== null) {recalculateStatus();}
+        return closedTopic;
+    }
+
+    public Long getUnmarkedTopic() {
+        if(articleStatuscount== null) {recalculateStatus();}
+        return getCountByStatus(allkey)-closedTopic-activeTopic ;
+    }
+
+    private void recalculateStatus() {
+        articleStatuscount = new HashMap<Integer, Long>();
         articleStatuscount.put(allkey,0L);
         articleStatuscount.put(newkey,0L);
-        for(ItemStatDTO itemStatDTO: itemStatDTOList ){
+        for (ItemStatDTO itemStatDTO: itemStatDTOList) {
             if (!Objects.equals(seltectedArticleType, allkey) &&  !itemStatDTO.getType().equals(seltectedArticleType) ) continue;
             Long val = articleStatuscount.get(itemStatDTO.getStatus());
-            if (val== null){
+            if (val == null) {
                 articleStatuscount.put(itemStatDTO.getStatus() , itemStatDTO.getCount()) ;
-            }
-            else{
-                articleStatuscount.replace(itemStatDTO.getStatus() , itemStatDTO.getCount()+val);
+            } else {
+                articleStatuscount.replace(itemStatDTO.getStatus() , itemStatDTO.getCount()+ val);
             }
             Long aval = articleStatuscount.get(allkey);
-            if (aval== null){
+            if (aval == null) {
                 articleStatuscount.put(allkey , itemStatDTO.getCount()) ;
-            }
-            else{
+            } else {
                 articleStatuscount.replace(allkey , itemStatDTO.getCount()+aval);
             }
         }
-    }
 
+        for (ArticleStatusDTO articleStatusDTO:articleStatusDTOList) {
+            Long sum=articleStatuscount.get(articleStatusDTO.id);
+            if (sum == null ) {
+                sum = 0L;
+            }
+            if (articleStatusDTO.getLogicalgroup()==1){
+                closedTopic=closedTopic+sum;
+            }
+            if (articleStatusDTO.getLogicalgroup()==0){
+                activeTopic= activeTopic + sum;
+            }
 
-    public Long getCountByType(Integer typeid){
-        if(articleTypecount== null) {recalculateType();
         }
-        Long val=articleTypecount.get(typeid);
-        return  val==null?0L:val;
+
+
     }
-    private void recalculateType(){
-        articleTypecount= new HashMap<Integer,Long>();
+
+
+    public Long getCountByType(Integer typeid) {
+        if (articleTypecount == null) {
+            recalculateType();
+        }
+        Long val = articleTypecount.get(typeid);
+        return  val == null? 0L: val;
+    }
+
+    private void recalculateType() {
+        articleTypecount = new HashMap<Integer,Long>();
         articleTypecount.put(allkey,0L);
         articleTypecount.put(newkey,0L);
-        for(ItemStatDTO itemStatDTO: itemStatDTOList ){
+        for (ItemStatDTO itemStatDTO: itemStatDTOList ) {
             Long val = articleTypecount.get(itemStatDTO.getType());
-            if (val== null){
+            if (val == null) {
                 articleTypecount.put(itemStatDTO.getType(), itemStatDTO.getCount()) ;
-            }
-            else{
-                articleTypecount.replace(itemStatDTO.getType(), itemStatDTO.getCount()+val);
+            } else {
+                articleTypecount.replace(itemStatDTO.getType(), itemStatDTO.getCount() + val);
             }
             Long aval = articleTypecount.get(allkey);
-            if (aval== null){
+            if (aval == null) {
                 articleTypecount.put(allkey , itemStatDTO.getCount()) ;
-            }
-            else{
-                articleTypecount.replace(allkey , itemStatDTO.getCount()+aval);
+            } else {
+                articleTypecount.replace(allkey, itemStatDTO.getCount() + aval);
             }
         }
     }
 
-   private Long getRowCount(){
-       Long count =  getCountByStatus(seltectedArticleStatus== null?allkey:seltectedArticleStatus);
-       return count;
+   private Long getRowCount() {
+       return getCountByStatus(seltectedArticleStatus == null ? allkey:seltectedArticleStatus);
+//       return count;
    }
 }

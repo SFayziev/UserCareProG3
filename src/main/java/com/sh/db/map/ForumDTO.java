@@ -30,7 +30,7 @@ public class ForumDTO extends  IntEntity implements Serializable {
     private Boolean  satisfactionon=false;
     private Boolean sharingon=false;
     private String meta="";
-    private Integer  firstreplystatus;
+//    private Integer  firstreplystatus;
     private Integer  defhelpdesk;
     private Integer defkhowlagebase;
 
@@ -109,13 +109,13 @@ public class ForumDTO extends  IntEntity implements Serializable {
         this.meta = meta;
     }
 
-    public Integer getFirstreplystatus() {
-        return firstreplystatus;
-    }
-
-    public void setFirstreplystatus(Integer firstreplystatus) {
-        this.firstreplystatus = firstreplystatus;
-    }
+//    public Integer getFirstreplystatus() {
+//        return firstreplystatus;
+//    }
+//
+//    public void setFirstreplystatus(Integer firstreplystatus) {
+//        this.firstreplystatus = firstreplystatus;
+//    }
 
     public Integer getDefhelpdesk() {
         return defhelpdesk;
@@ -197,14 +197,14 @@ public class ForumDTO extends  IntEntity implements Serializable {
 //            joinColumns = { @JoinColumn(name = "id") },
 //            inverseJoinColumns = { @JoinColumn(name = "forumid") })
 //    @WhereJoinTable( clause = "forumid='0'")
-//    private List<ForumTypeDTO> forumTypeDTOs;
+//    private List<TopicTypeDTO> topicTypeDTOs;
 //
-//    public List<ForumTypeDTO> getForumTypeDTOs() {
-//        return forumTypeDTOs;
+//    public List<TopicTypeDTO> getTopicTypeDTOs() {
+//        return topicTypeDTOs;
 //    }
 //
-//    public void setForumTypeDTOs(List<ForumTypeDTO> forumTypeDTOs) {
-//        this.forumTypeDTOs = forumTypeDTOs;
+//    public void setTopicTypeDTOs(List<TopicTypeDTO> topicTypeDTOs) {
+//        this.topicTypeDTOs = topicTypeDTOs;
 //    }
 
     @ManyToOne(fetch = FetchType.LAZY , cascade = CascadeType.DETACH )

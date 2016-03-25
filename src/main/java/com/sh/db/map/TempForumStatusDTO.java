@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = "forum_status",  catalog = "usercare")
-public class ForumStatusDTO extends  IntEntity{
+public class TempForumStatusDTO extends  IntEntity{
     private  Integer pos=255;
     @NotNull
     private Integer forumid;
@@ -21,15 +21,15 @@ public class ForumStatusDTO extends  IntEntity{
         return pos;
     }
 
-    public ForumStatusDTO(Integer forumid, ArticleStatusDTO articleStatusDTO) {
+    public TempForumStatusDTO(Integer forumid, ArticleStatusDTO articleStatusDTO) {
         this.forumid = forumid;
         this.articleStatusDTO = articleStatusDTO;
     }
 
-    public ForumStatusDTO() {
+    public TempForumStatusDTO() {
 
     }
-    public ForumStatusDTO(Integer forumid) {
+    public TempForumStatusDTO(Integer forumid) {
         this.forumid = forumid;
 
     }

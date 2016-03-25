@@ -4,10 +4,9 @@ import com.sh.db.map.ArticleStatusDTO
 import com.sh.db.map.CategoriesDTO
 import com.sh.db.map.ForumDTO
 import com.sh.db.map.ForumSpamProtectionDTO
-import com.sh.db.map.ForumStatusDTO
 import com.sh.db.map.ForumTagsDTO
-import com.sh.db.map.ForumTypeDTO
-import com.sh.db.map.ForumTypeStatusDTO
+import com.sh.db.map.TopicTypeDTO
+import com.sh.db.map.TopicTypeStatusDTO
 import com.sh.utils.ForumType
 import grails.plugin.springsecurity.annotation.Secured
 import org.apache.commons.logging.Log
@@ -165,13 +164,13 @@ def delete(){
         model.activleLangs=webServicesSession.getProjectActiveLangs(project.id)
         model.knowledgebases=webServicesSession.getForumByType(project.id, ForumType.Knowledgebase)
         model.helpdesks=webServicesSession.getForumByType(project.id, ForumType.HelpDesk)
-        model.topicStatuses=webServicesSession.getArticleStatusByForumId(project.id, id )
+//        model.topicStatuses=webServicesSession.getArticleStatusByForumId(project.id, id )
         if (params.get("submit")=="save" ){
             def forum = new ForumDTO();
             bindData(forum , params, 'forum')
             model.forum.name=forum.name;
             model.forum.satisfactionon=forum.satisfactionon;
-            model.forum.firstreplystatus=forum.firstreplystatus;
+//            model.forum.firstreplystatus=forum.firstreplystatus;
             model.forum.sharingon=forum.sharingon;
             model.forum.langid=forum.langid;
             model.forum.defkhowlagebase=forum.defkhowlagebase;
@@ -276,7 +275,7 @@ def delete(){
 
     }
 
-    def moveForumStatus(){
+    def moveTopicStatus(){
         def id=params.getInt("id")
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
 //        def category=webServicesSession.getCategoryById(project.id, id )
@@ -284,7 +283,7 @@ def delete(){
         JSONObject resultJson = new JSONObject();
         resultJson.put("forumStatus",id );
         resultJson.put("direction",direction);
-        if (webServicesSession.moveForumStatus(project.id, id , direction as String)){
+        if (webServicesSession.moveTopicStatus(project.id, id , direction as String)){
             resultJson.put("status","success");
         }
         else {
@@ -333,8 +332,8 @@ def delete(){
         addNewTopicType()
     }
 
-    def editforumstatus(){
-        addForumStatus()
+    def edittopicStatus(){
+        addtopicStatus()
     }
 
     def addNewTag(){
@@ -358,29 +357,31 @@ def delete(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession()).clone()
         def forum=webServicesSession.getForumById(project.id , id)
         def model=[UCproject: project]
-        def forumStatuses=webServicesSession.getForumStatusByForumId(project.id,  forum.id);
         def topicTypeid=params.getInt("topicType")
-        def topicType=topicTypeid?webServicesSession.getForumTypeByid(project.id,   topicTypeid):new ForumTypeDTO()
+        def topicType=topicTypeid?webServicesSession.getForumTypeByid(project.id,   topicTypeid):new TopicTypeDTO()
+        model.topicStatuses=webServicesSession.getTopicTypeStatusByTopicId(project.id,  topicTypeid);
+
         model.topicType=topicType
-        model.forumStatuses=topicType.markIsinType(forumStatuses);
+//        model.forumStatuses=topicType.markIsinType(forumStatuses);
         if (  params.get("submit")=="save" ) {
-            if (topicType.id!= null ){
-
-                webServicesSession.delTypeStatusDTOs(project.id , forum.id, topicType.id )
-                topicType.getTypeStatusDTOList().clear()
-
-            }
-            def statuses= params.list('forumStatus.id')
-            for(statusid in statuses){
-                def forumStatus=webServicesSession.getForumStatusByid(project.id ,  Integer.parseInt(statusid) )
-                if (forumStatus.articleStatusDTO.atype==1){
-                    topicType.addTypeStatusDTO(new ForumTypeStatusDTO (project.id, forumStatus ,  topicType , null ))
-                }
-            }
+//            if (topicType.id!= null ){
+//
+////                webServicesSession.delTypeStatusDTOs(project.id , forum.id, topicType.id )
+//                topicType.getTypeStatusDTOList().clear()
+//
+//            }
+//            def statuses= params.list('forumStatus.id')
+//            for(statusid in statuses){
+//                def forumStatus=webServicesSession.getForumStatusByid(project.id ,  Integer.parseInt(statusid) )
+//                if (forumStatus.articleStatusDTO.atype==1){
+//                    topicType.addTypeStatusDTO(new TopicTypeStatusDTO (project.id, forumStatus ,  topicType , null ))
+//                }
+//            }
 
             topicType.useraccess=params.getBoolean('topicType.useraccess')?:false
             topicType.enable=params.getBoolean('topicType.enable')?:false
             topicType.forumid=forum.id
+            topicType.firstreplystatus=params.getInt("topicType.firstreplystatus", 0)
             def articleTypeDTO=topicType.articleTypeDTO;
 
             if (topicType.articleTypeDTO.id== null  || topicType.articleTypeDTO.id>10 ){
@@ -396,29 +397,30 @@ def delete(){
 
     }
 
-    def addForumStatus(){
+    def addtopicStatus(){
         def id = getId();
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession()).clone()
         def forum=webServicesSession.getForumById(project.id , id)
         def model=[UCproject: project]
-        def forumStatus=params.getInt("forumStatus")?webServicesSession.getForumStatusByid(project.id,  params.getInt("forumStatus")):new ForumStatusDTO(forum.id)
-        model.forumStatus=forumStatus
+        def topicStatus=params.getInt("topicStatus")?webServicesSession.getTopicTypeStatusById( project.id,  params.getInt("topicStatus")):new TopicTypeStatusDTO()
+
 
         if (params.submit=="save"  ) {
-            def articlestatus=forumStatus.articleStatusDTO
+            def articlestatus=topicStatus.articleStatusDTO
             if (articlestatus== null){
                 articlestatus=new ArticleStatusDTO(project.id , forum.id)
-                forumStatus.articleStatusDTO=articlestatus;
+                topicStatus.articleStatusDTO=articlestatus;
             }
 
             bindData(articlestatus , params, 'articleStatus')
-            forumStatus.articleStatusDTO=articlestatus;
-            webServicesSession.saveForumStatus(forumStatus)
+            topicStatus.articleStatusDTO=articlestatus;
+            webServicesSession.saveTypeStatusDTOs(topicStatus)
 
-            redirect action: 'topicStatus', params: [id:id]
+            redirect action: 'topicStatus', params: [id:id, topictype:topicStatus.topicTypeDTO.id]
         }
         else{
-            render template: '/settings/community/addNewArticleStatus' , model: model
+            model.topicStatus=topicStatus
+            render template: '/settings/community/addNewTopicStatus' , model: model
         }
     }
 
@@ -458,8 +460,7 @@ def delete(){
         def model=[UCproject: project]
         model.forum=forum
         model.topicTypes=webServicesSession.getForumTypeByForumid(project.id,  forum.id,-1);
-        if (params.get("submit")=="save" ) {
-        }
+
 
         render view: '/settings/community/topicType' , model: model
 
@@ -470,8 +471,9 @@ def delete(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession()).clone()
         def forum=webServicesSession.getForumById(project.id , id)
         def model=[UCproject: project]
+        def topictype=params.getInt("topictype")
         model.forum=forum
-        model.forumStatuses=webServicesSession.getForumStatusByForumId(project.id,  forum.id);
+        model.topicStatuses=webServicesSession.getTopicTypeStatusByTopicId(project.id,  topictype);
 
         render view: '/settings/community/topicStatus' , model: model
 

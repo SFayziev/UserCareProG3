@@ -49,7 +49,7 @@ public class WebServicesSessionSpringBean {
 
     public ProjectDTO getProject(HttpServletResponse response, HttpServletRequest request,  HttpSession session) throws IOException {
 
-        String urlpath= new URL(request.getRequestURL().toString()).getHost();
+        String urlpath = new URL(request.getRequestURL().toString()).getHost();
 
         String url;
         try {
@@ -151,22 +151,24 @@ public class WebServicesSessionSpringBean {
     public ForumSpamProtectionDTO getForumSpamProtectionById(Integer projid, Integer forumid, Integer protectType ){return forumDAO.getForumSpamProtectionById(projid, forumid, protectType);}
     public ForumSpamProtectionDTO saveForumSpamProtection(ForumSpamProtectionDTO forumSpamProtectionDTO){return  forumDAO.saveForumSpamProtection(forumSpamProtectionDTO);}
 
-    public List<ForumTypeDTO> getForumTypeByForumid(Integer projid, Integer forumid , Integer status ){return  forumDAO.getForumTypeByForumid(projid, forumid, status);}
-    public ForumTypeDTO getForumTypeByid(Integer projid,  Integer id  ){return  forumDAO.getForumTypeByid(projid, id) ;}
-    public ForumTypeDTO saveForumType(ForumTypeDTO forumTypeDTO ){return  forumDAO.saveForumType(forumTypeDTO);}
+    public List<TopicTypeDTO> getForumTypeByForumid(Integer projid, Integer forumid , Integer status ){return  forumDAO.getForumTypeByForumid(projid, forumid, status);}
+    public TopicTypeDTO getForumTypeByid(Integer projid,  Integer id  ){return  forumDAO.getForumTypeByid(projid, id) ;}
+    public TopicTypeDTO saveForumType(TopicTypeDTO topicTypeDTO ){return  forumDAO.saveForumType(topicTypeDTO);}
     public boolean moveForumType(Integer projId, Integer forunid, Integer forumTypeID, String direction){ return  forumDAO.moveForumType(projId, forunid, forumTypeID, direction); }
-    public boolean delTypeStatusDTOs(Integer projid, Integer forumid, Integer typeid){return  forumDAO.delTypeStatusDTOs(projid, forumid, typeid);}
-    public boolean delForumType(ForumTypeDTO forumTypeDTO){return  forumDAO.delForumType(forumTypeDTO); }
+//    public boolean delTypeStatusDTOs(Integer projid, Integer forumid, Integer typeid){return  forumDAO.delTypeStatusDTOs(projid, forumid, typeid);}
+    public boolean delForumType(TopicTypeDTO topicTypeDTO){return  forumDAO.delForumType(topicTypeDTO); }
+    public List<TopicTypeStatusDTO> getTopicTypeStatusByTopicId(Integer projid, Integer topicId){ return forumDAO.getTopicTypeStatusByTopicId(projid, topicId); }
+    public TopicTypeStatusDTO getTopicTypeStatusById(Integer projid, Integer typeStatusId){return  forumDAO.getTopicTypeStatusById(projid, typeStatusId ) ;}
+    public TopicTypeStatusDTO saveTypeStatusDTOs(TopicTypeStatusDTO topicTypeStatusDTO) {return forumDAO.saveTypeStatusDTOs(topicTypeStatusDTO) ;}
 
-
-    public ArticleStatusDTO getArticleStatusById(Integer projid ,  Integer forumid,   Integer id  ){return  forumDAO.getArticleStatusById(projid, forumid, id);}
-    public List<ArticleStatusDTO> getArticleStatusByForumId(Integer projid,  Integer forumid  ){return  forumDAO.getArticleStatusByForumId(projid, forumid);}
+    public ArticleStatusDTO getArticleStatusById(Integer projid ,  Integer forumid,   Integer id  ){return  forumDAO.getArticleStatusById(projid, forumid, id, true);}
+    public List<ArticleStatusDTO> getArticleStatusByTopicTypeId(Integer projid, Integer forumid,  Integer topicTypeid  ){return  forumDAO.getArticleStatusByTopicTypeId(projid, forumid, topicTypeid);}
     public ArticleStatusDTO saveArticleStatus(ArticleStatusDTO articleStatusDTO){ return forumDAO.saveArticleStatus(articleStatusDTO); }
-    public List<ForumStatusDTO> getForumStatusByForumId(Integer projid,  Integer forumid  ){return  forumDAO.getForumStatusByForumId(projid, forumid ); }
-    public ForumStatusDTO getForumStatusByid(Integer projid,  Integer id ){ return  forumDAO.getForumStatusByid( projid, id, true );}
-    public ForumStatusDTO saveForumStatus(ForumStatusDTO forumStatusDTO){ return  forumDAO.saveForumStatus(forumStatusDTO); }
-    public boolean moveForumStatus(Integer projId, Integer forumStatusId, String direction){ return forumDAO.moveForumStatus(projId, forumStatusId, direction); }
-    public Boolean delForumStatusbyId(Integer projid, Integer forumstatusid ){return  forumDAO.delForumStatusbyId(projid, forumstatusid);}
+//    public List<ForumStatusDTO> getForumStatusByForumId(Integer projid,  Integer forumid  ){return  forumDAO.getForumStatusByForumId(projid, forumid ); }
+//    public ForumStatusDTO getForumStatusByid(Integer projid,  Integer id ){ return  forumDAO.getForumStatusByid( projid, id, true );}
+//    public ForumStatusDTO saveForumStatus(ForumStatusDTO forumStatusDTO){ return  forumDAO.saveForumStatus(forumStatusDTO); }
+    public boolean moveTopicStatus(Integer projId, Integer topicStatusId , String direction){ return forumDAO.moveTopicStatus(projId, topicStatusId, direction); }
+    public Boolean delTypeStatusbyId(Integer projid, Integer typestatusid ){return  forumDAO.delTypeStatusbyId(projid, typestatusid);}
 
     public Boolean isFollow(Integer articid) throws N18iException { return  articleDAO.isfollow(articid);}
     public Boolean followArticle(Integer projid , Integer articid) throws N18iException { return  articleDAO.followArticle(projid, articid);}

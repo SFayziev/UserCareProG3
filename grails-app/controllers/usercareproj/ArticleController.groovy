@@ -38,10 +38,10 @@ class ArticleController {
         if (article!= null){
             def comments= webServicesSession.getArticleComments(id)
             def module=[params: [showTopicAvatar:1, topicPresentation:"full"]]
-            def articleStatuses=webServicesSession.getArticleStatusByForumId(project.id , forumid )
+//            def articleStatuses=webServicesSession.getArticleStatusByTopicTypeId(project.id , article.type.id )
 
             def answer = article.answerCommentid? webServicesSession.getCommentbyId(article.answerCommentid): null;
-            render view: 'item', model: [UCproject:project, article:article ,forum:article.getForumDTO(),articleStatuses :articleStatuses, comments:comments, module:module,answer:answer ]
+            render view: 'item', model: [UCproject:project, article:article ,forum:article.getForumDTO(), comments:comments, module:module,answer:answer ]
         }
         else {
             response.sendError HttpServletResponse.SC_NOT_FOUND

@@ -1,7 +1,6 @@
 package com.sh.db.map;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by shuhrat on 10.10.2015.
@@ -9,9 +8,31 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "article",  catalog = "usercare")
 public class ItemStatDTO  extends  IntEntity{
+
     private Integer status;
     private Integer type;
     private Long  count;
+    private Integer logicalgroup;
+
+    @ManyToOne(fetch = FetchType.EAGER , cascade = CascadeType.ALL )
+    @JoinColumn(name = "status" , insertable = false, updatable = false)
+    private ArticleStatusDTO articleStatusDTO;
+
+    public ArticleStatusDTO getArticleStatusDTO() {
+        return articleStatusDTO;
+    }
+
+    public void setArticleStatusDTO(ArticleStatusDTO articleStatusDTO) {
+        this.articleStatusDTO = articleStatusDTO;
+    }
+
+    public Integer getLogicalgroup() {
+        return logicalgroup;
+    }
+
+    public void setLogicalgroup(Integer logicalgroup) {
+        this.logicalgroup = logicalgroup;
+    }
 
     public ItemStatDTO() {
 

@@ -168,13 +168,13 @@ public class ArticleDTO extends IntEntity{
     @ManyToOne(fetch = FetchType.LAZY , cascade = CascadeType.MERGE )
     @JoinColumn(name = "type")
     @NotFound(action = NotFoundAction.IGNORE)
-    private ForumTypeDTO  type;
+    private TopicTypeDTO  type;
 
-    public ForumTypeDTO getType() {
+    public TopicTypeDTO getType() {
         return type;
     }
 
-    public void setType(ForumTypeDTO type) {
+    public void setType(TopicTypeDTO type) {
         this.type = type;
     }
 
