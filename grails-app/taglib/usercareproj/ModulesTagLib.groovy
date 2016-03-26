@@ -103,8 +103,10 @@ class ModulesTagLib {
     def projectLinks = { attrs ->
         def params = attrs.params
         def project = params.project;
+        def module =  attrs.params.module
+        def links=webServicesSession.getModuleLinksDTObyModuleId(module.id)
         if (project) {
-            out << render(template: "/widgets/links")
+            out << render(template: "/widgets/links", model: [links:links])
         }
     }
 

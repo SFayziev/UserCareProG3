@@ -11,15 +11,30 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = "module_links",  catalog = "usercare")
-public class ModuleLinkDTO extends IntEntity{
+public class ModuleLinkDTO extends IntEntity {
     @NotNull
     private Integer modid;
     private Integer pos;
     private String  links;
     private String  title;
-    private Boolean  newwindow;
+    private Boolean  newwindow=false;
 
 
+    public ModuleLinkDTO() { }
+
+    public ModuleLinkDTO(Integer modid) {
+        this.modid = modid;
+
+    }
+
+
+    public ModuleLinkDTO(Integer modid,  String links, String title, Boolean newwindow) {
+        this.modid = modid;
+        this.pos = pos;
+        this.links = links;
+        this.title = title;
+        this.newwindow = newwindow;
+    }
 
     public Integer getModid() {
         return modid;

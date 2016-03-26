@@ -8,27 +8,34 @@ public enum ImageType {
     /**
      * The media type is unknown.
      */
-    UNKNOWN( "UNKNOWN", ".unknown", "unknown", 0, 0 ),
+    UNKNOWN("UNKNOWN", ".unknown", "unknown", 0, 0),
 
     /**
      * The media type is image png.
      */
-    LOGO( "image/jpeg", ".jpg", "JPEG", 0, 320  ),
+    LOGO("image/jpeg", ".jpg", "JPEG", 0, 320),
+
 
     /**
      * The media type is image bmp.
      */
-    BGIMAGE( "image/png", ".png", "png", 0, 0   ),
+    BGIMAGE("image/png", ".png", "png", 0, 0),
 
     /**
      * The media type is image jpeg.
      */
-    ICO("image/png", ".png", "png", 128, 128  ),
+    ICO("image/png", ".png", "png", 128, 128),
 
     /**
      * The media type is image jpeg.
      */
-    AVATAR( "image/jpeg", ".jpg", "JPEG", 128, 128  );
+    AVATAR("image/jpeg", ".jpg", "JPEG", 128, 128),
+
+
+    /**
+     * The media type is link image.
+     */
+    LINKIMG("image/jpeg", ".jpg", "JPEG", 32, 32);
 
 
     /**

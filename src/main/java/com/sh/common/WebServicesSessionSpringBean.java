@@ -197,6 +197,12 @@ public class WebServicesSessionSpringBean {
     public void addProjectParams(ProjectDTO project,  List<ProjectParamsDTO> projectParamsDTOs) { projectDAO.addProjectParams(project, projectParamsDTOs); }
     public List<ModuleTypeDTO> getModuleType(ModulePosType dispose){return  moduleDAO.getModuleType(dispose);}
     public  Boolean createModule(Integer forumid , ModuleDisplay displaypos , ModulePosType modulePosType, Integer modType ) throws Exception { return  moduleDAO.createModule(forumid,displaypos, modulePosType, modType ); }
+    public  List<ModuleLinkDTO> getModuleLinksDTObyModuleId(Integer modulid){return moduleDAO.getModuleLinksDTObyModuleId(modulid) ;}
+    public  ModuleLinkDTO getModuleLinksDTObyId(Integer modulid, Integer linkid) { return  moduleDAO.getModuleLinksDTObyId(modulid, linkid);}
+    public  boolean deleteModuleLinksDTO(Integer modulid, Integer linkid){return  moduleDAO.deleteModuleLinksDTO(modulid, linkid);}
+    public  ModuleLinkDTO saveModuleLinksDTO(ModuleLinkDTO moduleLinkDTO){ return moduleDAO.saveModuleLinksDTO( moduleLinkDTO) ;}
+    public boolean moveModuleLink(Integer projId, Integer moduleID, Integer linkId,  String direction){ return moduleDAO.moveModuleLink(projId, moduleID, linkId, direction ) ; }
+
     public I18nMessageDTO saveI18nMessage(ProjectDTO projectDTO  , I18nMessageDTO i18nMessageDTO  ){return  i18nMessageDAO.saveI18nMessage(projectDTO, i18nMessageDTO  ) ;}
 
 

@@ -105,7 +105,7 @@ function widgetTranslate(mparams){
 }
 
 function widgetDELETEConfirm(mparams){
-    var modal =$("#modalDelete");
+    var modal =$("#ucmodal");
     modal.removeData('bs.modal');
     modal.modal({remote: '/settings/customisation/delete/' + mparams });
     modal.modal('show');
@@ -113,14 +113,14 @@ function widgetDELETEConfirm(mparams){
     return false;
 }
 function widgetDELETE(){
-    var modal =$("#modalDelete");
+    var modal =$("#ucmodal");
     var content = modal.find("#deleteOkBut").data('content');
     data={'id':content };
     $.ajax({  dataType: "json", url:  "/settings/customisation/deleteWidget/"+content  })
         .done(function( data ) {
             if (data.status=='success') {
                 document.getElementById('iframe1').contentWindow.location.reload();
-                $("#modalDelete").modal('hide');
+                $("#ucmodal").modal('hide');
             }
         });
     return false;
@@ -153,36 +153,31 @@ function changeSupportStatus(userid, state){
 }
 
 function widgetEDIT(mparams){
-    var modal =$("#modalDelete");
-    modal.removeData('bs.modal');
-    modal.modal({remote: '/settings/customisation/editWidget/' + mparams });
-    modal.modal('show');
-    return false;
+    showModal('#ucmodal', '/settings/customisation/editWidget/' + mparams )
+
 }
 
 function changeForumImg(id){
-    var modal =$("#imageSelector");
-    modal.removeData('bs.modal');
-    modal.modal({remote: '/file/forumImageSelector/' + id +"?withicon=1"});
-    modal.modal('show');
-    return false;
+    showModal('#ucmodal', '/file/forumImageSelector/' + id +"?withicon=1" )
+
 }
 
 function changeCategoryImg(id){
-    var modal =$("#imageSelector");
+    showModal('#ucmodal', '/file/categoryImageSelector/' + id +"?withicon=1" )
+
+}
+
+function showModal(modalWindowId, url){
+    var modal =$(modalWindowId);
     modal.removeData('bs.modal');
-    modal.modal({remote: '/file/categoryImageSelector/' + id +"?withicon=1"});
+    modal.modal({remote: url});
     modal.modal('show');
     return false;
 }
 
-
 function changeTopicTypeImg(id){
-    var modal =$("#imageSelector");
-    modal.removeData('bs.modal');
-    modal.modal({remote: '/file/topicTypeSelector/' + id +"?withicon=1"});
-    modal.modal('show');
-    return false;
+    showModal('#ucmodal', '/file/topicTypeSelector/' + id +"?withicon=1" )
+
 }
 
 
@@ -194,7 +189,7 @@ function setAjaxModuleCustomisationSave(moduleid){
 }
 
 function moduleCustomisationSaveSuccess(data){
-    $("#modalDelete").modal('hide');
+    $("#ucmodal").modal('hide');
     document.getElementById('iframe1').contentWindow.location.reload();
 }
 function moduleCustomisationSaveFail(data){
@@ -259,11 +254,55 @@ function  translationModule(mkey, moduleid){
     return false;
 }
 function  translation( url){
-    var modal =$("#translationModal");
-    modal.removeData('bs.modal');
-    modal.modal({remote: url });
-    modal.modal('show');
+    showModal("#translationModal", url )
 
+}
+
+
+function widgetLinkMove(moduleid, linkid, direction){
+    var dparent=$('#widgetlink'+linkid );
+    var data={'moduleid':moduleid , 'linkid':linkid, 'direction': direction};
+    $.ajax({  dataType: "json", data:data, url:  "/settings/customisation/widgetLinkMove"})
+        .done(function( data ) {
+            if (data.status=='success') {
+                if(direction=='down'){
+                    dparent.next('tr').after(dparent)
+                }else {
+                    dparent.prev('tr').before(dparent)
+                }
+
+            }
+        });
     return false;
 
+}
+
+function widgetLinkDelete(moduleid, linkid){
+    var dparent=$('#widgetlink'+linkid );
+
+    var data={'moduleid':moduleid , 'linkid':linkid};
+    $.ajax({  dataType: "json", data:data, url:  "/settings/customisation/widgetLinkDelete"})
+        .done(function( data ) {
+            if (data.status=='success') {
+                dparent.remove();
+            }
+        });
+    return false;
+}
+
+function widgetLinkEdit(moduleid, linkid){
+    showModal("#ucmodal", '/settings/customisation/widgetLinkEdit?moduleid='+moduleid+'&linkid='+linkid  )
+
+}
+
+function widgetLinkSave(moduleid, linkid){
+    var data = $("#widgetLinkEdit").serialize();
+    $.ajax({  dataType: "json", data:data, url:  '/settings/customisation/widgetLinkSave?moduleid='+moduleid+"&linkid="+linkid })
+        .done(function( data ) {
+        });
+    widgetEDIT(moduleid)
+}
+
+function widgetLinkImg (moduleid, linkid){
+    showModal('#ucmodal', '/file/topicTypeSelector/' + moduleid +"?withicon=1")
 }

@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>Remote file for Bootstrap Modal</title>
-</head>
-<body>
+
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
@@ -78,10 +72,6 @@
 %{--<asset:javascript src="jquery.xdr-transport.js"/>--}%
 <asset:stylesheet href="jquery.fileupload.css"/>
 
-
-
-
-
 <script>
     var url ="${uploadUrl}";
 <g:if test="${withicon}">
@@ -92,13 +82,11 @@
         var data={'iconcollor':iconcollor ,'iconname':iconname , 'imgtype':1};
         $.ajax({  dataType: "json", data:data, url: url })
                 .done(function( data ) {
-
+                    var modal =$("#ucmodal");
                     if (data.status=='success') {
                         $( "#"+data.objid).replaceWith( data.value);
-                        var modal =$("#imageSelector");
-                        modal.modal('hide');
-//                        showMassge(data.massage)
                     }
+                    modal.modal('hide');
                 });
         return false;
 
@@ -147,7 +135,7 @@
         );
     }).on('fileuploaddone', function (e, data) {
         $( "#"+data.result.objid).replaceWith( data.result.value);
-        var modal =$("#imageSelector");
+        var modal =$("#ucmodal");
         modal.modal('hide');
     }).on('fileuploadfail', function (e, data) {
 
@@ -155,6 +143,3 @@
             .parent().addClass($.support.fileInput ? undefined : 'disabled');
 
 </script>
-
-</body>
-</html>
