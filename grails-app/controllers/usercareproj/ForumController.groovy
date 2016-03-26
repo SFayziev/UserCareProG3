@@ -126,7 +126,7 @@ class ForumController {
         module.maxRecords=5
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         module.forum= webServicesSession.getForumById(project.id, params.int("id", project.getDefaultforum() ))
-        module.modulPos=webServicesSession.getModuleBydisplaypos(module.project.id, 0 , module.forum.id , ModuleDisplay.Widget )
+        module.modulPos=webServicesSession.getModuleBydisplaypos(module.UCproject.id, 0 , module.forum.id , ModuleDisplay.Widget )
         module.customize=params.customize
         render view: 'popup' , model: module
     }

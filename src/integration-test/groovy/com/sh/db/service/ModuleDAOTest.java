@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
+import sun.security.pkcs11.Secmod;
 
 /**
  * Created by Admin on 01.10.2015.
@@ -22,22 +23,10 @@ public class ModuleDAOTest extends IntegrationTest {
     ModuleDTO moduleDTO2;
 
 
-//    @Before
+    @Before
     public void prepareData(){
-         moduleDTO1 = new ModuleDTO();
-//        moduleDTO1.setDisplaypos(1);
-        moduleDTO1.setStatus(1);
-
-         moduleDTO2 = new ModuleDTO();
-//        moduleDTO2.setDisplaypos(0);
-        moduleDTO2.setStatus(1);
-
-        moduleDTO1 = moduleDAO.saveModule(moduleDTO1);
-        System.out.println("create test widget 1 ");
-        System.out.println(moduleDTO1);
-        moduleDTO2 = moduleDAO.saveModule(moduleDTO2);
-        System.out.println("create test widget 2 ");
-        System.out.println(moduleDTO2);
+        moduleDTO1 = moduleDAO.getModuleById(testProjectid, 67);
+        moduleDTO2 = moduleDAO.getModuleById(testProjectid, 68);
 
     }
 
@@ -87,6 +76,40 @@ public class ModuleDAOTest extends IntegrationTest {
         module.getModuleParamDTOList().add(new ModuleParamsType1DTO(module, "maxRecords", 10));
         module.getModuleParamDTOList().add(new ModuleParamsType3DTO( module, "filtertype" , "filterUserStats"));
         moduleDAO.saveModule(module);
+
+    }
+
+    @Test
+    public void testGetModuleLinksDTObyModuleId() throws Exception {
+        ModuleLinkDTO moduleLinkDTO = new ModuleLinkDTO(moduleDTO1.getId(), "dsdsds" , "sd sd s", true);
+        moduleDAO.saveModuleLinksDTO(moduleLinkDTO);
+        System.out.println( moduleDAO.getModuleLinksDTObyModuleId(moduleLinkDTO.getModid() )  );
+
+    }
+
+
+
+    @Test
+    public void testGetModuleLinksDTObyId() throws Exception {
+        ModuleLinkDTO moduleLinkDTO = new ModuleLinkDTO(moduleDTO1.getId(), "dsdsds" , "sd sd s", true);
+        moduleDAO.saveModuleLinksDTO(moduleLinkDTO);
+        System.out.println( moduleDAO.getModuleLinksDTObyId(moduleLinkDTO.getModid(), moduleLinkDTO.getId() )  );
+
+    }
+
+    @Test
+    public void testDeleteModuleLinksDTO() throws Exception {
+        ModuleLinkDTO moduleLinkDTO = new ModuleLinkDTO(moduleDTO1.getId(),  "dsdsds" , "sd sd s", true);
+        moduleDAO.saveModuleLinksDTO(moduleLinkDTO);
+        moduleDAO.deleteModuleLinksDTO(moduleLinkDTO.getModid(), moduleLinkDTO.getId());
+
+    }
+
+    @Test
+    public void testSaveModuleLinksDTO() throws Exception {
+
+        ModuleLinkDTO moduleLinkDTO= new ModuleLinkDTO(moduleDTO1.getId(),  "dsdsds" , "sd sd s", true);
+        moduleDAO.saveModuleLinksDTO(moduleLinkDTO);
 
     }
 }

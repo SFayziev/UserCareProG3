@@ -1,5 +1,6 @@
 package usercareproj.settings
 
+import com.sh.db.map.ModuleLinkDTO
 import com.sh.db.map.ModuleParamsDTO
 import com.sh.db.map.ModuleParamsType1DTO
 import com.sh.db.map.ModuleParamsType3DTO
@@ -172,7 +173,7 @@ class CustomisationController {
 //        def model= [UCproject: webServicesSession.getProject(getResponse(), getRequest(), getSession())]
 //        def id=params.id as int;
         if (params.vtype== null || params.vtype==''){
-            params.vtype="dushboard"
+            params.vtype="dashboard"
         }
         def modulTypes=webServicesSession.getModuleType(params.dtype=='0'?ModulePosType.Main:ModulePosType.Mini)
 
@@ -183,14 +184,61 @@ class CustomisationController {
         JSONObject resultJson = new JSONObject();
         resultJson.put("status","success");
         def id =params.getInt("id",0)
-        def moddisid=params.get("vtype",'dushboard') as String
+        def moddisid=params.get("vtype",'dashboard') as String
         def disposid=params.getInt("dtype",0)
-        def moddis=moddisid=='dushboard'?ModuleDisplay.Dashboard:(moddisid=='list'?ModuleDisplay.List:ModuleDisplay.Widget)
+        def moddis=moddisid=='dashboard'?ModuleDisplay.Dashboard:(moddisid=='list'?ModuleDisplay.List:ModuleDisplay.Widget)
         def dispos=disposid==0?ModulePosType.Main:ModulePosType.Mini
 
         webServicesSession.createModule(id , moddis, dispos, params.getInt('modtypeid',0)  )
         response.contentType = "application/json; charset=UTF-8"
         render   resultJson.toString()
     }
+    def widgetLinkMove(){
+        def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
+        def modulid =params.getInt("moduleid",0)
+        def linkid=params.getInt("linkid",0)
+        def direction=params.get("direction")
+        JSONObject resultJson = new JSONObject();
+        resultJson.put("status","error");
+        if (webServicesSession.moveModuleLink(project.id, modulid, linkid, direction as String )){
+            resultJson.put("status","success");
+        }
+        response.contentType = "application/json; charset=UTF-8"
+        render   resultJson.toString()
 
+    }
+    def widgetLinkDelete(){
+        def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
+        def modulid =params.getInt("moduleid",0)
+        def linkid=params.getInt("linkid",0)
+        JSONObject resultJson = new JSONObject();
+        resultJson.put("status","error");
+        if (webServicesSession.deleteModuleLinksDTO( modulid, linkid )){
+            resultJson.put("status","success");
+        }
+        response.contentType = "application/json; charset=UTF-8"
+        render   resultJson.toString()
+    }
+
+    def widgetLinkEdit(){
+        def modulid =params.getInt("moduleid",0)
+        def linkid=params.getInt("linkid",0)
+        def link=linkid!=0? webServicesSession.getModuleLinksDTObyId(modulid, linkid):  new ModuleLinkDTO(modulid)
+        render template:"/settings/customisation/widgetLinkEdit" , model: [link:link]
+    }
+    def widgetLinkSave(){
+        def modulid =params.getInt("moduleid",0)
+        def linkid=params.getInt("linkid",0)
+        def modulLink= linkid!=0?  webServicesSession.getModuleLinksDTObyId(modulid, linkid): new ModuleLinkDTO(modulid)
+
+        modulLink.links=params.get("link.links")
+        modulLink.title=params.get("link.title")
+        modulLink.newwindow=params.getBoolean("link.newwindow", false)
+
+        webServicesSession.saveModuleLinksDTO(modulLink)
+        JSONObject resultJson = new JSONObject();
+        resultJson.put("status","success");
+        response.contentType = "application/json; charset=UTF-8"
+        render   resultJson.toString()
+    }
 }

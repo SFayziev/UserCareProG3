@@ -38,7 +38,7 @@
             %{--<li><g:link controller="community" action="topicStatus"  id="${selCommunityid}" > <i class="fa fa-chevron-circle-right"></i> <g:message code="setting.leftMenu.community.statuses" /></g:link></li>--}%
             <li><g:link controller="community" action="topicType"  id="${selCommunityid}" >  <i class="fa fa-chevron-circle-right"></i> <g:message code="setting.leftMenu.community.types" /> / <g:message code="setting.leftMenu.community.statuses" /> </g:link></li>
             <li><g:link controller="community" action="spamprotection"  id="${selCommunityid}" > <i class="fa fa-chevron-circle-right"></i> <g:message code="setting.leftMenu.community.spam.protection" /></g:link></li>
-            <li><g:link controller="community" action="customisation" id="${selCommunityid}" params="${[vtype="dushboard"]}"><i class="fa  fa-cubes "></i> <g:message code="setting.leftMenu.community.customisation" /></g:link></li>
+            <li><g:link controller="community" action="customisation" id="${selCommunityid}" params="${[vtype="dashboard"]}"><i class="fa  fa-cubes "></i> <g:message code="setting.leftMenu.community.customisation" /></g:link></li>
 
             %{--<li><a  class="disabled" ><i class="fa fa-chevron-circle-right"></i> <g:message code="setting.leftMenu.users.custom.fields" /></a></li>--}%
         </ul>
@@ -69,7 +69,7 @@
             <li><g:link controller="knowledgebase" action="privacy"  id="${selKnowledgebaseid}" > <i class="fa fa-lock"></i> <g:message code="setting.leftMenu.community.privacy" /></g:link></li>
             <li><g:link controller="knowledgebase" action="category"  id="${selKnowledgebaseid}" > <i class="fa fa-folder-open"></i> <g:message code="setting.leftMenu.community.categories" /></g:link></li>
             <li><g:link controller="knowledgebase" action="tag"  id="${selKnowledgebaseid}" > <i class="fa fa-tags"></i> <g:message code="setting.leftMenu.community.tags" /></g:link></li>
-            <li><g:link controller="knowledgebase" action="customisation" id="${selKnowledgebaseid}" params="${[vtype="dushboard"]}"><i class="fa  fa-cubes "></i> <g:message code="setting.leftMenu.community.customisation" /></g:link></li>
+            <li><g:link controller="knowledgebase" action="customisation" id="${selKnowledgebaseid}" params="${[vtype="dashboard"]}"><i class="fa  fa-cubes "></i> <g:message code="setting.leftMenu.community.customisation" /></g:link></li>
         </ul>
     </li>
     <!-- End KnowlageBase -->

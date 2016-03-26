@@ -1,10 +1,7 @@
 package com.sh.db.service;
 
 import com.sh.db.GenericDaoImpl;
-import com.sh.db.map.ModuleDTO;
-import com.sh.db.map.ModuleParamsDTO;
-import com.sh.db.map.ModuleTypeDTO;
-import com.sh.db.map.UserDTO;
+import com.sh.db.map.*;
 import com.sh.utils.ForumType;
 import com.sh.utils.ModuleDisplay;
 import com.sh.utils.ModulePosType;
@@ -90,6 +87,14 @@ public class ModuleDAO extends GenericDaoImpl<ModuleDTO> {
         return true;
     }
 
+    private   boolean swapPos(ModuleLinkDTO moduleLinkDTO1, ModuleLinkDTO moduleLinkDTO2){
+        int pos = moduleLinkDTO1.getPos();
+        moduleLinkDTO1.setPos(moduleLinkDTO2.getPos());
+        moduleLinkDTO2.setPos(pos);
+        this.saveModuleLinksDTO(moduleLinkDTO1);
+        this.saveModuleLinksDTO(moduleLinkDTO2);
+        return true;
+    }
 
     @Cacheable( value = "modules")
     @Transactional
@@ -182,6 +187,78 @@ public class ModuleDAO extends GenericDaoImpl<ModuleDTO> {
         saveModule(moduleDTO);
         return  true;
 
+    }
+
+    @Cacheable( value = "moduleLinkDTO")
+    public  List<ModuleLinkDTO> getModuleLinksDTObyModuleId(Integer modulid) {
+        return currentSession().createQuery("from ModuleLinkDTO ml where ml.modid=:modid order by  ml.pos")
+                .setParameter("modid", modulid).list();
+
+    }
+
+    @Cacheable( value = "moduleLinkDTO")
+    public  ModuleLinkDTO getModuleLinksDTObyId(Integer modulid, Integer linkid) {
+        return (ModuleLinkDTO) currentSession().createQuery("from ModuleLinkDTO ml where ml.modid=:modid and ml.id=:linkid")
+                .setParameter("linkid", linkid)
+                .setParameter("modid", modulid).uniqueResult();
+
+    }
+
+
+    @CacheEvict(value = "moduleLinkDTO" ,   allEntries = true)
+    public  boolean deleteModuleLinksDTO(Integer modulid, Integer linkid){
+        ModuleLinkDTO moduleLinkDTO= getModuleLinksDTObyId (modulid, linkid );
+        if (moduleLinkDTO != null) {
+            currentSession().delete(moduleLinkDTO);
+        }
+
+        return true;
+    }
+
+    @CacheEvict(value = "moduleLinkDTO" ,   allEntries = true)
+    public  ModuleLinkDTO saveModuleLinksDTO(ModuleLinkDTO moduleLinkDTO){
+        if (moduleLinkDTO.getPos() == null){
+            moduleLinkDTO.setPos(getMaxLinkPos(moduleLinkDTO.getModid())+1 );
+        }
+        currentSession().saveOrUpdate(moduleLinkDTO);
+        return moduleLinkDTO;
+    }
+
+    protected Integer getMaxLinkPos(Integer modulid){
+        Criteria criteria = currentSession()
+                .createCriteria(ModuleLinkDTO.class)
+                .setProjection(Projections.max("pos"));
+        criteria.add(Restrictions.eq("modid", modulid));
+        Integer maxPos = (Integer) criteria.uniqueResult();
+        return maxPos== null?0:maxPos;
+    }
+
+    @CacheEvict(value = "moduleLinkDTO" ,   allEntries = true)
+    public boolean moveModuleLink(Integer projId, Integer moduleID, Integer linkId,  String direction){
+        ModuleLinkDTO moduleLinkDTO= getModuleLinksDTObyId(moduleID, linkId);
+
+        List<ModuleLinkDTO> moduleLinkDTOs=getModuleLinksDTObyModuleId(moduleID);
+
+        ModuleLinkDTO prevModuleLink = null;
+        Boolean change=false;
+        for (ModuleLinkDTO links:moduleLinkDTOs){
+//            if (links.getDispos()!= moduleDTO.getModuleTypeDTO().getDispos() ) continue;
+
+            if (change) {
+                swapPos(links, prevModuleLink);
+                return true;
+            }
+
+            if (Objects.equals(links.getId(), linkId)) {
+                if (Objects.equals(direction, "up")) {
+                    if (prevModuleLink != null ){swapPos(links, prevModuleLink);}
+                    return true;
+                }
+                change=true;
+            }
+            prevModuleLink=links;
+        }
+        return true;
     }
 
 }
