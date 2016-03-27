@@ -2,8 +2,7 @@ package com.sh.db.map;
 
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -19,6 +18,17 @@ public class ModuleLinkDTO extends IntEntity {
     private String  title;
     private Boolean  newwindow=false;
 
+    @ManyToOne(fetch = FetchType.EAGER , cascade = CascadeType.ALL )
+    @JoinColumn(name = "img")
+    private ImgDTO imgDTO;
+
+    public ImgDTO getImgDTO() {
+        return imgDTO;
+    }
+
+    public void setImgDTO(ImgDTO imgDTO) {
+        this.imgDTO = imgDTO;
+    }
 
     public ModuleLinkDTO() { }
 

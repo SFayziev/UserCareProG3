@@ -26,6 +26,6 @@
     </ul>
     <h3> <g:message code="widget.community.stats.staff" /></h3>
     <div class="row margin-left-10">
-        <g:each in="${staffs}" var="staff">   <g:render template="/article/userImage" model="${[userDTO:staff]}" /></g:each>
+        <g:each in="${staffs}" var="staff">   <g:render template="/user/userImage" model="${[userDTO:staff]}" /></g:each>
     </div>
 </div>

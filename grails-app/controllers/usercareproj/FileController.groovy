@@ -1,19 +1,26 @@
 package usercareproj
 
+import com.sh.db.map.ImgDTO
 import com.sh.db.map.ImgFaClass
 import com.sh.db.map.ImgFile
+import com.sh.db.map.ModuleLinkDTO
+import com.sh.db.map.ProjectDTO
 import com.sh.utils.ImageResizer
 import com.sh.utils.ImageType
 import grails.plugin.springsecurity.annotation.Secured
+import grails.web.servlet.mvc.GrailsParameterMap
 import org.grails.web.json.JSONObject;
 import org.springframework.web.multipart.commons.CommonsMultipartFile
 
+import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
 class FileController {
     def webServicesSession
 
-    def index() { }
+    def index() {
+        response.sendError(HttpServletResponse.SC_NOT_FOUND);
+    }
 
     def uploadUserAvatar(){
 
@@ -61,6 +68,34 @@ class FileController {
 
     }
 
+
+    ImgDTO createImgDTO(HttpServletRequest request, GrailsParameterMap params , String imgid, ProjectDTO project, ImageType imageType){
+
+        def imgtype=params.getInt('imgtype') ;
+        def f
+        if (imgtype!= 1 ) {
+            f = request.getFile('files')
+            if (f.empty) {
+                flash.message = 'File cannot be empty'
+//                render(view: 'uploadForm')
+                return null
+            }
+        }
+        def filedto;
+
+        def imgdto
+
+        if (imgtype==1){
+            imgdto = new ImgFaClass(project.id , imgid,  imgid , params.get("iconname"), params.get("iconcollor") );
+        }
+        else{
+            filedto=webServicesSession.createImageFile(imageType , f.inputStream )
+            imgdto= new ImgFile(project.id , imgid, imgid , filedto, filedto)
+        }
+
+        return imgdto
+
+    }
     def uploadCategoryLogo(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         JSONObject resultJson = new JSONObject();
@@ -211,6 +246,28 @@ class FileController {
         response.contentType = "application/json; charset=UTF-8"
         render   resultJson.toString()
     }
+
+
+    def uploadLinkImg(){
+        def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
+        def modulid =params.getInt("moduleid",0)
+        def linkid=params.getInt("linkid",0)
+        def imgid="imglink"+linkid
+        def modulLink=   webServicesSession.getModuleLinksDTObyId(modulid, linkid)
+        JSONObject resultJson = new JSONObject();
+        if (modulLink!= null) {
+            modulLink.imgDTO = createImgDTO(getRequest(), params, imgid, project, ImageType.LINKIMG)
+            webServicesSession.saveModuleLinksDTO(modulLink)
+            resultJson.put("status", "success");
+            def contents = g.render(template: "/article/imageByType", model: [imgid: imgid, imgclass: "img-responsive avatar rounded-x ", img: modulLink.getImgDTO()])
+            resultJson.put("value", contents);
+            resultJson.put("objid", imgid);
+        } else {
+            resultJson.put("status","error");
+        }
+        response.contentType = "application/json; charset=UTF-8"
+        render resultJson.toString()
+    }
     def uploadforumLogo(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         JSONObject resultJson = new JSONObject();
@@ -273,7 +330,10 @@ class FileController {
         def uploadUrl="/file/uploadProjectImg?type=" + params.get('type')
         showimageSelector(uploadUrl)
     }
-
+    def widgetLinkImgSelector() {
+        def uploadUrl="/file/uploadLinkImg?moduleid=" + params.get('moduleid') + '&linkid='+params.get('linkid')
+        showimageSelector(uploadUrl)
+    }
 
     def userAvatarSelector(){
         def user= webServicesSession.getCurentUser();
@@ -292,6 +352,8 @@ class FileController {
         render template: "imageSelector" , model: [faclass:faclass, uploadUrl:uploadUrl, withicon:params.get('withicon')]
 
     }
+
+
 
     def delimg(img ){
 

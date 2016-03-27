@@ -304,5 +304,7 @@ function widgetLinkSave(moduleid, linkid){
 }
 
 function widgetLinkImg (moduleid, linkid){
-    showModal('#ucmodal', '/file/topicTypeSelector/' + moduleid +"?withicon=1")
+   //$('#ucmodal').modal('hide');
+
+    showModal('#ucmodal', '/file/widgetLinkImgSelector?moduleid='+moduleid+"&linkid="+linkid+"&withicon=1")
 }

@@ -3,7 +3,7 @@
 
     <div class="testimonials-info">
         <g:if test="${module?.params?.showTopicAvatar}" >
-            <g:render template="/article/userImage" model="${[userDTO: article?.userDTO]}" />
+            <g:render template="/user/userImage" model="${[userDTO: article?.userDTO]}" />
         </g:if>
         <div class="overflow-textH">
             <div  class="topic-votes pull-right">

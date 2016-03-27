@@ -3,7 +3,7 @@
 
 
         <div class="level${comment?.level}">
-        <g:render template="/article/userImage" model="${[userDTO:comment?.userDTO]}" />
+        <g:render template="/user/userImage" model="${[userDTO:comment?.userDTO]}" />
             <div class=" media-body">
                 <h4 class="media-heading">
                 <small><a href="#">${comment?.userDTO?.username}</a> <g:message code="${comment?.timeAgo?.i18nvalue}"  args="${comment?.timeAgo?.agovalue}" /></small>

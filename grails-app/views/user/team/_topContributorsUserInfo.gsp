@@ -1,5 +1,5 @@
 <div class="row no-margin" >
-    <g:render template="/article/userImage2x" model="${[userDTO: userDTO]}"  />
+    <g:render template="/user/userImage2x" model="${[userDTO: userDTO]}"  />
     <div class="media-body">
         <h4 class="media-heading">
             <strong>${userDTO.name}</strong>

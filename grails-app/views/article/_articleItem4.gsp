@@ -6,7 +6,7 @@
     <g:if test="${1 != ishort}">
         <span class="badge badge-red rounded">Private Ticket #${article?.id}</span>
     </g:if>
-    <g:render template="/article/userImage" model="${[userDTO: article?.userDTO]}" />
+    <g:render template="/user/userImage" model="${[userDTO: article?.userDTO]}" />
     <div class="name-location">
         %{--<asset:image src="type/${article?.type?.imageurl}" width="10px" />  --}%
         <strong><g:link controller="article" action="item" id="${article.id}" >${article.title}</g:link> </strong>
