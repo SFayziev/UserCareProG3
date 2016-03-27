@@ -56,7 +56,7 @@ class FileController {
             webServicesSession.saveProfile(userdto)
 
 
-            def contents = g.render(template: "/article/imageByType", model: [imgid: imgid, imgclass: "img-responsive rounded-x ", img: imgdto])
+            def contents = g.render(template: "/file/imageByType", model: [imgid: imgid, imgclass: "img-responsive rounded-x ", img: imgdto])
             resultJson.put("value", contents);
             resultJson.put("objid", imgid);
             response.contentType = "application/json; charset=UTF-8"
@@ -69,7 +69,7 @@ class FileController {
     }
 
 
-    ImgDTO createImgDTO(HttpServletRequest request, GrailsParameterMap params , String imgid, ProjectDTO project, ImageType imageType){
+    def createImgDTO(HttpServletRequest request, GrailsParameterMap params , String imgid, ProjectDTO project, ImageType imageType){
 
         def imgtype=params.getInt('imgtype') ;
         def f
@@ -131,7 +131,7 @@ class FileController {
             webServicesSession.saveCategories(category);
         }
 
-        def contents = g.render(template:"/article/imageByType", model: [imgid: imgid , imgclass: "img-responsive avatar rounded-x ", img:imgdto ])
+        def contents = g.render(template:"/file/imageByType", model: [imgid: imgid , imgclass: "img-responsive avatar rounded-x ", img:imgdto ])
         resultJson.put("value", contents);
         resultJson.put("objid",imgid);
         response.contentType = "application/json; charset=UTF-8"
@@ -171,7 +171,7 @@ class FileController {
 
                 project.getProjectDesignDTO().setLogoFileDTO(imgdto)
                 webServicesSession.saveProjectDesign(project.getProjectDesignDTO())
-                 def contents = g.render(template:"/article/imageByType", model: [imgid: "imglogo", imgclass: "img-responsive", img:imgdto ])
+                 def contents = g.render(template:"/file/imageByType", model: [imgid: "imglogo", imgclass: "img-responsive", img:imgdto ])
                 resultJson.put("value", contents);
                 resultJson.put("objid","imglogo");
 
@@ -183,7 +183,7 @@ class FileController {
                 delimg(project.getProjectDesignDTO().getBgimageFileDTO()  )
                 project.getProjectDesignDTO().setBgimageFileDTO(imgdto)
                 webServicesSession.saveProjectDesign(project.getProjectDesignDTO())
-                def contents = g.render(template:"/article/imageByType", model: [imgid: "imgbg", imgclass: "img-responsive", img:imgdto ])
+                def contents = g.render(template:"/file/imageByType", model: [imgid: "imgbg", imgclass: "img-responsive", img:imgdto ])
                 resultJson.put("value", contents);
                 resultJson.put("objid","imgbg");
             }
@@ -196,7 +196,7 @@ class FileController {
                 delimg(project.getProjectDesignDTO().getFaviconFileDTO()  )
                 project.getProjectDesignDTO().setFaviconFileDTO(imgdto)
                 webServicesSession.saveProjectDesign(project.getProjectDesignDTO())
-                def contents = g.render(template:"/article/imageByType", model: [imgid: "imgicon", imgclass: "img-responsive", img:imgdto ])
+                def contents = g.render(template:"/file/imageByType", model: [imgid: "imgicon", imgclass: "img-responsive", img:imgdto ])
                 resultJson.put("value", contents);
                 resultJson.put("objid","imgicon");
             }
@@ -240,7 +240,7 @@ class FileController {
             webServicesSession.saveForumType( forumType );
         }
 
-        def contents = g.render(template:"/article/imageByType", model: [imgid: imgid , imgclass: "img-responsive avatar rounded-x ", img:imgdto ])
+        def contents = g.render(template:"/file/imageByType", model: [imgid: imgid , imgclass: "img-responsive avatar rounded-x ", img:imgdto ])
         resultJson.put("value", contents);
         resultJson.put("objid",imgid);
         response.contentType = "application/json; charset=UTF-8"
@@ -259,7 +259,7 @@ class FileController {
             modulLink.imgDTO = createImgDTO(getRequest(), params, imgid, project, ImageType.LINKIMG)
             webServicesSession.saveModuleLinksDTO(modulLink)
             resultJson.put("status", "success");
-            def contents = g.render(template: "/article/imageByType", model: [imgid: imgid, imgclass: "img-responsive avatar rounded-x ", img: modulLink.getImgDTO()])
+            def contents = g.render(template: "/file/imageByType", model: [imgid: imgid, imgclass: "img-responsive avatar rounded-x ", img: modulLink.getImgDTO()])
             resultJson.put("value", contents);
             resultJson.put("objid", imgid);
         } else {
@@ -304,7 +304,7 @@ class FileController {
             webServicesSession.saveForum(forum);
         }
 
-        def contents = g.render(template:"/article/imageByType", model: [imgid: imgid , imgclass: "img-responsive avatar rounded-x ", img:imgdto ])
+        def contents = g.render(template:"/file/imageByType", model: [imgid: imgid , imgclass: "img-responsive avatar rounded-x ", img:imgdto ])
         resultJson.put("value", contents);
         resultJson.put("objid",imgid);
         response.contentType = "application/json; charset=UTF-8"

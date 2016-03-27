@@ -43,7 +43,7 @@
             <g:each in="${categories}" var="category">
                 <tr id="category${category.id}" >
                     <td>${category.id}</td>
-                    <td> <g:render template="/article/imageByType" model="${[imgid: "forumlogo${category.id}", imgclass: "img-responsive avatar rounded-x", iconclass: 'icon-sm', img:category?.imgDTO]}" /> </td>
+                    <td> <g:render template="/file/imageByType" model="${[imgid: "forumlogo${category.id}", imgclass: "img-responsive avatar rounded-x", iconclass: 'icon-sm', img:category?.imgDTO]}" /> </td>
                     <td> ${category.name}</td>
                     <td>
                         <div class="btn-group">

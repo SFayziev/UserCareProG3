@@ -17,6 +17,15 @@ public class ModuleTypeDTO extends IntEntity {
     private Boolean undeletable;
     private String  edittemplate;
     private  Integer  status;
+    private String cssclass;
+
+    public String getCssclass() {
+        return cssclass;
+    }
+
+    public void setCssclass(String cssclass) {
+        this.cssclass = cssclass;
+    }
 
     public Integer getStatus() {
         return status;

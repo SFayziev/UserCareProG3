@@ -28,7 +28,7 @@
             <g:each in="${topicTypes}" var="topicType">
                 <tr id="topicType${topicType.id}" >
                     <td>${topicType.id}</td>
-                    <td> <g:render template="/article/imageByType" model="${[imgid: "forumtype${topicType.id}", imgclass: "img-responsive avatar rounded-x", iconclass: 'icon-sm', img:topicType?.articleTypeDTO?.imgDTO]}" /> </td>
+                    <td> <g:render template="/file/imageByType" model="${[imgid: "forumtype${topicType.id}", imgclass: "img-responsive avatar rounded-x", iconclass: 'icon-sm', img:topicType?.articleTypeDTO?.imgDTO]}" /> </td>
                     <td> ${topicType.articleTypeDTO.name}</td>
                     <td>
                         <div class="btn-group">

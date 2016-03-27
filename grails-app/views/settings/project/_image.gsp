@@ -2,7 +2,7 @@
     <div  class="col-md-4">
         <h2><g:message code="setting.project.design.logo"/></h2>
         <div  class="img_logo  thumbnail-style  text-center">
-            <g:render template="/article/imageByType" model="${[imgid: "imglogo", imgclass: "img-responsive", iconclass:'icon-slg' , img:UCproject.projectDesignDTO?.logoFileDTO ]}" />
+            <g:render template="/file/imageByType" model="${[imgid: "imglogo", imgclass: "img-responsive", iconclass:'icon-slg' , img:UCproject.projectDesignDTO?.logoFileDTO ]}" />
         %{--<img  id="imglogo" class="img-responsive" src="UCproject:.projectDesignDTO?.logoFileDTO?.svalue?.originalFilename }" alt="">--}%
 
         </div>

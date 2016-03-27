@@ -1,6 +1,6 @@
 <div data-content="${comment?.id}" id="comment-${comment?.id}" class="content-boxes-v2-o ">
     <div class="comment-info">
-        <g:render template="/article/imageByType" model="${[imgid: "forumtype${comment?.id}", imgclass: "pull-left img-responsive avatar rounded-x", iconclass: 'pull-left icon-sm', img:comment.articleDTO.type?.articleTypeDTO?.imgDTO]}" />
+        <g:render template="/file/imageByType" model="${[imgid: "forumtype${comment?.id}", imgclass: "pull-left img-responsive avatar rounded-x", iconclass: 'pull-left icon-sm', img:comment.articleDTO.type?.articleTypeDTO?.imgDTO]}" />
         <h2 class="heading-sm">
             <span>
                 <g:link controller="article" action="item" id="${comment.articleDTO.id}" params="${[forumid: comment.articleDTO.forumDTO.id ]}">${comment.articleDTO.title}  </g:link>
