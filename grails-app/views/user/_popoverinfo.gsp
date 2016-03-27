@@ -1,5 +1,5 @@
 <div class="content-boxes-v2-o" >
-    <g:render template="/article/userImage"  />
+    <g:render template="/user/userImage"  />
     <div class="media-body">
         <h4 class="media-heading">
             <strong>${userDTO.name}</strong>

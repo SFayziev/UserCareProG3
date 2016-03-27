@@ -1,7 +1,7 @@
 <li>
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
     %{--<img src="${user?.fileDTO?.originalFilename}"  class="img-bordered  rounded-2x" style="height: 32px"/> ${user.username}--}%
-        %{--<g:render template="/article/userImage" model="${[userDTO: userDTO]}" />--}%
+        %{--<g:render template="/user/userImage" model="${[userDTO: userDTO]}" />--}%
         %{--<g:render template="/article/imageByType" model="${[imgid: "userid${userDTO?.id}", imgclass: "img-bordered  rounded-2x", iconclass: 'icon-sm', img:userDTO?.imgDTO]}" />--}%
     ${user?.username}
     <i class="fa fa-angle-down"></i></a>

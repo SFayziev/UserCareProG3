@@ -1,5 +1,5 @@
 <div id="comment-template" class="media media-v2 " data-content="0"  >
-    <g:render template="/article/userImage" model="${[userDTO:curUser]}" />
+    <g:render template="/user/userImage" model="${[userDTO:curUser]}" />
     <h4 class="media-heading">
         <strong><a href="#">${curUser?.username}</a></strong>
 

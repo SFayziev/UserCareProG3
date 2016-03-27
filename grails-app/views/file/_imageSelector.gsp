@@ -63,9 +63,9 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal"><g:message code="button.cancel" /></button>
-        <button  id="saveOkBut" type="submit"  class="btn btn-primary" onclick="saveIcon()"><g:message code="button.save" /></button>
+        <button  id="saveOkBut"  class="btn btn-primary" onclick="saveIcon(); return false; "><g:message code="button.save" /></button>
     </div>
-</div>
+
 
 <asset:javascript src="jquery.ui.widget.js"/>
 <asset:javascript src="jquery.fileupload.js"/>
@@ -73,7 +73,7 @@
 <asset:stylesheet href="jquery.fileupload.css"/>
 
 <script>
-    var url ="${uploadUrl}";
+    var url ="${uploadUrl.encodeAsRaw()}";
 <g:if test="${withicon}">
 
     function saveIcon(){
@@ -87,6 +87,7 @@
                         $( "#"+data.objid).replaceWith( data.value);
                     }
                     modal.modal('hide');
+                    $(".modal-backdrop").remove()
                 });
         return false;
 
@@ -137,9 +138,11 @@
         $( "#"+data.result.objid).replaceWith( data.result.value);
         var modal =$("#ucmodal");
         modal.modal('hide');
+        $(".modal-backdrop").remove()
     }).on('fileuploadfail', function (e, data) {
 
     }).prop('disabled', !$.support.fileInput)
             .parent().addClass($.support.fileInput ? undefined : 'disabled');
 
 </script>
+</div>

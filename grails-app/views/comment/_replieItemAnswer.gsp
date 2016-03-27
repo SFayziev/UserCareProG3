@@ -6,7 +6,7 @@
             <div class="topic-votes pull-right">
                 <h2 class="panel-title heading-sm pull-left"><i class="fa  fa-check-square-o "></i>Answer</h2>
             </div>
-            <g:render template="/article/userImage" model="${[userDTO:comment?.userDTO]}" />
+            <g:render template="/user/userImage" model="${[userDTO:comment?.userDTO]}" />
             <div class="media-body">
                 <h4 class="media-heading">
                     <strong><a href="#">${comment?.userDTO?.username}</a></strong>  <g:message code="${comment?.timeAgo?.i18nvalue}"  args="${comment?.timeAgo?.agovalue}" />
