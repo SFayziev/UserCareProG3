@@ -21,7 +21,7 @@
             <g:each in="${forums}" var="forum">
             <tr>
                 <td>${forum.id}</td>
-                <td><g:render template="/article/imageByType" model="${[imgid: "forumlogo${forum.id}", imgclass: "img-responsive", iconclass: 'icon-sm', img:forum?.imgDTO]}" /></td>
+                <td><g:render template="/file/imageByType" model="${[imgid: "forumlogo${forum.id}", imgclass: "img-responsive", iconclass: 'icon-sm', img:forum?.imgDTO]}" /></td>
                 <td> ${forum.name}</td>
                 <td> </td>
                 <td>

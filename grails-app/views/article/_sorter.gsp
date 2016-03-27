@@ -7,7 +7,7 @@
         <g:if test="${catalogParams?.type>0}">
             <g:each in="${forumTypes}" var="topicTypeDTO">
                 <g:if test="${catalogParams?.type==topicTypeDTO?.id}">
-                    %{--<g:render template="/article/imageByType" model="${[imgid: "forumtype${topicTypeDTO.id}", imgclass: "img-responsive avatar rounded-x", iconclass: 'icon-sm', img:topicTypeDTO?.articleTypeDTO?.imgDTO]}" />--}%
+                    %{--<g:render template="/file/imageByType" model="${[imgid: "forumtype${topicTypeDTO.id}", imgclass: "img-responsive avatar rounded-x", iconclass: 'icon-sm', img:topicTypeDTO?.articleTypeDTO?.imgDTO]}" />--}%
                     %{--<asset:image src="type/${topicTypeDTO?.imageurl}" width="16px" /> --}%
                     <locale:message  proj="${UCproject}" code="topictype.name.$topicTypeDTO.id" default="${topicTypeDTO?.articleTypeDTO?.name}" />
                     %{--${topicTypeDTO?.articleTypeDTO?.name}--}%
@@ -29,7 +29,7 @@
     %{--<li><a href="#"  onclick="setArticleListType(-1)"><i class="fa fa-arrows-alt"></i> All  <span class="badge badge-blue rounded-x">${pageCount?.getCountByType(-1 )}</span></a></li>--}%
         <g:each in="${forumTypes}" var="topicTypeDTO">
             <li> <a   data-action="listByType" data-type-value="${topicTypeDTO?.id}" onclick="setArticleListType(${module?.id}, ${topicTypeDTO?.id})" >
-                %{--<g:render template="/article/imageByType" model="${[imgid: "forumtype${topicTypeDTO.id}", imgclass: "img-responsive avatar rounded-x", iconclass: 'icon-sm', img:topicTypeDTO?.articleTypeDTO?.imgDTO]}" />--}%
+                %{--<g:render template="/file/imageByType" model="${[imgid: "forumtype${topicTypeDTO.id}", imgclass: "img-responsive avatar rounded-x", iconclass: 'icon-sm', img:topicTypeDTO?.articleTypeDTO?.imgDTO]}" />--}%
                 <locale:message  proj="${UCproject}" code="topictype.name.$topicTypeDTO.id" default="${topicTypeDTO?.articleTypeDTO?.name}" /> <span class="badge badge-blue rounded-x">${pageCount?.getCountByType(topicTypeDTO?.id )}</span> </a></li>
         </g:each>
     </ul>
