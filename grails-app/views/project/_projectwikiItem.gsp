@@ -1,7 +1,7 @@
 <span class="col-xs-12 kb-col-without-childs col-md-6 col-lg-6 col-sm-6 kb-col">
 
     <div class="headline">
-        <h2><a href="/list/${forum?.id}/${knowledgebase?.id}"> <g:render template="/file/imageByType" model="${[imgid: "forumlogo${forum.id}", imgclass: "img-responsive", iconclass: 'icon-sm', img:knowledgebase?.imgDTO]}" /> ${knowledgebase?.name}</a></h2>
+        <h2> <g:render template="/file/imageByType" model="${[imgid: "forumlogo${forum.id}", imgclass: "img-responsive", iconclass: 'icon-sm', img:knowledgebase?.imgDTO]}" /> <a href="/list/${forum?.id}/${knowledgebase?.id}">${knowledgebase?.name}</a></h2>
 
     </div>
 

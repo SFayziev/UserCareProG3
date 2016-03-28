@@ -1,4 +1,5 @@
-<div class="<g:if test="${customize}">customisation_mode </g:if> tag-box tag-box-v1 margin-bottom-10 ${module?.moduleTypeDTO?.cssclass}"  >
+<div class="<g:if test="${customize}">customisation_mode </g:if> module ${module?.moduleTypeDTO?.cssclass}"  >
+    <div class="module-body" data-moduleid="${module?.id}">
     <g:if test="${customize}">
         <div class="action_buttons">
             <button class="btn btn-primary btn-sm" data-action="widgetUP" data-content="${module?.id}" type="button"><i class="fa fa-arrow-up "></i></button>
@@ -10,4 +11,5 @@
     </g:if>
     <g:pageProperty name="page.moduleContent"/>
     <g:if test="${customize}"><div class="overDiv" ></div></g:if>
+    </div>
 </div>

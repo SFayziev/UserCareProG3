@@ -1,11 +1,11 @@
 <g:applyLayout name="moduleContent">
     <content tag="mainContent1">
-        <div id="mainBar" class="col-xs-9 padding-right-5 padding-left-5 ">
+        <div id="mainBar" class="col-xs-9">
             <g:render template="/article/itemAndReplies"/>
         </div>
     </content>
     <content tag="menuContent1">
-        <div  class="col-xs-3  padding-right-5 padding-left-5">
+        <div  class="col-xs-3">
 
 
             <div class=" tag-box tag-box-v1 margin-bottom-10">

@@ -18,7 +18,6 @@
 
 <div class="wrapper">
     <g:if test="${UCproject!= null}"><g:render template="/layouts/header" /></g:if>
-	%{--<g:render template="/layouts/topMenu" />--}%
 	<g:layoutBody/>
 	<g:render template="/layouts/footer" />
 </div>
