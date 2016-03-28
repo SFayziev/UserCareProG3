@@ -5,7 +5,7 @@
 dataSource {
     pooled = true
     dbCreate = "update"
-    url = "jdbc:mysql://127.0.0.1:3306/usercare"
+    url = "jdbc:mysql://95.142.80.36:3306/usercare"
     driverClassName = "com.mysql.jdbc.Driver"
     dialect = org.hibernate.dialect.MySQL5InnoDBDialect
     username = "root"
