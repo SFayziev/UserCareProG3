@@ -1,7 +1,7 @@
 package usercareproj
 
-import com.sh.db.map.CategoriesDTO
-import com.sh.db.map.TopicTypeDTO
+import com.sh.db.map.forum.CategoriesDTO
+import com.sh.db.map.forum.TopicTypeDTO
 import com.sh.utils.ForumType
 import com.sh.utils.ModuleDisplay
 import org.grails.web.json.JSONObject;

@@ -1,10 +1,8 @@
 package usercareproj
 
-import com.sh.db.map.CategoriesDTO
-import com.sh.db.map.ForumDTO
+import com.sh.db.map.forum.CategoriesDTO
+import com.sh.db.map.forum.ForumDTO
 import com.sh.utils.ForumType
-
-import javax.servlet.http.Cookie
 
 class ModulesTagLib {
     static recordsInPage = 5L
@@ -54,13 +52,27 @@ class ModulesTagLib {
         def article = attrs.params.article
         def module =  attrs.params.module
         if (module != null) {
-            if (module.params.topicPresentation == 'full' && article.answerCommentid) {
+            if (module.params.topicPresentation.value == 'full' && article.answerCommentid) {
                 params.answer = article.answerCommentid ? webServicesSession.getCommentbyId(article.answerCommentid) : null;
             }
             out << render(template: "/article/articleItem" +params.forum.type.ordinal(), model: params)
         }
 
     }
+
+    def articleItems = { attrs ->
+        out << render(template: "/article/itemAndReplies" , model: params)
+    }
+
+    def repliesItems = { attrs ->
+        def params =  attrs.params
+        def article = attrs.params.article
+        if (article != null) {
+            params.comments= webServicesSession.getArticleComments(article.id)
+            out << render(template: "/comment/replies" , model: params)
+        }
+    }
+
 
     def wikiList = { attrs ->
         def params = attrs.params

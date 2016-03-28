@@ -1,6 +1,6 @@
 package com.sh.common;
 
-import com.sh.db.map.ArticleDTO;
+import com.sh.db.map.topics.ArticleDTO;
 import com.sh.db.map.NotificationsDTO;
 import com.sh.db.map.NotificationsForumDTO;
 import com.sh.db.service.NotificationsDAO;

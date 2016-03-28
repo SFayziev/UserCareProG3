@@ -2,11 +2,9 @@ package com.sh.db.service;
 
 import com.sh.db.GenericDaoImpl;
 
-import com.sh.db.map.FileDTO;
-import com.sh.db.map.OauthidDTO;
-import com.sh.db.map.UserDTO;
-import com.sh.db.map.UserPermissionsDTO;
-import com.sh.utils.ImageResizer;
+import com.sh.db.map.user.OauthidDTO;
+import com.sh.db.map.user.UserDTO;
+import com.sh.db.map.user.UserPermissionsDTO;
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
@@ -22,14 +20,8 @@ import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.imageio.ImageIO;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
-import java.util.UUID;
 
 /**
  * Created by shuhrat on 05.09.2015.

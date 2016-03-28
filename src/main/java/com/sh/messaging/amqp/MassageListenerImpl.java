@@ -1,6 +1,6 @@
 package com.sh.messaging.amqp;
 
-import com.sh.db.map.ProjectDTO;
+import com.sh.db.map.project.ProjectDTO;
 import com.sh.db.service.NotificationsDAO;
 import com.sh.db.service.ProjectDAO;
 import com.sh.db.service.UserDAO;

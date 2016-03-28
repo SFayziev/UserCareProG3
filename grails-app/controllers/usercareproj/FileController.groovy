@@ -1,16 +1,11 @@
 package usercareproj
 
-import com.sh.db.map.ImgDTO
-import com.sh.db.map.ImgFaClass
-import com.sh.db.map.ImgFile
-import com.sh.db.map.ModuleLinkDTO
-import com.sh.db.map.ProjectDTO
-import com.sh.utils.ImageResizer
+import com.sh.db.map.file.ImgFaClass
+import com.sh.db.map.file.ImgFile
+import com.sh.db.map.project.ProjectDTO
 import com.sh.utils.ImageType
-import grails.plugin.springsecurity.annotation.Secured
 import grails.web.servlet.mvc.GrailsParameterMap
-import org.grails.web.json.JSONObject;
-import org.springframework.web.multipart.commons.CommonsMultipartFile
+import org.grails.web.json.JSONObject
 
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse

@@ -1,6 +1,8 @@
 package com.sh.db.map;
 
 
+import com.sh.db.map.topics.ArticleStatusDTO;
+
 import java.io.Serializable;
 import java.util.*;
 

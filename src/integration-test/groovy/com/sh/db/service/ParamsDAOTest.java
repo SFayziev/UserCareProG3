@@ -1,7 +1,8 @@
 package com.sh.db.service;
 
-import com.sh.db.map.*;
-
+import com.sh.db.map.module.ModuleDTO;
+import com.sh.db.map.module.ModuleParamsDTO;
+import com.sh.db.map.module.ModuleParamsType3DTO;
 import db.controller.IntegrationTest;
 
 import org.junit.Test;

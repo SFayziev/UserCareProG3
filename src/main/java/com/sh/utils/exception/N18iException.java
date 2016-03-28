@@ -1,8 +1,5 @@
 package com.sh.utils.exception;
 
-import com.sh.db.map.ForumDTO;
-import com.sh.db.map.ProjectDTO;
-
 /**
  * Created by Lenovo on 16.02.2016.
  */

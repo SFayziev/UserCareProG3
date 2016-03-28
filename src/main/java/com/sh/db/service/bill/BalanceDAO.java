@@ -1,7 +1,6 @@
 package com.sh.db.service.bill;
 
 import com.sh.db.GenericDaoImpl;
-import com.sh.db.map.ProjectDTO;
 import com.sh.db.map.bill.BalanceDTO;
 import com.sh.db.map.bill.InvoiceDTO;
 import com.sh.db.map.bill.OrderDTO;

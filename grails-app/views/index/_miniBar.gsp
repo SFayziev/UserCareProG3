@@ -10,6 +10,7 @@
             </g:applyLayout>
         </g:if>
     </g:each>
+        <g:render template="/widgets/poweredBy"/>
     </div>
-    <g:render template="/widgets/poweredBy"/>
+
 </div>

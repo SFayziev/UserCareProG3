@@ -1,7 +1,7 @@
 package com.sh.db
 
-import com.sh.db.map.ProjectDTO
-import com.sh.db.map.UserDTO
+import com.sh.db.map.project.ProjectDTO
+import com.sh.db.map.user.UserDTO
 import com.sh.db.service.ProjectDAO
 import com.sh.db.service.UserDAO
 import org.springframework.beans.factory.annotation.Autowired
@@ -12,8 +12,6 @@ import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.core.userdetails.UsernameNotFoundException
 import org.springframework.transaction.annotation.Transactional
-
-import javax.servlet.http.HttpSession
 
 /**
  * Created by shuhrat on 12.02.2015.

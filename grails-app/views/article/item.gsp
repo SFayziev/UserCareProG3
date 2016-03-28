@@ -1,8 +1,7 @@
 <g:applyLayout name="moduleContent">
     <content tag="mainContent1">
-        <div id="mainBar" class="col-xs-9">
-            <g:render template="/article/itemAndReplies"/>
-        </div>
+        <g:render template="/index/mainBar"/>
+        %{--<g:render template="/article/itemAndReplies"/>--}%
     </content>
     <content tag="menuContent1">
         <div  class="col-xs-3">

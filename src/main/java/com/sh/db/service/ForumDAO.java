@@ -1,7 +1,11 @@
 package com.sh.db.service;
 
 import com.sh.db.GenericDaoImpl;
-import com.sh.db.map.*;
+import com.sh.db.map.forum.*;
+import com.sh.db.map.module.ModuleDTO;
+import com.sh.db.map.module.ModuleTypeDTO;
+import com.sh.db.map.project.ProjectDTO;
+import com.sh.db.map.topics.ArticleStatusDTO;
 import com.sh.utils.ForumType;
 import com.sh.utils.I18Prefix;
 import com.sh.utils.ModuleDisplay;
@@ -66,7 +70,7 @@ public class ForumDAO extends GenericDaoImpl<ForumDTO> {
     }
 
     @Cacheable( value = "topicTypeDTO" )
-    public List<TopicTypeDTO> getForumTypeByForumid(Integer projid,  Integer forumid , Integer status ){
+    public List<TopicTypeDTO> getForumTypeByForumid(Integer projid, Integer forumid , Integer status ){
 //
 //        Criteria cr = currentSession().createCriteria(TopicTypeDTO.class, "ft");
 ////        cr.add(Restrictions.eq("projid", projid));
@@ -121,7 +125,7 @@ public class ForumDAO extends GenericDaoImpl<ForumDTO> {
 //    }
 
     @Cacheable( value = "articleStatusDTO" )
-    public List<ArticleStatusDTO> getArticleStatusByTopicTypeId(Integer projid, Integer forumid,  Integer topicTypeid) {
+    public List<ArticleStatusDTO> getArticleStatusByTopicTypeId(Integer projid, Integer forumid, Integer topicTypeid) {
            if (topicTypeid == null || topicTypeid<0) {
                return currentSession().createQuery("select distinct tts.articleStatusDTO from TopicTypeStatusDTO tts where  tts.topicTypeDTO.forumid=:forumid    order by tts.pos")
 
@@ -152,7 +156,7 @@ public class ForumDAO extends GenericDaoImpl<ForumDTO> {
     }
 
     @Cacheable( value = "forumTagsDTO" )
-    public List<ForumTagsDTO> getTagsByForumId( Integer forumid ) {
+    public List<ForumTagsDTO> getTagsByForumId(Integer forumid ) {
         return  getSessionFactory().getCurrentSession().createQuery("from ForumTagsDTO  as ft where ft.forumid=:forumid ")
                 .setParameter("forumid", forumid).list();
 
@@ -464,7 +468,7 @@ public class ForumDAO extends GenericDaoImpl<ForumDTO> {
 
 
     @CacheEvict(value = "forumDTO",  allEntries = true)
-    public ForumDTO createForum(ProjectDTO projectDTO, ForumType type,  String fname) {
+    public ForumDTO createForum(ProjectDTO projectDTO, ForumType type, String fname) {
         ForumDTO forumDTO = new ForumDTO();
         forumDTO.setLangid(projectDTO.getLang());
         forumDTO.setName(fname);

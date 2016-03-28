@@ -1,17 +1,11 @@
 package db.map;
 
-import com.sh.db.map.CategoriesDTO;
-import com.sh.db.map.LanguagesDTO;
 import db.controller.IntegrationTest;
-import com.sh.db.map.ProjectDTO;
+import com.sh.db.map.project.ProjectDTO;
 import com.sh.db.service.ProjectDAO;
 import jdk.nashorn.internal.ir.annotations.Ignore;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.Date;
 
 /**
  * Created by shuhrat on 16.08.2015.

@@ -1,6 +1,5 @@
 package usercareproj.settings
 
-import com.sh.db.map.UserPermissionsDTO
 import grails.plugin.springsecurity.annotation.Secured
 import org.grails.web.json.JSONObject;
 

@@ -1,10 +1,10 @@
 package usercareproj.settings
 
-import com.sh.db.map.ModuleLinkDTO
-import com.sh.db.map.ModuleParamsDTO
-import com.sh.db.map.ModuleParamsType1DTO
-import com.sh.db.map.ModuleParamsType3DTO
-import com.sh.db.map.ModuleParamsType4DTO
+import com.sh.db.map.module.ModuleLinkDTO
+import com.sh.db.map.module.ModuleParamsDTO
+import com.sh.db.map.module.ModuleParamsType1DTO
+import com.sh.db.map.module.ModuleParamsType3DTO
+import com.sh.db.map.module.ModuleParamsType4DTO
 import com.sh.utils.ModuleDisplay
 import com.sh.utils.ModulePosType
 import grails.plugin.springsecurity.annotation.Secured

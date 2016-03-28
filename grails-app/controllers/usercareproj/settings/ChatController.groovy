@@ -1,6 +1,6 @@
 package usercareproj.settings
 
-import com.sh.db.map.ForumDTO
+import com.sh.db.map.forum.ForumDTO
 import com.sh.utils.ForumType
 import grails.plugin.springsecurity.annotation.Secured
 

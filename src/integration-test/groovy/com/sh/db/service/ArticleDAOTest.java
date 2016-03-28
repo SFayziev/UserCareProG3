@@ -2,6 +2,10 @@ package com.sh.db.service;
 
 import com.sh.db.map.*;
 
+import com.sh.db.map.forum.ForumDTO;
+import com.sh.db.map.forum.TopicTypeStatusDTO;
+import com.sh.db.map.topics.ArticleDTO;
+import com.sh.db.map.topics.CommentDTO;
 import com.sh.utils.ForumType;
 import db.controller.IntegrationTest;
 import jdk.nashorn.internal.ir.annotations.Ignore;

@@ -1,10 +1,9 @@
 package usercareproj.settings
 
-import com.sh.db.map.LanguagesDTO
-import com.sh.db.map.ModuleParamsType3DTO
-import com.sh.db.map.ProjectParamsDTO
-import com.sh.db.map.ProjectParamsType3DTO
-import com.sh.db.map.ProjectParamsType4DTO
+import com.sh.db.map.project.LanguagesDTO
+import com.sh.db.map.project.ProjectParamsDTO
+import com.sh.db.map.project.ProjectParamsType3DTO
+import com.sh.db.map.project.ProjectParamsType4DTO
 import grails.plugin.springsecurity.annotation.Secured
 import org.springframework.beans.factory.annotation.Value
 

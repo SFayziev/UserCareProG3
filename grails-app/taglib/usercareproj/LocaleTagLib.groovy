@@ -1,6 +1,6 @@
 package usercareproj
 
-import com.sh.db.map.ProjectDTO
+import com.sh.db.map.project.ProjectDTO
 import groovy.transform.CompileStatic
 import groovy.xml.MarkupBuilder
 import org.grails.plugins.web.taglib.FormatTagLib

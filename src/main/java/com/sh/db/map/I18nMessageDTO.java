@@ -1,12 +1,11 @@
 package com.sh.db.map;
 
-import org.hibernate.annotations.CacheConcurrencyStrategy;
+import com.sh.db.map.project.ProjectDTO;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 /**
  * Created by Admin on 18.11.2015.
