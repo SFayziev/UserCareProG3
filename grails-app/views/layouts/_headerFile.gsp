@@ -3,6 +3,7 @@
 <asset:stylesheet href="bootstrap.min.css"/>
 <asset:stylesheet href="footer-default.css"/>
 <asset:stylesheet href="header-default.css"/>
-<asset:stylesheet href="custom.css"/>
+%{--<asset:stylesheet href="custom.css"/>--}%
+<asset:stylesheet href="ucdefault.css"/>
 %{--<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>--}%
 <asset:javascript src="jquery-2.1.3.js"/>
