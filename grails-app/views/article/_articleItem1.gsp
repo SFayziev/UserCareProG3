@@ -2,7 +2,7 @@
 
 
     <div class="testimonials-info">
-        <g:if test="${module?.params?.showTopicAvatar}" >
+        <g:if test="${module?.params?.showTopicAvatar?.value==1}" >
             <g:render template="/user/userImage" model="${[userDTO: article?.userDTO]}" />
         </g:if>
         <div class="overflow-textH">
@@ -35,7 +35,7 @@
             </h2>
         </div>
 
-    <g:if test="${'full'== module?.params?.topicPresentation}">
+    <g:if test="${'full'== module?.params?.topicPresentation?.value}">
         <div class="clearfix margin-bottom-20"><p>${article?.text.encodeAsRaw()}</p></div>
 
         <modules:articleTags params="${[project: project, article: article]}" />

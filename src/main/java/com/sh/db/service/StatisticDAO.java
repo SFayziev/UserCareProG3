@@ -1,14 +1,13 @@
 package com.sh.db.service;
 
 import com.sh.db.GenericDaoImpl;
-import com.sh.db.map.*;
+import com.sh.db.map.forum.ForumDTO;
+import com.sh.db.map.topics.ArticleDTO;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Objects;
 
 /**
  * Created by Admin on 28.09.2015.

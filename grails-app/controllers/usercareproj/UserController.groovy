@@ -1,7 +1,7 @@
 package usercareproj
 
 
-import com.sh.db.map.UserDTO
+import com.sh.db.map.user.UserDTO
 import com.sh.utils.ModuleDisplay
 import grails.plugin.springsecurity.annotation.Secured
 import org.grails.web.json.JSONObject;

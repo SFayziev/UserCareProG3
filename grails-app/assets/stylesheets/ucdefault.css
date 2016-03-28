@@ -78,6 +78,13 @@ h1 i, h2 i, h3 i, h4 i, h5 i, h6 i {
     margin: 3px;
 }
 
+.module-powered-by{
+    border-radius: 0 0 4px 4px !important;
+    background-color: #555;
+    margin: 10px;
+    padding: 0px;
+}
+
 /* Add here all your css styles (customizations) */
 .popover{
     max-width:300px;
@@ -102,7 +109,7 @@ img.avatar2x  {
 .no-rounded { border-radius: 0 !important;}
 .rounded { border-radius: 4px !important;}
 .rounded-x { border-radius: 50% !important;}
-
+.rounded-bottom { border-radius: 0 0 4px 4px !important;}
 
 .level0 {
     padding-left: 0;

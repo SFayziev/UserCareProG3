@@ -2,10 +2,10 @@
 
 <div id="listItems" data-moduleid="${module?.id}"   data-forumid="${forum?.id}" data-statusid="${catalogParams?.status}" data-orderid="${catalogParams?.order}" data-typeid="${catalogParams?.type}" >
     <g:render template="/forum/forumBreadcrumb"/>
-    <if test="${module.params?.title && module.params?.title?.value !='' }"><h2>
+    <g:if test="${module.params?.title && module.params?.title?.value !='' }"><h2>
         <locale:message  proj="${UCproject}" code="forum.module.title.${module.id}" default="${module.params?.title?.value}" />
         <span class="badge badge-u rounded-2x">${pageCount?.getRowCount()}</span></h2>
-    </if>
+    </g:if>
     <g:if test="${'none'!= module.params?.filtertype?.value}">
         %{--<g:if test="${module.params?.filtertype?.value=='filterUserStats' || module.params?.filtertype?.value=='filterTabUserStats'}" ><g:render template="/article/statusPanel"/></g:if>--}%
         <g:if test="${module.params?.filtertype?.value=='filterTab' || module.params?.filtertype?.value=='filterTabUserStats'}" ><g:render template="/article/filterTab"/></g:if>

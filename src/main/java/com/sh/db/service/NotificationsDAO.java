@@ -2,18 +2,17 @@ package com.sh.db.service;
 
 import com.sh.db.GenericDaoImpl;
 import com.sh.db.map.*;
+import com.sh.db.map.forum.ForumDTO;
+import com.sh.db.map.topics.ArticleDTO;
+import com.sh.db.map.user.UserDTO;
 import com.sh.utils.ForumType;
 import org.apache.log4j.Logger;
-import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Objects;
 
 /**
  * Created by Lenovo on 08.01.2016.
@@ -91,7 +90,7 @@ public class NotificationsDAO  extends GenericDaoImpl<NotificationsDTO> {
     }
 
 
-    public List<ArticleDTO> getUserFollowsArticles(Integer projid,Integer  userid){
+    public List<ArticleDTO> getUserFollowsArticles(Integer projid, Integer  userid){
         return  currentSession().createQuery("from ArticleDTO where projid=:projid and id in (select fd.articleid from FollowDTO fd where fd.userid=:userid  ) ")
                 .setParameter("projid", projid).setParameter("userid", userid)
                 .list();

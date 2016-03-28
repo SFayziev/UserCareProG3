@@ -1,10 +1,9 @@
 package com.sh.db.service;
 
-import com.sh.db.map.UserDTO;
+import com.sh.db.map.user.UserDTO;
 import db.controller.IntegrationTest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.Rollback;
 
 /**
  * Created by shuhrat on 27.09.2015.

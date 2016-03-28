@@ -1,24 +1,19 @@
 package com.sh.db;
 
-import com.sh.db.map.UserDTO;
-import com.sh.utils.Context;
+import com.sh.db.map.user.UserDTO;
 import com.sh.utils.SessionInternalError;
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.LockMode;
 import org.hibernate.Query;
-import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Example;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.context.ApplicationContext;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
-import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 
-import javax.annotation.Resource;
 import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;

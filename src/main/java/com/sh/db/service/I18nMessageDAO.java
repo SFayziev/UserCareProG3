@@ -2,7 +2,7 @@ package com.sh.db.service;
 
 import com.sh.db.GenericDaoImpl;
 import com.sh.db.map.I18nMessageDTO;
-import com.sh.db.map.ProjectDTO;
+import com.sh.db.map.project.ProjectDTO;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by Admin on 18.11.2015.

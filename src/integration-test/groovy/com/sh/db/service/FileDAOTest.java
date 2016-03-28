@@ -1,12 +1,9 @@
 package com.sh.db.service;
 
-import com.sh.db.map.FileDTO;
-import com.sh.db.map.ImgDTO;
+import com.sh.db.map.file.ImgDTO;
 import db.controller.IntegrationTest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by Lenovo on 15.11.2015.

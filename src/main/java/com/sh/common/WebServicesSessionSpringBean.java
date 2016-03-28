@@ -1,6 +1,21 @@
 package com.sh.common;
 
 import com.sh.db.map.*;
+import com.sh.db.map.file.FileDTO;
+import com.sh.db.map.file.ImgDTO;
+import com.sh.db.map.forum.*;
+import com.sh.db.map.module.ModuleDTO;
+import com.sh.db.map.module.ModuleLinkDTO;
+import com.sh.db.map.module.ModuleParamsDTO;
+import com.sh.db.map.module.ModuleTypeDTO;
+import com.sh.db.map.project.*;
+import com.sh.db.map.topics.ArticleDTO;
+import com.sh.db.map.topics.ArticleStatusDTO;
+import com.sh.db.map.topics.ArticleTagsDTO;
+import com.sh.db.map.topics.CommentDTO;
+import com.sh.db.map.user.OauthidDTO;
+import com.sh.db.map.user.UserDTO;
+import com.sh.db.map.user.UserPermissionsDTO;
 import com.sh.db.service.*;
 
 import com.sh.utils.ForumType;
@@ -47,7 +62,7 @@ public class WebServicesSessionSpringBean {
     @Autowired
     I18nMessageDAO i18nMessageDAO;
 
-    public ProjectDTO getProject(HttpServletResponse response, HttpServletRequest request,  HttpSession session) throws IOException {
+    public ProjectDTO getProject(HttpServletResponse response, HttpServletRequest request, HttpSession session) throws IOException {
 
         String urlpath = new URL(request.getRequestURL().toString()).getHost();
 
@@ -100,8 +115,8 @@ public class WebServicesSessionSpringBean {
     // Articles
 //    public List<ArticleDTO> getLastArticle(Integer projectId, Integer start,Integer count, Integer status, Integer  type , String order,  Integer catid , ForumDTO  forumDTO , Integer langid){ return articleDAO.getLastArticle(projectId, start, count, status, type, order, catid, forumDTO, langid ) ; }
 //    public ItemCount getLastArticleRecCount(Integer projectId,  Integer status, Integer  type ,    Integer catid , ForumDTO  forumDTO, Integer langid) { return articleDAO.getLastArticleRecCount(projectId, status, type, catid, forumDTO, langid); }
-    public ItemCount getLastArticleRecCount(ProjectDTO  project,  ForumDTO  forumDTO, HashMap params) {return articleDAO.getLastArticleRecCount(project, forumDTO, params, true);}
-    public  List<ArticleDTO> getArticleList(ProjectDTO  project,  ForumDTO  forumDTO, HashMap params) {return  articleDAO.getArticleList(project, forumDTO, params); }
+    public ItemCount getLastArticleRecCount(ProjectDTO  project, ForumDTO forumDTO, HashMap params) {return articleDAO.getLastArticleRecCount(project, forumDTO, params, true);}
+    public  List<ArticleDTO> getArticleList(ProjectDTO  project, ForumDTO  forumDTO, HashMap params) {return  articleDAO.getArticleList(project, forumDTO, params); }
 
     public ArticleDTO getProjectArticle(Integer projid , Integer id ){return  articleDAO.getArticle(projid, id);}
     public CommentDTO addComment(CommentDTO commentDTO) {return  articleDAO.saveArticleComment(commentDTO);}
@@ -144,7 +159,7 @@ public class WebServicesSessionSpringBean {
     public boolean moveCategory(Integer projId, Integer catID, String direction){ return  forumDAO.moveCategory(projId, catID, direction);}
     public Boolean delCategoryById(Integer projid, Integer catid){return  forumDAO.delCategoryById( projid, catid) ;}
 
-    public List<ForumTagsDTO> getTagsByForumId( Integer forumid  ){return forumDAO.getTagsByForumId(forumid);}
+    public List<ForumTagsDTO> getTagsByForumId(Integer forumid  ){return forumDAO.getTagsByForumId(forumid);}
     public ForumTagsDTO getTagById(Integer projid, Integer forumid ,  Integer tagid  ){return  forumDAO.getTagById(projid, forumid, tagid);}
     public ForumTagsDTO saveForumTag(ForumTagsDTO forumTagsDTO){return forumDAO.saveForumTag(forumTagsDTO);}
     public boolean delTagbyId(Integer projid, Integer tagid){return forumDAO.delTagbyId(projid, tagid);}
@@ -161,7 +176,7 @@ public class WebServicesSessionSpringBean {
     public TopicTypeStatusDTO getTopicTypeStatusById(Integer projid, Integer typeStatusId){return  forumDAO.getTopicTypeStatusById(projid, typeStatusId ) ;}
     public TopicTypeStatusDTO saveTypeStatusDTOs(TopicTypeStatusDTO topicTypeStatusDTO) {return forumDAO.saveTypeStatusDTOs(topicTypeStatusDTO) ;}
 
-    public ArticleStatusDTO getArticleStatusById(Integer projid ,  Integer forumid,   Integer id  ){return  forumDAO.getArticleStatusById(projid, forumid, id, true);}
+    public ArticleStatusDTO getArticleStatusById(Integer projid , Integer forumid, Integer id  ){return  forumDAO.getArticleStatusById(projid, forumid, id, true);}
     public List<ArticleStatusDTO> getArticleStatusByTopicTypeId(Integer projid, Integer forumid,  Integer topicTypeid  ){return  forumDAO.getArticleStatusByTopicTypeId(projid, forumid, topicTypeid);}
     public ArticleStatusDTO saveArticleStatus(ArticleStatusDTO articleStatusDTO){ return forumDAO.saveArticleStatus(articleStatusDTO); }
 //    public List<ForumStatusDTO> getForumStatusByForumId(Integer projid,  Integer forumid  ){return  forumDAO.getForumStatusByForumId(projid, forumid ); }
@@ -176,7 +191,7 @@ public class WebServicesSessionSpringBean {
     public UserDTO getCurentUser(){return  userDAO.getCurrentUser();}
 //    public UserDTO   createAvatar(Integer userid, InputStream stream) throws IOException {return    userDAO.createAvatar(userid, stream);}
 
-    public  FileDTO createImageFile( ImageType type,InputStream stream ) throws IOException {return fileDAO.saveImage(type, stream);  }
+    public FileDTO createImageFile(ImageType type, InputStream stream ) throws IOException {return fileDAO.saveImage(type, stream);  }
     public List<ImgDTO> getLocalImageByType(Integer type){return  fileDAO.getLocalImageByType(type);}
     public ImgDTO getLocalImageByKey(Integer type, String  key ){return fileDAO.getLocalImageByKey(type, key);}
     public void  updateImgDTO(ImgDTO imgDTO ){ fileDAO.updateImgDTO(imgDTO);}

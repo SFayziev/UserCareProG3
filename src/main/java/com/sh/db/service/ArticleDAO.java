@@ -2,6 +2,12 @@ package com.sh.db.service;
 
 import com.sh.db.GenericDaoImpl;
 import com.sh.db.map.*;
+import com.sh.db.map.forum.CategoriesDTO;
+import com.sh.db.map.forum.ForumDTO;
+import com.sh.db.map.forum.TopicTypeDTO;
+import com.sh.db.map.project.ProjectDTO;
+import com.sh.db.map.topics.*;
+import com.sh.db.map.user.UserDTO;
 import com.sh.messaging.amqp.AmqpConstants;
 import com.sh.messaging.amqp.TopicListener;
 import com.sh.utils.ForumType;
@@ -193,7 +199,7 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
      * @return
      */
     @Transactional
-    public CommentDTO saveArticleComment( CommentDTO commentDTO){
+    public CommentDTO saveArticleComment(CommentDTO commentDTO){
         Integer articid= commentDTO.getArticleDTO().getId();
         CommentDTO parentDTO;
         if (commentDTO.getId()== null && (commentDTO.getParentid()!= null) && commentDTO.getParentid()>0){

@@ -1,10 +1,9 @@
 package usercareproj
 
-import com.sh.db.map.ArticleDTO
+import com.sh.db.map.topics.ArticleDTO
 import com.sh.utils.ForumType
 import com.sh.utils.ModuleDisplay
 import com.sh.utils.exception.N18iException
-import grails.plugin.springsecurity.annotation.Secured
 import org.grails.web.json.JSONObject
 
 import javax.servlet.http.HttpServletResponse;
@@ -36,12 +35,14 @@ class ArticleController {
         def forumid=params.int("forumid")
         def article = webServicesSession.getProjectArticle(project.id, id);
         if (article!= null){
-            def comments= webServicesSession.getArticleComments(id)
-            def module=[params: [showTopicAvatar:1, topicPresentation:"full"]]
+//            def comments= webServicesSession.getArticleComments(id)
+            def modulPos=webServicesSession.getModuleBydisplaypos(project.id, 0 , 0, ModuleDisplay.ItemPanel )
+
+//            def module=[modulPos:modulPos, params: [showTopicAvatar:1, topicPresentation:"full"]]
 //            def articleStatuses=webServicesSession.getArticleStatusByTopicTypeId(project.id , article.type.id )
 
-            def answer = article.answerCommentid? webServicesSession.getCommentbyId(article.answerCommentid): null;
-            render view: 'item', model: [UCproject:project, article:article ,forum:article.getForumDTO(), comments:comments, module:module,answer:answer ]
+//            def answer = article.answerCommentid? webServicesSession.getCommentbyId(article.answerCommentid): null;
+            render view: 'item', model: [UCproject:project, modulPos: modulPos, article:article ,forum:article.getForumDTO()]
         }
         else {
             response.sendError HttpServletResponse.SC_NOT_FOUND

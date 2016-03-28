@@ -1,8 +1,8 @@
 package usercareproj.settings
 
-import com.sh.db.map.CategoriesDTO
-import com.sh.db.map.ForumDTO
-import com.sh.db.map.ForumTagsDTO
+import com.sh.db.map.forum.CategoriesDTO
+import com.sh.db.map.forum.ForumDTO
+import com.sh.db.map.forum.ForumTagsDTO
 import com.sh.utils.ForumType
 import grails.plugin.springsecurity.annotation.Secured
 import groovy.util.logging.Log

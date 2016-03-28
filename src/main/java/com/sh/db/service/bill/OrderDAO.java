@@ -1,14 +1,12 @@
 package com.sh.db.service.bill;
 
 import com.sh.db.GenericDaoImpl;
-import com.sh.db.map.ArticleDTO;
 import com.sh.db.map.bill.OrderDTO;
 import com.sh.db.map.bill.OrderStatus;
 import com.sh.db.map.bill.TariffDTO;
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
@@ -18,7 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * Created by Admin on 15.03.2016.

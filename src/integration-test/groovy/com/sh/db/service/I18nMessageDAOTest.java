@@ -2,20 +2,17 @@ package com.sh.db.service;
 
 import com.sh.db.map.I18nMessageDTO;
 import com.sh.db.map.I18nMessageValueDTO;
-import com.sh.db.map.ProjectDTO;
+import com.sh.db.map.project.ProjectDTO;
 import db.controller.IntegrationTest;
 
 import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.Rollback;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by Admin on 18.11.2015.

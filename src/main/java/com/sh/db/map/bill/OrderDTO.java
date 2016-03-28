@@ -1,6 +1,5 @@
 package com.sh.db.map.bill;
 
-import com.sh.db.map.ForumDTO;
 import com.sh.db.map.IntEntity;
 
 import javax.persistence.*;

@@ -2,10 +2,8 @@ package com.sh.db.service;
 
 import com.sh.db.GenericDaoImpl;
 
-import com.sh.db.map.ArticleDTO;
-import com.sh.db.map.FileDTO;
-import com.sh.db.map.ImgDTO;
-import com.sh.db.map.UserDTO;
+import com.sh.db.map.file.FileDTO;
+import com.sh.db.map.file.ImgDTO;
 import com.sh.utils.ImageResizer;
 import com.sh.utils.ImageType;
 import org.apache.log4j.Logger;

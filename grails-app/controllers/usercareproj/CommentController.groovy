@@ -1,7 +1,6 @@
 package usercareproj
 
-import com.sh.db.map.CommentDTO
-import com.sh.utils.ModuleDisplay
+import com.sh.db.map.topics.CommentDTO
 import org.grails.web.json.JSONObject;
 
 

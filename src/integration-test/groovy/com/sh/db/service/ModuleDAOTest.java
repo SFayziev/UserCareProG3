@@ -1,16 +1,12 @@
 package com.sh.db.service;
 
-import com.sh.db.map.*;
-import com.sh.utils.ForumType;
-import com.sh.utils.ModuleDisplay;
+import com.sh.db.map.module.*;
 import com.sh.utils.ModulePosType;
 import db.controller.IntegrationTest;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.Rollback;
-import sun.security.pkcs11.Secmod;
 
 /**
  * Created by Admin on 01.10.2015.

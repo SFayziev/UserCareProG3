@@ -1,16 +1,13 @@
 package com.sh.db.service;
 
-import com.sh.db.map.*;
+import com.sh.db.map.forum.TopicTypeDTO;
+import com.sh.db.map.project.ProjectDTO;
+import com.sh.db.map.topics.ArticleStatusDTO;
 import com.sh.utils.ForumType;
-import com.sh.utils.ModuleDisplay;
 import db.controller.IntegrationTest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
-
-import java.util.List;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by Lenovo on 22.11.2015.

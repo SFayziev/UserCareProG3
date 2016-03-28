@@ -1,7 +1,7 @@
 package com.sh.db.service;
 
-import com.sh.db.map.CategoriesDTO;
-import com.sh.db.map.ForumDTO;
+import com.sh.db.map.forum.CategoriesDTO;
+import com.sh.db.map.forum.ForumDTO;
 import com.sh.utils.ForumType;
 import db.controller.IntegrationTest;
 import org.junit.Test;

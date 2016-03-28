@@ -1,7 +1,7 @@
 package com.sh.db.service;
 
 import com.sh.db.GenericDaoImpl;
-import com.sh.db.map.ModuleParamsDTO;
+import com.sh.db.map.module.ModuleParamsDTO;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;

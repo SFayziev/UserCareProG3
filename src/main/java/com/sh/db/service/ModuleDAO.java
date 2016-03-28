@@ -1,15 +1,16 @@
 package com.sh.db.service;
 
 import com.sh.db.GenericDaoImpl;
-import com.sh.db.map.*;
-import com.sh.utils.ForumType;
+import com.sh.db.map.module.ModuleDTO;
+import com.sh.db.map.module.ModuleLinkDTO;
+import com.sh.db.map.module.ModuleParamsDTO;
+import com.sh.db.map.module.ModuleTypeDTO;
+import com.sh.db.map.user.UserDTO;
 import com.sh.utils.ModuleDisplay;
 import com.sh.utils.ModulePosType;
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
