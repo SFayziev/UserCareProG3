@@ -1,7 +1,5 @@
-<div class="row no-margin" >
-    <h2 class="heading-sm pull-left"><i class="fa fa-comments"></i>Comments</h2>
-    <a href="#"><i class="fa fa-cog pull-right"></i></a>
-</div>
+<h2><i class="fa fa-comments"></i> Comments </h2>
+
 <g:if test="${article?.disabled}">
     <g:render template="/comment/commentDisabled" />
 </g:if>
