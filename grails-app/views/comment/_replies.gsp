@@ -1,4 +1,4 @@
-<h2><i class="fa fa-comments"></i> Comments </h2>
+<h3><i class="fa fa-comments"></i> Comments </h3>
 
 <g:if test="${article?.disabled}">
     <g:render template="/comment/commentDisabled" />

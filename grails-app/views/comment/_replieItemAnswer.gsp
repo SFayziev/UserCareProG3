@@ -1,21 +1,19 @@
 <g:if test="${comment}">
-
-<div class="row">
-    <div class="panel-body comments-list">
-        <div id="comment-answer-${comment?.id}" class=" media  media-v2">
-            <div class="topic-votes pull-right">
-                <h2 class="panel-title heading-sm pull-left"><i class="fa  fa-check-square-o "></i>Answer</h2>
-            </div>
-            <g:render template="/user/userImage" model="${[userDTO:comment?.userDTO]}" />
-            <div class="media-body">
-                <h4 class="media-heading">
-                    <strong><a href="#">${comment?.userDTO?.username}</a></strong>  <g:message code="${comment?.timeAgo?.i18nvalue}"  args="${comment?.timeAgo?.agovalue}" />
-                </h4>
-                <p>${comment?.text?.encodeAsRaw()}</p>
-            </div>
-        </div>
+<div id="comment-answer-${comment?.id}" class="testimonials-info">
+    <div class="title">
+        <h3 class="pull-right"><i class="fa  fa-check-square-o "></i> Answer </h3>
+    </div>
+    <div class="topic-avatar">
+        <g:render template="/user/userImage" model="${[userDTO:comment?.userDTO]}" />
+    </div>
+    <div class="overflow-h">
+        <small>
+           <a href="#">${comment?.userDTO?.username}</a>
+            <g:message code="${comment?.timeAgo?.i18nvalue}"  args="${comment?.timeAgo?.agovalue}" />
+        </small>
+    </div>
+    <div class="commenttext" >
+        <p>${comment?.text?.encodeAsRaw()}</p>
     </div>
 </div>
-
-
 </g:if>
