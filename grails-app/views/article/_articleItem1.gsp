@@ -1,11 +1,9 @@
 <div id="article-${article?.id}" data-forum-id="${article?.forumDTO?.id}"  data-article-id="${article?.id}" class="content">
-
-
     <div class="testimonials-info">
         <g:if test="${module?.params?.showTopicAvatar?.value==1}" >
-            <span>
+            <div class="topic-avatar">
                 <g:render template="/user/userImage" model="${[userDTO: article?.userDTO]}" />
-            </span>
+            </div>
         </g:if>
         <div class="overflow-h">
             <div  class="topic-votes pull-right">
@@ -18,10 +16,8 @@
                 <span class="rounded  label" style="background: ${article?.statusDTO?.color}" ><locale:message  proj="${UCproject}" code="article.status.name.${article?.statusDTO?.id}" default="${article?.statusDTO?.name}" /> </span>
             </div>
             <div class="title">
-
-                    <g:if test='${WType}'><g:link target="_blank" controller="article" action="item" id="${article.id}" >${article.title}</g:link></g:if>
-                    <g:else><g:link  controller="article" action="item" id="${article.id}" params="${[forumid: article?.forumDTO?.id]}" >${article.title}</g:link></g:else>
-
+                <g:if test='${WType}'><g:link target="_blank" controller="article" action="item" id="${article.id}" >${article.title}</g:link></g:if>
+                <g:else><g:link  controller="article" action="item" id="${article.id}" params="${[forumid: article?.forumDTO?.id]}" >${article.title}</g:link></g:else>
             </div>
         </div>
         <div class="overflow-h">
@@ -34,15 +30,16 @@
                 </ul>
             </small>
         </div>
-
     <g:if test="${'full'== module?.params?.topicPresentation?.value}">
-        <div class="comment-info"><p>${article?.text.encodeAsRaw()}</p></div>
+        <div class="comment-info">${article?.text?.encodeAsRaw()}</div>
 
         <modules:articleTags params="${[project: project, article: article]}" />
         <g:render template="/article/articleVoter" model="${[article: article]}" />
     </g:if>
+
+    </div>
+
     <g:if test="${answer}">
         <g:render template="/comment/replieItemAnswer" model="${[comment: answer ]}"/>
     </g:if>
-    </div>
 </div>

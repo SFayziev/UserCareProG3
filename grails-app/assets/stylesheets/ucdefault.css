@@ -82,12 +82,13 @@ h1 i, h2 i, h3 i, h4 i, h5 i, h6 i {
     border-radius: 0 0 4px 4px !important;
     background-color: #555;
     margin: 10px;
-    padding: 0px;
+    padding: 0;
 }
 
 /* Add here all your css styles (customizations) */
 .popover{
-    max-width:300px;
+    max-width:350px;
+    min-width: 250px;
 }
 
 img.avatar  {
@@ -250,8 +251,9 @@ i.icon-sm {
 }
 
 .content .comment-info {
-    padding: 10px;
-    border: 1px solid #eee;
+    padding: 5px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 5px;
 }
 
 
@@ -314,14 +316,13 @@ i.icon-sm {
 }
 
 .content .comment-action-bar ul{
-    margin: 0px;
+    margin: 0;
 }
 
 .content .link-bg-icon:hover i {
     color: #000000;
     background: #72c02c;
     border-color: #72c02c;
-    color: #fff !important;
 }
 
 .content small {
@@ -347,9 +348,6 @@ i.icon-sm {
     background: #f9f9f9;
 }
 
-.content .comment-info:hover {
-    background: #f9f9f9;
-}
 
 
 @media (max-width: 992px) {
