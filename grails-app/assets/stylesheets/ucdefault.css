@@ -70,11 +70,13 @@ h1 i, h2 i, h3 i, h4 i, h5 i, h6 i {
 .module .module-body{
     /*overflow: hidden;*/
     border: solid 1px #eee;
-    border-top: solid 2px #72c02c;
-
     background: #fff;
     padding: 10px;
 
+}
+
+.side-block .module .module-body{
+    border-top: solid 2px #72c02c;
 }
 
 .module-stats .staff-list{
