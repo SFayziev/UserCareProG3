@@ -1,4 +1,4 @@
-<div class="row" id="projStats" data-moduleid="${module?.id}" >
+<div class="module-body" data-moduleid="${module?.id}">
     <div class="col-sm-12">
         <div class="input-group">
             <input class="form-control"  name="searchtext" data-isbusy="0" data-prevsearch=""  data-action = 'searchArticle' placeholder="${module?.params?.placeholder?.value}" maxlength="255" type="text">
@@ -10,8 +10,10 @@
             </div>
         </div>
     </div>
-</div>
-<div id="searchresult" class="row margin-top-20" >
+
+    <div id="searchresult" class="row margin-top-20" >
+    </div>
+
 </div>
 
 

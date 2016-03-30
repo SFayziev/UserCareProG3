@@ -1,5 +1,5 @@
 <g:if test="${comment}">
-<div id="comment-answer-${comment?.id}" class="testimonials-info">
+<div id="comment-answer-${comment?.id}" >
     <div class="title">
         <h3 class="pull-right"><i class="fa  fa-check-square-o "></i> Answer </h3>
     </div>

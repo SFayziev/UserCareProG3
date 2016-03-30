@@ -1,3 +1,4 @@
+<div class="module-body" data-moduleid="${module?.id}">
 <div id="fb-root${module?.id}"></div>
 <script>(function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
@@ -15,4 +16,5 @@
              <g:if test="${module.params?.formheight?.value}">data-height="${module.params?.formheight?.value}" </g:if>
              ></div>
     </div>
+</div>
 </div>

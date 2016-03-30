@@ -1,4 +1,4 @@
-<div  id="articleStats"  data-moduleid="${module?.id}" >
+<div class="module-body" data-moduleid="${module?.id}">
     <div class="headline">
         <h2><g:message code="widget.article.stats.title" /></h2>
     </div>

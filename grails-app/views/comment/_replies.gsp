@@ -1,3 +1,4 @@
+<div class="module-body" data-moduleid="${module?.id}">
 <h3><i class="fa fa-comments"></i> Comments </h3>
 
 <g:if test="${article?.disabled}">
@@ -10,4 +11,5 @@
     <g:each in="${comments}" var="comment">
         <g:render template="/comment/repliesItem" model="${[comment: comment]}" />
     </g:each>
+</div>
 </div>
