@@ -3,6 +3,9 @@
 * {
     border-radius: 0;
 }
+body, .module a {
+    color: #000000;
+}
 
 .main-block{
 
@@ -61,13 +64,14 @@ h1 i, h2 i, h3 i, h4 i, h5 i, h6 i {
 }
 
 .module{
-
+    margin: 10px;
 }
 
 .module .module-body{
+    /*overflow: hidden;*/
     border: solid 1px #eee;
     border-top: solid 2px #72c02c;
-    margin: 10px;
+
     background: #fff;
     padding: 10px;
 
@@ -78,10 +82,12 @@ h1 i, h2 i, h3 i, h4 i, h5 i, h6 i {
     margin: 3px;
 }
 
+.module-forum-status .module-body{
+    overflow: hidden;
+}
 .module-powered-by{
     border-radius: 0 0 4px 4px !important;
     background-color: #555;
-    margin: 10px;
     padding: 0;
 }
 
@@ -334,6 +340,38 @@ i.icon-sm {
 .content  .overflow-h { overflow: hidden;}
 .content .topic-votes {
     padding-left: 3px;
+}
+
+.module-list-articles .module-body {
+    background: transparent;
+}
+.module-list-articles .top-side{
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-top: -10px;
+    padding: 10px;
+    background: #fff;
+
+}
+
+.module-list-articles .bottom-side{
+    margin-left: -10px;
+    margin-right: -10px;
+    padding :10px;
+    background: #fff;
+
+}
+
+.module-list-articles .topic-side{
+    margin-left: -10px;
+    margin-right: -10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background: #fff;
+}
+
+.module-list-articles  .full  .topic-side{
+    margin-bottom: 10px;
 }
 
 .module-list-articles .content .testimonials-info:hover {

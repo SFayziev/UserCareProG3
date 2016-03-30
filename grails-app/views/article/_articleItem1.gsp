@@ -1,4 +1,5 @@
-<div id="article-${article?.id}" data-forum-id="${article?.forumDTO?.id}"  data-article-id="${article?.id}" class="content">
+
+<div id="article-${article?.id}" data-forum-id="${article?.forumDTO?.id}"  data-article-id="${article?.id}" class="content ">
     <div class="testimonials-info">
         <g:if test="${module?.params?.showTopicAvatar?.value==1}" >
             <div class="topic-avatar">
@@ -37,9 +38,8 @@
         <g:render template="/article/articleVoter" model="${[article: article]}" />
     </g:if>
 
+        <g:if test="${answer}">
+            <g:render template="/comment/replieItemAnswer" model="${[comment: answer ]}"/>
+        </g:if>
     </div>
-
-    <g:if test="${answer}">
-        <g:render template="/comment/replieItemAnswer" model="${[comment: answer ]}"/>
-    </g:if>
 </div>

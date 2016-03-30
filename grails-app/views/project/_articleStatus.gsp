@@ -1,4 +1,5 @@
-<div class="row" id="projStats" data-moduleid="${module?.id}" >
+<div class="module-body" data-moduleid="${module?.id}">
+
     <div class="col-xs-4 col-sm-4  text-center">
         <g:link controller="forum" action="list" id="${forum.id}" params="${[status:0]}">Unmarked topics</g:link>
         <p><h2>${pageCount?.getUnmarkedTopic()}</h2><p>

@@ -1,4 +1,4 @@
-<div  id="linksForm" data-moduleid="${module?.id}" >
+<div class="module-body" data-moduleid="${module?.id}">
     <div class="headline">
         <h2><g:message code="setting.leftMenu.community.categories" /></h2>
     </div>

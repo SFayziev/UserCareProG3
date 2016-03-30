@@ -1,4 +1,4 @@
-<div class="row" id="projStats" data-moduleid="${module?.id}" >
+<div class="module-body" data-moduleid="${module?.id}">
     <div class="col-sm-12">
         <div class="input-group">
             <input class="form-control" placeholder="${module?.params?.placeholder?.value}" maxlength="255" type="text">

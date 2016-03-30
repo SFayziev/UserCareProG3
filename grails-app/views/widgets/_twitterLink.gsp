@@ -1,4 +1,4 @@
-<div   data-moduleid="${module?.id}" >
+<div class="module-body" data-moduleid="${module?.id}">
 <a class="twitter-timeline"
    data-widget-id="${module.params?.widgetid?.value}"
    <g:if test="${module.params?.formheight?.value}">height="${module.params?.formheight?.value}" </g:if>

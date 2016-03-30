@@ -1,4 +1,4 @@
-<div id="wikiItems" data-moduleid="${module?.id}" >
+<div class="module-body" data-moduleid="${module?.id}">
 <g:each in="${knowledgeForums}" var="forum">
     <div class="headline">
         <h2><g:render template="/file/imageByType" model="${[imgid: "forumlogo${forum.id}", imgclass: "img-responsive", iconclass: 'icon-sm', img:forum?.imgDTO]}" />

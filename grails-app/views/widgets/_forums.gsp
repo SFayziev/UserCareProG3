@@ -1,4 +1,4 @@
-<div id="forumStats"  data-moduleid="${module?.id}" >
+<div class="module-body" data-moduleid="${module?.id}">
     <g:if test="${communitys}">
         <dl>
        <dt> <g:message code="forum.type2" /></dt>

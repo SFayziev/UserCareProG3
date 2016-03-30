@@ -1,4 +1,4 @@
-<div  id="userMenu" >
+<div class="module-body" data-moduleid="${module?.id}">
     <div class="headline">
         <h2><g:message code="widget.usermenu.title" /></h2>
     </div>
