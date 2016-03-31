@@ -137,11 +137,26 @@ public class ModuleDAO extends GenericDaoImpl<ModuleDTO> {
         return criteria;
     }
 
+
+    public List<ModuleDTO> getModuleBydisplaypos(Integer projId, Integer id, Integer forumid,  ModuleDisplay displaypos  ){
+        List<ModuleDTO> moduleDTOList=null;
+         if (displaypos==ModuleDisplay.Dashboard){
+             moduleDTOList = getModuleCriteria(projId, id, forumid, displaypos, 0, 1).list();
+        } else if (displaypos==ModuleDisplay.List ){
+             moduleDTOList = getModuleCriteria(projId, id, forumid, displaypos, 0, 1).list();
+        }else if (displaypos==ModuleDisplay.ItemPanel){
+             moduleDTOList = getModuleCriteria(projId, id, forumid, displaypos, 0, 1).list();
+        }
+
+        return moduleDTOList;
+     }
+
     @Cacheable( value = "modules")
     @Transactional
-    public List<ModuleDTO> getModuleBydisplaypos(Integer projId, Integer id, Integer forumid,  ModuleDisplay displaypos  ){
-        return getModuleCriteria(projId, id, forumid, displaypos, 0, 1).list();
-     }
+    private  List<ModuleDTO> getItemPanelModules(Criteria criteria, UserDTO user){
+
+    }
+
 
     @Cacheable( value = "modules")
     @Transactional
