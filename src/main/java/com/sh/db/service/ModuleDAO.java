@@ -1,6 +1,7 @@
 package com.sh.db.service;
 
 import com.sh.db.GenericDaoImpl;
+import com.sh.db.map.forum.ForumDTO;
 import com.sh.db.map.module.ModuleDTO;
 import com.sh.db.map.module.ModuleLinkDTO;
 import com.sh.db.map.module.ModuleParamsDTO;
@@ -15,6 +16,7 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
@@ -31,6 +33,15 @@ import java.util.Objects;
 public class ModuleDAO extends GenericDaoImpl<ModuleDTO> {
 
     private static final Logger LOG = Logger.getLogger(ModuleDAO.class);
+
+    @Value("${module.topic.control.panel}" )
+    private Integer modulTopicControlid;
+
+    @Value("${module.article.share.panel}")
+    private Integer modulShareid;
+
+    @Autowired
+    ForumDAO forumDAO;
 
     @Autowired
     public ModuleDAO(SessionFactory sessionFactory) {
@@ -118,11 +129,11 @@ public class ModuleDAO extends GenericDaoImpl<ModuleDTO> {
         return (ModuleTypeDTO) currentSession().createQuery("from ModuleTypeDTO  as mt where  mt.id=:id").setParameter("id", id).uniqueResult();
     }
 
-    private  Criteria getModuleCriteria (Integer projId, Integer id, Integer forumid, ModuleDisplay display, Integer type, Integer status){
+    private  Criteria getModuleCriteria (Integer projId, Integer modulid, Integer forumid, ModuleDisplay display, Integer type, Integer status){
         Criteria criteria = currentSession()
                 .createCriteria( ModuleDTO.class);
 
-        if(id!= null && id>0) criteria.add(Restrictions.eq("id", id));
+        if(modulid!= null && modulid>0) criteria.add(Restrictions.eq("id", modulid));
 
         if(type!= null && type>0) criteria.add(Restrictions.eq("type", type));
         if(status!= null && status>0) {
@@ -138,14 +149,22 @@ public class ModuleDAO extends GenericDaoImpl<ModuleDTO> {
     }
 
 
-    public List<ModuleDTO> getModuleBydisplaypos(Integer projId, Integer id, Integer forumid,  ModuleDisplay displaypos  ){
-        List<ModuleDTO> moduleDTOList=null;
-         if (displaypos==ModuleDisplay.Dashboard){
-             moduleDTOList = getModuleCriteria(projId, id, forumid, displaypos, 0, 1).list();
-        } else if (displaypos==ModuleDisplay.List ){
-             moduleDTOList = getModuleCriteria(projId, id, forumid, displaypos, 0, 1).list();
-        }else if (displaypos==ModuleDisplay.ItemPanel){
-             moduleDTOList = getModuleCriteria(projId, id, forumid, displaypos, 0, 1).list();
+    public List<ModuleDTO> getModuleBydisplaypos(Integer projId, Integer modulid, Integer forumid,  ModuleDisplay displaypos  ) {
+        UserDTO userDTO = null;
+
+        try {
+            userDTO = getCurrentLoggedUser();
+        } catch (Exception ignored) {
+
+        };
+
+        List<ModuleDTO> moduleDTOList = null;
+         if (displaypos == ModuleDisplay.Dashboard) {
+             moduleDTOList = getDashboardModules(projId, modulid, forumid, userDTO);
+        } else if (displaypos == ModuleDisplay.List) {
+             moduleDTOList = getListModules(projId, modulid, forumid, userDTO);
+        } else if (displaypos == ModuleDisplay.ItemPanel) {
+             moduleDTOList = getItemPanelModules(projId, modulid, forumid, userDTO);
         }
 
         return moduleDTOList;
@@ -153,10 +172,33 @@ public class ModuleDAO extends GenericDaoImpl<ModuleDTO> {
 
     @Cacheable( value = "modules")
     @Transactional
-    private  List<ModuleDTO> getItemPanelModules(Criteria criteria, UserDTO user){
+    private  List<ModuleDTO> getItemPanelModules(Integer projId, Integer id, Integer forumid,  UserDTO user) {
+        ForumDTO forumDTO=forumDAO.getForumById(projId, forumid);
+        List<ModuleDTO> moduleDTOList = getModuleCriteria(projId, id, 0, ModuleDisplay.ItemPanel, 0, 1).list();
+        if (user != null && user.getUserPermissionsDTO().getManager()) {
+            moduleDTOList.add(getModuleById(projId, modulTopicControlid));
+        }
 
+        if (forumDTO.getSharingon()) {
+            moduleDTOList.add(getModuleById(projId, modulShareid));
+        }
+
+        return  moduleDTOList;
     }
 
+    @Cacheable( value = "modules")
+    @Transactional
+    private  List<ModuleDTO> getDashboardModules(Integer projId, Integer id, Integer forumid,  UserDTO user) {
+        List<ModuleDTO> moduleDTOList = getModuleCriteria(projId, id, forumid, ModuleDisplay.Dashboard, 0, 1).list();
+        return  moduleDTOList;
+    }
+
+    @Cacheable( value = "modules")
+    @Transactional
+    private  List<ModuleDTO> getListModules(Integer projId, Integer id, Integer forumid,  UserDTO user) {
+        List<ModuleDTO> moduleDTOList = getModuleCriteria(projId, id, forumid, ModuleDisplay.List, 0, 1).list();
+        return  moduleDTOList;
+    }
 
     @Cacheable( value = "modules")
     @Transactional

@@ -36,7 +36,7 @@ class ArticleController {
         def article = webServicesSession.getProjectArticle(project.id, id);
         if (article!= null){
 //            def comments= webServicesSession.getArticleComments(id)
-            def modulPos=webServicesSession.getModuleBydisplaypos(project.id, 0 , 0, ModuleDisplay.ItemPanel )
+            def modulPos=webServicesSession.getModuleBydisplaypos(project.id, 0 , forumid, ModuleDisplay.ItemPanel )
 
 //            def module=[modulPos:modulPos, params: [showTopicAvatar:1, topicPresentation:"full"]]
 //            def articleStatuses=webServicesSession.getArticleStatusByTopicTypeId(project.id , article.type.id )
