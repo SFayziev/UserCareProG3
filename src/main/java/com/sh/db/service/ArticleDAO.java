@@ -558,17 +558,17 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
     }
 
     public ArticleDTO moveToArticle(ArticleDTO articleDTO, Integer forumid, Integer forumType, Integer forumCategory){
-        if (articleDTO.getForumDTO().getId() != forumid ){
-            ForumDTO forumDTO=forumDAO.getForumById(articleDTO.getProjid(), forumid );
-            if (forumDTO!= null) articleDTO.setForumDTO(forumDTO);
+        if (!articleDTO.getForumDTO().getId().equals(forumid)) {
+            ForumDTO forumDTO = forumDAO.getForumById(articleDTO.getProjid(), forumid );
+            if (forumDTO != null) articleDTO.setForumDTO(forumDTO);
         }
 
-        if (forumType!= null && (forumType != 0 )){
-            TopicTypeDTO topicTypeDTO=forumDAO.getForumTypeByid(articleDTO.getProjid(), forumType );
-            if (topicTypeDTO!= null) articleDTO.setType(topicTypeDTO);
+        if (forumType != null && (forumType != 0 )) {
+            TopicTypeDTO topicTypeDTO = forumDAO.getForumTypeByid(articleDTO.getProjid(), forumType );
+            if (topicTypeDTO!= null) articleDTO.setType(topicTypeDTO) ;
         }
 
-        if (forumCategory!= null && forumCategory!= 0 ){
+        if (forumCategory != null && forumCategory != 0) {
             CategoriesDTO categoriesDTO = forumDAO.getCategoryById(articleDTO.getProjid(), forumCategory, false);
             articleDTO.setCategoriesDTO(categoriesDTO);
 
