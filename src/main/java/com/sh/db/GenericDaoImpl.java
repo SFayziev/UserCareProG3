@@ -10,6 +10,7 @@ import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Example;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -45,15 +46,19 @@ public abstract class GenericDaoImpl< T > extends HibernateDaoSupport {
         if (user.isEnabled()){
             String[] sl= user.getUsername().split("/");
             if ((sl.length<2)) return  null;
-            return (UserDTO) getSessionFactory().getCurrentSession().createQuery("from UserDTO as ud where projid in (select id  from ProjectDTO where alias=:alias) and  username=:username ")
-                    .setParameter("username", sl[1])
-                    .setParameter("alias", sl[0])
-                    .setCacheable(true).uniqueResult();
+            return getUser(sl[0], sl[1] );
 
         }
         return null;
     }
 
+    @Cacheable( value = "userDTO" )
+    private UserDTO getUser(String username , String alias){
+        return  (UserDTO) getSessionFactory().getCurrentSession().createQuery("from UserDTO as ud where projid in (select id  from ProjectDTO where alias=:alias) and  username=:username ")
+                .setParameter("username", username)
+                .setParameter("alias", alias)
+                .setCacheable(true).uniqueResult();
+    }
     /**
      * Merges the entity, creating or updating as necessary
      *
