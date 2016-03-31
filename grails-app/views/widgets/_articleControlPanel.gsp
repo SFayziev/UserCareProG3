@@ -1,4 +1,4 @@
-
+<sec:ifAllGranted roles='ROLE_MANAGER'>
     <div  id="linksForm" data-moduleid="${module?.id}"  data-article-id="${article?.id}">
         <div class="headline">
             <h2><g:message code="article.controlPanel.Title"/></h2>
@@ -58,33 +58,4 @@
             </li>
         </ul>
     </div>
-
-
-
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Submit new feedback </h4>
-            </div>
-            Loading ...
-        </div><!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
-
-
-<div class="modal fade" id="myModalDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Submit new feedback </h4>
-            </div>
-            Loading ...
-        </div><!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
-%{--</sec:ifAllGranted>--}%
+</sec:ifAllGranted>
