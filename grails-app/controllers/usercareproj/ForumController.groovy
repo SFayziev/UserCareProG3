@@ -37,7 +37,7 @@ class ForumController {
     def list(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         def forum= webServicesSession.getForumById(project.id, params.int("id", project.getDefaultforum() ))
-        def modulPos=webServicesSession.getModuleBydisplaypos(project.id, 0 , forum.id, ModuleDisplay.List )
+        def modulPos=webServicesSession.getModuleBydisplaypos(project.id,  forum.id, ModuleDisplay.List , null, null )
         def model =[UCproject: project, modulPos:modulPos, forum:forum]
         model.customize=params.customize
         render view: '/article/list' ,   model: model
@@ -69,7 +69,7 @@ class ForumController {
         model.customize=params.customize
         if (defaultForum==null)   response.sendError(HttpServletResponse.SC_NOT_FOUND);
 
-        model.modulPos=webServicesSession.getModuleBydisplaypos(project.id, 0 ,  defaultForum.id , ModuleDisplay.Dashboard )
+        model.modulPos=webServicesSession.getModuleBydisplaypos(project.id,  defaultForum.id , ModuleDisplay.Dashboard , null, null)
 //        model.project=project;
 
         render view: '/index' , model: model
@@ -126,7 +126,7 @@ class ForumController {
         module.maxRecords=5
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         module.forum= webServicesSession.getForumById(project.id, params.int("id", project.getDefaultforum() ))
-        module.modulPos=webServicesSession.getModuleBydisplaypos(module.UCproject.id, 0 , module.forum.id , ModuleDisplay.Widget )
+        module.modulPos=webServicesSession.getModuleBydisplaypos(module.UCproject.id,  module.forum.id , ModuleDisplay.Widget , null, null)
         module.customize=params.customize
         render view: 'popup' , model: module
     }

@@ -66,7 +66,7 @@ public class ModuleDAO extends GenericDaoImpl<ModuleDTO> {
     @CacheEvict(value = "modules" ,   allEntries = true)
     public boolean moveModule(Integer projId, Integer moduleID, String direction){
         ModuleDTO moduleDTO=getModuleById(projId, moduleID);
-        List<ModuleDTO> moduleDTOList=getModuleBydisplaypos(projId, 0, moduleDTO.getForumid() , moduleDTO.getDisplay());
+        List<ModuleDTO> moduleDTOList=getModuleBydisplaypos(projId,  moduleDTO.getForumid() , moduleDTO.getDisplay(), moduleDTO.getModuleTypeDTO().getDispos() , null );
         ModuleDTO prevModule = null;
         Boolean change=false;
         for (ModuleDTO module:moduleDTOList){
@@ -149,22 +149,18 @@ public class ModuleDAO extends GenericDaoImpl<ModuleDTO> {
     }
 
 
-    public List<ModuleDTO> getModuleBydisplaypos(Integer projId, Integer modulid, Integer forumid,  ModuleDisplay displaypos  ) {
-        UserDTO userDTO = null;
-
-        try {
-            userDTO = getCurrentLoggedUser();
-        } catch (Exception ignored) {
-
-        };
+    public List<ModuleDTO> getModuleBydisplaypos(Integer projId,  Integer forumid,  ModuleDisplay displaypos , ModulePosType modulePosType, UserDTO forUserDTO ) {
+        UserDTO curUserDTO = getCurrentLoggedUser();
 
         List<ModuleDTO> moduleDTOList = null;
          if (displaypos == ModuleDisplay.Dashboard) {
-             moduleDTOList = getDashboardModules(projId, modulid, forumid, userDTO);
+             moduleDTOList = getDashboardModules(projId,  forumid, curUserDTO);
         } else if (displaypos == ModuleDisplay.List) {
-             moduleDTOList = getListModules(projId, modulid, forumid, userDTO);
+             moduleDTOList = getListModules(projId,  forumid, curUserDTO);
         } else if (displaypos == ModuleDisplay.ItemPanel) {
-             moduleDTOList = getItemPanelModules(projId, modulid, forumid, userDTO);
+             moduleDTOList = getItemPanelModules(projId,  forumid, curUserDTO);
+        }else if (displaypos == ModuleDisplay.UserPanel ) {
+            moduleDTOList = getItemPanelModules(projId,  forumid, curUserDTO);
         }
 
         return moduleDTOList;
@@ -172,9 +168,9 @@ public class ModuleDAO extends GenericDaoImpl<ModuleDTO> {
 
     @Cacheable( value = "modules")
     @Transactional
-    private  List<ModuleDTO> getItemPanelModules(Integer projId, Integer id, Integer forumid,  UserDTO user) {
+    private  List<ModuleDTO> getItemPanelModules(Integer projId,  Integer forumid,  UserDTO user) {
         ForumDTO forumDTO=forumDAO.getForumById(projId, forumid);
-        List<ModuleDTO> moduleDTOList = getModuleCriteria(projId, id, 0, ModuleDisplay.ItemPanel, 0, 1).list();
+        List<ModuleDTO> moduleDTOList = getModuleCriteria(projId, 0, 0, ModuleDisplay.ItemPanel, 0, 1).list();
         if (user != null && user.getUserPermissionsDTO().getManager()) {
             moduleDTOList.add(getModuleById(projId, modulTopicControlid));
         }
@@ -188,15 +184,15 @@ public class ModuleDAO extends GenericDaoImpl<ModuleDTO> {
 
     @Cacheable( value = "modules")
     @Transactional
-    private  List<ModuleDTO> getDashboardModules(Integer projId, Integer id, Integer forumid,  UserDTO user) {
-        List<ModuleDTO> moduleDTOList = getModuleCriteria(projId, id, forumid, ModuleDisplay.Dashboard, 0, 1).list();
+    private  List<ModuleDTO> getDashboardModules(Integer projId,  Integer forumid,  UserDTO user) {
+        List<ModuleDTO> moduleDTOList = getModuleCriteria(projId, 0, forumid, ModuleDisplay.Dashboard, 0, 1).list();
         return  moduleDTOList;
     }
 
     @Cacheable( value = "modules")
     @Transactional
-    private  List<ModuleDTO> getListModules(Integer projId, Integer id, Integer forumid,  UserDTO user) {
-        List<ModuleDTO> moduleDTOList = getModuleCriteria(projId, id, forumid, ModuleDisplay.List, 0, 1).list();
+    private  List<ModuleDTO> getListModules(Integer projId,  Integer forumid,  UserDTO user) {
+        List<ModuleDTO> moduleDTOList = getModuleCriteria(projId, 0, forumid, ModuleDisplay.List, 0, 1).list();
         return  moduleDTOList;
     }
 

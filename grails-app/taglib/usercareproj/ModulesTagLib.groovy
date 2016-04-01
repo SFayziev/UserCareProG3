@@ -52,7 +52,7 @@ class ModulesTagLib {
         def article = attrs.params.article
         def module =  attrs.params.module
         if (module != null) {
-            if (module.params.topicPresentation.value == 'full' && article.answerCommentid) {
+            if (module.params.topicPresentation?.value == 'full' && article.answerCommentid) {
                 params.answer = article.answerCommentid ? webServicesSession.getCommentbyId(article.answerCommentid) : null;
             }
             out << render(template: "/article/articleItem" +params.forum.type.ordinal(), model: params)

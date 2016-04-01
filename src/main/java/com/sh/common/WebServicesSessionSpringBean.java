@@ -204,7 +204,7 @@ public class WebServicesSessionSpringBean {
     public Long getCommentbyUserCounts(Integer projid, Integer  userid ) {return  articleDAO.getCommentbyUserCounts(projid, userid);}
 
     public List<ArticleDTO> findTextInArticle(Integer projid ,String searchText, Integer forumid, ForumType forumType,  Integer count, String order ){return    articleDAO.findTextInArticle(projid, searchText, forumid, forumType, count, order);}
-    public List<ModuleDTO> getModuleBydisplaypos(Integer projId, Integer id , Integer forumid, ModuleDisplay modulePosType){ return  moduleDAO.getModuleBydisplaypos(projId, id, forumid , modulePosType); }
+    public List<ModuleDTO> getModuleBydisplaypos(Integer projId,  Integer forumid,  ModuleDisplay displaypos , ModulePosType modulePosType, UserDTO forUserDTO ) { return  moduleDAO.getModuleBydisplaypos(projId, forumid, displaypos, modulePosType, forUserDTO); }
     public ModuleDTO getModuleById(Integer projId, Integer modid ){ return  moduleDAO.getModuleById(projId, modid) ; }
     public boolean moveModule(Integer projId, Integer moduleID, String direction){return moduleDAO.moveModule(projId,moduleID, direction ); }
     public boolean deleteModule(Integer projId, Integer moduleID){return moduleDAO.deleteModule(projId, moduleID); }

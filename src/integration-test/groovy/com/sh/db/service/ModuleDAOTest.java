@@ -62,7 +62,7 @@ public class ModuleDAOTest extends IntegrationTest {
     @Test
 //    @Rollback(false)
     public void testdelModule(){
-        moduleDAO.delete(moduleDAO.getModuleById(2,276));
+        moduleDAO.delete(moduleDAO.getModuleById(2,1));
 
     }
     @Test
