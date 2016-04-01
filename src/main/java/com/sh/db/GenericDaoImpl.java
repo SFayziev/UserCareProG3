@@ -46,7 +46,7 @@ public abstract class GenericDaoImpl< T > extends HibernateDaoSupport {
         if (user.isEnabled()){
             String[] sl= user.getUsername().split("/");
             if ((sl.length<2)) return  null;
-            return getUser(sl[0], sl[1] );
+            return getUser(sl[1], sl[0] );
 
         }
         return null;

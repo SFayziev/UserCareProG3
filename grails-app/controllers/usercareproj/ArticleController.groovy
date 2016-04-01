@@ -36,7 +36,7 @@ class ArticleController {
         def article = webServicesSession.getProjectArticle(project.id, id);
         if (article!= null){
 //            def comments= webServicesSession.getArticleComments(id)
-            def modulPos=webServicesSession.getModuleBydisplaypos(project.id, 0 , forumid, ModuleDisplay.ItemPanel )
+            def modulPos=webServicesSession.getModuleBydisplaypos(project.id,  forumid, ModuleDisplay.ItemPanel , null, null)
 
 //            def module=[modulPos:modulPos, params: [showTopicAvatar:1, topicPresentation:"full"]]
 //            def articleStatuses=webServicesSession.getArticleStatusByTopicTypeId(project.id , article.type.id )
@@ -135,7 +135,7 @@ class ArticleController {
         resultJson.put("status","success");
         resultJson.put("contentid",article.getId());
 //        resultJson.put("value", contents);
-        resultJson.put("massage",  message(code: "article.assigne.category.change.massage"))
+        resultJson.put("massage",  message(code: "article.assign.category.change.massage"))
         response.contentType = "application/json; charset=UTF-8"
         render   resultJson.toString()
 
@@ -148,7 +148,7 @@ class ArticleController {
 //        def contents = g.render(template:"/article/articleItem"+article.getForumDTO().type.ordinal() , model: [UCproject:project, forum:article.getForumDTO(), article:article ])
         JSONObject resultJson = new JSONObject();
         resultJson.put("status","success");
-        resultJson.put("massage",  message(code: "article.assigne.category.change.massage"))
+        resultJson.put("massage",  message(code: "article.assign.category.change.massage"))
         response.contentType = "application/json; charset=UTF-8"
         render   resultJson.toString()
 

@@ -172,7 +172,7 @@ public class UserDAO extends GenericDaoImpl<UserDTO> {
 
 
 
-    @Cacheable( value = "userDTO" )
+//    @Cacheable( value = "userDTO" )
     public UserDTO getCurrentUser(){
         UserDTO userDTO=this.getCurrentLoggedUser();
 
