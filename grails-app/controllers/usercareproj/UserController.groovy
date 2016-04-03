@@ -70,13 +70,6 @@ class UserController {
 
     def login(){
         render template:"/modal/loginModal"
-//        def contents = g.render(template:"/modal/loginModal" )
-//        JSONObject resultJson = new JSONObject();
-//        resultJson.put("status","success");
-//        resultJson.put("value", contents)
-//        response.contentType = "application/json; charset=UTF-8"
-//        render   resultJson.toString()
-
 
     }
 
@@ -85,7 +78,6 @@ class UserController {
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         def curuser= webServicesSession.getCurentUser();
         def userdto=params.id ? webServicesSession.getUser(project.id , params.getInt("id")) :  curuser;
-
         if(curuser!= null && (curuser.userPermissionsDTO.manageusers || curuser.id==userdto.id)) {
             def action = params.get("submit")
             if (action) {
@@ -109,7 +101,8 @@ class UserController {
                 }
             }
 
-            render view: "profile", model: [user: userdto,  UCproject:project]
+            def modulPos= webServicesSession.getModuleBydisplaypos(project.id, project.getDefaultforum(), ModuleDisplay.UserProfile, null,userdto )
+            render view: "profile", model: [user: userdto, modulPos:modulPos, UCproject:project]
         }
         else{
             response.sendError HttpServletResponse.SC_UNAUTHORIZED
@@ -119,14 +112,12 @@ class UserController {
     def topics(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         def forum=webServicesSession.getForumById(project.id ,  project.defaultforum  )
-
-        def module= webServicesSession.getModuleById(0,uTmoduleid )
-
         def id = params.getInt('id', 0)
         def userdto=id!= 0? webServicesSession.getUser(project.id , id  ):null
+        def modulPos= webServicesSession.getModuleBydisplaypos(project.id, forum.id, ModuleDisplay.UserArticle, null,userdto )
         if (id!=0 || (userdto!= null)){
             params.filter_user_id=id
-            render view: "topics", model: [user: userdto, module:module, forum:forum, UCproject: project]
+            render view: "topics", model: [user: userdto, modulPos:modulPos, forum:forum, UCproject: project]
         }
         else{
             response.sendError HttpServletResponse.SC_BAD_REQUEST
@@ -136,29 +127,28 @@ class UserController {
     def performer_topic(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         def forum=webServicesSession.getForumById(project.id ,  project.defaultforum  )
-
-        def module= webServicesSession.getModuleById(0,uTmoduleid )
-
         def id = params.getInt('id', 0)
         def userdto=id!= 0? webServicesSession.getUser(project.id , id  ):null
+        def modulPos= webServicesSession.getModuleBydisplaypos(project.id, forum.id, ModuleDisplay.UserArticle, null,userdto )
         if (id!=0 || (userdto!= null)){
             params.filter_performer_id=id
-            render view: "topics", model: [user: userdto, module:module, forum:forum, UCproject: project]
+            render view: "topics", model: [user: userdto, modulPos:modulPos, forum:forum, UCproject: project]
         }
         else{
             response.sendError HttpServletResponse.SC_BAD_REQUEST
         }
-
     }
     def comments(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         def id = params.getInt('id', 0)
+//        def forum=webServicesSession.getForumById(project.id ,  project.defaultforum  )
         def userdto=id!= 0? webServicesSession.getUser(project.id , id  ):null
         if (id!=0 || (userdto!= null)){
             def comments=webServicesSession.getCommentbyUserId(project.id, id, params.getInt("offset", 0) ,uTopicCounts )
             def total=comments?.size()>0?webServicesSession.getCommentbyUserCounts(project.id, id):0
             params.filter_user_id=id
-            render view: "comments", model: [ user: userdto,  comments:comments, UCproject: project, total:total , maxRecords:uTopicCounts]
+            def modulPos=webServicesSession.getModuleBydisplaypos(project.id, project.defaultforum , ModuleDisplay.UserComments , null, userdto )
+            render view: "comments", model: [ user: userdto, modulPos:modulPos, comments:comments, UCproject: project, total:total , maxRecords:uTopicCounts]
         }
         else{
             response.sendError HttpServletResponse.SC_BAD_REQUEST
@@ -171,7 +161,7 @@ class UserController {
         def defaultForum= webServicesSession.getForumById(project.id, params.int("id", project.getDefaultforum() ))
         def model =[UCproject: project, defaultForum:defaultForum]
         if (defaultForum==null)   response.sendError(HttpServletResponse.SC_NOT_FOUND);
-        model.modulPos=webServicesSession.getModuleBydisplaypos(project.id, 0 ,  defaultForum.id , ModuleDisplay.Dashboard )
+        model.modulPos=webServicesSession.getModuleBydisplaypos(project.id,   defaultForum.id ,  ModuleDisplay.OurTeam , null, null)
         model.usersOurStaff=webServicesSession.getProjectStaffs(project.id, 0 )
         model.usersTopContributors=webServicesSession.getUsersList(project.id,null, null, null, null,0,10,"byraitings" )
         model.usersTopCommenters=webServicesSession.getUsersList(project.id,null, null, null, null,0,10,"bycomment" )
@@ -205,7 +195,9 @@ class UserController {
                 def forums = webServicesSession.getForumbyProject(project.id)
 //                def notify=webServicesUser.getNotifyByUserId(project.id, userdto.id )
                 def followArtics=webServicesUser.getUserFollowsArticles(project.id, userdto.id )
-                render view: "notification", model: [user: userdto , UCproject:project, notify:notify, followArtics: followArtics, notifyForums:notifyForums, forums:forums ]
+                def modulPos= webServicesSession.getModuleBydisplaypos(project.id, project.getDefaultforum(), ModuleDisplay.UserProfile, null,userdto )
+
+                render view: "notification", model: [user: userdto ,modulPos:modulPos, UCproject:project, notify:notify, followArtics: followArtics, notifyForums:notifyForums, forums:forums ]
             }
             else{
                 response.sendError HttpServletResponse.SC_BAD_REQUEST

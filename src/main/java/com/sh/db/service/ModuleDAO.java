@@ -129,19 +129,26 @@ public class ModuleDAO extends GenericDaoImpl<ModuleDTO> {
         return (ModuleTypeDTO) currentSession().createQuery("from ModuleTypeDTO  as mt where  mt.id=:id").setParameter("id", id).uniqueResult();
     }
 
-    private  Criteria getModuleCriteria (Integer projId, Integer modulid, Integer forumid, ModuleDisplay display, Integer type, Integer status){
-        Criteria criteria = currentSession()
-                .createCriteria( ModuleDTO.class);
-
-        if(modulid!= null && modulid>0) criteria.add(Restrictions.eq("id", modulid));
-
-        if(type!= null && type>0) criteria.add(Restrictions.eq("type", type));
-        if(status!= null && status>0) {
+    private  Criteria getModuleCriteria (Integer projId, Integer modulid, Integer forumid, ModuleDisplay display, Integer type, Integer status) {
+        Criteria criteria;
+        criteria = currentSession()
+                .createCriteria(ModuleDTO.class);
+        if (modulid != null && modulid > 0) {
+            criteria.add(Restrictions.eq("id", modulid));
+        }
+        if (type != null && type > 0) {
+            criteria.add(Restrictions.eq("type", type));
+        }
+        if (status != null && status > 0) {
             criteria.add(Restrictions.eq("status", status));
 //            criteria.add(Restrictions.eq("moduleTypeDTO.status", status));
         }
-        if (display!= null)criteria.add(Restrictions.eq("display", display ));
-        if (forumid!= null) criteria.add(Restrictions.eq("forumid", forumid ));
+        if (display != null) {
+            criteria.add(Restrictions.sqlRestriction(" usedby&1<< " + display.ordinal()));
+        }
+        if (forumid != null) {
+            criteria.add(Restrictions.eq("forumid", forumid));
+        }
         criteria.addOrder(Order.asc("pos"));
         criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 
@@ -153,24 +160,42 @@ public class ModuleDAO extends GenericDaoImpl<ModuleDTO> {
         UserDTO curUserDTO = getCurrentLoggedUser();
 
         List<ModuleDTO> moduleDTOList = null;
-         if (displaypos == ModuleDisplay.Dashboard) {
-             moduleDTOList = getDashboardModules(projId,  forumid, curUserDTO);
-        } else if (displaypos == ModuleDisplay.List) {
-             moduleDTOList = getListModules(projId,  forumid, curUserDTO);
-        } else if (displaypos == ModuleDisplay.ItemPanel) {
+         if (displaypos == ModuleDisplay.Dashboard || displaypos == ModuleDisplay.List) {
+             moduleDTOList = getModules(projId, forumid, displaypos, curUserDTO);
+         } else if (displaypos == ModuleDisplay.ItemPanel) {
              moduleDTOList = getItemPanelModules(projId,  forumid, curUserDTO);
-        }else if (displaypos == ModuleDisplay.UserPanel ) {
-            moduleDTOList = getItemPanelModules(projId,  forumid, curUserDTO);
-        }
+         }  else if (displaypos == ModuleDisplay.UserArticle || displaypos == ModuleDisplay.UserComments || displaypos==ModuleDisplay.UserNotification || displaypos==ModuleDisplay.UserProfile) {
+             moduleDTOList = getUserPanelModules(projId,  forumid, displaypos, curUserDTO);
+         } else if (displaypos == ModuleDisplay.OurTeam) {
+             moduleDTOList = getUserPanelModules(projId,  forumid, displaypos, curUserDTO);
+         }
 
         return moduleDTOList;
      }
 
     @Cacheable( value = "modules")
     @Transactional
+    private  List<ModuleDTO> getUserPanelModules(Integer projId,  Integer forumid, ModuleDisplay moduleDisplay,  UserDTO user) {
+        List<ModuleDTO> moduleDTOList = getModuleCriteria(projId, 0, forumid, moduleDisplay, 0, 1).list();
+        moduleDTOList.addAll(getModuleCriteria(projId, 0, 0, moduleDisplay, 0, 1).list() );
+
+        return  moduleDTOList;
+    }
+
+//    @Cacheable( value = "modules")
+//    @Transactional
+//    private  List<ModuleDTO> getOurTeamModules(Integer projId,  Integer forumid, ModuleDisplay moduleDisplay,  UserDTO user) {
+//        List<ModuleDTO> moduleDTOList = getModuleCriteria(projId, 0, forumid, moduleDisplay, 0, 1).list();
+//        moduleDTOList.addAll(getModuleCriteria(projId, 0, 0, moduleDisplay, 0, 1).list() );
+//
+//        return  moduleDTOList;
+//    }
+
+    @Cacheable( value = "modules")
+    @Transactional
     private  List<ModuleDTO> getItemPanelModules(Integer projId,  Integer forumid,  UserDTO user) {
-        ForumDTO forumDTO=forumDAO.getForumById(projId, forumid);
-        List<ModuleDTO> moduleDTOList = getModuleCriteria(projId, 0, 0, ModuleDisplay.ItemPanel, 0, 1).list();
+        ForumDTO forumDTO = forumDAO.getForumById(projId, forumid);
+        List<ModuleDTO> moduleDTOList = getModuleCriteria(projId, 0,  forumid, ModuleDisplay.ItemPanel, 0, 1).list();
         if (user != null && user.getUserPermissionsDTO().getManager()) {
             moduleDTOList.add(getModuleById(projId, modulTopicControlid));
         }
@@ -178,29 +203,29 @@ public class ModuleDAO extends GenericDaoImpl<ModuleDTO> {
         if (forumDTO.getSharingon()) {
             moduleDTOList.add(getModuleById(projId, modulShareid));
         }
-
+        moduleDTOList.addAll(getModuleCriteria(projId, 0,0, ModuleDisplay.ItemPanel, 0, 1).list());
         return  moduleDTOList;
     }
 
     @Cacheable( value = "modules")
     @Transactional
-    private  List<ModuleDTO> getDashboardModules(Integer projId,  Integer forumid,  UserDTO user) {
-        List<ModuleDTO> moduleDTOList = getModuleCriteria(projId, 0, forumid, ModuleDisplay.Dashboard, 0, 1).list();
+    private  List<ModuleDTO> getModules(Integer projId,  Integer forumid, ModuleDisplay moduleDisplay,  UserDTO user) {
+        List<ModuleDTO> moduleDTOList = getModuleCriteria(projId, 0, forumid, moduleDisplay , 0, 1).list();
         return  moduleDTOList;
     }
 
-    @Cacheable( value = "modules")
-    @Transactional
-    private  List<ModuleDTO> getListModules(Integer projId,  Integer forumid,  UserDTO user) {
-        List<ModuleDTO> moduleDTOList = getModuleCriteria(projId, 0, forumid, ModuleDisplay.List, 0, 1).list();
-        return  moduleDTOList;
-    }
+//    @Cacheable( value = "modules")
+//    @Transactional
+//    private  List<ModuleDTO> getListModules(Integer projId,  Integer forumid,  UserDTO user) {
+//        List<ModuleDTO> moduleDTOList = getModuleCriteria(projId, 0, forumid, ModuleDisplay.List, 0, 1).list();
+//        return  moduleDTOList;
+//    }
 
-    @Cacheable( value = "modules")
-    @Transactional
-    public List<ModuleDTO> getModuleBydisplaypos(Integer projId, Integer id, Integer forumid,  ModuleDisplay displaypos, Integer type  ){
-        return getModuleCriteria(projId, id, forumid, displaypos, type, 0).list();
-    }
+//    @Cacheable( value = "modules")
+//    @Transactional
+//    public List<ModuleDTO> getModuleBydisplaypos(Integer projId, Integer id, Integer forumid,  ModuleDisplay displaypos, Integer type  ){
+//        return getModuleCriteria(projId, id, forumid, displaypos, type, 0).list();
+//    }
 
     @CacheEvict(value = "modules" ,   allEntries = true)
     public  Boolean deleteModule(Integer projId,Integer moduleID){

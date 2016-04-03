@@ -9,26 +9,35 @@ import javax.persistence.*;
 import java.util.*;
 
 /**
+ * Module class
  * Created by Admin on 01.10.2015.
  */
 @Entity
 @Table(name = "modules",  catalog = "usercare")
-@org.hibernate.annotations.Cache(  usage= CacheConcurrencyStrategy.READ_WRITE,
-        region="modules")
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE,
+        region = "modules")
 public class ModuleDTO extends IntEntity {
 //    private  Integer  projid;
     private  Integer  status;
     private  Integer  pos;
+    private  Integer usedby;
+
+    public Integer getUsedby() {
+        return usedby;
+    }
+
+    public void setUsedby(Integer usedby) {
+        this.usedby = usedby;
+    }
 
     @Enumerated(EnumType.ORDINAL)
     private ModulePosType dispos;
-//    @Enumerated(EnumType.ORDINAL)
-//    private ForumType forumtype;
 
     @Enumerated(EnumType.ORDINAL)
     private ModuleDisplay display;
+
     @Transient
-    HashMap<String, ModuleParamsDTO> params;
+    private HashMap<String, ModuleParamsDTO> params;
 
     @ManyToOne(fetch = FetchType.EAGER , cascade = CascadeType.DETACH )
     @JoinColumn(name = "modtypeid")
