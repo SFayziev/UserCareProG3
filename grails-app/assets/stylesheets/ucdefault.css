@@ -87,6 +87,17 @@ h1 i, h2 i, h3 i, h4 i, h5 i, h6 i {
 .module-forum-status .module-body{
     overflow: hidden;
 }
+
+
+.module-user-avatar .module-body img {
+    width: 100%;
+}
+
+.module-top-users .module-body{
+    /*background-color: transparent;*/
+    /*overflow: hidden;*/
+}
+
 .module-powered-by{
     border-radius: 0 0 4px 4px !important;
     background-color: #555;

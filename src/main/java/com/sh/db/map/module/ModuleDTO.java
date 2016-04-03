@@ -33,8 +33,8 @@ public class ModuleDTO extends IntEntity {
     @Enumerated(EnumType.ORDINAL)
     private ModulePosType dispos;
 
-    @Enumerated(EnumType.ORDINAL)
-    private ModuleDisplay display;
+//    @Enumerated(EnumType.ORDINAL)
+//    private ModuleDisplay display;
 
     @Transient
     private HashMap<String, ModuleParamsDTO> params;
@@ -51,10 +51,10 @@ public class ModuleDTO extends IntEntity {
         this.dispos = dispos;
     }
 
-    public ModuleDTO(Integer forumid, ModuleTypeDTO moduleTypeDTO, ModuleDisplay display) {
+    public ModuleDTO(Integer forumid, ModuleTypeDTO moduleTypeDTO) {
         this.forumid = forumid;
         this.moduleTypeDTO = moduleTypeDTO;
-        this.display = display;
+//        this.display = display;
         this.setStatus(1);
 
     }
@@ -101,13 +101,13 @@ public class ModuleDTO extends IntEntity {
 
 
 
-    public ModuleDisplay getDisplay() {
-        return display;
-    }
-
-    public void setDisplay(ModuleDisplay display) {
-        this.display = display;
-    }
+//    public ModuleDisplay getDisplay() {
+//        return display;
+//    }
+//
+//    public void setDisplay(ModuleDisplay display) {
+//        this.display = display;
+//    }
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE, mappedBy = "moduleDTO")
     private List<ModuleParamsDTO> moduleParamDTOList ;
