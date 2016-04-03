@@ -66,7 +66,7 @@ public class ModuleDAO extends GenericDaoImpl<ModuleDTO> {
     @CacheEvict(value = "modules" ,   allEntries = true)
     public boolean moveModule(Integer projId, Integer moduleID, String direction){
         ModuleDTO moduleDTO=getModuleById(projId, moduleID);
-        List<ModuleDTO> moduleDTOList=getModuleBydisplaypos(projId,  moduleDTO.getForumid() , moduleDTO.getDisplay(), moduleDTO.getModuleTypeDTO().getDispos() , null );
+        List<ModuleDTO> moduleDTOList=getModuleBydisplaypos(projId,  moduleDTO.getForumid() , null, moduleDTO.getModuleTypeDTO().getDispos() , null );
         ModuleDTO prevModule = null;
         Boolean change=false;
         for (ModuleDTO module:moduleDTOList){
@@ -164,7 +164,7 @@ public class ModuleDAO extends GenericDaoImpl<ModuleDTO> {
              moduleDTOList = getModules(projId, forumid, displaypos, curUserDTO);
          } else if (displaypos == ModuleDisplay.ItemPanel) {
              moduleDTOList = getItemPanelModules(projId,  forumid, curUserDTO);
-         }  else if (displaypos == ModuleDisplay.UserArticle || displaypos == ModuleDisplay.UserComments || displaypos==ModuleDisplay.UserNotification || displaypos==ModuleDisplay.UserProfile) {
+         }  else if (displaypos == ModuleDisplay.UserArticle || displaypos == ModuleDisplay.UserComments || displaypos == ModuleDisplay.UserNotification || displaypos == ModuleDisplay.UserProfile) {
              moduleDTOList = getUserPanelModules(projId,  forumid, displaypos, curUserDTO);
          } else if (displaypos == ModuleDisplay.OurTeam) {
              moduleDTOList = getUserPanelModules(projId,  forumid, displaypos, curUserDTO);
@@ -260,7 +260,7 @@ public class ModuleDAO extends GenericDaoImpl<ModuleDTO> {
             return false;
         }
 
-        ModuleDTO moduleDTO= new ModuleDTO(forumid,moduleTypeDTO, displaypos);
+        ModuleDTO moduleDTO= new ModuleDTO(forumid,moduleTypeDTO);
         moduleDTO.setDispos(modulePosType);
 
         saveModule(moduleDTO);
