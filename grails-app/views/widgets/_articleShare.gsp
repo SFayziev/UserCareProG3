@@ -8,9 +8,7 @@
         <a id="share-gplus" href="#"><i class="fa fa-2x fa-google-plus-square" style="color: #d73925;"></i></a>
         <a id="share-email" href="#"><i class="fa fa-2x fa-envelope-square"></i></a>
 
-        <a id="share-ok" href="#"><i class="fa fa-2x fa-odnoklassniki-square" style="color: #fa8d12;"></i>
-
-        </a>
+        <a id="share-ok" href="#"><i class="fa fa-2x fa-odnoklassniki-square" style="color: #fa8d12;"></i> </a>
 
     </div>
 
