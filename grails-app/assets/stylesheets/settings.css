@@ -194,20 +194,7 @@
 .navbar-top .navbar-nav > .open > a:focus {
     background-color: transparent;
 }
-.navbar-top .navbar-nav > li > [data-toggle='navbar-search'] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 20;
-    font-size: 16px;
-    line-height: 55px;
-    color: #fff;
-    padding-top: 0;
-    padding-bottom: 0;
-    -webkit-transition: color 0.3s ease;
-    -o-transition: color 0.3s ease;
-    transition: color 0.3s ease;
-}
+
 @media only screen and (min-width: 768px) {
     .navbar-top .navbar-nav > li > [data-toggle='navbar-search'] {
         color: #fff;
@@ -265,17 +252,8 @@
 .navbar-top .navbar-form.open {
     top: 0;
 }
-.navbar-top .navbar-form .has-feedback .form-control-feedback {
-    height: 30px;
-    cursor: pointer;
-    top: 50%;
-    margin-top: -15px;
-    line-height: 30px;
-    margin-right: 10px;
-    color: #c1c2c3;
-    font-size: 1.5em;
-    pointer-events: auto;
-}
+
+
 @media only screen and (min-width: 768px) {
     .navbar-top .navbar-form {
         left: 250px;
@@ -430,7 +408,7 @@
     border-left-color: #1c75bf;
 }
 .sidebar .nav .nav {
-    padding-left: 55px;
+    padding-left: 45px;
     background-color: #fff;
 }
 .sidebar .nav .nav > li {
@@ -440,7 +418,7 @@
 .sidebar .nav .nav > li > .nav-item {
     display: block;
     position: relative;
-    padding: 10px 30px 10px 6px;
+    padding: 5px 10px 10px 1px;
     background-color: transparent !important;
     font-weight: normal;
 }
