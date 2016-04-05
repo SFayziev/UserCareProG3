@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru"  class="no-ie">
 <head>
     <title><g:layoutTitle default="${session.getAttribute("project_name")}"/></title>
     <meta charset="utf-8">
@@ -18,35 +18,14 @@
 
 <div class="wrapper">
     <g:if test="${UCproject!= null}"><g:render template="/layouts/settingHeader" /></g:if>
-
-
     <modules:settingLeftMenu/>
 
-
     <section>
-        <!-- START Page content-->
         <div class="content-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                    <g:pageProperty name="page.mainContent1"/>
-                </div>
-            </div>
+            <g:pageProperty name="page.mainContent1"/>
         </div>
     </section>
 
-    %{--<div class="container content-sm">--}%
-
-        %{--<div class="row ">--}%
-
-            %{--<g:if test="${UCproject!= null}"><g:render template="/layouts/header" /></g:if>--}%
-            %{--<div class="side-block col-md-3">--}%
-                %{----}%
-            %{--</div>--}%
-            %{--<div id="mainBar" class="main-block col-md-9" >--}%
-                %{--<g:pageProperty name="page.mainContent1"/>--}%
-            %{--</div>--}%
-        %{--</div>--}%
-    %{--</div>--}%
 
     %{--<g:render template="/layouts/footer" />--}%
 
@@ -61,6 +40,7 @@
 <asset:javascript src="summernote.min.js"/>
 <asset:javascript src="bootstrap-colorpicker.min.js"/>
 <asset:stylesheet  href="bootstrap-colorpicker.min.css"/>
+<asset:javascript src="modernizr-custom.js"/>
 
 
 </html>

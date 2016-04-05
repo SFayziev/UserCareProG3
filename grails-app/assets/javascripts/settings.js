@@ -387,3 +387,4 @@ function widgetLinkImg (moduleid, linkid){
 
 
 }(jQuery, window, document));
+

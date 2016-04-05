@@ -26,7 +26,8 @@
             <li class="dropdown dropdown-list">
                 %{--<i class="fa fa-globe"></i>--}%
                 <g:set var="lang" value="${RequestContextUtils.getLocale(request).displayLanguage}"/>
-                <a data-toggle="dropdown"  class="dropdown-toggle"><i class="fa fa-globe"></i> ${lang }</a>
+                <a data-toggle="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-globe"></i> ${lang }</a>
+
                 <project:selectActiveLangs params="${[project:UCproject,lang:lang]}" />
             </li>
             <sec:ifLoggedIn>

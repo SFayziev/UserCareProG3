@@ -15,6 +15,19 @@ body, .module a {
 
 }
 
+
+
+.btn-u, .fc-button {
+    border-radius: 3px;
+    font-size: 13px;
+    border-color: transparent;
+    -webkit-appearance: none;
+    outline: none !important;
+    -webkit-transition: all 0.1s;
+    -o-transition: all 0.1s;
+    transition: all 0.1s;
+}
+
 .boxed-layout {
     padding: 0;
     box-shadow: 0 0 5px #ccc;
