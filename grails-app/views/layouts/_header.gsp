@@ -32,7 +32,7 @@
 
                         <i class="fa fa-globe"></i>
                         <g:set var="lang" value="${RequestContextUtils.getLocale(request).displayLanguage}"/>
-                        <a>${lang }</a>
+                        <a href="#">${lang }</a>
                         <project:selectActiveLangs params="${[project:UCproject,lang:lang]}" />
                     </li>
                     <li class="topbar-devider"></li>
@@ -46,15 +46,15 @@
                         </li>
                     </sec:ifNotLoggedIn>
                     <li class="topbar-devider "></li>
-                    <li>
-                        <!-- Toggle get grouped for better mobile display -->
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="fa fa-bars"></span>
-                        </button>
-                        <!-- End Toggle -->
+                    %{--<li>--}%
+                        %{--<!-- Toggle get grouped for better mobile display -->--}%
+                        %{--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">--}%
+                            %{--<span class="sr-only">Toggle navigation</span>--}%
+                            %{--<span class="fa fa-bars"></span>--}%
+                        %{--</button>--}%
+                        %{--<!-- End Toggle -->--}%
 
-                    </li>
+                    %{--</li>--}%
 
                 </ul>
 

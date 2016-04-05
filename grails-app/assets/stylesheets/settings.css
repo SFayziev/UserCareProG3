@@ -1,3 +1,7 @@
+.panel.panel-default {
+    border-top-width: 3px;
+}
+
 /* ========================================================================
    Component: layout.less
  ========================================================================== */
@@ -96,7 +100,23 @@
 .aside-toggled .wrapper > section {
     margin-left: 250px;
 }
-
+.csstransforms3d .wrapper > section {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-transition: -webkit-transform 0.3s ease;
+    -moz-transition: -moz-transform 0.3s ease;
+    -o-transition: -o-transform 0.3s ease;
+    transition: transform 0.3s ease;
+}
+.csstransforms3d .aside-toggled .wrapper > section {
+    margin-left: 0;
+    -webkit-transform: translate3d(250px, 0, 0);
+    transform: translate3d(250px, 0, 0);
+    -webkit-transition: -webkit-transform 0.3s ease;
+    -moz-transition: -moz-transform 0.3s ease;
+    -o-transition: -o-transform 0.3s ease;
+    transition: transform 0.3s ease;
+}
 
 @media only screen and (min-width: 768px) {
     .aside-collapsed {
@@ -108,7 +128,14 @@
     .aside-collapsed .wrapper > section {
         margin-left: 70px;
     }
-
+    .csstransforms3d .aside-collapsed .wrapper > section {
+        -webkit-transform: none;
+        -moz-transform: none;
+        -opera-transform: none;
+        -ms-transform: none;
+        transform: none;
+        margin-left: 70px;
+    }
 }
 /* ========================================================================
    Component: top-navbar.less
@@ -544,4 +571,162 @@
         position: fixed;
         margin-top: 55px;
     }
+}
+
+
+/* ========================================================================
+   Component: form-elements.less
+ ========================================================================== */
+/**
+ * Custom form elements
+ *    - Checkbox
+ *    - Radios
+ *    - Switch
+ *    - Rounded inputs
+ */
+.c-checkbox,
+.c-radio {
+    /*! margin-right: 4px; */
+}
+.c-checkbox *,
+.c-radio * {
+    cursor: pointer;
+}
+.c-checkbox input,
+.c-radio input {
+    opacity: 0;
+    position: absolute;
+    margin-left: 0 !important;
+}
+.c-checkbox span,
+.c-radio span {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: -20px;
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+    margin-right: 5px;
+}
+.c-checkbox:hover span,
+.c-radio:hover span {
+    border-color: #1c75bf;
+}
+.form-inline .c-checkbox span,
+.form-inline .c-radio span {
+    margin-left: 0;
+}
+.c-checkbox.c-checkbox-rounded span,
+.c-radio.c-checkbox-rounded span,
+.c-checkbox.c-radio-rounded span,
+.c-radio.c-radio-rounded span {
+    border-radius: 500px;
+}
+/* override for radio */
+.c-radio span {
+    border-radius: 500px;
+}
+/* the icon */
+.c-checkbox span:before,
+.c-radio span:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    text-align: center !important;
+    font-size: 12px;
+    line-height: 18px;
+    vertical-align: middle;
+}
+/* Checked state */
+input[type=checkbox]:checked + span:before,
+input[type=radio]:checked + span:before {
+    color: #fff;
+    opacity: 1;
+    transition: color 0.3s ease-out;
+}
+input[type=checkbox]:checked + span,
+input[type=radio]:checked + span {
+    border-color: #1c75bf;
+    background-color: #1c75bf;
+}
+/* override for radio */
+input[type=radio]:checked + span {
+    background-color: #fff;
+}
+input[type=radio]:checked + span:before {
+    color: #1c75bf;
+}
+/* Disable state */
+input[type=checkbox]:disabled + span,
+input[type=radio]:disabled + span {
+    border-color: #ddd !important;
+    background-color: #ddd !important;
+}
+/* override for radio */
+input[type=radio]:disabled + span {
+    background-color: #fff !important;
+}
+input[type=radio]:disabled + span:before {
+    color: #ddd;
+}
+.form-control-rounded {
+    border-radius: 100px;
+}
+.switch * {
+    cursor: pointer;
+}
+.switch input {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+}
+.switch span {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 100px;
+    transition: all .5s;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1) inset;
+}
+.switch span:after {
+    content: "";
+    position: absolute;
+    background-color: #fff;
+    top: 0;
+    left: 0;
+    height: 28px;
+    width: 28px;
+    border: 1px solid #ddd;
+    border-radius: 400px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    -webkit-transition: all .2s;
+}
+.switch input:checked + span {
+    background-color: #1c75bf;
+    border-color: #1c75bf;
+    transition: all .5s;
+}
+.switch input:checked + span:after {
+    left: 50%;
+    transition: all .2s;
+}
+.form-control-feedback {
+    top: 10px;
+}
+.input-sm + .form-control-feedback {
+    top: 0;
+}
+label + .form-control + .form-control-feedback {
+    top: 38px;
+}
+.input-md {
+    width: 260px;
 }
