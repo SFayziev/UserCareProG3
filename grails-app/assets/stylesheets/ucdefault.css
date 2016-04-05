@@ -301,6 +301,7 @@ i.icon-sm {
 }
 .content .commenttext{
     overflow: hidden;
+    min-height: 10px;
 }
 
 
@@ -440,3 +441,34 @@ ul.blog-tags a:hover i {
     -o-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
 }
+
+
+
+
+/*Sidebar List Toggle*/
+.list-toggle:after {
+    top: 7px;
+    right: 10px;
+    color: #777;
+    font-size: 14px;
+    content: "\f105";
+    position: absolute;
+    font-weight: normal;
+    display: inline-block;
+    font-family: FontAwesome;
+}
+
+.list-toggle.active:after {
+    color: #fff;
+    content: "\f107";
+}
+
+.module-controle-panel .list-group-item{
+    padding: 0;
+    border: 0;
+}
+.module-controle-panel li a {
+    display: block;
+    padding: 8px 30px 8px 10px;
+}
+

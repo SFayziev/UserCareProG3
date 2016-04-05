@@ -3,7 +3,7 @@
     <div class="headline">
         <h2><g:message code="article.controlPanel.Title"/></h2>
     </div>
-    <ul class="list-group sidebar-nav-v1" id="sidebar-nav">
+    <ul class="list-group ">
         <li class="list-group-item  list-toggle">
             <a  class="accordion-toggle" href="#collapse-status" data-toggle="collapse"><i class="fa fa-exchange"></i> <g:message code="article.action.change.status"/></a>
         <ul id="collapse-status" class="collapse">
