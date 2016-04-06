@@ -24,10 +24,11 @@
         <div class="content-wrapper">
             <g:pageProperty name="page.mainContent1"/>
         </div>
+    %{--<g:render template="/layouts/footer" />--}%
     </section>
 
 
-    %{--<g:render template="/layouts/footer" />--}%
+
 
 </div>
 </body>
