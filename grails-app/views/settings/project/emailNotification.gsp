@@ -1,55 +1,46 @@
 <g:applyLayout name="settingMain">
     <content tag="mainContent1">
+        <h3><g:link controller="settings" ><g:message code="setting.leftMenu.project" /></g:link> /
+        <g:link controller="settings" > <g:message code="setting.leftMenu.project.mail.settings" /></g:link>
+        </h3>
 
-        <div class="tag-box tag-box-v1 margin-bottom-10">
+        <div class="panel panel-default">
+            <g:form controller="project" action="emailNotification"   >
+                <div class="panel-body">
+                    <p><g:message code="setting.project.emailNotification.text1"/></p>
+                    <div class="tag-box tag-box-v6">
+                        <p>${UCproject.name}  ${emailNoReply}@${UCproject.alias}.${domainUrl}</p>
+                    </div>
 
-    <ol class="breadcrumb hidden-xs">
-        <li><g:link controller="settings" ><g:message code="setting.leftMenu.project" /></g:link> </li>
-        <li class="active"><g:link controller="settings" > <g:message code="setting.leftMenu.project.mail.settings" /></g:link></li>
-    </ol>
-    <div class="panel-body">
+                    <h4><g:message code="setting.project.emailNotification.text2" /></h4>
 
-        <p><g:message code="setting.project.emailNotification.text1"/></p>
-        <div class="tag-box tag-box-v6">
-            <p>${UCproject.name}  ${emailNoReply}@${UCproject.alias}.${domainUrl}</p>
-        </div>
-
-        <h4><g:message code="setting.project.emailNotification.text2" /></h4>
-
-        %{--<div class="tag-box tag-box-v6">--}%
-            %{--<p>feedback 14400  IN  CNAME  UCproject:.alias}.${domainUrl}.</p>--}%
-        %{--</div>--}%
-
-        <g:form controller="project" action="emailNotification"   class="sky-form" >
-            <fieldset>
-                <section>
-                    <label class="label"><g:message code="setting.name" /></label>
-                    <label class="input state-success">
-                        <input type="text" name="emailname" value="${UCproject.params?.emailname?.value}">
-                    </label>
-                    <div class="note note-success"><g:message code="setting.project.emailNotification.name" /></div>
-                </section>
-                <section>
-                    <label class="label"><g:message code="setting.project.emailNotification.footer" /></label>
-                    <label class="input state-success">
-                        <textarea rows="4" id="emailFooter" name="emailFooter">${UCproject.params?.emailFooter?.value}</textarea>
-                    </label>
-                </section>
-            </fieldset>
-
-            <div class="modal-footer">
-                <button type="submit" name="submit" value="save" class="btn btn-primary"><g:message code="button.save" /></button>
-
-            </div>
-
-        </g:form>
-    </div>
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label"><g:message code="setting.name" /></label>
+                            <div class="col-lg-7">
+                                <input class="form-control" type="text" name="emailname" value="${UCproject.params?.emailname?.value}">
+                                <span class="help-block m-b-none"><g:message code="setting.project.emailNotification.name" /></span>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label"><g:message code="setting.project.emailNotification.footer" /></label>
+                            <div class="col-lg-9">
+                                <textarea rows="4" id="emailFooter" class="form-control" name="emailFooter">${UCproject.params?.emailFooter?.value}</textarea>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="panel-footer text-center">
+                    <button type="reset" class="btn btn-default"><g:message code="button.cancel" /></button>
+                    <button type="submit" name="submit" value="save" class="btn btn-primary"><g:message code="button.save" /></button>
+                </div>
+            </g:form>
 </div>
 
 <script type="text/javascript">
     $(document).ready(function() {
-
-
         $('#emailFooter').summernote({
             height: 150,
             minHeight: null,

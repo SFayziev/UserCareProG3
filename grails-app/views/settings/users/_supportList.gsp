@@ -1,4 +1,4 @@
-<tr class="active" id="user${user.id}" >
+<tr  id="user${user.id}" >
     <td><g:if test="${user.userPermissionsDTO.status==1}"><button class="btn-u rounded  btn-u-green" onclick="changeSupportStatus(${user.id}, 0 )" type="button"><i class="fa fa-check-circle-o"></i></button> </g:if>
         <g:else><button class="btn-u rounded  btn-u-green" onclick="changeSupportStatus(${user.id}, 1 )" type="button"><i class="fa fa-circle-o"></i></button></g:else>
     </td>

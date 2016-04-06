@@ -6,7 +6,7 @@
         </h3>
 
         <div class="panel panel-default">
-            <g:form controller="project" action="settings" class="form-horizontal sky-form" role="form" data-toggle="validator" novalidate="novalidate" >
+            <g:form controller="project" action="settings" class="form-horizontal" role="form" data-toggle="validator" novalidate="novalidate" >
 
                 <div class="panel-heading">
                     <h3><i class="fa fa-cog "></i> <g:message code="setting.project.settings.title" /></h3>

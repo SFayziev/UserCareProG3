@@ -54,26 +54,11 @@
 
 </div>
 
-<div id="imageSelector"  class="modal fade" id="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-
-            </div>
-            Loading ...
-        </div><!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
-
-
-
 <script>
 
     function changeProjectImg(type){
 
-        var modal =$("#imageSelector");
+        var modal =$("#ucmodal");
         var url= '/file/projectImageSelector/?type=' +type;
         if (type=='logo'){url=url+'&withicon=1'}
 
