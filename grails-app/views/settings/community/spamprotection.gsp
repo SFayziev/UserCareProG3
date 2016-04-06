@@ -1,22 +1,28 @@
 <g:applyLayout name="settingMain">
     <content tag="mainContent1">
+        <h3><g:link controller="community" ><g:message code="setting.leftMenu.community" /></g:link> /
+        <g:link controller="community" action="spamprotection" > <g:message code="setting.leftMenu.community.spam.protection" /> </g:link>
+        </h3>
 
-<div class="tag-box tag-box-v1 margin-bottom-10">
-
-    <ol class="breadcrumb hidden-xs">
-        <li><g:link controller="community" ><g:message code="setting.leftMenu.community" /></g:link> </li>
-        <li class="active"><g:link controller="community" action="control" > <g:message code="setting.leftMenu.community.privacy" /></g:link></li>
-    </ol>
-    <div class="row">
         <div class="col-md-12">
-            <h3><g:message code="setting.community.moderation.info" /> </h3>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3><g:message code="setting.community.moderation.info" /> </h3>
+                </div>
+            </div>
         </div>
-    <div class="col-md-6">
 
-        <g:form controller="community" action="spamprotection" id="${forum.id}" class="form-horizontal sky-form" role="form" data-toggle="validator" novalidate="novalidate" >
-            <input type="hidden" name="spamProtect.ftype" value="0">
-            <input type="hidden" name="spamProtect.id" value="${spamProtectArticle?.id}">
-            <header><g:message code="setting.community.moderation.settings" />: <b><g:message code="widget.community.stats.topic" /></b> </header>
+    <div class="col-md-6">
+        <div class="panel panel-default">
+
+            <div class="panel-heading">
+            <h4><g:message code="setting.community.moderation.settings" />: <b><g:message code="widget.community.stats.topic" /></b> </h4>
+            </div>
+            <g:form controller="community" action="spamprotection" id="${forum.id}" class="form-horizontal sky-form" role="form" data-toggle="validator" novalidate="novalidate" >
+                <input type="hidden" name="spamProtect.ftype" value="0">
+                <input type="hidden" name="spamProtect.id" value="${spamProtectArticle?.id}">
+
+            <div class="panel-body">
             <div class="form-group">
                  <label class="checkbox state-success"><input id="sso"  name="spamProtect.sanonymousfeedback"  value="1" <g:if test="${spamProtectArticle?.sanonymousfeedback}">checked=""</g:if>  type="checkbox"><i></i><g:message code="setting.community.moderation.setting.anonymous.feedback"/> </label>
             </div>
@@ -86,18 +92,18 @@
 
                 </div>
             </div>
-
-            <footer>
                 <div class="row"><g:render template="/layouts/errorMessage" /></div>
-                <div class="col-lg-offset-4 col-lg-8 margin-bottom-10">
-                    <button type="submit" name="submit" value="save" class="btn-u btn-u-green"><g:message code="button.save" /></button>
-                </div>
-            </footer>
+            </div>
+            <div class="panel-footer text-center">
+                <button type="reset" class="btn btn-default"><g:message code="button.cancel" /></button>
+                <button type="submit" name="submit" value="save" class="btn btn-primary"><g:message code="button.save" /></button>
+            </div>
         </g:form>
-
+        </div>
     </div>
 
     <div class="col-md-6">
+        <div class="panel panel-default">
 
             <g:form controller="community" action="spamprotection" id="${forum.id}" class="form-horizontal sky-form" role="form" data-toggle="validator" novalidate="novalidate" >
                 <input type="hidden" name="spamProtect.ftype" value="1">
@@ -180,8 +186,8 @@
                     </div>
                 </footer>
             </g:form>
-
         </div>
+    </div>
         <br>
         <div class="col-md-12">
             <div class="alert alert-info fade in">
@@ -201,8 +207,7 @@
             </div>
         </div>
 
-    </div>
-</div>
+
 
     </content>
 </g:applyLayout>

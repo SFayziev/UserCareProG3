@@ -5,7 +5,7 @@
         </h3>
 
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-8">
 
                 <div class="panel panel-default">
             <g:form controller="community" action="category"  id="${params.id}"  >
@@ -13,8 +13,8 @@
 
                     <fieldset>
                         <div class="form-group">
-                            <label class="col-lg-3 control-label"><g:message code="setting.community.category.assigne.mode.text" /></label>
-                            <div class="col-lg-7">
+                            <label class="col-lg-4 control-label"><g:message code="setting.community.category.assigne.mode.text" /></label>
+                            <div class="col-lg-8">
                                 <g:select  class="form-control" name="assigntype" from="${['0', '1' ,'2']}" value="${forum?.privacy?.assigntype }"
                                       valueMessagePrefix="setting.community.category.assigne.mode" />
                             </div>
