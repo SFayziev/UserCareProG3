@@ -69,6 +69,14 @@ img.img-bordered  {
     border-top-width: 3px;
 }
 
+
+.panel .note {
+    margin-top: 6px;
+    padding: 0 1px;
+    font-size: 11px;
+    line-height: 15px;
+    color: #999;
+}
 /* ========================================================================
    Component: layout.less
  ========================================================================== */

@@ -1,19 +1,16 @@
 <g:applyLayout name="settingMain">
     <content tag="mainContent1">
-<div class="tag-box tag-box-v1 margin-bottom-10">
+        <h3><g:link controller="community" ><g:message code="setting.leftMenu.community" /></g:link> /
+        <g:link controller="community" action="category" > <g:message code="setting.leftMenu.community.statuses" /> </g:link>
+        </h3>
 
-    <ol class="breadcrumb hidden-xs">
-        <li><g:link controller="community" ><g:message code="setting.leftMenu.community" /></g:link> </li>
-        <li class="active"> <g:message code="setting.leftMenu.community.statuses" /></li>
-    </ol>
-
-
-    <div class="panel-body">
-        <div >
-            <h4><g:message code="setting.leftMenu.community.statuses" />
-                <a data-toggle="modal" href="/settings/community/addtopicStatus/${forum.id}?topictype=${params.topictype}" data-target="#myModal"  class="btn-u btn-brd rounded btn-u-default btn-u-xs" ><i class="fa fa-plus"></i> <g:message code="default.button.add.label" />  </a></h4>
-            %{--<button class="btn-u btn-brd rounded btn-u-default btn-u-xs" type="button"><i class="fa fa-download"></i> <g:message code="setting.community.categoru.addnew" />  </button>--}%
-        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div >
+                    <h4><g:message code="setting.leftMenu.community.statuses" />
+                        <a data-toggle="modal" href="/settings/community/addtopicStatus/${forum.id}?topictype=${params.topictype}" data-target="#myModal"  class="btn-u btn-brd rounded btn-u-default btn-u-xs" ><i class="fa fa-plus"></i> <g:message code="default.button.add.label" />  </a></h4>
+                    %{--<button class="btn-u btn-brd rounded btn-u-default btn-u-xs" type="button"><i class="fa fa-download"></i> <g:message code="setting.community.categoru.addnew" />  </button>--}%
+                </div>
         <table class="table table-striped">
             <thead>
             <tr>
@@ -46,7 +43,7 @@
             </tbody>
         </table>
     </div>
-</div>
+        </div>
 
 <g:render template="/modal/myModal"/>
 <g:render template="/modal/translationForm"/>
