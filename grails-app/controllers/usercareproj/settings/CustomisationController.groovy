@@ -27,30 +27,34 @@ class CustomisationController {
 
     def dashboard() {
     def customize=true
-        redirect(controller: "forum", action: "dashboard", params: [id :params.id , customize:customize ] )
+        redirect(controller: "forum", action: "dashboard", params: [id :params.id , vtype:ModuleDisplay.Dashboard.ordinal()  ,  customize:customize ] )
     }
     def widget(){
         def customize=true
-        redirect(controller: "forum", action: "widgets" , params: [id :params.id , customize:customize] )
+        redirect(controller: "forum", action: "widgets" , params: [id :params.id , vtype:ModuleDisplay.Widget.ordinal() , customize:customize] )
     }
     def list() {
         def customize=true
-        redirect(controller: "forum", action: "list" , params: [id :params.id , customize:customize] )
+        redirect(controller: "forum", action: "list" , params: [id :params.id , vtype:ModuleDisplay.List.ordinal(), customize:customize] )
     }
 
     def moveWidget(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         def id=params.id as int;
         def direction = params.get('direction')
+        def displaymode= params.getInt("displaymode", -1)
+
         JSONObject resultJson = new JSONObject();
         resultJson.put("moduleid",id );
         resultJson.put("direction",direction);
-        if (webServicesSession.moveModule(project.id, id , direction as String)){
-            resultJson.put("status","success");
+        resultJson.put("status","error");
+        try {
+            if (webServicesSession.moveModule(project.id, id , ModuleDisplay.values()[displaymode] ,  direction as String)){
+                resultJson.put("status","success");
+            }
+        } catch (Exception e) {
         }
-        else {
-            resultJson.put("status","error");
-        }
+
 
         response.contentType = "application/json; charset=UTF-8"
         render   resultJson.toString()

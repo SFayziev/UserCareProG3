@@ -101,7 +101,7 @@ function deleteAssignTags(){
     var articid=$(this).closest('[data-article-id]').attr('data-article-id');
     var forumid=$(this).closest('[data-forum-id]').attr('data-forum-id');
     var tagid= $(this).data('content');
-    var modal =$("#myModalDelete");
+    var modal =$("#ucmodal");
     modal.removeData('bs.modal');
     modal.modal({remote: '/article/deleteAssignTags/'+forumid +"/"+articid +"/?tag=" + tagid });
     modal.modal('show');
@@ -109,7 +109,7 @@ function deleteAssignTags(){
 }
 
 function changeUserAvatar(userId){
-    var modal =$("#imageSelector");
+    var modal =$("#ucmodal");
     modal.removeData('bs.modal');
     modal.modal({remote: '/file/userAvatarSelector/' + userId });
     modal.modal('show');

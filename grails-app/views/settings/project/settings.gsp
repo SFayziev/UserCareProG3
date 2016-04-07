@@ -6,12 +6,10 @@
         </h3>
 
         <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3><i class="fa fa-cog "></i> <g:message code="setting.project.settings.title" /></h3>
+            </div>
             <g:form controller="project" action="settings" class="form-horizontal" role="form" data-toggle="validator" novalidate="novalidate" >
-
-                <div class="panel-heading">
-                    <h3><i class="fa fa-cog "></i> <g:message code="setting.project.settings.title" /></h3>
-                </div>
-
                 <div class="panel-body">
                     <fieldset>
                         <div class="form-group">
@@ -26,10 +24,8 @@
                         <div class="form-group">
                             <label for="defaultforum" class="col-lg-3 control-label"><g:message code="setting.project.settings.default.forum" /></label>
                             <div class="col-lg-7">
-
                                 <g:select  class="form-control m-b" id="defaultforum" optionKey="id" value="${UCproject?.defaultforum}"
                                           name="project.defaultforum"  optionValue="name" from="${forums}" />
-
                             </div>
                         </div>
                     </fieldset>
@@ -38,11 +34,9 @@
                             <label  class="col-lg-3 control-label"><g:message code="setting.project.settings.alias" /></label>
                             <div class="col-lg-7">
                                 <div class="input-group m-b">
-
                                     <input readonly="" class="form-control"   name="project.alias" value="${UCproject?.alias}" type="text">
                                     <span class="input-group-addon">.${domainUrl}</span>
                                  </div>
-
                             </div>
                         </div>
                     </fieldset>

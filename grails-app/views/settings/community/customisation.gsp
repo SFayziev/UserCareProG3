@@ -1,14 +1,12 @@
 <g:applyLayout name="settingMain">
     <content tag="mainContent1">
 
-<div class="tag-box tag-box-v1 margin-bottom-10">
+    <h3><g:link controller="community" ><g:message code="setting.leftMenu.community" /></g:link> /
+        <g:link controller="community" action="customisation" > <g:message code="setting.leftMenu.community.customisation" /></g:link>
+    </h3>
 
-    <ol class="breadcrumb hidden-xs">
-        <li><g:link controller="community" ><g:message code="setting.leftMenu.community" /></g:link> </li>
-        <li class="active"><g:link controller="community" action="customisation" > <g:message code="setting.leftMenu.community.customisation" /></g:link></li>
-    </ol>
-
-    <div id="customisation">
+    <div id="customisation" class="panel panel-default">
+        <div class="panel-body">
         <div class="tab-v1 margin-bottom-60">
             <ul class="nav nav-tabs">
                 <li class="<g:if test="${params.vtype==null || params.vtype=='dashboard'}"> active</g:if>"><g:link controller="community" action="customisation" id="${params.id}" params="${[vtype: 'dashboard']}" ><g:message code="module.display.type.0" /></g:link></li>
@@ -39,24 +37,10 @@
 
             </div>
         </div>
-
+        </div>
 
     </div>
-</div>
-<div id="modalDelete"  class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 
-            </div>
-            Loading ...
-        </div><!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
-
-<g:render template="/modal/translationForm"/>
 <g:render template="/modal/myLargModal"/>
 
 

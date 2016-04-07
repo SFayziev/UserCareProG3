@@ -32,7 +32,7 @@
             <div class="panel-body">
                 <div class="panel-heading">
                     <h4><g:message code="setting.community.tag.setup.title" />
-                    <a data-toggle="modal" href="/settings/community/addNewTag/${forum.id}" data-target="#myModal"  class="btn-u btn-brd rounded btn-u-default btn-u-xs" ><i class="fa fa-plus"></i> <g:message code="default.button.add.label" />  </a>
+                    <a data-toggle="modal" href="/settings/community/addNewTag/${forum.id}" data-target="#ucmodal"  class="btn-u btn-brd rounded btn-u-default btn-u-xs" ><i class="fa fa-plus"></i> <g:message code="default.button.add.label" />  </a>
                     </h4>
                 </div>
                 <table class="table table-striped">
@@ -48,9 +48,9 @@
                             <td> ${tag.name}</td>
                             <td>
                                 <div class="btn-group">
-                                    <a data-toggle="modal" href="/settings/community/edittag/${forum.id}/?tagid=${tag.id}" data-target="#myModal"  id="${tag.id}" class="btn btn-info "><i class="fa fa-pencil"></i> <g:message code="default.button.edit.label"/></a>
+                                    <a data-toggle="modal" href="/settings/community/edittag/${forum.id}/?tagid=${tag.id}" data-target="#ucmodal"  id="${tag.id}" class="btn btn-info "><i class="fa fa-pencil"></i> <g:message code="default.button.edit.label"/></a>
                                     %{--<a class="btn btn-primary"  ><i class="fa  fa-globe"></i></a>--}%
-                                    <a class="btn btn-danger" data-toggle="modal" href="/settings/community/deltag/${tag.id}" data-target="#myModal"  ><i class="fa fa-trash-o"></i></a>
+                                    <a class="btn btn-danger" data-toggle="modal" href="/settings/community/deltag/${tag.id}" data-target="#ucmodal"  ><i class="fa fa-trash-o"></i></a>
                                 </div>
                             </td>
                         </tr>

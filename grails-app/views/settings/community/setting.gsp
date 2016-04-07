@@ -5,9 +5,9 @@
         </h3>
 
         <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4><i class="fa fa-cog "></i> <g:message code="setting.leftMenu.project.settings" />: <span class="color-green">${forum.name}</span> </h4>
-                </div>
+            <div class="panel-heading">
+                <h4><i class="fa fa-cog "></i> <g:message code="setting.leftMenu.project.settings" />: <span class="color-green">${forum.name}</span> </h4>
+            </div>
             <g:form controller="community" action="setting" id="${forum.id}" class="form-horizontal" role="form" data-toggle="validator" novalidate="novalidate" >
 
         <div class="panel-body">
