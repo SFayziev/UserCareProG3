@@ -13,8 +13,8 @@
 
     <td>
         <div class="btn-group">
-            <a data-toggle="modal" href="/settings/users/editsupport/${user.id}" data-target="#myModal"  id="useredit${user.id}" class="btn btn-info "><i class="fa fa-pencil"></i> <g:message code="default.button.edit.label"/></a>
-            <a class="btn btn-danger" data-toggle="modal" href="/settings/users/delsupport/${user.id}" data-target="#myModal"  ><i class="fa fa-trash-o"></i></a>
+            <a data-toggle="modal" href="/settings/users/editsupport/${user.id}" data-target="#ucmodal"  id="useredit${user.id}" class="btn btn-info "><i class="fa fa-pencil"></i> <g:message code="default.button.edit.label"/></a>
+            <a class="btn btn-danger" data-toggle="modal" href="/settings/users/delsupport/${user.id}" data-target="#ucmodal"  ><i class="fa fa-trash-o"></i></a>
         </div>
     </td>
 </tr>

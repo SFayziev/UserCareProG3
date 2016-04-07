@@ -5,7 +5,7 @@
         </h3>
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h4><g:message code="setting.user.agents.current.title" /> <a class="btn btn-default" data-toggle="modal" href="/settings/users/invitesupportuser/" data-target="#myModal"  ><i class="fa fa-plus"></i> <g:message code="default.button.add.label" /></a></h4>
+                <h4><g:message code="setting.user.agents.current.title" /> <a class="btn btn-default" data-toggle="modal" href="/settings/users/invitesupportuser/" data-target="#ucmodal"  ><i class="fa fa-plus"></i> <g:message code="default.button.add.label" /></a></h4>
             </div>
             <div class="panel-body">
                 <div class="table-responsive">

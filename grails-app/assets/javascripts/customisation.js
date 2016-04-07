@@ -24,7 +24,7 @@ function  widgetEDIT(){
 
 function widgetUP(){
     var dparent=$(this).closest(".customisation_mode");
-    var data={'id':$(this).data('content'),'direction':'up'};
+    var data={'id':$(this).data('content'),'direction':'up',displaymode :$(this).data('displaymode')};
     $.ajax({  dataType: "json", data:data, url:  "/settings/customisation/moveWidget"})
         .done(function( data ) {
             if (data.status=='success') {
@@ -36,7 +36,7 @@ function widgetUP(){
 
 function widgetDOWN(){
     var dparent=$(this).closest(".customisation_mode");
-    var data={'id':$(this).data('content'),'direction':'down'};
+    var data={'id':$(this).data('content'),'direction':'down' ,displaymode :$(this).data('displaymode')};
     $.ajax({  dataType: "json", data:data, url:  "/settings/customisation/moveWidget"})
         .done(function( data ) {
             if (data.status=='success') {

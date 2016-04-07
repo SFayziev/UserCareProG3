@@ -206,7 +206,7 @@ public class WebServicesSessionSpringBean {
     public List<ArticleDTO> findTextInArticle(Integer projid ,String searchText, Integer forumid, ForumType forumType,  Integer count, String order ){return    articleDAO.findTextInArticle(projid, searchText, forumid, forumType, count, order);}
     public List<ModuleDTO> getModuleBydisplaypos(Integer projId,  Integer forumid,  ModuleDisplay displaypos , ModulePosType modulePosType, UserDTO forUserDTO ) { return  moduleDAO.getModuleBydisplaypos(projId, forumid, displaypos, modulePosType, forUserDTO); }
     public ModuleDTO getModuleById(Integer projId, Integer modid ){ return  moduleDAO.getModuleById(projId, modid) ; }
-    public boolean moveModule(Integer projId, Integer moduleID, String direction){return moduleDAO.moveModule(projId,moduleID, direction ); }
+    public boolean moveModule(Integer projId, Integer moduleID, ModuleDisplay moduleDisplay, String direction){return moduleDAO.moveModule(projId,moduleID,moduleDisplay,  direction ); }
     public boolean deleteModule(Integer projId, Integer moduleID){return moduleDAO.deleteModule(projId, moduleID); }
     public void addModuleParams(Integer projId, Integer moduleid, List<ModuleParamsDTO> moduleParamsDTOs) { moduleDAO.addModuleParams(projId, moduleid, moduleParamsDTOs); }
     public void addProjectParams(ProjectDTO project,  List<ProjectParamsDTO> projectParamsDTOs) { projectDAO.addProjectParams(project, projectParamsDTOs); }

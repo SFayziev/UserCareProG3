@@ -1,5 +1,5 @@
 <%@ page import="com.sh.utils.ModulePosType" %>
-<div id="mainBar" class="main-block col-md-9">
+<div id="mainBar" class="main-block col-xs-12 col-sm-8 col-md-9">
     <div class="row">
     <g:each in="${modulPos}" var="module">
         <g:if test="${module?.dispos==ModulePosType.Main}">

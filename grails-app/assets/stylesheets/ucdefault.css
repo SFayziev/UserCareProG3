@@ -418,7 +418,7 @@ i.icon-sm {
 @media (max-width: 992px) {
     .content,
     .content .text-justify {
-        text-align: center;
+        /*text-align: center;*/
     }
 
     .content span {
@@ -485,3 +485,45 @@ ul.blog-tags a:hover i {
     padding: 8px 30px 8px 10px;
 }
 
+
+/*Tabs v1
+------------------------------------*/
+.tab-v1 .nav-tabs {
+    border: none;
+    background: none;
+    border-bottom: solid 2px #72c02c;
+}
+
+.tab-v1 .nav-tabs a {
+    font-size: 14px;
+    padding: 5px 15px;
+}
+
+.tab-v1 .nav-tabs > .active > a,
+.tab-v1 .nav-tabs > .active > a:hover,
+.tab-v1 .nav-tabs > .active > a:focus {
+    color: #fff;
+    border: none;
+    background: #72c02c;
+}
+
+.tab-v1 .nav-tabs > li > a {
+    border: none;
+}
+.tab-v1 .nav-tabs > li > a:hover {
+    color: #fff;
+    background: #72c02c;
+}
+
+.tab-v1 .tab-content {
+    padding: 10px 0;
+}
+
+.tab-v1 .tab-content img {
+    margin-top: 4px;
+    margin-bottom: 15px;
+}
+
+.tab-v1 .tab-content img.img-tab-space {
+    margin-top: 7px;
+}

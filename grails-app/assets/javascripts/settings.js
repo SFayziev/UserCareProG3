@@ -182,8 +182,8 @@ function changeTopicTypeImg(id){
 
 
 function setAjaxModuleCustomisationSave(moduleid){
-    $('#moduleEditForm').submit(function() {
-        ajaxSubmit({'form':'#moduleEditForm','url':'/settings/customisation/saveWidget/'+moduleid ,'result':moduleCustomisationSaveSuccess, 'resulterr':moduleCustomisationSaveFail});
+    $('#ucmodal').submit(function() {
+        ajaxSubmit({'form':'#ucmodal','url':'/settings/customisation/saveWidget/'+moduleid ,'result':moduleCustomisationSaveSuccess, 'resulterr':moduleCustomisationSaveFail});
         return false;
     });
 }
@@ -254,7 +254,7 @@ function  translationModule(mkey, moduleid){
     return false;
 }
 function  translation( url){
-    showModal("#translationModal", url )
+    showModal("#ucmodal", url )
 
 }
 

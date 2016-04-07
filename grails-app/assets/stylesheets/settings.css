@@ -69,6 +69,10 @@ img.img-bordered  {
     border-top-width: 3px;
 }
 
+.panel .panel-heading {
+    /*border-bottom: 0;*/
+    font-size: 14px;
+}
 
 .panel .note {
     margin-top: 6px;
@@ -783,4 +787,18 @@ label + .form-control + .form-control-feedback {
 }
 .input-md {
     width: 260px;
+}
+
+/*Blockquote Hero Styles*/
+blockquote.hero {
+    border: none;
+    padding: 18px;
+    font-size: 16px;
+    background: #f3f3f3;
+    border-left: solid 2px #666;
+}
+
+blockquote.hero:hover {
+    background: #eee;
+    border-left-color: #666;
 }

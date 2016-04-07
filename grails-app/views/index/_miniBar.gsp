@@ -1,5 +1,5 @@
 <%@ page import="com.sh.utils.ModulePosType" %>
-<div class="side-block col-md-3">
+<div class="side-block col-xs-8 col-sm-4 col-md-3">
     <div class="row">
     <g:each in="${modulPos}" var="module">
         <g:if test="${module?.dispos==ModulePosType.Mini}">
