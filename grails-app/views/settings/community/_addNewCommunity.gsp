@@ -3,17 +3,17 @@
     <h4 class="modal-title">
         <g:message code="setting.community.add.new" /></h4>
 </div>
-<g:form controller="${params.controller}"  action="add" class="sky-form" style="border: none;" >
+<g:form controller="${params.controller}"  action="add" role="form" data-toggle="validator" novalidate="novalidate" >
 <div class="modal-body">
-    <section>
-        <label class="label"><g:message code="setting.name" /></label>
-        <label class="input state-success">
-
+    <fieldset>
+      <div class="form-group">
+        <label class="col-lg-3 control-label"><g:message code="setting.name" /></label>
+        <div class="col-lg-8">
             <input name="name" class="form-control" required  type="text">
-        </label>
-        <div class="note"><g:message code="setting.community.add.new.info"/></div>
-
-    </section>
+            <div class="note"><g:message code="setting.community.add.new.info"/></div>
+        </div>
+    </div>
+    </fieldset>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-default" data-dismiss="modal"><g:message code="button.cancel" /></button>

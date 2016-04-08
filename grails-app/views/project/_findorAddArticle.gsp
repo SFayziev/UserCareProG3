@@ -10,11 +10,6 @@
             </div>
         </div>
     </div>
-
     <div id="searchresult" class="row margin-top-20" >
     </div>
-
 </div>
-
-</div>
-
