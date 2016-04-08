@@ -5,36 +5,37 @@
         <g:else><g:message code="default.button.add.label" /></g:else>
     </h4>
 </div>
-<g:form controller="${params.controller}" action="${params.action}"  id="${params.id}" class="sky-form" style="border: none;" >
+<g:form controller="${params.controller}" action="${params.action}"  id="${params.id}" class="form-horizontal" role="form" data-toggle="validator" novalidate="novalidate" >
     <div class="modal-body">
         <input type="hidden" name="topicStatus" value="${params.topicStatus}">
-        <section>
-            <label class="label"><g:message code="setting.name" /></label>
-            <label class="input state-success">
-                <g:if test="${topicStatus?.id}"><i class="icon-append fa fa-globe" onclick="translationArticSatus('article.status.name',${params.id},   ${topicStatus?.articleStatusDTO?.id});"></i></g:if>
-                <input name="articleStatus.name" class="form-control" value="${topicStatus?.articleStatusDTO?.name}" required  type="text">
-            </label>
-        </section>
+         <div class="form-group">
+            <label class="col-lg-3 control-label"><g:message code="setting.name" /></label>
+             <div class="col-lg-8">
+                 <div class="input-group m-b">
+                     <span class="input-group-btn">
+                         <g:if test="${topicStatus?.id}">
+                             <button type="button" onclick="translationArticSatus('article.status.name',${params.id},   ${topicStatus?.articleStatusDTO?.id});" class="btn btn-default"><i class="icon-append fa fa-globe" ></i></button>
+                         </g:if>
+                     </span>
+                     <input name="articleStatus.name" class="form-control" value="${topicStatus?.articleStatusDTO?.name}" required  type="text">
+                 </div>
+             </div>
+        </div>
 
-        <section>
-            <label class="label"><g:message code="article.type" /></label>
-            <label class="select state-success">
-                %{--<label for="firstreplystatus" class="select state-success">--}%
-                <g:select name="articleStatus.logicalgroup" from="${['0', '1' ]}" value="${topicStatus?.articleStatusDTO?.logicalgroup }"
+        <div class="form-group">
+           <label class="col-lg-3 control-label"><g:message code="article.type" /></label>
+            <div class="col-lg-8">
+                <g:select class="form-control" name="articleStatus.logicalgroup" from="${['0', '1' ]}" value="${topicStatus?.articleStatusDTO?.logicalgroup }"
                           valueMessagePrefix="setting.community.status.logical.group.type" />
-                <i></i>
+            </div>
+        </div>
 
-            </label>
-
-        </section>
-
-        <section>
-            <label class="label"><g:message code="setting.community.status.collor" /></label>
-            <label class="input state-success">
-                <input name="articleStatus.color" id="selColor" class="form-control" value="${topicStatus?.articleStatusDTO?.color}" required  type="text">
-
-            </label>
-        </section>
+        <div class="form-group">
+           <label class="col-lg-3 control-label"><g:message code="setting.community.status.collor" /></label>
+            <div class="col-lg-8">
+                <input class="form-control" name="articleStatus.color" id="selColor"  value="${topicStatus?.articleStatusDTO?.color}" required  type="text">
+            </div>
+        </div>
 
     </div>
     <div class="modal-footer">

@@ -5,16 +5,22 @@
         <g:else><g:message code="default.button.add.label" /></g:else>
     </h4>
 </div>
-<g:form controller="${params.controller}"  action="addNewTag"  id="${params.id}" class="sky-form" style="border: none;" >
+<g:form controller="${params.controller}"  action="addNewTag"  id="${params.id}" class="form-horizontal"  role="form" data-toggle="validator" novalidate="novalidate" >
     <div class="modal-body">
         <input type="hidden" name="tagid" value="${params.tagid}">
-        <section>
-            <label class="label"><g:message code="setting.name" /></label>
-            <label class="input state-success">
-                <g:if test="${tag?.id}"><i class="icon-append fa fa-globe" onclick="translationTag('tag.name',${params.id} ,   ${tag?.id});"></i></g:if>
-                <input name="tag.name" class="form-control" value="${tag?.name}" required  type="text">
-            </label>
-        </section>
+        <div class="form-group">
+            <label class="col-lg-3 control-label" ><g:message code="setting.name" /></label>
+            <div class="col-lg-8">
+                <div class="input-group m-b">
+                    <span class="input-group-btn">
+                        <g:if test="${tag?.id}">
+                            <button type="button" onclick="translationTag('tag.name',${params.id} ,   ${tag?.id});" class="btn btn-default"><i class="icon-append fa fa-globe" ></i></button>
+                        </g:if>
+                    </span>
+                    <input  name="tag.name" class="form-control" value="${tag?.name}" required  type="text">
+                </div>
+            </div>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal"><g:message code="button.cancel" /></button>
