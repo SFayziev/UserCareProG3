@@ -44,8 +44,5 @@
         </table>
     </div>
         </div>
-
-<g:render template="/modal/myModal"/>
-<g:render template="/modal/translationForm"/>
     </content>
 </g:applyLayout>
