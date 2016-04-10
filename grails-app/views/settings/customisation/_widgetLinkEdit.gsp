@@ -3,26 +3,38 @@
     <h4 class="modal-title"><g:message code="setting.customize.projectLinks.edit.title" /></h4>
 </div>
 <div class="modal-body">
-    <form   id="widgetLinkEdit"   class="sky-form" >
+    <form   id="widgetLinkEdit"   class="form-horizontal" role="form" data-toggle="validator" novalidate="novalidate" >
         <fieldset>
-            <section>
-                <label class="label"><g:message code="setting.name" /></label>
-                <label class="input state-success">
-                    <input type="text" name="link.title" value="${link.title}">
-                </label>
-                <div class="note"><g:message code="setting.customize.projectLinks.edit.name.note"/></div>
-            </section>
-            <section>
-                <label class="label"><g:message code="setting.customize.projectLinks.edit.url" /></label>
-                <label class="input state-success">
-                    <input type="text" name="link.links" value="${link.links}">
-                </label>
-                <div class="note"><g:message code="setting.customize.projectLinks.edit.url.note"/></div>
-            </section>
+            <div class="form-group">
+               <label class="col-lg-3 control-label"><g:message code="setting.name" /></label>
+                <div class="col-lg-7">
+                    <input class="form-control" type="text" name="link.title" value="${link.title}">
+                    <div class="note"><g:message code="setting.customize.projectLinks.edit.name.note"/></div>
+                </div>
 
-            <section>
-                <label class="checkbox state-success"><input  name="link.newwindow"  value="1" <g:if test="${link?.newwindow=1}">checked=""</g:if> type="checkbox"><i></i><g:message code="setting.customize.projectLinks.edit.new.windows.note"/></label>
-            </section>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+               <label class="col-lg-3 control-label"><g:message code="setting.customize.projectLinks.edit.url" /></label>
+                <div class="col-lg-7">
+                    <input class="form-control" type="text" name="link.links" value="${link.links}">
+                    <div class="note"><g:message code="setting.customize.projectLinks.edit.url.note"/></div>
+                </div>
+
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+                <div class="col-lg-offset-3 col-lg-7">
+                    <div class="checkbox c-checkbox">
+                        <label>
+                            <input  name="link.newwindow"  value="1" <g:if test="${link?.newwindow=1}">checked=""</g:if> type="checkbox">
+                            <span class="fa fa-check"></span><g:message code="setting.customize.projectLinks.edit.new.windows.note"/>
+                        </label>
+                    </div>
+                </div>
+            </div>
 
         </fieldset>
         <div class="modal-footer">

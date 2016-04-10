@@ -3,15 +3,15 @@
     <h4 class="modal-title"><g:message code="setting.customize.vkontakte.title" /></h4>
 </div>
 <div class="modal-body">
-    <form id="moduleEditForm"  class="sky-form" >
+    <form id="moduleEditForm"  class="form-horizontal" role="form" data-toggle="validator" novalidate="novalidate"  >
         <fieldset>
-            <section>
-                <label class="label"><g:message code="setting.customize.vkontakte.widget.id" /></label>
-                <label class="input state-success">
-                    <input type="text" name="widgetid" value="${module.params?.widgetid?.value}">
+            <div class="form-group">
+               <label class="col-lg-3 control-label"><g:message code="setting.customize.vkontakte.widget.id" /></label>
+                <div class="col-lg-7">
+                    <input class="form-control" type="text" name="widgetid" value="${module.params?.widgetid?.value}">
                     <div class="note"> <g:message code="setting.customize.vkontakte.widget.id.note" /> </div>
-                </label>
-            </section>
+                </div>
+            </div>
 
 
         </fieldset>

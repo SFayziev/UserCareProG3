@@ -3,13 +3,13 @@
     <h4 class="modal-title"><g:message code="setting.customize.edit.text" /></h4>
 </div>
 <div class="modal-body">
-    <form id="moduleEditForm"  class="sky-form" >
+    <form id="moduleEditForm"   class="form-horizontal" role="form" data-toggle="validator" novalidate="novalidate"  >
         <fieldset>
-            <section>
-                <label class="input state-success">
-                    <textarea rows="4" id="articleDesc" name="description">${module.params?.description?.value}</textarea>
-                </label>
-            </section>
+            <div class="form-group">
+                <div class="col-lg-12">
+                    <textarea class="form-control" rows="4" id="articleDesc" name="description">${module.params?.description?.value}</textarea>
+                </div>
+            </div>
         </fieldset>
         <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal"><g:message code="button.cancel" /></button>

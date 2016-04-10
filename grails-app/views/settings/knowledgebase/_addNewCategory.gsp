@@ -17,7 +17,7 @@
         </section>
         <section>
             <label class="label"><g:message code="setting.community.category.parent" /></label>
-            <label class="select state-success">
+            <div class="col-lg-7">
                 <g:select  optionKey="id" value="${category?.parentid}" noSelection="['0':'']"
                            name="category.parentid"  optionValue="name" from="${categoris}" />
                 <i></i>
@@ -26,7 +26,7 @@
         </section>
         <section>
             <label class="label"><g:message code="setting.community.category.privacy" /></label>
-            <label class="select state-success">
+            <div class="col-lg-7">
                 %{--<label for="firstreplystatus" class="select state-success">--}%
                 <g:select name="description.privated" from="${['0', '1' ]}" value="${category?.privated }"
                           valueMessagePrefix="setting.community.category.privacy.type" />

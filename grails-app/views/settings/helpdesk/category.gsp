@@ -11,7 +11,7 @@
     <g:form controller="community" action="helpdesk"  id="${params.id}" class="sky-form" style="border: none;" >
         <section>
             <label class="label"><g:message code="setting.community.category.assigne.mode.text" /></label>
-            <label class="select state-success">
+            <div class="col-lg-7">
                 <g:select name="assigntype" from="${['0', '1' ,'2']}" value="${forum?.privacy?.assigntype }"
                           valueMessagePrefix="setting.community.category.assigne.mode" />
                 <i></i>
