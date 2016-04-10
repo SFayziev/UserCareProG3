@@ -12,7 +12,7 @@
 
             <section>
                 <label class="label"><g:message code="setting.community.tag.assigne.title" /></label>
-                <label class="select state-success">
+                <div class="col-lg-7">
                     <g:select name="assigntag" from="${['0', '1' ]}" value="${forum?.privacy?.assigntag }"
                               valueMessagePrefix="setting.community.tag.assigne.type" />
                     <i></i>

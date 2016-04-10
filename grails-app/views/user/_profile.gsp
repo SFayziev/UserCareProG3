@@ -1,7 +1,7 @@
 <div class="module-body" >
 
     <div class="panel-body">
-         <g:form controller="user" action="profile" class="form-horizontal sky-form" role="form" data-toggle="validator" novalidate="novalidate" >
+         <g:form controller="user" action="profile" class="form-horizontal" role="form" data-toggle="validator" novalidate="novalidate" >
              <div class="form-group">
                  <label  class="col-lg-4 control-label"></label>
                  <div class="col-lg-8">

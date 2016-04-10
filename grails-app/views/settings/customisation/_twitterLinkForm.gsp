@@ -5,21 +5,22 @@
 <div class="modal-body">
     <form id="moduleEditForm"  class="sky-form" >
         <fieldset>
-            <section>
-                <label class="label"><g:message code="setting.customize.twitter.widget.id" /></label>
-                <label class="input state-success">
-                    <input type="text" name="widgetid" value="${module.params?.widgetid?.value}">
+            <div class="form-group">
+               <label class="col-lg-4 control-label"><g:message code="setting.customize.twitter.widget.id" /></label>
+                <div class="col-lg-7">
+                    <input class="form-control" type="text" name="widgetid" value="${module.params?.widgetid?.value}">
                     <div class="note"> <g:message code="setting.customize.twitter.widget.id.note" /> </div>
-                </label>
-            </section>
-
-            <section>
-                <label class="label"><g:message code="setting.customize.facefook.height"   /></label>
-                <label class="input state-success">
-                    <input type="text" name="formheight" type="number" value="${module.params?.formheight?.value}">
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+               <label class="col-lg-4 control-label"><g:message code="setting.customize.facefook.height"   /></label>
+                <div class="col-lg-7">
+                    <input class="form-control" type="text" name="formheight" type="number" value="${module.params?.formheight?.value}">
                     <div class="note"> <g:message code="setting.customize.facefook.height.note" /> </div>
-                </label>
-            </section>
+                </div>
+            </div>
 
         </fieldset>
         <div class="modal-footer">

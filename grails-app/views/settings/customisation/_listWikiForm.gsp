@@ -3,31 +3,32 @@
     <h4 class="modal-title"><g:message code="setting.customize.listWiki.title" /></h4>
 </div>
 <div class="modal-body">
-    <form id="moduleEditForm"  class="sky-form" >
+    <form id="moduleEditForm"  class="form-horizontal" role="form" data-toggle="validator" novalidate="novalidate"  >
         <fieldset>
-            <section>
-                <label class="label"><g:message code="setting.customize.forumlist.param.header" /></label>
-                <label class="input state-success">
-                    <input type="text" name="title" value="${module.params?.title?.value}">
-                </label>
-            </section>
-            <section>
-                <label class="label"><g:message code="setting.customize.listWiki.mode" /></label>
-                <label class="select state-success">
+            <div class="form-group">
+               <label class="col-lg-3 control-label"><g:message code="setting.customize.forumlist.param.header" /></label>
+                <div class="col-lg-7">
+                    <input class="form-control" type="text" name="title" value="${module.params?.title?.value}">
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+               <label class="col-lg-3 control-label"><g:message code="setting.customize.listWiki.mode" /></label>
+                <div class="col-lg-8">
                     %{--<label for="firstreplystatus" class="select state-success">--}%
-                    <g:select name="modetype" from="${['default', 'onelevel']}" value="${module.params?.modetype?.value }"
+                    <g:select class="form-control" name="modetype" from="${['default', 'onelevel']}" value="${module.params?.modetype?.value }"
                               valueMessagePrefix="setting.customize.listWiki.mode.type" />
-                    <i></i>
-
-                </label>
-            </section>
-
-            <section>
-                <label class="label"><g:message code="setting.customize.forumlist.maxRecods" type="number"  /></label>
-                <label class="input state-success">
-                    <input type="text" name="maxRecords" value="${module.params?.maxRecords?.value}">
-                </label>
-            </section>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <div class="form-group">
+               <label class="col-lg-3 control-label"><g:message code="setting.customize.forumlist.maxRecods" type="number"  /></label>
+                <div class="col-lg-7">
+                    <input class="form-control" type="text" name="maxRecords" value="${module.params?.maxRecords?.value}">
+                </div>
+            </div>
 
         </fieldset>
         <div class="modal-footer">

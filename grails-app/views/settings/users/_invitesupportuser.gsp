@@ -4,15 +4,17 @@
         <g:message code="setting.user.agents.add.new" />
     </h4>
 </div>
-<g:form controller="users" action="invitesupportuser"  id="${params.id}" class="form-horizontal sky-form" role="form" data-toggle="validator"  >
+<g:form controller="users" action="invitesupportuser"  id="${params.id}" class="form-horizontal" role="form" data-toggle="validator"  >
     <div class="modal-body">
-        <section>
-            <label class="label"><b><g:message code="setting.email"/></b></label>
-            <label class="input state-success">
-                <input   name="user.email"  required type="email" value="">
-                <div class="note">  <g:message code="setting.user.agents.add.new.info" /></div>
-            </label>
-        </section>
+        <fieldset>
+            <div class="form-group">
+                <label class="col-lg-3 control-label"><b><g:message code="setting.email"/></b></label>
+                <div class="col-lg-8">
+                    <input  class="form-control" name="user.email"  required type="email" value="">
+                    <div class="note">  <g:message code="setting.user.agents.add.new.info" /></div>
+                </div>
+            </div>
+        </fieldset>
 
     <div class="alert alert-info fade in">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
