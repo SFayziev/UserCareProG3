@@ -1,27 +1,22 @@
 <g:applyLayout name="settingMain">
     <content tag="mainContent1">
 
-<div class="tag-box tag-box-v1 margin-bottom-10">
 
-    <ol class="breadcrumb hidden-xs">
-        <li><g:link controller="knowledgebase" ><g:message code="forum.type1" /></g:link> </li>
-        <li class="active"><g:link controller="community" action="control" > <g:message code="setting.leftMenu.community.privacy" /></g:link></li>
-    </ol>
+        <h3><g:link controller="community" ><g:message code="setting.leftMenu.community" /></g:link> /
+        <g:link controller="community" action="control" > <g:message code="setting.leftMenu.community.privacy" /></g:link>
+        </h3>
 
-    <div class="panel-body">
-        <g:form controller="community" action="privacy" id="${forum.id}" class="form-horizontal sky-form" role="form" data-toggle="validator" novalidate="novalidate" >
-            <div class="form-group">
-                <label  class="col-lg-4 control-label"></label>
-                <div class="col-lg-8">
-                    <h4><i class="fa fa-lock "></i> <g:message code="setting.leftMenu.community.privacy" />: <span class="color-green">${forum.name}</span> </h4>
-                </div>
-
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4><i class="fa fa-lock "></i> <g:message code="setting.leftMenu.community.privacy" />: <span class="color-green">${forum.name}</span> </h4>
             </div>
+            <g:form controller="community" action="privacy" id="${forum.id}" class="form-horizontal sky-form" role="form" data-toggle="validator" novalidate="novalidate" >
 
-            <div class="form-group">
-                <label  class="col-lg-4 control-label"><g:message code="setting.community.privacy.mode" /></label>
-                <hr>
-            </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label  class="col-lg-4 control-label"><g:message code="setting.community.privacy.mode" /></label>
+                        <hr>
+                    </div>
             <div class="form-group">
                 <label class="col-lg-4 control-label"><g:message code="setting.community.privacy.mode.public" /></label>
                 <div class="col-lg-8">
@@ -75,16 +70,14 @@
             </div>
 
 
-            <footer>
-                <div class="row"><g:render template="/layouts/errorMessage" /></div>
-                <div class="col-lg-offset-4 col-lg-8 margin-bottom-10">
-                    <button type="submit" name="submit" value="save" class="btn-u btn-u-green"><g:message code="button.save" /></button>
-                </div>
-            </footer>
-        </g:form>
 
-    </div>
-</div>
+             </div>
+                <div class="panel-footer text-center">
+                    <button type="reset" class="btn btn-default"><g:message code="button.cancel" /></button>
+                    <button type="submit" name="submit" value="save" class="btn btn-primary"><g:message code="button.save" /></button>
+                </div>
+            </g:form>
+        </div>
 
     </content>
 </g:applyLayout>

@@ -1,12 +1,11 @@
 <g:applyLayout name="settingMain">
     <content tag="mainContent1">
 
-<div class="tag-box tag-box-v1 margin-bottom-10">
+        <h3><g:link controller="knowledgebase" ><g:message code="forum.type1" /></g:link> /
+        <g:link controller="knowledgebase" action="control" > <g:message code="setting.leftMenu.community.categories" /></g:link>
+        </h3>
 
-    <ol class="breadcrumb hidden-xs">
-        <li><g:link controller="knowledgebase" ><g:message code="forum.type1" /></g:link> </li>
-        <li class="active"><g:link controller="knowledgebase" action="control" > <g:message code="setting.leftMenu.community.categories" /></g:link></li>
-    </ol>
+        <div class="panel panel-default">
 
     <div class="panel-body">
         <div >
@@ -43,9 +42,6 @@
         </table>
     </div>
 </div>
-<g:render template="/modal/imageSelector"/>
-<g:render template="/modal/myModal"/>
-<g:render template="/modal/translationForm"/>
 
     </content>
 </g:applyLayout>

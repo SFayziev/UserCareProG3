@@ -50,7 +50,7 @@ class KnowledgebaseController {
             redirect action: 'tag', params: [id:id]
         }
         else {
-            render template: '/settings/knowledgebase/addNewTag' , model: model
+            render view: '/settings/community/tag', model: model
         }
     }
 
@@ -214,7 +214,7 @@ class KnowledgebaseController {
             redirect action: 'category', params: [id:id]
         }
         else{
-            render template: '/settings/knowledgebase/addNewCategory' , model: model
+            render template: '/settings/community/addNewCategory' , model: model
         }
     }
 

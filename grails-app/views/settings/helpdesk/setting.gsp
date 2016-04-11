@@ -5,74 +5,52 @@
         </h3>
 
         <div class="panel panel-default">
-    <div class="panel-body">
-        <g:form controller="helpdesk" action="setting" id="${forum.id}" class="form-horizontal sky-form" role="form" data-toggle="validator" novalidate="novalidate" >
-            <div class="form-group">
-                <label  class="col-lg-4 control-label"></label>
-                <div class="col-lg-8">
-                    <h4><i class="fa fa-cog "></i> <g:message code="setting.leftMenu.project.settings" />: <span class="color-green">${forum.name}</span></h4>
-                </div>
-
+            <div class="panel-heading">
+                <h4><i class="fa fa-cog "></i> <g:message code="setting.leftMenu.project.settings" />: <span class="color-green">${forum.name}</span></h4>
             </div>
-            <div class="form-group">
-                <label for="name" class="col-lg-4 control-label"><g:message code="setting.name" /></label>
-                <div class="col-lg-8">
-                    <label for="name" class="input input-file state-success">
-                        <input  id="name" name="forum.name" required type="text" value="${forum?.name}">
-                        <div class="help-block with-errors"></div>
-                    </label>
-                </div>
-            </div>
+            <g:form controller="helpdesk" action="setting" id="${forum.id}" class="form-horizontal sky-form" role="form" data-toggle="validator" novalidate="novalidate" >
 
-            <div class="form-group">
-                <label for="firstreplystatus" class="col-lg-4 control-label"><g:message code="setting.community.setting.status.first.reply" /></label>
-                <div class="col-lg-8">
-                    <label for="firstreplystatus" class="select state-success">
-                        <g:select id="firstreplystatus" optionKey="id" value="${forum?.firstreplystatus}"
-                                  name="forum.firstreplystatus"  optionValue="name" from="${topicStatuses}" />
-                        <i></i>
-                    </label>
-                </div>
-            </div>
+                <div class="panel-body">
 
-            <div class="form-group">
-                <label for="satisfactionon" class="col-lg-4 control-label"><g:message code="setting.community.setting.satisfaction.rating" /></label>
-                <div class="col-lg-8">
-                    <label class="checkbox state-success"><input id ="satisfactionon" name="forum.satisfactionon"  value="1" <g:if test="${forum.satisfactionon}">checked=""</g:if>  type="checkbox"><i></i><g:message code="setting.community.setting.satisfaction.rating.description"/> </label>
-                </div>
-            </div>
+                    <div class="form-group">
+                        <label for="name" class="col-lg-4 control-label"><g:message code="setting.name" /></label>
+                        <div class="col-lg-7">
+                            <input  class="form-control" id="name" name="forum.name" required type="text" value="${forum?.name}">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="satisfactionon" class="col-lg-4 control-label"><g:message code="setting.community.setting.satisfaction.rating" /></label>
+                        <div class="col-lg-7">
+                            <div class="checkbox c-checkbox">
+                                <label>
+                                    <input class="form-control" id ="satisfactionon" name="forum.satisfactionon"  value="1" <g:if test="${forum.satisfactionon}">checked=""</g:if>  type="checkbox">
+                                    <span class="fa fa-check"></span> <g:message code="setting.community.setting.satisfaction.rating.description"/>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="form-group">
-                <label for="forum.langid" class="col-lg-4 control-label"><g:message code="setting.default.language" /></label>
-                <div class="col-lg-8">
-                    <label for="forum.langid" class="select state-success">
-                        <g:select id="forum.langid" optionKey="id" value="${forum?.langid}"
-                                  name="forum.langid"  optionValue="name" from="${activleLangs}" />
-                        <i></i>
-                    </label>
+                    <div class="form-group">
+                        <label for="forum.langid" class="col-lg-4 control-label"><g:message code="setting.default.language" /></label>
+                        <div class="col-lg-7">
+                            <g:select class="form-control" id="forum.langid" optionKey="id" value="${forum?.langid}"
+                                      name="forum.langid"  optionValue="name" from="${activleLangs}" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="defkhowlagebase" class="col-lg-4 control-label"><g:message code="setting.community.setting.related.knowlage" /></label>
+                        <div class="col-lg-7">
+                            <g:select class="form-control" id="defkhowlagebase" optionKey="id" value="${forum?.defkhowlagebase}"
+                                      name="forum.defkhowlagebase"  optionValue="name" from="${knowledgebases}" />
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-
-            <div class="form-group">
-                <label for="defkhowlagebase" class="col-lg-4 control-label"><g:message code="setting.community.setting.related.knowlage" /></label>
-                <div class="col-lg-8">
-                    <label for="defkhowlagebase" class="select state-success">
-                        <g:select id="defkhowlagebase" optionKey="id" value="${forum?.defkhowlagebase}"
-                                  name="forum.defkhowlagebase"  optionValue="name" from="${knowledgebases}" />
-                        <i></i>
-                    </label>
+                <div class="panel-footer text-center">
+                    <button type="reset" class="btn btn-default"><g:message code="button.cancel" /></button>
+                    <button type="submit" name="submit" value="save" class="btn btn-primary"><g:message code="button.save" /></button>
                 </div>
-            </div>
-            <footer>
-                <div class="row"><g:render template="/layouts/errorMessage" /></div>
-                <div class="col-lg-offset-4 col-lg-8 margin-bottom-10">
-                    <button type="submit" name="submit" value="save" class="btn-u btn-u-green"><g:message code="button.save" /></button>
-                </div>
-            </footer>
-        </g:form>
-
-    </div>
+            </g:form>
 </div>
 
 

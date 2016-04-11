@@ -5,9 +5,10 @@
         <g:else><g:message code="default.button.add.label" /></g:else>
     </h4>
 </div>
-<g:form controller="${params.controller}" action="${params.action}"  id="${params.id}" class="form-horizontal" role="form" data-toggle="validator" novalidate="novalidate" >
+<g:form controller="${params.controller}" action="${params.action}"  id="${params.id}"  class="form-horizontal" role="form" data-toggle="validator" novalidate="novalidate" >
     <div class="modal-body">
-        <input type="hidden" name="topicStatus" value="${params.topicStatus}">
+        <input type="hidden" name="topicStatus" value="${topicStatus.id}">
+        <input type="hidden" name="topictype" value="${params.topictype}">
          <div class="form-group">
             <label class="col-lg-3 control-label"><g:message code="setting.name" /></label>
              <div class="col-lg-8">

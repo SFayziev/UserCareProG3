@@ -34,14 +34,10 @@ class ArticleController {
         def id= params.int("id")
         def forumid=params.int("forumid")
         def article = webServicesSession.getProjectArticle(project.id, id);
+
         if (article!= null){
-//            def comments= webServicesSession.getArticleComments(id)
+            if (forumid== null) forumid= article.getForumDTO().id;
             def modulPos=webServicesSession.getModuleBydisplaypos(project.id,  forumid, ModuleDisplay.ItemPanel , null, null)
-
-//            def module=[modulPos:modulPos, params: [showTopicAvatar:1, topicPresentation:"full"]]
-//            def articleStatuses=webServicesSession.getArticleStatusByTopicTypeId(project.id , article.type.id )
-
-//            def answer = article.answerCommentid? webServicesSession.getCommentbyId(article.answerCommentid): null;
             render view: 'item', model: [UCproject:project, modulPos: modulPos, article:article ,forum:article.getForumDTO()]
         }
         else {

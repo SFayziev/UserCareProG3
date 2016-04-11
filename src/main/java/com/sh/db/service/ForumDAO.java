@@ -260,9 +260,9 @@ public class ForumDAO extends GenericDaoImpl<ForumDTO> {
     }
 
     @CacheEvict(value = "topicTypeStatusDTO",   allEntries = true)
-    public TopicTypeStatusDTO saveTypeStatusDTOs(TopicTypeStatusDTO topicTypeStatusDTO){
+    public TopicTypeStatusDTO saveTypeStatusDTOs(TopicTypeStatusDTO topicTypeStatusDTO) {
         if (topicTypeStatusDTO.getId() == null) {
-            topicTypeStatusDTO.setPos(getMaxPos(null,  topicTypeStatusDTO.getTopicTypeDTO().getId(), CategoriesDTO.class)+1);
+            topicTypeStatusDTO.setPos(getMaxPos(null,  topicTypeStatusDTO.getTopicTypeDTO().getId(), TopicTypeStatusDTO.class)+1);
         }
         currentSession().saveOrUpdate(topicTypeStatusDTO);
         return topicTypeStatusDTO;
@@ -271,7 +271,7 @@ public class ForumDAO extends GenericDaoImpl<ForumDTO> {
 
 
     @Cacheable( value = "topicTypeStatusDTO" )
-    public TopicTypeStatusDTO getTopicTypeStatusById(Integer projid, Integer typeStatusId){
+    public TopicTypeStatusDTO getTopicTypeStatusById(Integer projid, Integer typeStatusId) {
         return (TopicTypeStatusDTO) currentSession().createQuery("from TopicTypeStatusDTO where id=:typeStatusId order by pos")
                 .setParameter("typeStatusId" , typeStatusId).uniqueResult();
 
@@ -403,15 +403,15 @@ public class ForumDAO extends GenericDaoImpl<ForumDTO> {
     }
 
     @CacheEvict(value = "forumTagsDTO",  allEntries = true)
-    public ForumTagsDTO saveForumTag(ForumTagsDTO forumTagsDTO){
+    public ForumTagsDTO saveForumTag(ForumTagsDTO forumTagsDTO) {
         currentSession().saveOrUpdate(forumTagsDTO);
         return  forumTagsDTO;
     }
 
     @CacheEvict(value = "topicTypeDTO",  allEntries = true)
 
-    public TopicTypeDTO saveForumType(TopicTypeDTO topicTypeDTO ){
-        if (topicTypeDTO.getId()== null ){
+    public TopicTypeDTO saveForumType(TopicTypeDTO topicTypeDTO ) {
+        if (topicTypeDTO.getId() == null ) {
             topicTypeDTO.setPos(getMaxPos(topicTypeDTO.getForumid(), TopicTypeDTO.class));
         }
         currentSession().saveOrUpdate(topicTypeDTO);
@@ -460,7 +460,7 @@ public class ForumDAO extends GenericDaoImpl<ForumDTO> {
         Criteria criteria = currentSession()
                 .createCriteria(cl)
                 .setProjection(Projections.max("pos"));
-        criteria.add(Restrictions.eq("typeid", topicTypeid));
+        criteria.add(Restrictions.sqlRestriction("typeid="+ topicTypeid));
         Integer maxPos = (Integer) criteria.uniqueResult();
         return maxPos == null?0:maxPos;
     }
