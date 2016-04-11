@@ -7,56 +7,35 @@
 
 
        <!-- Connection Factory -->
-       <bean id="rabbitConnectionFactory"
-             class="org.springframework.amqp.rabbit.connection.CachingConnectionFactory">
-              <constructor-arg value="usercare.info"/>
-              <property name="username" value="${amgp.username}" />
-              <property name="password" value="${amgp.password}" />
-              <property name="virtualHost" value="${amgp.virtualhost}" />
-              <property name="port" value="${amgp.port}" />
-       </bean>
+   <bean id="rabbitConnectionFactory"
+         class="org.springframework.amqp.rabbit.connection.CachingConnectionFactory">
+          <constructor-arg value="usercare.info"/>
+          <property name="username" value="${amgp.username}" />
+          <property name="password" value="${amgp.password}" />
+          <property name="virtualHost" value="${amgp.virtualhost}" />
+          <property name="port" value="${amgp.port}" />
+   </bean>
+    <rabbit:template id="template" connection-factory="rabbitConnectionFactory"  exchange="TUTORIAL-EXCHANGE"/>
+    <bean id="amqpEvents" class="com.sh.messaging.amqp.AmqpEvents">
+        <constructor-arg ref="template" />
+    </bean>
 
-
-
-        <rabbit:template id="template" connection-factory="rabbitConnectionFactory"  exchange="TUTORIAL-EXCHANGE"/>
-
-        <bean id="amqpEvents" class="com.sh.messaging.amqp.AmqpEvents">
-            <constructor-arg ref="template" />
-        </bean>
-
-       <!-- Spring AMQP Admin -->
-       <bean id="admin" class="org.springframework.amqp.rabbit.core.RabbitAdmin">
-              <constructor-arg ref="rabbitConnectionFactory" />
-       </bean>
-
+   <!-- Spring AMQP Admin -->
+   <bean id="admin" class="org.springframework.amqp.rabbit.core.RabbitAdmin">
+          <constructor-arg ref="rabbitConnectionFactory" />
+   </bean>
     <bean id="mailListener" class="com.sh.messaging.amqp.MailListener" />
     <bean id="topicListener" class="com.sh.messaging.amqp.TopicListener" />
-
-
     <rabbit:queue name="topicCreatedQueue" />
     <rabbit:queue name="topicUpdatedQueue" />
     <rabbit:queue name="topicMergedQueue" />
     <rabbit:queue name="mailQueue" />
-
-    <!--<rabbit:topic-exchange id="mailExchange" name="TUTORIAL-EXCHANGE">-->
-        <!--<rabbit:bindings>-->
-
-            <!--<rabbit:binding  queue="topicCreatedQueue"  pattern="topic.created"/>-->
-            <!--<rabbit:binding queue="topicUpdatedQueue"  pattern="topic.updated"/>-->
-            <!--<rabbit:binding queue="topicMergedQueue"  pattern="topic.merged"/>-->
-            <!--<rabbit:binding queue="mailQueue" pattern="mail.*"/>-->
-        <!--</rabbit:bindings>-->
-    <!--</rabbit:topic-exchange>-->
-
     <context:component-scan base-package="com.sh.messaging.amqp" />
-
-
     <rabbit:listener-container  connection-factory="rabbitConnectionFactory">
         <rabbit:listener ref="mailListener" queue-names="mailQueue" />
         <rabbit:listener ref="topicListener" queue-names="topicCreatedQueue" response-routing-key="topic.created" method="onCreated"  />
         <rabbit:listener ref="topicListener" queue-names="topicUpdatedQueue" response-routing-key="topic.updated" method="onUpdated"  />
         <rabbit:listener ref="topicListener" queue-names="topicMergedQueue" response-routing-key="topic.merged" method="onMerged"  />
-
     </rabbit:listener-container>
 
 </beans>

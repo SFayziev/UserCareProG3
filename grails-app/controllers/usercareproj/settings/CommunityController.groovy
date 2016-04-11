@@ -403,15 +403,19 @@ def delete(){
         def forum=webServicesSession.getForumById(project.id , id)
         def model=[UCproject: project]
         def topicStatus=params.getInt("topicStatus")?webServicesSession.getTopicTypeStatusById( project.id,  params.getInt("topicStatus")):new TopicTypeStatusDTO()
-
+        def topicType=webServicesSession.getForumTypeByid(project.id, params.getInt("topictype"))
 
         if (params.submit=="save"  ) {
             def articlestatus=topicStatus.articleStatusDTO
+
             if (articlestatus== null){
                 articlestatus=new ArticleStatusDTO(project.id , forum.id)
                 topicStatus.articleStatusDTO=articlestatus;
-            }
 
+            }
+            if (topicStatus.getTopicTypeDTO()== null){
+                topicStatus.setTopicTypeDTO(topicType)
+            }
             bindData(articlestatus , params, 'articleStatus')
             topicStatus.articleStatusDTO=articlestatus;
             webServicesSession.saveTypeStatusDTOs(topicStatus)
