@@ -1,13 +1,10 @@
 <g:applyLayout name="settingMain">
     <content tag="mainContent1">
+        <h3><g:link controller="helpdesk" ><g:message code="forum.type0" /></g:link> /
+        <g:link controller="helpdesk" action="setting" > <g:message code="setting.leftMenu.project.settings" /></g:link>
+        </h3>
 
-<div class="tag-box tag-box-v1 margin-bottom-10">
-
-    <ol class="breadcrumb hidden-xs">
-        <li><g:link controller="community" ><g:message code="forum.type0" /></g:link> </li>
-        <li class="active"><g:link controller="community" action="control" > <g:message code="setting.leftMenu.project.settings" /></g:link></li>
-    </ol>
-
+        <div class="panel panel-default">
     <div class="panel-body">
         <g:form controller="helpdesk" action="setting" id="${forum.id}" class="form-horizontal sky-form" role="form" data-toggle="validator" novalidate="novalidate" >
             <div class="form-group">

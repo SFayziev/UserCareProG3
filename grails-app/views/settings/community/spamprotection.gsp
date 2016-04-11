@@ -120,7 +120,7 @@
     </div>
 
     <div class="col-md-6">
-        <g:form controller="community" action="spamprotection" id="${forum.id}" class="form-horizontal sky-form" role="form" data-toggle="validator" novalidate="novalidate" >
+        <g:form controller="community" action="spamprotection" id="${forum.id}" class="form-horizontal" role="form" data-toggle="validator" novalidate="novalidate" >
 
             <div class="panel panel-default">
                 <div class="panel-heading">

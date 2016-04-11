@@ -7,7 +7,7 @@
 
 
     <div class="panel panel-default">
-        <g:form controller="project" action="aliasing" id="moduleEditForm"  class="sky-form" >
+        <g:form controller="project" action="aliasing" id="moduleEditForm"  class="form-horizontal" >
             <div class="panel-body">
                 <p><g:message code="setting.project.aliasing.text1"/></p>
                 <h4><g:message code="setting.project.aliasing.text2" /></h4>

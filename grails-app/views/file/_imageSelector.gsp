@@ -13,7 +13,7 @@
         <div class="tab-content">
         <g:if test="${withicon}">
             <div class="tab-pane fade " id="home" >
-                <form class="sky-form">
+                <form class="form-horizontal">
                 <div class="row">
                     <div class="col col-1 margin-bottom-10">
                         <i class="icon-custom rounded-x icon-bg-u fa  "  id="selIcon"></i>

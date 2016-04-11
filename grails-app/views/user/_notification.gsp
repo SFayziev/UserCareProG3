@@ -2,7 +2,7 @@
 <div class="module-body" >
     <h4><g:message code="user.notification.title" />  </h4>
     <p><g:message code="user.notification.note" /> </p><br>
-    <g:form controller="user" action="notification" id="${user.id}" class="sky-form">
+    <g:form controller="user" action="notification" id="${user.id}" class="form-horizontal">
         <div class="tag-box tag-box-v6 margin-bottom-40">
 
             <ul class="list-inline margin-bottom-40">
