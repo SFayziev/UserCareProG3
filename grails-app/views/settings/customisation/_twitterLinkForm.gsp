@@ -3,7 +3,7 @@
     <h4 class="modal-title"><g:message code="setting.customize.twitter.title" /></h4>
 </div>
 <div class="modal-body">
-    <form id="moduleEditForm"  class="sky-form" >
+    <form id="moduleEditForm"  class="form-horizontal" >
         <fieldset>
             <div class="form-group">
                <label class="col-lg-4 control-label"><g:message code="setting.customize.twitter.widget.id" /></label>

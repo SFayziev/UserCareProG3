@@ -1,13 +1,14 @@
 <g:applyLayout name="settingMain">
     <content tag="mainContent1">
-        <h3><g:link controller="community" ><g:message code="setting.leftMenu.community" /></g:link> /
-        <g:link controller="community" action="control" > <g:message code="setting.leftMenu.community.types" /></g:link>
+        <h3><g:link controller="helpdesk" ><g:message code="forum.type0" /></g:link> /
+        <g:link controller="helpdesk" action="topicType" > <g:message code="setting.leftMenu.community.types" /></g:link>
         </h3>
 
         <div class="panel panel-default">
             <div class="panel-body">
                 <div >
-                    <a data-toggle="modal" href="/settings/community/edittopicType/${forum.id}" data-target="#ucmodal"  class="btn-u btn-brd rounded btn-u-default btn-u-xs" ><i class="fa fa-plus"></i> <g:message code="setting.community.topic.type.addnew" />  </a>
+                    <g:link controller="${params.controller}" action="edittopicType" id="${forum.id}" data-target="#ucmodal"  class="btn-u btn-brd rounded btn-u-default btn-u-xs"  > <i class="fa fa-plus"></i> <g:message code="setting.community.topic.type.addnew" />  </g:link>
+                    %{--<a data-toggle="modal" href="/settings/community/edittopicType/${forum.id}" data-target="#ucmodal"  class="btn-u btn-brd rounded btn-u-default btn-u-xs" ><i class="fa fa-plus"></i> <g:message code="setting.community.topic.type.addnew" />  </a>--}%
                 </div>
                 <table class="table table-striped">
                     <thead>

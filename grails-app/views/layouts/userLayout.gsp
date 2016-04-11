@@ -23,8 +23,8 @@
             %{--</div>--}%
         %{--</div>--}%
 
-        <g:render template="/modal/imageSelector"/>
+        %{--<g:render template="/modal/imageSelector"/>--}%
         <asset:javascript src="validator.min.js"/>
-        <asset:stylesheet  src="sky-forms.css"/>
+        %{--<asset:stylesheet  src="sky-forms.css"/>--}%
     </content>
 </g:applyLayout>

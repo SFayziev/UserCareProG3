@@ -3,7 +3,7 @@
     <h4 class="modal-title"><g:message code="setting.customize.google.title" /></h4>
 </div>
 <div class="modal-body">
-    <form id="moduleEditForm"  class="sky-form" >
+    <form id="moduleEditForm" class="form-horizontal"  role="form" data-toggle="validator" novalidate="novalidate" >
         <fieldset>
             <div class="form-group">
                <label class="col-lg-3 control-label"><g:message code="setting.name" /></label>

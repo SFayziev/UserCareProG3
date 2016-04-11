@@ -54,7 +54,7 @@ class HelpdeskController {
         model.forum=webServicesSession.getForumById( project.id , id )
         model.activleLangs=webServicesSession.getProjectActiveLangs(project.id)
         model.knowledgebases=webServicesSession.getForumByType(project.id, ForumType.HelpDesk)
-        model.topicStatuses=webServicesSession.getArticleStatusByForumId(project.id, id )
+//        model.topicStatuses=webServicesSession.getArticleStatusByForumId(project.id, id )
 
         if (params.get("submit")=="save" ){
             def forum = new ForumDTO();

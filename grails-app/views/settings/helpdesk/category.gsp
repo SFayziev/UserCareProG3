@@ -1,31 +1,37 @@
 <g:applyLayout name="settingMain">
     <content tag="mainContent1">
+        <h3><g:link controller="helpdesk" ><g:message code="forum.type0" /></g:link> /
+        <g:link controller="helpdesky" action="control" > <g:message code="setting.leftMenu.community.categories" /></g:link>
+        </h3>
+        <div class="row">
+            <div class="col-sm-8">
 
-<div class="tag-box tag-box-v1 margin-bottom-10">
+                <div class="panel panel-default">
+                    <g:form controller="community" action="helpdesk"  id="${params.id}" class="sky-form" style="border: none;" >
+                        <div class="panel-body">
+                            <fieldset>
+                                <div class="form-group">
+                                    <label class="col-lg-5 control-label"><g:message code="setting.community.category.assigne.mode.text" /></label>
+                                    <div class="col-lg-7">
+                                        <g:select name="assigntype" class="form-control" from="${['0', '1' ,'2']}" value="${forum?.privacy?.assigntype }"
+                                                  valueMessagePrefix="setting.community.category.assigne.mode" />
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="panel-footer text-center">
+                            <button type="submit" name="submit" value="save" class="btn btn-primary"><g:message code="button.save" /></button>
+                        </div>
 
-    <ol class="breadcrumb hidden-xs">
-        <li><g:link controller="community" ><g:message code="forum.type0" /></g:link> </li>
-        <li class="active"><g:link controller="helpdesky" action="control" > <g:message code="setting.leftMenu.community.categories" /></g:link></li>
-    </ol>
-    <div class="panel-body">
-    <g:form controller="community" action="helpdesk"  id="${params.id}" class="sky-form" style="border: none;" >
-        <section>
-            <label class="label"><g:message code="setting.community.category.assigne.mode.text" /></label>
-            <div class="col-lg-7">
-                <g:select name="assigntype" from="${['0', '1' ,'2']}" value="${forum?.privacy?.assigntype }"
-                          valueMessagePrefix="setting.community.category.assigne.mode" />
-                <i></i>
-            </label>
-        </section>
-        <section>
-            <button  type="submit"  name="submit" value="save" class="btn btn-primary"><g:message code="button.change" /></button>
-        </section>
+                    </g:form>
+                </div>
+            </div>
+       </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="panel panel-default">
 
-    </g:form>
-    </div>
-
-
-    <div class="panel-body">
+                     <div class="panel-body">
         <div >
             <a data-toggle="modal" href="/settings/helpdesk/addNewCategory/${forum.id}" data-target="#ucmodal"  class="btn-u btn-brd rounded btn-u-default btn-u-xs" ><i class="fa fa-plus"></i> <g:message code="setting.community.category.addnew" />  </a>
             %{--<button class="btn-u btn-brd rounded btn-u-default btn-u-xs" type="button"><i class="fa fa-download"></i> <g:message code="setting.community.categoru.addnew" />  </button>--}%
@@ -59,7 +65,9 @@
             </tbody>
         </table>
     </div>
-</div>
+                </div>
+            </div>
+        </div>
 <g:render template="/modal/imageSelector"/>
 <g:render template="/modal/myModal"/>
 <g:render template="/modal/translationForm"/>
