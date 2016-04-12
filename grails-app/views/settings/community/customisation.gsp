@@ -19,9 +19,9 @@
                     <ul class="dropdown-menu" role="menu">
                         <li><a class="disable"> <g:message code="setting.customize.add.new.note" /></a> </li>
 
-                        <li><a  data-toggle="modal" href="/settings/customisation/listwidget/${params.id}?vtype=${params.vtype}&dtype=0" data-target="#myLargModal" ><g:message code="setting.customize.add.new.tomain" /> </a></li>
+                        <li><a  href="#" onclick="showModal('#ucmodal-lg', '/settings/customisation/listwidget/${params.id}?vtype=${params.vtype}&dtype=0' );"  ><g:message code="setting.customize.add.new.tomain" /> </a></li>
                     <g:if test="${params.vtype==null || params.vtype=='dashboard'}">
-                        <li><a  data-toggle="modal" href="/settings/customisation/listwidget/${params.id}?vtype=${params.vtype}&dtype=1" data-target="#myLargModal" ><g:message code="setting.customize.add.new.toside" /></a></li>
+                        <li><a  href="#" onclick="showModal('#ucmodal-lg', '/settings/customisation/listwidget/${params.id}?vtype=${params.vtype}&dtype=1' );"  ><g:message code="setting.customize.add.new.toside" /></a></li>
                     </g:if>
                     </ul>
                 </div>
@@ -41,7 +41,7 @@
 
     </div>
 
-<g:render template="/modal/myLargModal"/>
+%{--<g:render template="/modal/myLargModal"/>--}%
 
 
 <script language="JavaScript">

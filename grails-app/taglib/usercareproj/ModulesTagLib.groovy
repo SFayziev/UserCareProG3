@@ -73,6 +73,10 @@ class ModulesTagLib {
         }
     }
 
+    def customScript = { attrs ->
+        out << render(template: "/project/customScript" , model: params)
+    }
+
 
     def wikiList = { attrs ->
         def params = attrs.params

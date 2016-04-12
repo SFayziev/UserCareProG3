@@ -32,14 +32,14 @@ body, .module a {
 }
 .navbar-top .navbar-header {
     position: relative;
-    background-color: #1c75bf;
+    /*background-color: #1c75bf;*/
     z-index: 11;
 }
 .navbar-top .navbar-header .navbar-brand {
     padding: 10px;
     font-size: 24px;
     font-style: inherit;
-    color: #fff;
+    color: #000000;
 }
 .navbar-top .navbar-header .brand-logo {
     display: block;
@@ -67,18 +67,13 @@ body, .module a {
     background-color: transparent;
 }
 
-@media only screen and (min-width: 768px) {
-    .navbar-top .navbar-nav > li > [data-toggle='navbar-search'] {
-        color: #fff;
-    }
-}
-.navbar-top .navbar-nav > li > [data-toggle='navbar-search']:hover {
-    color: #fff;
-}
+
 .nav-wrapper {
     padding: 0 15px;
-    background-color: #1c75bf;
+    /*background-color:#bbb;*/
+            /*#1c75bf;*/
 }
+
 .nav-wrapper .nav.navbar-nav {
     float: left;
 }
@@ -111,26 +106,7 @@ body, .module a {
     transition: all 0.3s;
     border-bottom: 1px solid #e1e2e3;
 }
-.navbar-top .navbar-form .form-group {
-    height: 100%;
-    width: 100%;
-}
-.navbar-top .navbar-form .form-control {
-    height: 100%;
-    border: 0;
-    border-radius: 0;
-    width: 100%;
-}
-.navbar-top .navbar-form.open {
-    top: 0;
-}
 
-
-@media only screen and (min-width: 768px) {
-    .navbar-top .navbar-form {
-        left: 250px;
-    }
-}
 @media only screen and (min-width: 768px) {
     .navbar-top {
         position: fixed;
@@ -138,7 +114,7 @@ body, .module a {
         left: 0;
         right: 0;
         border: 0;
-        background-color: #1c75bf;
+        /*background-color: #1c75bf;*/
     }
     .navbar-top .navbar-nav > a {
         box-shadow: 0 0 0 #000 inset;
@@ -149,27 +125,23 @@ body, .module a {
     .navbar-top .navbar-nav > .open > a,
     .navbar-top .navbar-nav > .open > a:hover,
     .navbar-top .navbar-nav > .open > a:focus {
-        box-shadow: 0 -3px 0 #1c75bf inset;
+        box-shadow: 0 -3px 0 #f0f0f0 inset;
         -webkit-transition: all 0.2s;
         -o-transition: all 0.2s;
         transition: all 0.2s;
     }
     .navbar-top .navbar-nav > li > a,
     .navbar-top .navbar-nav > .open > a {
-        color: #fff;
+        color: #5f5f5f;
+
     }
     .navbar-top .navbar-nav > li > a:hover,
     .navbar-top .navbar-nav > .open > a:hover,
     .navbar-top .navbar-nav > li > a:focus,
     .navbar-top .navbar-nav > .open > a:focus {
-        color: rgba(255, 255, 255, 0.6);
+        color: #000;
     }
-    .navbar-top .navbar-nav > li > [data-toggle='navbar-search'] {
-        position: static;
-    }
-    .navbar-top .navbar-nav > li > [data-toggle='navbar-search']:hover {
-        color: #fff;
-    }
+
     .nav-wrapper {
         position: relative;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);

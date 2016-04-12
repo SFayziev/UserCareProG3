@@ -23,17 +23,23 @@
             %{--</li>--}%
         %{--</ul>--}%
         <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown dropdown-list">
-                %{--<i class="fa fa-globe"></i>--}%
-                <g:set var="lang" value="${RequestContextUtils.getLocale(request).displayLanguage}"/>
-                <a data-toggle="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-globe"></i> ${lang }</a>
 
-                <project:selectActiveLangs params="${[project:UCproject,lang:lang]}" />
-            </li>
             <sec:ifLoggedIn>
                 <userinfo:usermenu/>
             </sec:ifLoggedIn>
+            <sec:ifNotLoggedIn>
+            <li>
+                <a href ="#"  onclick="showLogin();"><i class="fa fa-lock"></i> <g:message code="user.signin" /> </a>
+            </li>
+             <li>  <g:link controller="user" action="signup"> <g:message code="user.signout" /> </g:link></li>
+            </sec:ifNotLoggedIn>
+            <li class="dropdown dropdown-list">
+                %{--<i class="fa fa-globe"></i>--}%
+                <g:set var="lang" value="${RequestContextUtils.getLocale(request).displayLanguage}"/>
+                <a data-toggle="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-globe"></i> ${lang } <b class="caret"></b></a>
 
+                <project:selectActiveLangs params="${[project:UCproject,lang:lang]}" />
+            </li>
         </ul>
 
     </div>

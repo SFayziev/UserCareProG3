@@ -4,7 +4,7 @@
         %{--<g:render template="/user/userImage" model="${[userDTO: userDTO]}" />--}%
         %{--<g:render template="/file/imageByType" model="${[imgid: "userid${userDTO?.id}", imgclass: "img-bordered  rounded-2x", iconclass: 'icon-sm', img:userDTO?.imgDTO]}" />--}%
     ${user?.username}
-    <i class="fa fa-angle-down"></i></a>
+    <b class="caret"></b></a>
 
     <ul class="dropdown-menu pull-right" role="menu">
         <li ><g:link controller="user" action="profile"> <i class="fa fa-eye"></i> <g:message code="user.menu.profile" /></g:link></li>

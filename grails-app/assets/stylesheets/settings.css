@@ -1,3 +1,23 @@
+.nav-wrapper {
+    background-color:#1c75bf;
+}
+
+.navbar-top .navbar-nav > li > a,
+.navbar-top .navbar-nav > .open > a {
+    color: #ffffff;
+}
+
+.navbar-top .navbar-nav > li > a:hover,
+.navbar-top .navbar-nav > .open > a:hover,
+.navbar-top .navbar-nav > li > a:focus,
+.navbar-top .navbar-nav > .open > a:focus {
+    color: #d4d4d4;
+}
+
+.navbar-top .navbar-header .navbar-brand {
+    color: #ffffff;
+}
+
 .img_logo {
     width:  160px;
     min-height:  160px;
