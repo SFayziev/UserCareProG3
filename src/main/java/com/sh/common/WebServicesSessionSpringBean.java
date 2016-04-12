@@ -88,7 +88,7 @@ public class WebServicesSessionSpringBean {
                     session.setAttribute("project_name",projectDTO.getName());
                   }
                 else{
-                    response.sendError(HttpServletResponse .SC_NOT_FOUND);
+                    response.sendError(HttpServletResponse.SC_NOT_FOUND);
                 }
 
                 return  projectDTO;
