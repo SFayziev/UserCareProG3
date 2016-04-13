@@ -51,7 +51,9 @@ class ModulesTagLib {
         def params =  attrs.params
         def article = attrs.params.article
         def module =  attrs.params.module
+        if (article.type != null) params.topicType= webServicesSession.getForumTypeByid(article.getProjid(),  article.type.id)
         if (module != null) {
+
             if (module.params.topicPresentation?.value == 'full' && article.answerCommentid) {
                 params.answer = article.answerCommentid ? webServicesSession.getCommentbyId(article.answerCommentid) : null;
             }

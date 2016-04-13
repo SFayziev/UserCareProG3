@@ -1,4 +1,3 @@
-
 <div id="article-${article?.id}" data-forum-id="${article?.forumDTO?.id}"  data-article-id="${article?.id}" class="content ">
     <div class="testimonials-info">
         <g:if test="${module?.params?.showTopicAvatar?.value==1}" >
@@ -17,6 +16,7 @@
                 <span class="rounded  label" style="background: ${article?.statusDTO?.color}" ><locale:message  proj="${UCproject}" code="article.status.name.${article?.statusDTO?.id}" default="${article?.statusDTO?.name}" /> </span>
             </div>
             <div class="title">
+                <g:render template="/file/imageByTypeS" model="${[imgid: "imglinks${topicType?.id}",  img:topicType?.articleTypeDTO?.imgDTO  ]}" />
                 <g:if test='${WType}'><g:link target="_blank" controller="article" action="item" id="${article.id}" >${article.title}</g:link></g:if>
                 <g:else><g:link  controller="article" action="item" id="${article.id}" params="${[forumid: article?.forumDTO?.id]}" >${article.title}</g:link></g:else>
             </div>

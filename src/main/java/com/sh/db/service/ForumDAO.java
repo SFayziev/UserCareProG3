@@ -90,7 +90,6 @@ public class ForumDAO extends GenericDaoImpl<ForumDTO> {
     }
 
     @Cacheable( value = "topicTypeDTO" )
-
     public TopicTypeDTO getForumTypeByid(Integer projid,  Integer id  ) {
 
         TopicTypeDTO topicTypeDTO = (TopicTypeDTO) getSessionFactory().getCurrentSession().createQuery("from TopicTypeDTO  as ft where  ft.id=:id and    ft.forumid in (select  id from ForumDTO as fd where fd.projectDTO.id=:projid )")

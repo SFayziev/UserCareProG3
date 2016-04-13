@@ -4,5 +4,7 @@
 <asset:javascript src="jquery.jgrowl.min.js"/>
 <asset:stylesheet href="jquery.jgrowl.min.css"/>
 <asset:javascript src="default.js"/>
-<asset:stylesheet  href="font-awesome.min.css"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+%{--<asset:stylesheet  href="font-awesome.min.css"/>--}%
 <g:render template="/modal/ucModal"/>
