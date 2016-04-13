@@ -9,7 +9,7 @@
     </div>
     <div class="modal-body">
         <h3><g:message code="user.loginform.signin.with.account.title" /></h3>
-        <form action='#'  method="POST" class="form-inline" id='ajaxLoginForm' name='ajaxLoginForm' autocomplete="off">
+        <g:form   method="POST" useToken="true" class="form-inline"   name='ajaxLoginForm' autocomplete="off">
 
             <div class="input-group margin-bottom-20">
                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
@@ -35,7 +35,7 @@
                 %{--<button class="btn-u btn-primary" type="submit" onclick="authAjax(); return false"><i class="fa fa-lock"></i> Log In</button>--}%
             %{--</div>--}%
             <div class="row"><g:render template="/layouts/errorMessage" /></div>
-        </form>
+        </g:form>
     </div>
 
 </div>
