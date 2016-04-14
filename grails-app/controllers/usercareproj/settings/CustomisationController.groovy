@@ -95,6 +95,7 @@ class CustomisationController {
         else if(module.moduleTypeDTO.id ==13) {updatetwitter(project , module)}
         else if(module.moduleTypeDTO.id ==14) {updategooglePlus(project , module)}
         else if(module.moduleTypeDTO.id ==15) {updatetwitter(project , module)}
+        else if(module.moduleTypeDTO.id ==35) {updateuserScript(project , module)}
 
         JSONObject resultJson = new JSONObject();
 
@@ -107,6 +108,12 @@ class CustomisationController {
         def moduleParams = new ArrayList<ModuleParamsDTO>();
         moduleParams.add(new ModuleParamsType3DTO(module,'name', params.get('name') as String ))
         moduleParams.add(new ModuleParamsType3DTO(module,'url', params.get('url') as String ))
+        webServicesSession.addModuleParams(project.id , module.id , moduleParams )
+    }
+
+    def updateuserScript (project , module){
+        def moduleParams = new ArrayList<ModuleParamsDTO>();
+        moduleParams.add(new ModuleParamsType4DTO(module,'scriptcode', params.get('scriptcode') as String ))
         webServicesSession.addModuleParams(project.id , module.id , moduleParams )
     }
 
@@ -179,7 +186,7 @@ class CustomisationController {
         if (params.vtype== null || params.vtype==''){
             params.vtype="dashboard"
         }
-        def modulTypes=webServicesSession.getModuleType(params.dtype=='0'?ModulePosType.Main:ModulePosType.Mini)
+        def modulTypes=webServicesSession.getModuleType(params.dtype=='0'?ModulePosType.Main:ModulePosType.Mini )
 
         render template:"/settings/customisation/listwidget" , model: [modulTypes:modulTypes]
     }

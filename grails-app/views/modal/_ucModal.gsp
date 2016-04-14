@@ -4,7 +4,9 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
-            Loading ...
+            <i class="fa fa-refresh fa-spin fa-3x fa-fw" aria-hidden="true" ></i>
+            <span class="sr-only">Loading ...</span>
+
         </div>
     </div>
 </div>
@@ -15,7 +17,8 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
-            Loading ...
+            <i class="fa fa-refresh fa-spin fa-3x fa-fw" aria-hidden="true"></i>
+            <span class="sr-only">Loading ...</span>
         </div>
     </div>
 </div>
