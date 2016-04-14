@@ -121,7 +121,7 @@ public class ModuleDAO extends GenericDaoImpl<ModuleDTO> {
     }
 
     public List<ModuleTypeDTO> getModuleType(ModulePosType dispose){
-        return  currentSession().createSQLQuery("select * from module_type  as mt where  mt.dispos=:dispos ")
+        return  currentSession().createSQLQuery("select * from module_type  as mt where mt.status=1 and   mt.dispos=:dispos ")
                 .addEntity(ModuleTypeDTO.class).setParameter("dispos", dispose.ordinal()).list();
     }
 
@@ -262,7 +262,7 @@ public class ModuleDAO extends GenericDaoImpl<ModuleDTO> {
             return false;
         }
 
-        ModuleDTO moduleDTO= new ModuleDTO(forumid,moduleTypeDTO);
+        ModuleDTO moduleDTO= new ModuleDTO(forumid, 1 << displaypos.ordinal(),  moduleTypeDTO);
         moduleDTO.setDispos(modulePosType);
 
         saveModule(moduleDTO);

@@ -495,8 +495,7 @@ public class ForumDAO extends GenericDaoImpl<ForumDTO> {
 
     private void createModules(ForumDTO forumDTO, String modules, ModuleDisplay display ) {
         for (ModuleTypeDTO moduleTypeDTO: moduleDAO.getModuleTypebyIds(modules)) {
-            ModuleDTO moduleDTO= new ModuleDTO(forumDTO.getId(), moduleTypeDTO );
-            moduleDTO.setDispos(moduleTypeDTO.getDispos());
+            ModuleDTO moduleDTO= new ModuleDTO(forumDTO.getId(), 1<<display.ordinal(), moduleTypeDTO );
             moduleDAO.saveModule(moduleDTO);
         }
     }

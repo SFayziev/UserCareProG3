@@ -22,26 +22,8 @@ public class ModuleDTO extends IntEntity {
     private  Integer  pos;
     private  Integer usedby;
 
-    public Integer getUsedby() {
-        return usedby;
-    }
-
-    public void setUsedby(Integer usedby) {
-        this.usedby = usedby;
-    }
-
     @Enumerated(EnumType.ORDINAL)
     private ModulePosType dispos;
-
-//    @Enumerated(EnumType.ORDINAL)
-//    private ModuleDisplay display;
-
-    @Transient
-    private HashMap<String, ModuleParamsDTO> params;
-
-    @ManyToOne(fetch = FetchType.EAGER , cascade = CascadeType.DETACH )
-    @JoinColumn(name = "modtypeid")
-    private ModuleTypeDTO moduleTypeDTO;
 
     public ModulePosType getDispos() {
         return dispos;
@@ -51,12 +33,26 @@ public class ModuleDTO extends IntEntity {
         this.dispos = dispos;
     }
 
-    public ModuleDTO(Integer forumid, ModuleTypeDTO moduleTypeDTO) {
+    public Integer getUsedby() {
+        return usedby;
+    }
+
+    public void setUsedby(Integer usedby) {
+        this.usedby = usedby;
+    }
+
+    @Transient
+    private HashMap<String, ModuleParamsDTO> params;
+
+    @ManyToOne(fetch = FetchType.EAGER , cascade = CascadeType.DETACH )
+    @JoinColumn(name = "modtypeid")
+    private ModuleTypeDTO moduleTypeDTO;
+
+    public ModuleDTO(Integer forumid, Integer usedby, ModuleTypeDTO moduleTypeDTO) {
         this.forumid = forumid;
         this.moduleTypeDTO = moduleTypeDTO;
-//        this.display = display;
+        this.usedby=usedby;
         this.setStatus(1);
-
     }
 
     public ModuleDTO() {
@@ -79,10 +75,6 @@ public class ModuleDTO extends IntEntity {
         this.moduleTypeDTO = moduleTypeDTO;
     }
 
-
-
-
-
     public Integer getStatus() {
         return status;
     }
@@ -98,16 +90,6 @@ public class ModuleDTO extends IntEntity {
     public void setPos(Integer pos) {
         this.pos = pos;
     }
-
-
-
-//    public ModuleDisplay getDisplay() {
-//        return display;
-//    }
-//
-//    public void setDisplay(ModuleDisplay display) {
-//        this.display = display;
-//    }
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE, mappedBy = "moduleDTO")
     private List<ModuleParamsDTO> moduleParamDTOList ;

@@ -7,7 +7,7 @@
         <fieldset>
             <div class="form-group">
                 <div class="col-lg-12">
-                    <textarea class="form-control" rows="4" id="articleDesc" name="description">${module.params?.description?.value}</textarea>
+                    <textarea class="form-control" rows="12" id="scriptcode" name="scriptcode">${module.params?.scriptcode?.value}</textarea>
                 </div>
             </div>
         </fieldset>
@@ -15,29 +15,12 @@
             <button type="button" class="btn btn-default" data-dismiss="modal"><g:message code="button.cancel" /></button>
             <button data-content="${params.id}" id="saveOkBut" type="submit"  class="btn btn-primary"><g:message code="default.button.update.label" /></button>
         </div>
-
     </form>
 </div>
 
 <script type="text/javascript">
     $(document).ready(function() {
         setAjaxModuleCustomisationSave(${module.id});
-
-        $('#articleDesc').summernote({
-            height: 150,
-            minHeight: null,
-            maxHeight: null,
-            focus: true,
-            toolbar: [
-                ['style', ['style',  'bold', 'italic', 'underline']],
-                ['fontsize', ['fontsize']],
-                ['color', ['color']],
-                ['para', ['ul', 'ol']],
-                ['insert', ['link', 'picture', 'video' , 'table' , 'hr']],
-                ['misc', ['codeview', 'fullscreen']]
-            ]
-        });
     });
 
 </script>
-

@@ -182,8 +182,8 @@ function changeTopicTypeImg(id){
 
 
 function setAjaxModuleCustomisationSave(moduleid){
-    $('#ucmodal').submit(function() {
-        ajaxSubmit({'form':'#ucmodal','url':'/settings/customisation/saveWidget/'+moduleid ,'result':moduleCustomisationSaveSuccess, 'resulterr':moduleCustomisationSaveFail});
+    $('#moduleEditForm').submit(function() {
+        ajaxSubmit({'form':'#moduleEditForm','url':'/settings/customisation/saveWidget/'+moduleid ,'result':moduleCustomisationSaveSuccess, 'resulterr':moduleCustomisationSaveFail});
         return false;
     });
 }
@@ -193,7 +193,7 @@ function moduleCustomisationSaveSuccess(data){
     document.getElementById('iframe1').contentWindow.location.reload();
 }
 function moduleCustomisationSaveFail(data){
-
+    $("#ucmodal").modal('hide');
 }
 
 
