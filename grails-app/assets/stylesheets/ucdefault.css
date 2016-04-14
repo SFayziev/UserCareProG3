@@ -714,3 +714,35 @@ ul.blog-tags a:hover i {
     padding-left: 0;
     padding-right: 0;
 }
+
+
+body.popup {
+    background-color: transparent;
+}
+body.popup .close {
+    z-index:10005;
+    margin-right: 25px;
+    border: 1px solid #bbb;
+}
+body.popup .container {
+    max-width: 640px;
+    min-height: 320px;
+    background: #ffffff;
+    border: 5px solid #bbb;
+    border: 5px solid #dddddd;
+
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+
+    -webkit-box-shadow: 0 10px 20px  #bbb;
+    -moz-box-shadow: 0 10px 20px  #bbb;
+    box-shadow: 0 10px 20px  #bbb;
+
+    margin: auto;
+    margin-top:50px;
+    padding: 0px;
+    overflow:hidden;
+
+    position: relative;
+}
