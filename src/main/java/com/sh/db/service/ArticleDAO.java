@@ -52,7 +52,7 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
     @Autowired
     ForumDAO forumDAO;
 
-    private static final Logger LOG = Logger.getLogger(ProjectDAO.class);
+    private static final Logger LOG = Logger.getLogger(ArticleDAO.class);
 
     private final int pageRecords=10;
 
