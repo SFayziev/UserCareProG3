@@ -51,6 +51,18 @@
                      </fieldset>
                     <fieldset>
                         <div class="form-group">
+                            <label for="project.url"  class="col-lg-3 control-label"><g:message code="setting.project.settings.layout.mode.title" /></label>
+                            <div class="col-lg-7">
+                                <g:select class="form-control" name="project.layout.mode" from="${['0', '1' ]}" value="${UCproject.projectDesignDTO.layoutmode}"
+                                          valueMessagePrefix="setting.project.settings.layout.mode" />
+                                <div class="note"><g:message code="setting.project.settings.layout.mode.note"/> </div>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <div class="form-group">
                             <label  class="col-lg-3 control-label"><g:message code="forum.languages" /></label>
                             <div class="col-lg-7">
                                 <g:each in="${langs}" var="lang">

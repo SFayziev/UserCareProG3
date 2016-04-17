@@ -184,14 +184,6 @@ public class ModuleDAO extends GenericDaoImpl<ModuleDTO> {
         return  moduleDTOList;
     }
 
-//    @Cacheable( value = "modules")
-//    @Transactional
-//    private  List<ModuleDTO> getOurTeamModules(Integer projId,  Integer forumid, ModuleDisplay moduleDisplay,  UserDTO user) {
-//        List<ModuleDTO> moduleDTOList = getModuleCriteria(projId, 0, forumid, moduleDisplay, 0, 1).list();
-//        moduleDTOList.addAll(getModuleCriteria(projId, 0, 0, moduleDisplay, 0, 1).list() );
-//
-//        return  moduleDTOList;
-//    }
 
     @Cacheable( value = "modules")
     @Transactional

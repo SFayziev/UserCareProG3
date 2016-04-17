@@ -26,11 +26,13 @@ class ProjectController {
 //        def domainUrl=grailsApplication.config.domain.main.url
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession()).clone()
         def forums=webServicesSession.getForumbyProject(project.getId() )
-        def langs = webServicesSession.getProjectLang(project.getId())
+        def langs = webServicesSession.getProjectActiveLangs(project.getId())
         if (params.get("submit")=="save" ){
             project.alias=params.get("project.alias");
             project.defaultforum=params.getInt("project.defaultforum");
             project.name=params.get("project.name");
+            project.projectDesignDTO.layoutmode=params.getInt("project.layout.mode", 0)
+
             def plangs=params.get("langs")
             def valL=0;
             for(String plang:plangs ){ valL=valL | (1<<Integer.parseInt(plang))  }

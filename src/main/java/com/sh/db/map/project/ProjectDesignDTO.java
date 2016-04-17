@@ -16,9 +16,17 @@ import java.io.Serializable;
 public class ProjectDesignDTO extends IntEntity implements Serializable {
 
     private Integer sidebarPos;
+    private Integer layoutmode=0;
 
+    public Integer getLayoutmode() {
+        return layoutmode;
+    }
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    public void setLayoutmode(Integer layoutmode) {
+        this.layoutmode = layoutmode;
+    }
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.DETACH, orphanRemoval = true)
     @JoinColumn(name = "projid" )
     private ProjectDTO projectDTO;
 

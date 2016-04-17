@@ -1,29 +1,27 @@
 <div class="module-body" data-moduleid="${module?.id}">
-    <div class="headline">
-        <h2><g:message code="widget.community.stats.title" /></h2>
-    </div>
 
-    <ul class="list-unstyled">
-        <li>
+    <dl>
+        <dt><g:message code="widget.community.stats.title" /></dt>
+        <dd>
             <span class="badge pull-right">${projectStats?.people}</span>
             <i class="fa fa-fw fa-users"></i> <g:message code="widget.community.stats.people" />
-        </li>
+        </dd>
 
-        <li>
+        <dd>
             <span class="badge pull-right">${projectStats?.articles}</span>
             <i class="fa fa-fw fa-file-text"></i> <g:message code="widget.community.stats.topic" />
-        </li>
+        </dd>
 
-        <li>
+        <dd>
             <span class="badge pull-right">${projectStats?.comments}</span>
             <i class="fa fa-fw fa-comments"></i> <g:message code="widget.community.stats.comment" />
-        </li>
+        </dd>
 
-        <li>
+        <dd>
             <span class="badge pull-right">${projectStats?.votes}</span>
             <i class="fa fa-fw fa-thumbs-up"></i> <g:message code="widget.community.stats.votes" />
-        </li>
-    </ul>
+        </dd>
+    </dl>
 
     <div class="staff">
         <h3> <g:message code="widget.community.stats.staff" /></h3>
