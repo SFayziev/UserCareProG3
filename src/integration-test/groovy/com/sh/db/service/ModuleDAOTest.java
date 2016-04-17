@@ -1,6 +1,7 @@
 package com.sh.db.service;
 
 import com.sh.db.map.module.*;
+import com.sh.utils.ModuleDisplay;
 import com.sh.utils.ModulePosType;
 import db.controller.IntegrationTest;
 
@@ -107,5 +108,13 @@ public class ModuleDAOTest extends IntegrationTest {
         ModuleLinkDTO moduleLinkDTO= new ModuleLinkDTO(moduleDTO1.getId(),  "dsdsds" , "sd sd s", true);
         moduleDAO.saveModuleLinksDTO(moduleLinkDTO);
 
+    }
+
+    @Test
+    public  void testGetUserMenu() {
+         for(ModuleDTO moduleDTO: moduleDAO.getModuleBydisplaypos(testProjectid,2, ModuleDisplay.UserComments, null, null ) ) {
+
+             System.out.println(moduleDTO);
+         }
     }
 }

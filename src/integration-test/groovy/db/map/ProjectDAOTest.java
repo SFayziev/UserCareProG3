@@ -1,5 +1,6 @@
 package db.map;
 
+import com.sh.db.map.project.LanguagesDTO;
 import db.controller.IntegrationTest;
 import com.sh.db.map.project.ProjectDTO;
 import com.sh.db.service.ProjectDAO;
@@ -36,6 +37,20 @@ public class ProjectDAOTest extends IntegrationTest {
     public void getListProject(){
         for (ProjectDTO projectDTO: projectDAO.findAll() ){
             System.out.println(projectDTO);
+        }
+    }
+
+    @Test
+    public void testGetProjectLangs() throws Exception {
+        for (LanguagesDTO languagesDTO:projectDAO.getProjectLangs(testProjectid)){
+            System.out.println( languagesDTO );
+        }
+    }
+
+    @Test
+    public void testGetProjectActiveLangs() throws Exception {
+        for (LanguagesDTO languagesDTO:projectDAO.getProjectActiveLangs(testProjectid)){
+            System.out.println( languagesDTO );
         }
     }
 }

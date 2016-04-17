@@ -132,7 +132,7 @@ public class ProjectDTO extends IntEntity {
         this.projectParamsDTOList = projectParamsDTOList;
     }
 
-    @OneToOne(mappedBy = "projectDTO" , fetch = FetchType.EAGER, cascade = CascadeType.DETACH , orphanRemoval = true)
+    @OneToOne(mappedBy = "projectDTO" , fetch = FetchType.EAGER, cascade = CascadeType.MERGE , orphanRemoval = true)
 
     private ProjectDesignDTO projectDesignDTO;
 
