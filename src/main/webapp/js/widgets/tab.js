@@ -483,8 +483,8 @@ UserCare.Util = {
 UserCare.Popin = {
     //content_template: '<iframe id="UserCare_dialog_iframe" src="#{url}/widgets/#{dialog}.html?#{query}"  allowtransparency="true"  style="border: 0px none; position: fixed; top: 0px; left: 0px; right: 0px; bottom: 0px; background-color: transparent; width: 100%; height: 100%;" ></iframe>',
     //opened_url_template: '#{url}/widgets/#{dialog}.html?#{query}#opened',
-    content_template: '<iframe id="UserCare_dialog_iframe" src="#{url}/widgets/{query}"  allowtransparency="true"  style="border: 0px none; position: fixed; top: 0px; left: 0px; right: 0px; bottom: 0px; background-color: transparent; width: 100%; height: 100%;" ></iframe>',
-    opened_url_template: '#{url}/widgets/{query}#opened',
+    content_template: '<iframe id="UserCare_dialog_iframe" src="#{url}/widgets?#{query}"  allowtransparency="true"  style="border: 0px none; position: fixed; top: 0px; left: 0px; right: 0px; bottom: 0px; background-color: transparent; width: 100%; height: 100%;" ></iframe>',
+    opened_url_template: '#{url}/widgets?#{query}#opened',
     setup: function(options) {
         this.setupOptions(options);
     },
