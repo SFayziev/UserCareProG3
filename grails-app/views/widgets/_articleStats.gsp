@@ -3,21 +3,21 @@
         <dt> <g:message code="widget.article.stats.title" /></dt>
         <dd>
             <span class="badge pull-right">${article?.votes}</span>
-            <i class="fa fa-fw fa-file-text"></i> <g:message code="widget.article.stats.votes" />
+            <i class="fa fa-fw fa-thumbs-up"></i> <g:message code="widget.article.stats.votes" />
         </dd>
 
         <dd>
             <span class="badge pull-right">${article?.views}</span>
-            <i class="fa fa-fw fa-comments"></i>  <g:message code="widget.article.stats.views" />
+            <i class="fa fa-fw fa-eye"></i>  <g:message code="widget.article.stats.views" />
         </dd>
 
         <dd>
             <span class="badge pull-right">${article?.comments}</span>
-            <i class="fa fa-fw fa-thumbs-up"></i> <g:message code="widget.article.stats.comment" />
+            <i class="fa fa-comments"></i>  <g:message code="widget.article.stats.comment" />
         </dd>
         <dd>
             <span class="badge pull-right">${article?.followers}</span>
-            <i class="fa fa-fw fa-thumbs-up"></i> <g:message code="widget.article.stats.followers" />
+            <i class="fa fa-fw fa-envelope"></i> <g:message code="widget.article.stats.followers" />
         </dd>
 
     </dl>
