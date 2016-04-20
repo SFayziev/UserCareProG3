@@ -10,14 +10,14 @@ import javax.persistence.*;
 @Entity
 @Table(name = "forum_privacy",  catalog = "usercare")
 public class ForumPrivacyDTO extends IntEntity{
-    private Integer type=0;
-    private Boolean sso=false;
-    private Boolean anonymousview=false;
-    private Boolean authorizedview=false;
-    private Boolean autosubscribe=false;
+    private Integer type = 0;
+    private Boolean sso = false;
+    private Boolean anonymousview = false;
+    private Boolean authorizedview = false;
+    private Boolean autosubscribe = false;
     private Integer assigntype;
-    private  Integer assigntag;
-    private Integer commentshow=1;
+    private Integer assigntag;
+    private Integer commentshow = 1;
 
     public Integer getCommentshow() {
         return commentshow;

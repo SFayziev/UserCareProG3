@@ -10,8 +10,8 @@ public enum N18IErrorCodes implements N18nLoggable {
     AJAX_YOU_MUST_SIGNIN(201, LoggingLevel.DEVELOPMENT, "ajax.signin", " Sign in", "You should sign in."),
     VOTE_DISABLED(210, LoggingLevel.DEVELOPMENT, "vote.disabled", "Vote", "Voting is disabled."),
     VOTE_POSITIVE(211, LoggingLevel.DEVELOPMENT, "vote.positive.only", "Vote", "Positive vote only."),
-    ARTICLE_NOT_FOUND(301, LoggingLevel.DEVELOPMENT, "article.not.found", "Article", "Article not found.")
-
+    ARTICLE_NOT_FOUND(301, LoggingLevel.DEVELOPMENT, "article.not.found", "Article", "Article not found."),
+    FORUM_PRIVATE(403, LoggingLevel.DEVELOPMENT, "forun.is.private", "forum", "Forum is private")
     ;
 
 

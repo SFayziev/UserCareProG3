@@ -4,9 +4,12 @@ import com.sh.db.map.forum.CategoriesDTO
 import com.sh.db.map.forum.TopicTypeDTO
 import com.sh.utils.ForumType
 import com.sh.utils.ModuleDisplay
+import com.sh.utils.exception.N18iException
+import org.apache.http.client.HttpResponseException
 import org.grails.web.json.JSONObject;
 
 import javax.servlet.http.HttpServletResponse
+import javax.xml.ws.http.HTTPException
 
 class ForumController {
 
@@ -64,18 +67,19 @@ class ForumController {
     }
     def dashboard(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
-        def defaultForum= webServicesSession.getForumById(project.id, params.int("id", project.getDefaultforum() ))
-        def model =[UCproject: project, defaultForum:defaultForum]
-        model.customize=params.customize
-        if (defaultForum==null){
+        def model =[UCproject: project]
+        try {
+            def defaultForum= webServicesSession.getForumById(project.id, params.int("id", project.getDefaultforum() ))
+            model.defaultForum=defaultForum
+            model.customize=params.customize
+            model.modulPos=webServicesSession.getModuleBydisplaypos(project.id,  defaultForum.id , ModuleDisplay.Dashboard , null, null)
+            render view: '/index' , model: model
+
+        } catch (N18iException e) {
+            response.sendError(HttpServletResponse.SC_FORBIDDEN);
+        } catch(Exception e){
             response.sendError(HttpServletResponse.SC_NOT_FOUND);
         }
-        
-
-        model.modulPos=webServicesSession.getModuleBydisplaypos(project.id,  defaultForum.id , ModuleDisplay.Dashboard , null, null)
-//        model.project=project;
-
-        render view: '/index' , model: model
     }
 
     def getForumId(project){

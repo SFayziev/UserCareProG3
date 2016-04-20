@@ -120,6 +120,8 @@ http://www.w3.org/2001/XMLSchema-instance ">
     <!-- Enable autowiring -->
     <context:component-scan base-package="com.sh.db.service"/>
 
+    <context:component-scan base-package="com.sh.db.bl"/>
+
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <!--<tx:annotation-driven/>-->
