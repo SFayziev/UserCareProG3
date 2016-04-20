@@ -1,5 +1,6 @@
 package com.sh.common;
 
+import com.sh.db.bl.ForumBL;
 import com.sh.db.map.*;
 import com.sh.db.map.file.FileDTO;
 import com.sh.db.map.file.ImgDTO;
@@ -23,6 +24,7 @@ import com.sh.utils.ImageType;
 import com.sh.utils.ModuleDisplay;
 import com.sh.utils.ModulePosType;
 import com.sh.utils.exception.N18iException;
+import org.apache.http.client.HttpResponseException;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -52,6 +54,9 @@ public class WebServicesSessionSpringBean {
 
     @Autowired
     ForumDAO forumDAO;
+
+    @Autowired
+    ForumBL forumBL ;
 
     @Autowired
     UserDAO userDAO;
@@ -148,8 +153,10 @@ public class WebServicesSessionSpringBean {
 //     Forum
 
     public List<ForumDTO> getForumByType(Integer projId, ForumType forumType) {return  forumDAO.getForumbyType(projId, forumType);}
-    public ForumDTO getForumById(Integer projId, Integer forumid) {return  forumDAO.getForumById(projId, forumid);}
-    public ForumDTO getForumById(Integer projId, Integer forumid, ForumType forumType) {return  forumDAO.getForumById(projId, forumid, forumType);}
+    public ForumDTO getForumById(Integer projId, Integer forumid) throws N18iException {return  forumBL.getForumById(projId, forumid);}
+    public ForumDTO getForumById(Integer projId, Integer forumid, ForumType forumType) throws N18iException {return  forumBL.getForumById(projId, forumid, forumType);}
+    public boolean canAddNewTopic(Integer projid, Integer forumid ) { return forumBL.canAddNewTopic(projid, forumid); }
+
     public List<ForumDTO> getForumbyProject(Integer projId) {return  forumDAO.getForumbyProject(projId);  }
     public ForumDTO saveForum(ForumDTO forumDTO){return forumDAO.saveForum(forumDTO); }
     public ForumDTO createForum(ProjectDTO projectDTO , String forumname, ForumType type){return forumDAO.createForum(projectDTO, type, forumname); }

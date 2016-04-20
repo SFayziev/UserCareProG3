@@ -216,9 +216,15 @@ class ArticleController {
         def forumid=params.getInt("forumid");
         def forumTypes=webServicesSession.getForumTypeByForumid(project.id, forumid, 1 )
         def article = webServicesSession.getProjectArticle(project.id, id);
-//        response.sendError(HttpServletResponse.SC_FORBIDDEN );
 
-        render template:"edit" , model: [UCproject:project, article:article,forumid:forumid, forumTypes:forumTypes ]
+        if (!webServicesSession.canAddNewTopic(project.id, forumid)){
+            response.sendError HttpServletResponse.SC_FORBIDDEN
+        }
+        else {
+            render template:"edit" , model: [UCproject:project, article:article,forumid:forumid, forumTypes:forumTypes ]
+        }
+
+
     }
 
     def create(){

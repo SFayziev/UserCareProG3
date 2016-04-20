@@ -6,9 +6,12 @@ import com.sh.db.map.module.ModuleDTO;
 import com.sh.db.map.module.ModuleTypeDTO;
 import com.sh.db.map.project.ProjectDTO;
 import com.sh.db.map.topics.ArticleStatusDTO;
+import com.sh.db.map.user.UserDTO;
 import com.sh.utils.ForumType;
 import com.sh.utils.I18Prefix;
 import com.sh.utils.ModuleDisplay;
+import org.apache.http.HttpException;
+import org.apache.http.client.HttpResponseException;
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
@@ -18,9 +21,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.ServletException;
 import java.util.List;
 import java.util.Objects;
 
@@ -362,8 +368,8 @@ public class ForumDAO extends GenericDaoImpl<ForumDTO> {
     }
 
     @Cacheable( value = "forumDTO" )
-    public ForumDTO getForumById(Integer projid, Integer forumid, ForumType forumType ) {
-        return (ForumDTO) getSessionFactory().getCurrentSession().createQuery("from ForumDTO fd where fd.status=1 and  fd.projectDTO.id=:projid and fd.id=:id and fd.type=:type")
+    public ForumDTO getForumById(Integer projid, Integer forumid, ForumType forumType )  {
+        return  ( ForumDTO) getSessionFactory().getCurrentSession().createQuery("from ForumDTO fd where fd.status=1 and  fd.projectDTO.id=:projid and fd.id=:id and fd.type=:type")
                 .setParameter("projid", projid).setParameter("type", forumType) .setParameter("id", forumid) .uniqueResult();
     }
 
