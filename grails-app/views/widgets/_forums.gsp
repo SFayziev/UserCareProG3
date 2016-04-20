@@ -4,7 +4,7 @@
        <dt> <g:message code="forum.type2" /></dt>
             <g:each in="${communitys}" var="community">
                 <dd>
-                   <g:link  controller="list" action="${community.id}">
+                   <g:link  controller="forum"  action="dashboard" id="${community.id}">
                        <span class="badge pull-right">${community.articles}</span>
                        <locale:message  proj="${UCproject}" code="forum.title.${community.id}" default="${community.name}" />
                    </g:link>
@@ -18,7 +18,7 @@
 
         <g:each in="${knowledgebases}" var="knowledgebase">
             <dd>
-                <g:link  controller="list" action="${knowledgebase.id}">
+                <g:link controller="forum"  action="dashboard" id="${knowledgebase.id}">
                     <span class="badge pull-right ">${knowledgebase.articles}</span>
                     <locale:message  proj="${UCproject}" code="forum.title.${knowledgebase.id}" default="${knowledgebase.name}" />
 
