@@ -67,7 +67,10 @@ class ForumController {
         def defaultForum= webServicesSession.getForumById(project.id, params.int("id", project.getDefaultforum() ))
         def model =[UCproject: project, defaultForum:defaultForum]
         model.customize=params.customize
-        if (defaultForum==null)   response.sendError(HttpServletResponse.SC_NOT_FOUND);
+        if (defaultForum==null){
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+        }
+        
 
         model.modulPos=webServicesSession.getModuleBydisplaypos(project.id,  defaultForum.id , ModuleDisplay.Dashboard , null, null)
 //        model.project=project;
