@@ -79,6 +79,20 @@ class ModulesTagLib {
         out << render(template: "/project/customScript" , model: params)
     }
 
+    def userAvatar = { attrs ->
+        def params = attrs.params
+        def user = attrs.params.user
+        def curuser;
+
+        try {
+            curuser=webServicesSession.getCurentUser();
+            if (curuser!= null && user.id==curuser.id ) params.canchangeavatar=true
+        } catch (Exception e) {
+        }
+
+
+        out << render(template: "/widgets/userAvatar" , model: params)
+    }
 
     def wikiList = { attrs ->
         def params = attrs.params

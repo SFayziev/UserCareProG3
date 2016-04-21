@@ -1,0 +1,1 @@
+<modules:userAvatar params="${[project:UCproject,  module:module,user:user,  params:params]}" />

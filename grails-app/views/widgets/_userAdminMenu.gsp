@@ -1,18 +1,12 @@
 <div class="module-body" data-moduleid="${module?.id}">
-
-    <div class="headline">
-        <h2><g:message code="widget.useradminmenu.title" /></h2>
-    </div>
-    <ul class="list-unstyled">
-        <li>
+    <dl>
+        <dt><g:message code="widget.useradminmenu.title" /></dt>
+        <dd>
             <i class="fa fa-lock"></i> <g:link controller="user" action="profile"><g:message code="widget.useradminmenu.block.user" /></g:link>
-        </li>
-
-        <li>
+        </dd>
+        <dd>
             <i class="fa fa-users"></i> <g:link controller="user" action="profile"><g:message code="widget.useradminmenu.assign.group" /></g:link>
-        </li>
-
-
-    </ul>
+        </dd>
+    </dl>
 
 </div>
