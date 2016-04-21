@@ -175,10 +175,8 @@ public class UserDAO extends GenericDaoImpl<UserDTO> {
 //    @Cacheable( value = "userDTO" )
     public UserDTO getCurrentUser(){
         UserDTO userDTO=this.getCurrentLoggedUser();
-
         if (userDTO== null) throw new AuthenticationServiceException("Not authorised" );
         return  userDTO;
-
     }
 
 //    @CacheEvict(value = "userDTO" ,   allEntries = true)

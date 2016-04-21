@@ -1,12 +1,10 @@
 <div class="module-body" data-moduleid="${module?.id}">
-    <div class="headline">
-        <h2><g:message code="widget.user.contact.title" /></h2>
-    </div>
-    <ul class="list-unstyled">
-        <li>
+    <dl>
+        <dt><g:message code="widget.user.contact.title" /></dt>
+        <dd>
             <i class="fa  fa-envelope"></i>
             <a href="mailto:${user.email}" target="_blank">${user.email}</a>
-        </li>
+        </dd>
 
-    </ul>
+    </dl>
 </div>

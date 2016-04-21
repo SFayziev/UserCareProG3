@@ -40,6 +40,13 @@ public class ModuleDAO extends GenericDaoImpl<ModuleDTO> {
     @Value("${module.article.share.panel}")
     private Integer modulShareid;
 
+    @Value("${module.user.change.avatar.panel}")
+    private Integer modulUserAvatar;
+
+    @Value("${module.admin.actions.panel}")
+    private Integer modulAdminAction;
+
+
     @Autowired
     ForumDAO forumDAO;
 
@@ -178,9 +185,14 @@ public class ModuleDAO extends GenericDaoImpl<ModuleDTO> {
     @Cacheable( value = "modules")
     @Transactional
     private  List<ModuleDTO> getUserPanelModules(Integer projId,  Integer forumid, ModuleDisplay moduleDisplay,  UserDTO user) {
+        UserDTO curuser=getCurrentLoggedUser();
         List<ModuleDTO> moduleDTOList = getModuleCriteria(projId, 0, forumid, moduleDisplay, 0, 1).list();
         moduleDTOList.addAll(getModuleCriteria(projId, 0, 0, moduleDisplay, 0, 1).list() );
-
+        if (curuser != null) {
+            if (curuser.getUserPermissionsDTO().getManager() || curuser.getUserPermissionsDTO().getManageusers()) {
+                moduleDTOList.add( getModuleById(projId, modulAdminAction ));
+            }
+        }
         return  moduleDTOList;
     }
 
@@ -208,18 +220,6 @@ public class ModuleDAO extends GenericDaoImpl<ModuleDTO> {
         return  moduleDTOList;
     }
 
-//    @Cacheable( value = "modules")
-//    @Transactional
-//    private  List<ModuleDTO> getListModules(Integer projId,  Integer forumid,  UserDTO user) {
-//        List<ModuleDTO> moduleDTOList = getModuleCriteria(projId, 0, forumid, ModuleDisplay.List, 0, 1).list();
-//        return  moduleDTOList;
-//    }
-
-//    @Cacheable( value = "modules")
-//    @Transactional
-//    public List<ModuleDTO> getModuleBydisplaypos(Integer projId, Integer id, Integer forumid,  ModuleDisplay displaypos, Integer type  ){
-//        return getModuleCriteria(projId, id, forumid, displaypos, type, 0).list();
-//    }
 
     @CacheEvict(value = "modules" ,   allEntries = true)
     public  Boolean deleteModule(Integer projId,Integer moduleID){

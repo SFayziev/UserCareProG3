@@ -1,8 +1,5 @@
 <div id="article-${article?.id}"  data-article-id="${article?.id}" class="content ">
     <div class="testimonials-info">
-
-
-
         <div class="overflow-h">
             <div class="title">
                 <g:render template="/file/imageByTypeS" model="${[imgid: "imglinks${topicType?.id}",  img:topicType?.articleTypeDTO?.imgDTO  ]}" />
@@ -14,6 +11,6 @@
                 ${article?.text.encodeAsRaw()}
             </div>
         </g:if>
-        <g:render template="/article/articleVoter" model="${[article: article]}" />
+        <g:render template="/article/articleVoter2" model="${[article: article]}" />
     </div>
 </div>
