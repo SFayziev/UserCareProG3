@@ -1,7 +1,7 @@
 <%@ page import="com.sh.utils.ForumType" %>
 <div class="module-body ${module?.params?.topicPresentation?.value}"  id="listItems" data-moduleid="${module?.id}"   data-forumid="${forum?.id}" data-statusid="${catalogParams?.status}" data-orderid="${catalogParams?.order}" data-typeid="${catalogParams?.type}" >
     <div class="top-side">
-    <g:render template="/forum/forumBreadcrumb"/>
+    %{--<g:render template="/forum/forumBreadcrumb"/>--}%
     <g:if test="${module.params?.title && module.params?.title?.value !='' }"><h3>
         <locale:message  proj="${UCproject}" code="forum.module.title.${module.id}" default="${module.params?.title?.value}" />
         <span class="badge badge-u rounded-2x">${pageCount?.getRowCount()}</span></h3>

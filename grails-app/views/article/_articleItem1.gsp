@@ -17,7 +17,7 @@
             </div>
             <div class="title">
                 <g:render template="/file/imageByTypeS" model="${[imgid: "imglinks${topicType?.id}",  img:topicType?.articleTypeDTO?.imgDTO  ]}" />
-                <g:if test='${WType}'><g:link target="_blank" controller="article" action="item" id="${article.id}" >${article.title}</g:link></g:if>
+                <g:if test='${module.usedby==4}'><g:link target="_blank" controller="article" action="item" id="${article.id}" >${article.title}</g:link></g:if>
                 <g:else><g:link  controller="article" action="item" id="${article.id}" params="${[forumid: article?.forumDTO?.id]}" >${article.title}</g:link></g:else>
             </div>
         </div>
