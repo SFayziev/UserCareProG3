@@ -313,7 +313,7 @@ function deleteReply(commid){
                 $('#comment-'+commid).remove();
             }
         });
-    $('#myModalDelete').modal('hide');
+    $('#ucmodal').modal('hide');
     return false
 }
 function showCommentReply(){

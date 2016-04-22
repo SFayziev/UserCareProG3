@@ -32,7 +32,7 @@
                     <li><a data-content="${comment?.id}" class="link-icon" data-action="replycomment" href="#"><i class=" icon-sm rounded-2x  fa fa-reply"></i></a></li>
                     </g:if>
                     <li><a data-content="${comment?.id}"  class="link-icon" data-action="editcomment" href="#"><i class=" icon-sm rounded-2x  fa fa-edit"></i></a></li>
-                    <li><a data-toggle="modal" href="/comment/delete/${article.id}?commid=${comment?.id}"  class="link-icon" data-target="#myModalDelete" ><i class=" icon-sm rounded-2x  fa fa-trash"></i></a></li>
+                    <li><a data-toggle="modal" href="/comment/delete/${article.id}?commid=${comment?.id}"  class="link-icon" data-target="#ucmodal" ><i class=" icon-sm rounded-2x  fa fa-trash"></i></a></li>
                     <li><a data-content="${comment?.id}" data-action="votecomment" data-loading-text='<i class="fa fa-spinner fa-pulse"></i>' class="link-icon"  data-vote-value="1" href="#" ><i class=" icon-sm rounded-2x  fa fa-thumbs-o-up"></i></a></li>
                     <li><a data-content="${comment?.id}" data-action="votecomment"  data-loading-text='<i class="fa fa-spinner fa-pulse"></i>' class="link-icon" data-vote-value="-1" href="#"><i class=" icon-sm rounded-2x  fa fa-thumbs-o-down"></i></a></li>
                 </ul>
