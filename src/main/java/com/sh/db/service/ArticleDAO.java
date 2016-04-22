@@ -170,7 +170,7 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
             itemCount.getItemStatDTOList().add(itemStatDTO);
         }
         return itemCount;
-  }
+    }
 
     /**
      * Get project Article
@@ -260,7 +260,7 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
         currentSession().delete(commentDTO);
         statisticDAO.decreaseArticleComments(articleDTO);
 
-//        getSessionFactory().getCurrentSession().clear();
+    //        getSessionFactory().getCurrentSession().clear();
     }
 
     @CacheEvict(value = "articleDTO",  allEntries = true)

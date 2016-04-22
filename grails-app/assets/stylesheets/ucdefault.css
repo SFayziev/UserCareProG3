@@ -3,8 +3,8 @@
 * {
     border-radius: 0;
 }
-body, .module a {
-    color: #000000;
+.module a {
+    color: rgba(0, 0, 0, 0.82);
 }
 
 
@@ -304,6 +304,10 @@ h1 i, h2 i, h3 i, h4 i, h5 i, h6 i {
     overflow: hidden;
 }
 
+.module-search .input-group-btn a {
+    color: white;
+    font-weight: bold;
+}
 
 .module-user-avatar .module-body img {
     width: 100%;
