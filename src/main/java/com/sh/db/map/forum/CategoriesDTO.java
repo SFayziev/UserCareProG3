@@ -4,6 +4,8 @@ import com.sh.db.map.file.ImgDTO;
 import com.sh.db.map.IntEntity;
 import com.sh.db.map.topics.ArticleDTO;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 import java.util.List;
@@ -50,6 +52,7 @@ public class CategoriesDTO extends IntEntity {
 
     @ManyToOne(fetch = FetchType.EAGER , cascade = CascadeType.ALL )
     @JoinColumn(name = "logoimg")
+    @NotFound(action = NotFoundAction.IGNORE)
     private ImgDTO imgDTO;
 
     public ImgDTO getImgDTO() {

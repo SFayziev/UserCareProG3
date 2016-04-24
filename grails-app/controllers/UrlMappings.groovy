@@ -7,6 +7,7 @@ class UrlMappings {
         "/logout/$action?"(controller: "logout")
         "/list/$id/$catalog?"(controller: "forum" , action: "list" )
         "/dashboard/$id/$catalog?"(controller: "forum", action: "dashboard" )
+        "/agent/$action?/$id?(.$format)?"(controller: "agent")
         "/settings/community/$action?/$id?(.$format)?"(controller: "community")
         "/settings/project/$action?/$id?(.$format)?"(controller: "project")
         "/settings/knowledgebase/$action?/$id?(.$format)?"(controller: "knowledgebase")
