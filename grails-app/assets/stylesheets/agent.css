@@ -1,0 +1,8 @@
+.nav-wrapper {
+    background-color:#23b7e5;
+}
+
+.search-block .navbar-form .form-control ,
+.search-block .navbar-form .multiselect{
+    display: block;
+}
