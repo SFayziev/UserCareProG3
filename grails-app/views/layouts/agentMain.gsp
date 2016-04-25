@@ -36,9 +36,11 @@
 <g:render template="/layouts/footerFile" />
 <asset:stylesheet href="settings.css"/>
 <asset:stylesheet href="agent.css"/>
+<asset:stylesheet href="bootstrap-multiselect.css"/>
+
 <asset:javascript src="validator.min.js"/>
 <asset:javascript src="settings.js"/>
 <asset:javascript src="modernizr-custom.js"/>
-
+<asset:javascript src="bootstrap-multiselect.js"/>
 
 </html>

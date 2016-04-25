@@ -140,7 +140,7 @@ img.img-bordered  {
 
 .content-wrapper {
     padding-bottom: 30px;
-    overflow: auto;
+    /*overflow: auto;*/
     padding: 15px;
 }
 .content-wrapper > h3 {
