@@ -2,7 +2,10 @@
     background-color:#23b7e5;
 }
 
-.search-block .navbar-form .form-control ,
-.search-block .navbar-form .multiselect{
+.search-block .form-group {
+    min-width: 140px;
+}
+
+.search-block label {
     display: block;
 }
