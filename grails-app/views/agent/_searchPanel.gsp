@@ -25,16 +25,9 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                <label> Source</label>
-                <select class="form-control"  id="id_select_forums" multiple="multiple">
-                    <option value="2 "  data-content=''>  Option 2</option>
-                    <option value="1" data-content="<em class='fa fa-book'></em>">Forum: General</option>
-                    <option value="3" data-content="<em class='fa fa-book'></em>" >Helpdesk: Helpdesk</option>
-                    <option  value="2" data-content="<em class='fa fa-book'></em>" >Knowledge Base: Knowledge base</option>
-                    <option value="4" data-content="<em class='fa fa-book'></em>" >Chat: Chat history</option>
-                </select>
-            </div>
+            <agent:forumList params="${[project:UCproject,  params:params]}"/>
+            <agent:sortBy params="${[project:UCproject,  params:params]}"/>
+
 
             <div class="form-group">
                 <label>Search</label>
