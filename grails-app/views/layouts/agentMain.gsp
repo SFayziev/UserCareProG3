@@ -21,12 +21,12 @@
     <g:if test="${UCproject!= null}"><g:render template="/layouts/settingHeader" /></g:if>
     <g:render template="/agent/leftMenu" />
 
-    <section>
-        <div class="content-wrapper">
-            <g:pageProperty name="page.mainContent1"/>
-        </div>
-        %{--<g:render template="/layouts/footer" />--}%
-    </section>
+        <section>
+            <div class="content-wrapper container">
+                <g:pageProperty name="page.mainContent1"/>
+            </div>
+            %{--<g:render template="/layouts/footer" />--}%
+        </section>
 
 
 

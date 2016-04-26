@@ -105,7 +105,7 @@ public class WebServicesSessionSpringBean {
 // Projects
     public ProjectDTO updateProject(ProjectDTO projectDTO) {return  projectDAO.saveProject(projectDTO);}
     public ProjectDTO getProjectbyId(int id){return projectDAO.getProjectbyId(id);}
-    public ProjectDTO getProjectbyName(String name){return projectDAO.getbyName(name, null);}
+//    public ProjectDTO getProjectbyName(String name){return projectDAO.getbyName(name, null);}
     public  List<LanguagesDTO> getProjectLang(Integer projid){return projectDAO.getProjectLangs(projid);}
     public  List<LanguagesDTO> getProjectActiveLangs(Integer projid){return projectDAO.getProjectActiveLangs(projid);}
     public LanguagesDTO getProjectLangbyId(Integer projid, Integer langid){return projectDAO.getProjectLangbyId(projid, langid); }
@@ -152,12 +152,12 @@ public class WebServicesSessionSpringBean {
 
 //     Forum
 
-    public List<ForumDTO> getForumByType(Integer projId, ForumType forumType) {return  forumDAO.getForumbyType(projId, forumType);}
+    public List<ForumDTO> getForumByType(Integer projId, ForumType forumType) {return  forumBL.getForumbyType(projId, forumType);}
     public ForumDTO getForumById(Integer projId, Integer forumid) throws N18iException {return  forumBL.getForumById(projId, forumid);}
     public ForumDTO getForumById(Integer projId, Integer forumid, ForumType forumType) throws N18iException {return  forumBL.getForumById(projId, forumid, forumType);}
     public boolean canAddNewTopic(Integer projid, Integer forumid ) { return forumBL.canAddNewTopic(projid, forumid); }
 
-    public List<ForumDTO> getForumbyProject(Integer projId) {return  forumDAO.getForumbyProject(projId);  }
+    public List<ForumDTO> getForumbyProject(Integer projId) {return  forumBL.getForumbyProject(projId);  }
     public ForumDTO saveForum(ForumDTO forumDTO){return forumDAO.saveForum(forumDTO); }
     public ForumDTO createForum(ProjectDTO projectDTO , String forumname, ForumType type){return forumDAO.createForum(projectDTO, type, forumname); }
     public List<CategoriesDTO> getCategoryByForumId(Integer projid, Integer forumid  ){return  forumDAO.getCategoryByForumId(projid, forumid);}

@@ -1,4 +1,4 @@
-<div id="article-${article?.id}" data-forum-id="${article?.forumDTO?.id}"  data-article-id="${article?.id}" class="content ">
+<div id="article-${article?.id}" data-forum-id="${article?.forumDTO?.id}"  data-action="showarticle" data-article-id="${article?.id}" class="content ">
     <div class="testimonials-info">
         <g:if test="${module?.params?.showTopicAvatar?.value==1}" >
             <div class="topic-avatar">
