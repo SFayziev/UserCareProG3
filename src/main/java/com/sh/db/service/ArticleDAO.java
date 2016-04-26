@@ -62,18 +62,18 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
         setSessionFactory(sessionFactory);
     }
 
-    /**
-     * Get last project article fro index page
-     * @param projId project id
-     * @param start  start  record
-     * @param count  number of record
-     * @param status article status
-     * @param artictype   article type
-     * @return  list of Article
-     */
-    public List<ArticleDTO> getLastArticle(Integer projId, Integer start, Integer count, Integer status, Integer artictype , String order )  {
-        return   getLastArticle(projId, start, count, status, artictype, order, null, null, null, null) ;
-    }
+//    /**
+//     * Get last project article fro index page
+//     * @param projId project id
+//     * @param start  start  record
+//     * @param count  number of record
+//     * @param status article status
+//     * @param artictype   article type
+//     * @return  list of Article
+//     */
+//    public List<ArticleDTO> getLastArticle(Integer projId, Integer start, Integer count, Integer status, Integer artictype , String order )  {
+//        return   getLastArticle(projId, start, count, status, artictype, order, null, null, null, null) ;
+//    }
 
     /**
      * Get last project article fro index page

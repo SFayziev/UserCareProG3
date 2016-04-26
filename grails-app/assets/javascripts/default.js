@@ -13,6 +13,7 @@ iContainer.on("click","[data-action=voteshow]",voteShow);
 iContainer.on("click","[data-action=articleChangeStatus]",articleChangeStatus);
 iContainer.on("click","a[data-action=replycomment]",showCommentReply);
 iContainer.on("click","a[data-action=deletecomment]",deleteReply);
+iContainer.on("click","[data-action=showarticle]",showArticle);
 
 //$("a[data-action=deletecomment]").click(showCommentReply);
 iContainer.on("click","a[data-action=articleAssignTo]",articleAssignTo);
@@ -155,7 +156,7 @@ function articleAssignCategory(){
     $.ajax({  dataType: "json", data:data, url:  "/article/assignToCategory/"})
         .done(function( data ) {
             if (data.status=='success') {
-                refreshArticle(articid);
+                refreshArticle(articid, '#article-'+articid);
                 showMassge(data.massage);
             }
         });
@@ -169,7 +170,7 @@ function articleAssignTags(){
     $.ajax({  dataType: "json", data:data, url:  "/article/assignToTag/"})
         .done(function( data ) {
             if (data.status=='success') {
-                refreshArticle(articid);
+                refreshArticle(articid, '#article-'+articid);
                 showMassge(data.massage);
             }
         });
@@ -185,7 +186,7 @@ function articleAssignTo(){
     $.ajax({  dataType: "json", data:data, url:  "/article/assignToUser/"})
         .done(function( data ) {
             if (data.status=='success') {
-                refreshArticle(articid);
+                refreshArticle(articid,'#article-'+articid);
                 showMassge(data.massage);
             }
         });
@@ -343,6 +344,11 @@ function showCommentReply(){
     return false;
 }
 
+function showArticle(){
+    var articleid=$(this).data('article-id');
+    refreshArticle(articleid,'#article-0')
+
+}
 
 function showCommentEdit(){
     removeComment();
@@ -395,12 +401,14 @@ function  removeComment() {
     }
 
 }
-function refreshArticle(articid){
+function refreshArticle(articid,objid ){
+
     data={'id':articid };
     $.ajax({  dataType: "json", data:data, url:  "/article/getArticle/"})
         .done(function( data ) {
             if (data.status=='success') {
-                $('#article-'+articid).replaceWith(data.value);
+                $(objid).replaceWith(data.value);
+                //$('#article-'+articid).replaceWith(data.value);
             }
         });
     return false

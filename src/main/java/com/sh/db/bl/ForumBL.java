@@ -11,11 +11,17 @@ import org.apache.http.client.HttpResponseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Lenovo on 20.04.2016.
  */
 @Component
 public class ForumBL {
+
+    @Autowired
+    PermissionBL permissionBL;
 
     ForumDAO forumDAO;
 
@@ -25,27 +31,21 @@ public class ForumBL {
     }
 
     public ForumDTO getForumById(Integer projid, Integer forumid, ForumType forumType ) throws  N18iException {
-        return  checkForumPrivicy(forumDAO.getForumById(projid, forumid, forumType));
+        ForumDTO forumDTO= forumDAO.getForumById(projid, forumid, forumType);
+        return  permissionBL.checkForumPrivacy(forumDTO)? forumDTO:null;
     }
 
     public ForumDTO getForumById(Integer projid, Integer forumid ) throws  N18iException {
-        return  checkForumPrivicy(forumDAO.getForumById(projid, forumid));
+        ForumDTO forumDTO=forumDAO.getForumById(projid, forumid);
+        return  permissionBL.checkForumPrivacy(forumDTO)? forumDTO : null;
     }
 
-    private ForumDTO checkForumPrivicy(ForumDTO forumDTO) throws  N18iException {
-        UserDTO userDTO = forumDAO.getCurrentLoggedUser();
-        if (forumDTO == null) return  forumDTO;
-        if (forumDTO.getPrivacy().getType() == 1 ) {
-            if (userDTO != null) {
-                return forumDTO;
-            } else {
-                throw new N18iException(N18IErrorCodes.FORUM_PRIVATE);
+    public List<ForumDTO> getForumbyType(Integer projid, ForumType forumType  ) {
+        return permissionBL.checkForumListPrivacy( forumDAO.getForumbyType(projid, forumType));
+    }
 
-            }
-
-        }  else {
-            return forumDTO;
-        }
+    public List<ForumDTO> getForumbyProject(Integer projid ) {
+        return permissionBL.checkForumListPrivacy( forumDAO.getForumbyProject(projid));
     }
 
     public boolean canAddNewTopic(Integer projid, Integer forumid){

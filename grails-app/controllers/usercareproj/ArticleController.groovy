@@ -97,15 +97,6 @@ class ArticleController {
 
     }
 
-    def getArticleJson(article, prject){
-        JSONObject resultJson = new JSONObject();
-        resultJson.put("status","success");
-        resultJson.put("contentid",article.getId());
-        resultJson.put("value", contents)
-        response.contentType = "application/json; charset=UTF-8"
-        render   resultJson.toString()
-    }
-
     def assignToUser(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         def id=params.getInt("id");

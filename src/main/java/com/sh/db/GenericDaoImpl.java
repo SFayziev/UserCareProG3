@@ -12,12 +12,14 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 
 import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
+import java.util.Collection;
 import java.util.List;
 
 public abstract class GenericDaoImpl< T > extends HibernateDaoSupport {
@@ -50,6 +52,10 @@ public abstract class GenericDaoImpl< T > extends HibernateDaoSupport {
 
         }
         return null;
+    }
+
+    public Collection<? extends GrantedAuthority> getCurrentUserAuthority(){
+        return  SecurityContextHolder.getContext().getAuthentication().getAuthorities() ;
     }
 
     @Cacheable( value = "userDTO" )
