@@ -13,7 +13,6 @@ iContainer.on("click","[data-action=voteshow]",voteShow);
 iContainer.on("click","[data-action=articleChangeStatus]",articleChangeStatus);
 iContainer.on("click","a[data-action=replycomment]",showCommentReply);
 iContainer.on("click","a[data-action=deletecomment]",deleteReply);
-iContainer.on("click","[data-action=showarticle]",showArticle);
 
 //$("a[data-action=deletecomment]").click(showCommentReply);
 iContainer.on("click","a[data-action=articleAssignTo]",articleAssignTo);
@@ -342,23 +341,6 @@ function showCommentReply(){
     commText.summernote({focus: true});
     //$(".comment-copy .media-body textarea").focus()
     return false;
-}
-
-function showArticle(){
-    var articleid=$(this).data('article-id');
-    refreshArticle(articleid,'#article-0');
-    refreshComments(articleid, '#comment-0')
-}
-
-function refreshComments(articid,objid ){
-    data={'id':articid };
-    $.ajax({  dataType: "json", data:data, url:  "/comment/list/"})
-        .done(function( data ) {
-            if (data.status=='success') {
-                $(objid).replaceWith(data.value);
-            }
-        });
-    return false
 }
 
 function showCommentEdit(){
