@@ -19,10 +19,22 @@ class CommentController {
 
 
     def index() {}
+
+    def list(){
+        def id=params.getInt("id");
+        def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
+        def article = webServicesSession.getProjectArticle(project.id, id);
+        JSONObject resultJson = new JSONObject();
+        resultJson.put("status","success");
+        def contents = g.render(template:"/modules/itemRepliesW", model: [UCproject: project, article: article ])
+        resultJson.put("value", contents)
+        response.contentType = "application/json; charset=UTF-8"
+        render   resultJson.toString()
+    }
+
     def post(){
         def  commentid=params.getInt('commentid') ;
         def id=params.getInt("id");
-//        def forumid=params.getInt("forumid");
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         def article = webServicesSession.getProjectArticle(project.id, id);
 
@@ -40,10 +52,11 @@ class CommentController {
         }
 
         comment.text=params.get("commentText")
-        def comment2=webServicesSession.addComment(comment);
+        webServicesSession.addComment(comment);
         getArticleWithRelpies(project, id)
 
     }
+
 
     def delete (){
         def id=params.getInt("id");
@@ -65,12 +78,12 @@ class CommentController {
     }
     def getArticleWithRelpies(project, id){
         def article = webServicesSession.getProjectArticle(project.id, id);
-        def comments= webServicesSession.getArticleComments(id)
-        def answer = webServicesSession.getArticleAnswer(comments);
+//        def comments= webServicesSession.getArticleComments(id)
+//        def answer = webServicesSession.getArticleAnswer(comments);
         def forum= article.forumDTO;
         def module=[params: [showTopicAvatar:1, topicPresentation:"full"]]
         JSONObject resultJson = new JSONObject();
-        def contents = g.render(template:"/article/itemAndReplies", model:[UCproject:project, comments:comments ,forum:forum, module:module,  article:article,answer:answer ])
+        def contents = g.render(template:"/article/itemAndReplies", model:[UCproject:project, forum:forum, module:module,  article:article ])
         resultJson.put("status","success");
         resultJson.put("contentid",id);
         resultJson.put("value", contents)
