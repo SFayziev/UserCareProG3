@@ -22,7 +22,7 @@
     <g:render template="/agent/leftMenu" />
 
         <section>
-            <div class="content-wrapper container">
+            <div class="content-wrapper">
                 <g:pageProperty name="page.mainContent1"/>
             </div>
             %{--<g:render template="/layouts/footer" />--}%
@@ -42,5 +42,6 @@
 <asset:javascript src="settings.js"/>
 <asset:javascript src="modernizr-custom.js"/>
 <asset:javascript src="bootstrap-multiselect.js"/>
+<asset:javascript src="agent.js"/>
 
 </html>
