@@ -10,16 +10,7 @@
 
             </div>
             <div class="col-xs-7">
-
-                <div  class="module"  >
-                    <div id="article-0"  class="content ">
-                    </div>
-                </div>
-
-                <div  class="module"  >
-                    <div id="comment-0"  class="content ">
-                    </div>
-                </div>
+                <g:render template="/agent/articleDetails" />
             </div>
 
 

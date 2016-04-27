@@ -10,7 +10,7 @@ function showArticle(){
     var articleid=$(this).data('article-id');
     refreshArticle(articleid,'#article-'+lastarticleid);
     refreshComments(articleid, '#comment-0');
-    lastarticleid=articleid;
+    //lastarticleid=articleid;
 }
 
 
