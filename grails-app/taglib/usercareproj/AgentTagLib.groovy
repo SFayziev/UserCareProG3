@@ -20,7 +20,7 @@ class AgentTagLib {
     def listArticle={ attrs ->
         def params = attrs.params
         params.module=webServicesSession.getModuleById(0,agentTopicModuleId)
-        out << render(template: "/agent/listArticle" , model: params)
+        out << render(template: "/agent/articleList" , model: params)
     }
 
     def forumList={attrs ->
