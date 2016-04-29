@@ -42,8 +42,9 @@ public class ArticleDAOTest extends IntegrationTest{
         int forumid=2 ;
         System.out.println(ForumType.Community.ordinal());
 
-        ForumDTO forumDTO = forumDAO.getForumById(testProjectid, forumid);
-        ItemCount rowCount = articleDAO.getLastArticleRecCount(testProjectid, -1, topicTypeid , -1, forumDTO, -1, -1);
+        List<ForumDTO> forumDTOs = forumDAO.getForumbyProject(testProjectid);
+
+        ItemCount rowCount = articleDAO.getLastArticleRecCount(testProjectid, -1, topicTypeid , -1, forumDTOs , -1, -1);
 
         List<TopicTypeStatusDTO> topicTypeStatusDTOs=forumDAO.getTopicTypeStatusByTopicId(testProjectid, topicTypeid);
 

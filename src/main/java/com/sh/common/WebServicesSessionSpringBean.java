@@ -1,5 +1,6 @@
 package com.sh.common;
 
+import com.sh.db.bl.ArticleBL;
 import com.sh.db.bl.ForumBL;
 import com.sh.db.map.*;
 import com.sh.db.map.file.FileDTO;
@@ -51,6 +52,9 @@ public class WebServicesSessionSpringBean {
 
     @Autowired
     ArticleDAO articleDAO;
+
+    @Autowired
+    ArticleBL articleBL;
 
     @Autowired
     ForumDAO forumDAO;
@@ -120,8 +124,8 @@ public class WebServicesSessionSpringBean {
     // Articles
 //    public List<ArticleDTO> getLastArticle(Integer projectId, Integer start,Integer count, Integer status, Integer  type , String order,  Integer catid , ForumDTO  forumDTO , Integer langid){ return articleDAO.getLastArticle(projectId, start, count, status, type, order, catid, forumDTO, langid ) ; }
 //    public ItemCount getLastArticleRecCount(Integer projectId,  Integer status, Integer  type ,    Integer catid , ForumDTO  forumDTO, Integer langid) { return articleDAO.getLastArticleRecCount(projectId, status, type, catid, forumDTO, langid); }
-    public ItemCount getLastArticleRecCount(ProjectDTO  project, ForumDTO forumDTO, HashMap params) {return articleDAO.getLastArticleRecCount(project, forumDTO, params, true);}
-    public  List<ArticleDTO> getArticleList(ProjectDTO  project, ForumDTO  forumDTO, HashMap params) {return  articleDAO.getArticleList(project, forumDTO, params); }
+    public ItemCount getLastArticleRecCount(ProjectDTO  project, Integer[] forumids, HashMap params) {return articleBL.getLastArticleRecCount(project, forumids, params, true);}
+    public  List<ArticleDTO> getArticleList(ProjectDTO  project,Integer[] forumids, HashMap params) {return  articleBL.getArticleList(project, forumids, params); }
 
     public ArticleDTO getProjectArticle(Integer projid , Integer id ){return  articleDAO.getArticle(projid, id);}
     public CommentDTO addComment(CommentDTO commentDTO) {return  articleDAO.saveArticleComment(commentDTO);}

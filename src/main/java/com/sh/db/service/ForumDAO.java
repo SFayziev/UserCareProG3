@@ -10,6 +10,7 @@ import com.sh.db.map.user.UserDTO;
 import com.sh.utils.ForumType;
 import com.sh.utils.I18Prefix;
 import com.sh.utils.ModuleDisplay;
+import org.apache.commons.lang.ArrayUtils;
 import org.apache.http.HttpException;
 import org.apache.http.client.HttpResponseException;
 import org.apache.log4j.Logger;
@@ -506,4 +507,8 @@ public class ForumDAO extends GenericDaoImpl<ForumDTO> {
         }
     }
 
+    public List<ForumDTO> getForumByIds(Integer projid, Integer[] forumids) {
+        return getSessionFactory().getCurrentSession().createQuery("from ForumDTO fd where fd.status=1 and  fd.projectDTO.id=:projid and fd.id in (:forumids) ")
+                .setCacheable(true).setParameter("projid", projid).setParameterList("forumids",  forumids  ) .list();
+    }
 }
