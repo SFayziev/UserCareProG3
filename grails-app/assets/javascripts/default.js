@@ -6,7 +6,7 @@ var alertTypes = ['success', 'info', 'warning', 'danger'];
 
 
 //===========================================================
-var iContainer=$('.container');
+var iContainer=$('#container');
 iContainer.on("click","[data-action=votecomment]",voteComment);
 iContainer.on("click","[data-action=votearticle]",voteArticle);
 iContainer.on("click","[data-action=voteshow]",voteShow);
@@ -27,6 +27,8 @@ $("input[data-action='searchArticle']").change(articleStartFind);
 $("input[data-action='searchArticle']").keyup(articleStartFind);
 
 iContainer.on("click","[data-action=editcomment]",showCommentEdit);
+
+iContainer.tooltip({selector: '[data-toggle="tooltip"]'});
 
 
 function articleStartFind(){
@@ -545,3 +547,5 @@ $(".modal-fullscreen").on('show.bs.modal', function () {
 $(".modal-fullscreen").on('hidden.bs.modal', function () {
     $(".modal-backdrop").addClass("modal-backdrop-fullscreen");
 });
+
+

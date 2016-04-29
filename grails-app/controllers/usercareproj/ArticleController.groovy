@@ -3,6 +3,7 @@ package usercareproj
 import com.sh.db.map.topics.ArticleDTO
 import com.sh.utils.ForumType
 import com.sh.utils.ModuleDisplay
+import com.sh.utils.ModulePosType
 import com.sh.utils.exception.N18iException
 import org.grails.web.json.JSONObject
 
@@ -33,8 +34,7 @@ class ArticleController {
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         def id= params.int("id")
         def forumid=params.int("forumid")
-        def article = webServicesSession.getProjectArticle(project.id, id);
-
+        def article = webServicesSession.getArticlebyId(project.id, id);
         if (article!= null){
             if (forumid== null) forumid= article.getForumDTO().id;
             def modulPos=webServicesSession.getModuleBydisplaypos(project.id,  forumid, ModuleDisplay.ItemPanel , null, null)
@@ -44,6 +44,8 @@ class ArticleController {
             response.sendError HttpServletResponse.SC_NOT_FOUND
         }
     }
+
+
 
 
     def isfollow(){

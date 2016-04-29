@@ -17,7 +17,7 @@
 <div id="jGrowl-container1" class="jGrowl top-right"></div>
 
 
-<div class="wrapper">
+<div id="container" class="wrapper">
     <g:if test="${UCproject!= null}"><g:render template="/layouts/settingHeader" /></g:if>
     <g:render template="/agent/leftMenu" />
 

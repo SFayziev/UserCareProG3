@@ -8,15 +8,13 @@ iContainer.on("click","[data-action=showarticle]",showArticle);
 
 function showArticle(){
     var articleid=$(this).data('article-id');
-    refreshArticle(articleid,'#article-'+lastarticleid);
-    refreshComments(articleid, '#comment-0');
-    //lastarticleid=articleid;
+    getandChangeJson ("#artilceDeatails", {'id':articleid }, "/agent/articleDetail"  );
 }
 
 
-function refreshComments(articid,objid ){
-    data={'id':articid };
-    $.ajax({  dataType: "json", data:data, url:  "/comment/list/"})
+function getandChangeJson(objid,  data, url ){
+    //data={'id':articid };
+    $.ajax({  dataType: "json", data:data, url:  url})
         .done(function( data ) {
             if (data.status=='success') {
                 $(objid).replaceWith(data.value);

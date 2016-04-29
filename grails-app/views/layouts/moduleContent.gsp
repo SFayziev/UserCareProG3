@@ -5,11 +5,11 @@
     <title><g:layoutTitle/></title>
     <g:layoutHead/>
 </head>
-<body>
+<body >
 
 
 <!--=== Content Part ===-->
-<div class="container content-sm">
+<div id="container" class="container content-sm">
 
     <div class="row ">
 <g:if test="${UCproject?.projectDesignDTO?.layoutmode==1}">

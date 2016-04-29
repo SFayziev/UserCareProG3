@@ -127,7 +127,7 @@ public class WebServicesSessionSpringBean {
     public ItemCount getLastArticleRecCount(ProjectDTO  project, Integer[] forumids, HashMap params) {return articleBL.getLastArticleRecCount(project, forumids, params, true);}
     public  List<ArticleDTO> getArticleList(ProjectDTO  project,Integer[] forumids, HashMap params) {return  articleBL.getArticleList(project, forumids, params); }
 
-    public ArticleDTO getProjectArticle(Integer projid , Integer id ){return  articleDAO.getArticle(projid, id);}
+    public ArticleDTO getArticlebyId(Integer projid , Integer id ){return  articleDAO.getArticle(projid, id);}
     public CommentDTO addComment(CommentDTO commentDTO) {return  articleDAO.saveArticleComment(commentDTO);}
     public ArticleDTO addArticle(ArticleDTO  articleDTO) {return  articleDAO.saveArticle(articleDTO);}
 
