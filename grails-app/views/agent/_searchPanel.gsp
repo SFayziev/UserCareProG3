@@ -57,6 +57,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('#id_select_forums').multiselect();
+        getArticleList(16,0,0,0 );
     });
 </script>
 

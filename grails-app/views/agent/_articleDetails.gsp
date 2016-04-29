@@ -1,12 +1,12 @@
 <div id="artilceDeatails">
-    <div  class="module"  >
-        <div class="module-body">
-            <div id="article-0"  class="content ">
-            </div>
-        </div>
-    </div>
-    <div  class="module"  >
-        <div id="comment-0"  class="content ">
-        </div>
-    </div>
+    <g:if test = "${article}">
+        <g:render template="/agent/agentTopicActionBar" />
+        <g:each in="${modulPos}" var="module">
+            <g:applyLayout name="moduleLayout" model="${[module:module]}">
+                <content tag="moduleContent">
+                    <g:render template="${module?.moduleTypeDTO?.template}" model="${[module:module]}"/>
+                </content>
+            </g:applyLayout>
+        </g:each>
+    </g:if>
 </div>
