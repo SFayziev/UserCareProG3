@@ -2,6 +2,7 @@ package com.sh.utils;
 
 import org.joda.time.DateTime;
 
+import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.Period;
@@ -10,15 +11,13 @@ import java.util.Date;
 /**
  * Created by Admin on 03.09.2015.
  */
-public class TimeAgo {
+public class TimeAgo implements Serializable {
     private  String i18nvalue;
     private long agovalue=0;
 
 
     public TimeAgo(Date date) {
         DateTime dt = new DateTime(date);
-
-
         LocalDateTime t1 = LocalDateTime.of( dt.getYear() , dt.getMonthOfYear(), dt.getDayOfMonth(),dt.getHourOfDay(), dt.getMinuteOfHour());
         LocalDateTime t2 = LocalDateTime.now();
         Period period = Period.between(t1.toLocalDate(), t2.toLocalDate());

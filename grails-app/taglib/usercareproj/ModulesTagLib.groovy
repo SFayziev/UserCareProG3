@@ -3,6 +3,7 @@ package usercareproj
 import com.sh.db.map.forum.CategoriesDTO
 import com.sh.db.map.forum.ForumDTO
 import com.sh.utils.ForumType
+import org.apache.commons.lang.ArrayUtils
 
 class ModulesTagLib {
     static recordsInPage = 5L
@@ -39,8 +40,10 @@ class ModulesTagLib {
             if (articleListParams.catid>0){
                 params.category=webServicesSession.getCategoryById(params.project.id, articleListParams.catid )
             }
-            params.lastArticle = webServicesSession.getArticleList(params.project, params.forum, articleListParams)
-            params.pageCount = webServicesSession.getLastArticleRecCount(params.project, params.forum, articleListParams)
+            def forumids =ArrayUtils.add (ArrayUtils.EMPTY_INTEGER_OBJECT_ARRAY, params.forum.getId())
+
+            params.lastArticle = webServicesSession.getArticleList(params.project, forumids, articleListParams)
+            params.pageCount = webServicesSession.getLastArticleRecCount(params.project, forumids , articleListParams)
             params.catalogParams = articleListParams
             out << render(template: "/project/lastArticle", model: params)
         }
@@ -103,7 +106,7 @@ class ModulesTagLib {
             params.maxRecords = module.params.maxRecords != null ? module.params.maxRecords.value : recordsInPage;
             for (ForumDTO forumDTO : knowledgeForums) {
                 for (CategoriesDTO categoriesDTO : webServicesSession.getCategoryByForumId(params.project.id, forumDTO.getId()) ) {
-                    categoriesDTO.articleDTOList = webServicesSession.getArticleList(params.project, forumDTO, [count: params.maxRecords ? params.maxRecords : 5, catid: categoriesDTO.getId()])
+                    categoriesDTO.articleDTOList = webServicesSession.getArticleList(params.project, ArrayUtils.add (ArrayUtils.EMPTY_INTEGER_OBJECT_ARRAY, forumDTO.getId()), [count: params.maxRecords ? params.maxRecords : 5, catid: categoriesDTO.getId()])
                     categoriesDTOs.add(categoriesDTO);
                 }
             }
@@ -180,7 +183,9 @@ class ModulesTagLib {
         }
 
         def articleListParams = [count: params.maxRecords]
-        params.pageCount = webServicesSession.getLastArticleRecCount(params.project, params.forum, articleListParams)
+        def  forumsids = ArrayUtils.add (ArrayUtils.EMPTY_INTEGER_OBJECT_ARRAY, params.forum.id)
+
+        params.pageCount = webServicesSession.getLastArticleRecCount(params.project,   forumsids , articleListParams)
 
         out << render(template: "/project/articleStatus", model: params)
 

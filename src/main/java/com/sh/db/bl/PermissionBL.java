@@ -47,6 +47,7 @@ public class PermissionBL {
 
 
     public Boolean checkForumPrivacy(ForumDTO forumDTO) throws  N18iException {
+        if (forumDTO==null) return false;
         if(isForumPublic(forumDTO)) return true;
         if ( checkGrandAuthority(UserGrandAuthority.ROLE_MANAGER ) ) return true;
         UserDTO userDTO = userDAO.getCurrentLoggedUser();

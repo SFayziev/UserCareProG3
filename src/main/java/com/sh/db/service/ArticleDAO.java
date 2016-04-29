@@ -16,10 +16,12 @@ import com.sh.utils.IpConvertor;
 import com.sh.utils.SearchField;
 import com.sh.utils.exception.N18IErrorCodes;
 import com.sh.utils.exception.N18iException;
+import org.apache.commons.lang.ArrayUtils;
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
@@ -29,10 +31,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * Created by shuhrat on 27.08.2015.
@@ -86,16 +85,16 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
      */
     @Cacheable( value = "articleDTO" )
 //    @Transactional
-    public List<ArticleDTO> getLastArticle(Integer projId, Integer start, Integer count, Integer status, Integer artictype , String order, Integer catId , ForumDTO forumDTO, Integer userid, Integer performerid )  {
+    public List<ArticleDTO> getLastArticle(Integer projId, Integer start, Integer count, Integer status, Integer artictype , String order, Integer catId , List<ForumDTO> forumDTOs, Integer userid, Integer performerid )  {
         UserDTO userDTO=getCurrentLoggedUser();
-        List<ArticleDTO> articleDTOList=getArticleCriteria(projId, start,count,status,artictype , order,  catId, forumDTO, userid, performerid).list();
+        List<ArticleDTO> articleDTOList=getArticleCriteria(projId, start,count,status,artictype , order,  catId, forumDTOs, userid, performerid).list();
         for (ArticleDTO articleDTO:articleDTOList){
             if (articleDTO.getUserDTO()!= null &&  userDTO!=null && articleDTO.getUserDTO().getId()==userDTO.getId()    ) articleDTO.setCanVote(false);
         }
         return articleDTOList;
     }
 
-    private Criteria addArticleCriteriaRestrictions(Criteria cr, final Integer projId, Integer artictype, Integer catId, ForumDTO forumDTO , Integer status , Integer userid , Integer performerid ){
+    private Criteria addArticleCriteriaRestrictions(Criteria cr, final Integer projId, Integer artictype, Integer catId, List<ForumDTO> forumDTOs , Integer status , Integer userid , Integer performerid ){
         cr.add(Restrictions.sqlRestriction("projid= " + projId));
         cr.add(Restrictions.sqlRestriction("deleted=false"));
         if (artictype != null  && artictype>0){ cr.add(Restrictions.sqlRestriction("type="+ artictype));  }
@@ -111,12 +110,21 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
             cr.add(Restrictions.sqlRestriction("assigneduser= " +  performerid));
         }
 
-        if (forumDTO != null) {
-            cr.add(Restrictions.sqlRestriction("forumid= " + forumDTO.getId()));
-            if (forumDTO.getType().equals(ForumType.HelpDesk)) {
-                UserDTO userDTO = getCurrentLoggedUser();
-                cr.add(Restrictions.sqlRestriction("userid= " + (userDTO == null?-1:userDTO.getId()) ));
+        if (forumDTOs != null && !forumDTOs.isEmpty() ) {
+            Criterion[] forcrit= new Criterion[0];;
+
+            for (ForumDTO forumDTO:forumDTOs){
+                if (forumDTO.getType().equals(ForumType.HelpDesk)) {
+                    UserDTO userDTO = getCurrentLoggedUser();
+                    ArrayUtils.add(forcrit, Restrictions.sqlRestriction("userid= " + (userDTO == null?-1:userDTO.getId()) ));
+                }
+                else {
+                    ArrayUtils.add(forcrit,Restrictions.sqlRestriction("forumid= " + forumDTO.getId()));
+                }
             }
+            cr.add(Restrictions.or(forcrit));
+        } else {
+            new Throwable("Forum must be selected");
         }
 
         if (status != null && status > -1) {
@@ -129,9 +137,9 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
         return cr;
     }
 
-    private Criteria getArticleCriteria(Integer projId, Integer start, Integer count, Integer status, Integer artictype , String order,  Integer catId , ForumDTO  forumDTO, Integer userid, Integer performerid  ){
+    private Criteria getArticleCriteria(Integer projId, Integer start, Integer count, Integer status, Integer artictype , String order,  Integer catId , List<ForumDTO>  forumDTOs, Integer userid, Integer performerid  ){
         Criteria cr = getSessionFactory().getCurrentSession().createCriteria(ArticleDTO.class, "ad");
-        cr=addArticleCriteriaRestrictions(cr,projId,artictype,catId, forumDTO, status, userid , performerid);
+        cr=addArticleCriteriaRestrictions(cr,projId,artictype,catId, forumDTOs, status, userid , performerid);
 
              if(Objects.equals(order, "top")) { cr.addOrder(Order.desc("votes"));}
         else if(Objects.equals(order, "bycomment")) {cr.addOrder(Order.desc("comments")); }
@@ -150,20 +158,15 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
 
     @Cacheable( value = "itemCount" )
     @Transactional
-    public ItemCount getLastArticleRecCount(Integer projId,  Integer status, Integer topictype ,  Integer catId , ForumDTO  forumDTO , Integer userid, Integer performerid)
+    public ItemCount getLastArticleRecCount(Integer projId,  Integer status, Integer topictype ,  Integer catId , List<ForumDTO>  forumDTOs , Integer userid, Integer performerid)
     {   Criteria cr = getSessionFactory().getCurrentSession().createCriteria(ItemStatDTO.class);
-        cr = addArticleCriteriaRestrictions(cr, projId, 0, catId, forumDTO, -1, userid, performerid);
-//        cr.add(Restrictions.isNotNull("status"));
-
+        cr = addArticleCriteriaRestrictions(cr, projId, 0, catId, forumDTOs, -1, userid, performerid);
         cr.setProjection(Projections.projectionList().add(Projections.groupProperty("status"), "status")
                         .add(Projections.groupProperty("type"), "type")
                         .add(Projections.rowCount(), "count")
         );
 
-        ItemCount itemCount = new ItemCount( forumDAO.getArticleStatusByTopicTypeId(projId, forumDTO.getId(), topictype) , topictype , status );
-//        itemCount.setSeltectedArticleType(topictype);
-//        itemCount.setSeltectedArticleStatus(status);
-
+        ItemCount itemCount = new ItemCount( forumDAO.getArticleStatusByTopicTypeId(projId, forumDTOs.get(0).getId(), topictype) , topictype , status );
         for (Object o : cr.list()) {
             Object[] row = (Object[]) o;
             ItemStatDTO itemStatDTO = new ItemStatDTO((Integer) row[0], (Integer) row[1], (Long) row[2]);
@@ -178,6 +181,7 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
      * @param id Article id
      * @return
      */
+    @Cacheable( value = "articleDTO" )
     public  ArticleDTO getArticle (Integer projId,  Integer id) {
         Criteria cr = getSessionFactory().getCurrentSession().createCriteria(ArticleDTO.class);
         cr.add(Restrictions.eq("projid", projId));
@@ -502,6 +506,7 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
         }
     }
 
+    @Cacheable( value = "commentDTO" )
     public List<CommentDTO> getArticleComments(Integer articid) {
           return  currentSession().createSQLQuery("select * from comment as com where com.articid=:articid order by ( IF (parentid = 0 ,id  , parentid)) , level").addEntity(CommentDTO.class)
                 .setParameter("articid", articid).list();
@@ -524,17 +529,17 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
     }
 
     @Cacheable( value = "articleDTO" )
-    public ItemCount getLastArticleRecCount(ProjectDTO project, ForumDTO forumDTO, HashMap params, Boolean forcache) {
+    public ItemCount getLastArticleRecCount(ProjectDTO project, List<ForumDTO> forumDTOs, HashMap params, Boolean forcache) {
         Integer status= stringToInt(params.getOrDefault("status", -1));
         Integer type= stringToInt(params.getOrDefault("type", -1));
         Integer cat = stringToInt(params.getOrDefault("catid",-1));
         Integer userid = stringToInt(params.getOrDefault("userid",-1));
         Integer performerid= stringToInt(params.getOrDefault("performerid",-1));
-        return getLastArticleRecCount(project.getId(), status, type, cat, forumDTO, userid, performerid);
+        return getLastArticleRecCount(project.getId(), status, type, cat, forumDTOs, userid, performerid);
     }
 
     @Cacheable( value = "articleDTO" )
-    public final List<ArticleDTO> getArticleList(final ProjectDTO project, final ForumDTO forumDTO, final HashMap params) {
+    public final List<ArticleDTO> getArticleList(final ProjectDTO project, final List<ForumDTO> forumDTOs, final HashMap params) {
         Integer offset = stringToInt(params.getOrDefault("offset", -1));
         Integer count = stringToInt(params.getOrDefault("count", 0));
         Integer status = stringToInt(params.getOrDefault("status", -1));
@@ -543,7 +548,7 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
         Integer cat = stringToInt(params.getOrDefault("catid",-1));
         Integer userid = stringToInt(params.getOrDefault("userid",-1));
         Integer performerid = stringToInt(params.getOrDefault("performerid",-1));
-        return  getLastArticle(project.getId(), offset, count, status, type, order, cat, forumDTO, userid, performerid);
+        return  getLastArticle(project.getId(), offset, count, status, type, order, cat, forumDTOs, userid, performerid);
 
     }
 

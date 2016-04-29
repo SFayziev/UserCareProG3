@@ -39,7 +39,7 @@ class ForumController {
     }
     def list(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
-        def forum= webServicesSession.getForumById(project.id, params.int("id", project.getDefaultforum() ))
+        def forum= webServicesSession.getForumById(project.id, params.int("id", project.getDefaultforum() ) )
         def modulPos=webServicesSession.getModuleBydisplaypos(project.id,  forum.id, ModuleDisplay.List , null, null )
         def model =[UCproject: project, modulPos:modulPos, forum:forum]
         model.customize=params.customize

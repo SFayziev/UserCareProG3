@@ -35,6 +35,10 @@ public class ForumBL {
         return  permissionBL.checkForumPrivacy(forumDTO)? forumDTO:null;
     }
 
+    public List<ForumDTO> getForumByIds(Integer projid, Integer[] forumids)  {
+        List<ForumDTO> forumDTOs= forumDAO.getForumByIds(projid,  forumids);
+        return  permissionBL.checkForumListPrivacy( forumDTOs);
+    }
     public ForumDTO getForumById(Integer projid, Integer forumid ) throws  N18iException {
         ForumDTO forumDTO=forumDAO.getForumById(projid, forumid);
         return  permissionBL.checkForumPrivacy(forumDTO)? forumDTO : null;

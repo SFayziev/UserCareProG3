@@ -158,7 +158,7 @@ public class ModuleDAO extends GenericDaoImpl<ModuleDTO> {
         }
         criteria.addOrder(Order.asc("pos"));
         criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-
+        criteria.setCacheable(true);
         return criteria;
     }
 

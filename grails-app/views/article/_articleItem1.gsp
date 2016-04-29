@@ -45,8 +45,6 @@
     <g:if test="${'full'== module?.params?.topicPresentation?.value}">
         <content tag="text">
             <div class="comment-info">${article?.text?.encodeAsRaw()}</div>
-            <modules:articleTags params="${[project: project, article: article]}" />
-            <g:render template="/article/articleVoter" model="${[article: article]}" />
         </content>
         <content tag="action">
             <modules:articleTags params="${[project: project, article: article]}" />
