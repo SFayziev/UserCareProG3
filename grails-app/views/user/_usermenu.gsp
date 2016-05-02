@@ -13,7 +13,7 @@
         <li ><g:link controller="index"><i class="fa fa-home"></i> <g:message code="user.menu.main" /> </g:link></li>
 
         <li ><g:link controller="project" action="settings"><i class="fa fa-cogs"></i> <g:message code="user.menu.settings" /> </g:link></li>
-        <li ><g:link controller="agent"><i class="fa fa-user"></i> <g:message code="user.menu.operator" /> </g:link></li>
+        <li ><g:link controller="articles"><i class="fa fa-user"></i> <g:message code="user.menu.operator" /> </g:link></li>
         <li ><g:link controller="settings"><i class="fa fa-money"></i> <g:message code="user.menu.payments" /> </g:link></li>
         <li class="divider"></li>
         <li ><a id="logout" href="/logout"><i class="fa fa-unlock"></i> <g:message code="user.logout" /></a></li>
