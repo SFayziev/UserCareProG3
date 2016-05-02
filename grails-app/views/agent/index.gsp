@@ -10,7 +10,7 @@
 
             </div>
             <div class="col-xs-7">
-                <g:render template="/agent/articleDetails" />
+                <g:render template="/agent/article/articleDetails" />
             </div>
 
 
