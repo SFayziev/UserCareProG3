@@ -84,7 +84,7 @@ class ArticleController {
     def getArticle(){
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         def id= params.int("id")
-        def article = webServicesSession.getProjectArticle(project.id, id);
+        def article = webServicesSession.getArticlebyId(project.id, id);
         def module=[params: [showTopicAvatar:1, topicPresentation:"full"]]
         def contents = g.render(template:"/modules/articleDetails", model: [UCproject:project, module:module,  forum:article.getForumDTO(),  article:article ])
         JSONObject resultJson = new JSONObject();
@@ -252,7 +252,6 @@ class ArticleController {
         }
 
     }
-
 
 
 
