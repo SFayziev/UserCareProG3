@@ -16,16 +16,13 @@ class ArticleController {
 
     def afterInterceptor = [action: this.&invokeMe, only: [ 'item','list']]
 
+    static defaultAction = 'item'
+
     private invokeMe(model) {
         try {
             model.curUser=webServicesSession.curentUser
         } catch (Exception ex) {
         }
-    }
-
-
-    def index() {
-
     }
 
 
@@ -208,7 +205,7 @@ class ArticleController {
         def id=params.getInt("id");
         def forumid=params.getInt("forumid");
         def forumTypes=webServicesSession.getForumTypeByForumid(project.id, forumid, 1 )
-        def article = webServicesSession.getProjectArticle(project.id, id);
+        def article = webServicesSession.getArticlebyId(project.id, id);
 
         if (!webServicesSession.canAddNewTopic(project.id, forumid)){
             response.sendError HttpServletResponse.SC_FORBIDDEN
@@ -216,8 +213,6 @@ class ArticleController {
         else {
             render template:"edit" , model: [UCproject:project, article:article,forumid:forumid, forumTypes:forumTypes ]
         }
-
-
     }
 
     def create(){
@@ -245,7 +240,7 @@ class ArticleController {
 
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         def id=params.getInt("id");
-        def article = webServicesSession.getProjectArticle(project.id, id);
+        def article = webServicesSession.getArticlebyId(project.id, id);
         def action = params.get("actiondo") as String
 
         if (action=="delete"){
@@ -257,6 +252,8 @@ class ArticleController {
         }
 
     }
+
+
 
 
 }
