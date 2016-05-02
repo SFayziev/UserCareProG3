@@ -16,10 +16,10 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class StatisticDAO extends GenericDaoImpl<ArticleDTO> {
     @Autowired
-    ForumDAO forumDAO;
+    private ForumDAO forumDAO;
 
     @Autowired
-    ArticleDAO articleDAO;
+    private ArticleDAO articleDAO;
 
     private static final Logger LOG = Logger.getLogger(StatisticDAO.class);
 

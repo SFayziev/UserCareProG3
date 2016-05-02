@@ -20,28 +20,40 @@ import java.util.List;
  */
 @Entity
 @Table(name = "article",  catalog = "usercare")
-
 public class ArticleDTO extends IntEntity {
 
-    private  String text;
-    private  Date createdate=new Date();
-    private  Date lastchange= new Date();
-    private  String  title;
-    private  Integer projid;
-    private Boolean privateMsg=false;
-    private Boolean deleted=false;
-    private  Integer votes=0;
-    private  Integer views=0;
+    private String text;
+    private Date createdate = new Date();
+    private Date lastchange = new Date();
+    private String  title;
+    private Integer projid;
+    private Boolean privateMsg = false;
+    private Boolean deleted = false;
+    private Integer votes = 0;
+    private Integer views = 0;
 //    private  Integer replies=0;
-    private  Integer followers=0;
-    private  Integer comments=0;
-    private  Integer voteup=0;
-    private  Integer votedown=0;
-    private Integer disabled=0;
+    private Integer followers = 0;
+    private Integer comments = 0;
+    private Integer voteup = 0;
+    private Integer votedown = 0;
+    private Integer disabled = 0;
     private Integer  answerCommentid;
+    private Boolean needreview = true;
+
+    public Boolean getNeedreview() {
+        return needreview;
+    }
+
+    public void setNeedreview(Boolean needreview) {
+        this.needreview = needreview;
+    }
+
+    public void toggleNeedreview() {needreview = !needreview; }
+
+
 
     @Transient
-    private Boolean canVote=true;
+    private Boolean canVote = true;
 
     public Integer getAnswerCommentid() {
         return answerCommentid;
@@ -96,12 +108,12 @@ public class ArticleDTO extends IntEntity {
     }
 
     public TimeAgo getTimeAgo() {
-        if (timeAgo== null){  timeAgo= new TimeAgo(createdate);}
+        if (timeAgo == null) timeAgo = new TimeAgo(createdate);
         return timeAgo;
     }
 
     public TimeAgo getTimeUpdateAgo() {
-        if (timeUpdateAgo== null){  timeUpdateAgo= new TimeAgo(lastchange);}
+        if (timeUpdateAgo == null) timeUpdateAgo = new TimeAgo(lastchange);
         return timeUpdateAgo;
     }
 
@@ -182,15 +194,15 @@ public class ArticleDTO extends IntEntity {
         this.type = type;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY , cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinColumn(name = "userid")
     private UserDTO userDTO;
 
-    @ManyToOne(fetch = FetchType.LAZY , cascade = CascadeType.MERGE )
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE )
     @JoinColumn(name = "updateduser")
     private UserDTO updatedUserDTO;
 
-    @OneToMany(fetch = FetchType.LAZY , cascade = CascadeType.MERGE, mappedBy = "articleDTO")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE, mappedBy = "articleDTO")
     private List<ArticleTagsDTO> articleTagsDTOs;
 
     public List<ArticleTagsDTO> getArticleTagsDTOs() {

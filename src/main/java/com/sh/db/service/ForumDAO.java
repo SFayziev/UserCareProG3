@@ -40,28 +40,28 @@ public class ForumDAO extends GenericDaoImpl<ForumDTO> {
     private static final Logger LOG = Logger.getLogger(ForumDAO.class);
 
     @Value("${default.community.forum.Dashboard.modules}")
-    String dashboardModules;
+    private String dashboardModules;
 
     @Value("${default.community.forum.List.modules}")
-    String listModules;
+    private String listModules;
 
     @Value("${default.community.forum.Widget.modules}")
-    String widgetModules;
+    private String widgetModules;
 
     @Value("${default.knowledgebase.forum.Dashboard.modules}")
-    String kBdashboardModules;
+    private String kBdashboardModules;
 
     @Value("${default.knowledgebase.forum.List.modules}")
-    String kBlistModules;
+    private String kBlistModules;
 
     @Value("${default.knowledgebase.forum.Widget.modules}")
-    String kBwidgetModules;
+    private String kBwidgetModules;
 
     @Autowired
-    ModuleDAO moduleDAO;
+    private ModuleDAO moduleDAO;
 
     @Autowired
-    I18nMessageDAO i18nMessageDAO;
+    private I18nMessageDAO i18nMessageDAO;
 
     @Autowired
     public ForumDAO(SessionFactory sessionFactory) {
