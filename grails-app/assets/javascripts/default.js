@@ -11,8 +11,9 @@ iContainer.on("click","[data-action=votecomment]",voteComment);
 iContainer.on("click","[data-action=votearticle]",voteArticle);
 iContainer.on("click","[data-action=voteshow]",voteShow);
 iContainer.on("click","[data-action=articleChangeStatus]",articleChangeStatus);
-iContainer.on("click","a[data-action=replycomment]",showCommentReply);
+iContainer.on("click","[data-action=replycomment]",showCommentReply);
 iContainer.on("click","a[data-action=deletecomment]",deleteReply);
+iContainer.on("click","[data-action=deletearticle]",deleteArtilce);
 
 //$("a[data-action=deletecomment]").click(showCommentReply);
 iContainer.on("click","a[data-action=articleAssignTo]",articleAssignTo);
@@ -27,9 +28,9 @@ $("input[data-action='searchArticle']").change(articleStartFind);
 $("input[data-action='searchArticle']").keyup(articleStartFind);
 
 iContainer.on("click","[data-action=editcomment]",showCommentEdit);
+iContainer.on("click","[data-action=editarticle]",showArticleEdit);
 
 iContainer.tooltip({selector: '[data-toggle="tooltip"]'});
-
 
 function articleStartFind(){
     var instr=$(this);
@@ -103,18 +104,24 @@ function deleteAssignTags(){
     var articid=$(this).closest('[data-article-id]').attr('data-article-id');
     var forumid=$(this).closest('[data-forum-id]').attr('data-forum-id');
     var tagid= $(this).data('content');
-    var modal =$("#ucmodal");
+    showModalForm ("#ucmodal" , '/article/deleteAssignTags/'+forumid +"/"+articid +"/?tag=" + tagid )
+    //var modal =$("#ucmodal");
+    //modal.removeData('bs.modal');
+    //modal.modal({remote: '/article/deleteAssignTags/'+forumid +"/"+articid +"/?tag=" + tagid });
+    //modal.modal('show');
+    return false;
+}
+
+function showModal(modalWindowId, url){
+    var modal =$(modalWindowId);
     modal.removeData('bs.modal');
-    modal.modal({remote: '/article/deleteAssignTags/'+forumid +"/"+articid +"/?tag=" + tagid });
+    modal.modal({remote: url});
     modal.modal('show');
     return false;
 }
 
 function changeUserAvatar(userId){
-    var modal =$("#ucmodal");
-    modal.removeData('bs.modal');
-    modal.modal({remote: '/file/userAvatarSelector/' + userId });
-    modal.modal('show');
+    showModalForm ("#ucmodal" , '/file/userAvatarSelector/' + userId );
     return false;
 
 }
@@ -305,6 +312,13 @@ function voteArticle(){
     return false;
 }
 
+function deleteArtilce(){
+    var articid= $(this).data('content');
+    var forumid= $(this).data('forumid');
+    showModal('#ucmodal', '/article/delete/'+forumid +'/'+articid) ;
+    return false
+
+}
 
 function deleteReply(commid){
 
@@ -343,6 +357,14 @@ function showCommentReply(){
     commText.summernote({focus: true});
     //$(".comment-copy .media-body textarea").focus()
     return false;
+}
+
+function showArticleEdit(){
+    var articid= $(this).data('content');
+    var forumid= $(this).data('forumid');
+
+    showModal('#ucmodal', '/article/edit/'+forumid +'/'+articid) ;
+    return false
 }
 
 function showCommentEdit(){

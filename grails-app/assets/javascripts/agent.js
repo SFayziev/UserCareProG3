@@ -2,13 +2,17 @@
  * Created by Lenovo on 26.04.2016.
  */
 var iContainer=$('.content-wrapper');
-var lastarticleid=0;
 iContainer.on("click","[data-action=showarticle]",showArticle);
+iContainer.on("click","[data-action=toggleNeedreview]",toggleNeedreview);
 
+function toggleNeedreview(){
+    var articleid=$(this).data('content')
+    getandChangeJson ("#ineedreview", {'id':articleid }, "/agent/articles/toggleNeedreview"  );
 
+}
 function showArticle(){
     var articleid=$(this).data('article-id');
-    getandChangeJson ("#artilceDeatails", {'id':articleid }, "/agent/articleDetail"  );
+    getandChangeJson ("#artilceDeatails", {'id':articleid }, "/agent/articles/articleDetail"  );
 }
 
 
