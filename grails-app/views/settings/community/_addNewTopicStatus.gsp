@@ -32,7 +32,7 @@
         </div>
 
         <div class="form-group">
-           <label class="col-lg-3 control-label"><g:message code="setting.community.status.collor" /></label>
+           <label class="col-lg-3 control-label"><g:message code="setting.community.status.color" /></label>
             <div class="col-lg-8">
                 <input class="form-control" name="articleStatus.color" id="selColor"  value="${topicStatus?.articleStatusDTO?.color}" required  type="text">
             </div>
