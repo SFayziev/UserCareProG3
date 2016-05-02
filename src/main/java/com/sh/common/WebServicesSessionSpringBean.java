@@ -133,6 +133,7 @@ public class WebServicesSessionSpringBean {
 
     public CommentDTO commentVote(Integer commentId, Integer values, String userName, String remIP){ return  articleDAO.commentVote(commentId, values, userName, remIP); }
     public ArticleDTO articleVote(Integer projid , Integer articId, Integer values , String userName, String remIP ) throws N18iException { return  articleDAO.articleVote(projid, articId, values, userName, remIP); }
+    public ArticleDTO toggleNeedreview(Integer projid, Integer articleId) { return  articleBL.toggleNeedreview(projid, articleId);}
 
     public OauthidDTO findByProviderAndAccessToken(String providerName , String socialId ){ return userDAO.findByProviderAndAccessToken(providerName, socialId); }
 

@@ -4,6 +4,7 @@ import com.sh.db.map.ItemCount;
 import com.sh.db.map.forum.ForumDTO;
 import com.sh.db.map.project.ProjectDTO;
 import com.sh.db.map.topics.ArticleDTO;
+import com.sh.db.map.user.UserDTO;
 import com.sh.db.service.ArticleDAO;
 import com.sh.db.service.ForumDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +20,13 @@ import java.util.List;
 public class ArticleBL {
 
     @Autowired
-    PermissionBL permissionBL;
+    private  PermissionBL permissionBL;
 
     @Autowired
-    ArticleDAO articleDAO;
+    private  ArticleDAO articleDAO;
 
     @Autowired
-    ForumBL forumBL;
+    private ForumBL forumBL;
 
 
     public final List<ArticleDTO> getArticleList(final ProjectDTO project, final Integer[] forumids, final HashMap params) {
@@ -34,5 +35,12 @@ public class ArticleBL {
 
     public ItemCount getLastArticleRecCount(ProjectDTO project, final Integer[] forumids, HashMap params, Boolean forcache) {
         return articleDAO.getLastArticleRecCount(project, forumBL.getForumByIds(project.getId(), forumids), params, true);
+    }
+
+    public ArticleDTO toggleNeedreview(Integer projid, Integer articleId) {
+        ArticleDTO articleDTO = articleDAO.getArticle(projid, articleId);
+        articleDTO.toggleNeedreview();
+        return  articleDAO.saveArticle(articleDTO);
+
     }
 }

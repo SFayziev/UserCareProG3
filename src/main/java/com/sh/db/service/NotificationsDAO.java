@@ -23,7 +23,7 @@ public class NotificationsDAO  extends GenericDaoImpl<NotificationsDTO> {
 
     private static final Logger LOG = Logger.getLogger(NotificationsDTO.class);
     @Autowired
-    ForumDAO forumDAO;
+    private ForumDAO forumDAO;
 
     @Autowired
     public NotificationsDAO(SessionFactory sessionFactory) {

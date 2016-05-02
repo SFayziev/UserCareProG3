@@ -21,9 +21,9 @@ import java.util.List;
 public class ForumBL {
 
     @Autowired
-    PermissionBL permissionBL;
+    private PermissionBL permissionBL;
 
-    ForumDAO forumDAO;
+    private ForumDAO forumDAO;
 
     @Autowired
     public ForumBL(ForumDAO forumDAO ) {
@@ -31,7 +31,7 @@ public class ForumBL {
     }
 
     public ForumDTO getForumById(Integer projid, Integer forumid, ForumType forumType ) throws  N18iException {
-        ForumDTO forumDTO= forumDAO.getForumById(projid, forumid, forumType);
+        ForumDTO forumDTO = forumDAO.getForumById(projid, forumid, forumType);
         return  permissionBL.checkForumPrivacy(forumDTO)? forumDTO:null;
     }
 
@@ -52,7 +52,7 @@ public class ForumBL {
         return permissionBL.checkForumListPrivacy( forumDAO.getForumbyProject(projid));
     }
 
-    public boolean canAddNewTopic(Integer projid, Integer forumid){
+    public boolean canAddNewTopic(Integer projid, Integer forumid) {
         UserDTO userDTO = forumDAO.getCurrentLoggedUser();
         ForumSpamProtectionDTO forumSpamProtectionDTO=forumDAO.getForumSpamProtectionById(projid, forumid,0);
         if (forumSpamProtectionDTO.getSanonymousfeedback()) {

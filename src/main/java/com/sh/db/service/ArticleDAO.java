@@ -41,15 +41,15 @@ import java.util.*;
 @Transactional
 public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
     @Autowired
-    UserDAO userDAO;
+    private UserDAO userDAO;
 
     @Autowired
-    TopicListener topicListener;
+    private TopicListener topicListener;
 
     @Autowired
-    StatisticDAO statisticDAO;
+    private StatisticDAO statisticDAO;
     @Autowired
-    ForumDAO forumDAO;
+    private ForumDAO forumDAO;
 
     private static final Logger LOG = Logger.getLogger(ArticleDAO.class);
 
@@ -425,15 +425,15 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
         Integer previd = articleDTO.getId();
         ForumDTO forumDTO = articleDTO.getForumDTO();
 
-
-        if (articleDTO.getId()!= null) {
+        if (articleDTO.getId() == null) {
             articleDTO.setUserDTO(getCurrentLoggedUser());
+            statisticDAO.increaseForumArticles(articleDTO.getProjid(),  forumDTO);
         }
         if (articleDTO.getStatusDTO().getId() == null) {
             articleDTO.setStatusDTO(forumDAO.getArticleStatusById(articleDTO.getProjid(), forumDTO.getId(), articleDTO.getType().getFirstreplystatus(), true ));
             if (articleDTO.getStatusDTO().getId() == null) articleDTO.setStatusDTO(forumDAO.getArticleStatusById(0, 0, 0, true));
         }
-        statisticDAO.increaseForumArticles(articleDTO.getProjid(),  forumDTO);
+
         articleDTO = save(articleDTO);
         if (previd == null) {
             topicListener.sendTopicAmqpCommand( AmqpConstants.TOPICCREATED , articleDTO.getProjid(), forumDTO.getId(), articleDTO.getId());
@@ -581,5 +581,6 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
 
         return  saveArticle(articleDTO);
     }
+
 
 }

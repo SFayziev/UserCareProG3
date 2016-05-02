@@ -37,7 +37,7 @@ public class UserDAO extends GenericDaoImpl<UserDTO> {
     private  String usertopicModId;
 
     @Autowired
-    ShaPasswordEncoder passwordEncoder;
+    private ShaPasswordEncoder passwordEncoder;
 
     /**
      * Autowiring sessionFactory
@@ -147,23 +147,25 @@ public class UserDAO extends GenericDaoImpl<UserDTO> {
     }
 
     @Cacheable( value = "userDTO" )
-    public List<UserDTO> getUsersList(Integer projId, Integer type, Integer status, String username , String email , Integer  start, Integer limit, String order ){
+    public List<UserDTO> getUsersList(Integer projId, Integer type, Integer status, String username , String email , Integer  start, Integer limit, String order ) {
         Criteria criteria = currentSession()
                 .createCriteria(UserDTO.class);
         criteria.add(Restrictions.eq("projid", projId));
-        if (status!= null &&  status==0){
+        if (status != null &&  status == 0) {
             criteria.add(Restrictions.eq("status", status));
-        }else { criteria.add(Restrictions.eq("status", 1));}
+        } else {
+            criteria.add(Restrictions.eq("status", 1));
+        }
 
-        if(type!= null && type>-1){
+        if (type != null && type > -1) {
             criteria.add(Restrictions.eq("usertype", type));
         }
         if (username!= null && !username.isEmpty()) criteria.add(Restrictions.like("name", "%"+username.trim()+"%" ));
         if (email!= null && !email.isEmpty()) criteria.add(Restrictions.like("email", "%"+email.trim()+"%" ));
         if (limit!= null && limit>0) criteria.setMaxResults(limit);
-        if(start!= null) criteria.setFirstResult(start);
+        if (start!= null) criteria.setFirstResult(start);
 
-        if(Objects.equals(order, "bycomment")) { criteria.addOrder(Order.desc("comments"));}
+        if( Objects.equals(order, "bycomment")) { criteria.addOrder(Order.desc("comments"));}
         else if(Objects.equals(order, "byraitings")) {criteria.addOrder(Order.desc("raitings")); }
         else if(Objects.equals(order, "regdate")) { criteria.addOrder(Order.desc("regdate")); }
 

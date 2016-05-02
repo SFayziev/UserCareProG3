@@ -22,10 +22,10 @@ import java.util.List;
 public class PermissionBL {
 
     @Autowired
-    UserDAO userDAO;
+    private UserDAO userDAO;
 
     private boolean checkGrandAuthority(String authority) {
-        SimpleGrantedAuthority simpleGrantedAuthority =new SimpleGrantedAuthority("ROLE_MANAGER");
+        SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(authority);
         Collection<? extends GrantedAuthority> grantedAuthorities = userDAO.getCurrentUserAuthority();
         return grantedAuthorities != null && grantedAuthorities.contains(simpleGrantedAuthority);
 
