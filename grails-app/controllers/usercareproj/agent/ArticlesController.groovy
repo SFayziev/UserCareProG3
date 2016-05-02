@@ -54,4 +54,38 @@ class ArticlesController {
         render   resultJson.toString()
 
     }
+
+    def assignUserlist(){
+        def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
+        def id=params.getInt("id");
+
+        def staffs = webServicesSession.getProjectStaffs(project.id, 0)
+        JSONObject resultJson = new JSONObject();
+        resultJson.put("status","error");
+        def contents = g.render(template:"/agent/article/actionBar/staffList", model: [staffs: staffs])
+        resultJson.put("status","success");
+        resultJson.put("value", contents)
+        response.contentType = "application/json; charset=UTF-8"
+        render   resultJson.toString()
+
+    }
+    def statuslist(){
+        def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
+        def id=params.getInt("id");
+        def article=webServicesSession.getArticlebyId(project.id, id)
+        JSONObject resultJson = new JSONObject();
+        resultJson.put("status","error");
+        if (article!=null){
+            def forumStatuses=webServicesSession.getTopicTypeStatusByTopicId(project.id , article.type.id )
+
+            def contents = g.render(template:"/agent/article/actionBar/statusList", model: [UCproject: project, article: article, forumStatuses: forumStatuses])
+            resultJson.put("status","success");
+            resultJson.put("value", contents)
+        }
+
+        response.contentType = "application/json; charset=UTF-8"
+        render   resultJson.toString()
+    }
+
 }
+

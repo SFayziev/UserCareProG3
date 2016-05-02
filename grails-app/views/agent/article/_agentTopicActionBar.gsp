@@ -12,15 +12,11 @@
                     <span class="btn-label"><i class="fa fa-reply"></i></span>
                 </button>
             </div>
-            <div class="btn-group mb-sm">
-                <button data-original-title="More actions" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" rel="tooltip" title="">
+            <div id="articlestatus" data-content="${article.id}" class="btn-group mb-sm" data-toggle="tooltip"  title='<g:message code="article.action.change.status"/>'>
+                <button  type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" >
                     <span class="btn-label"><i class="fa fa-exchange"></i></span>
                     <span class="caret"></span>
                 </button>
-                %{----}%
-                %{--<button type="button"  class="btn btn-labeled btn-default" data-toggle="tooltip"  title='<g:message code="article.action.change.status"/>' >--}%
-                    %{--<span class="btn-label"><i class="fa fa-exchange"></i></span>--}%
-                %{--</button>--}%
             </div>
             <div class="btn-group mb-sm">
                 <button type="button" data-content="${article.id}" data-action="editarticle" data-forumid="${article.forumDTO.id}"  class="btn btn-labeled btn-default" data-toggle="tooltip"  title='<g:message code="article.action.Edit"/>' >
@@ -38,23 +34,11 @@
                     <span class="btn-label"><i class="fa fa-external-link"></i></span>
                 </button>
             </div>
-            <div id="somelist" class="btn-group mb-sm" data-toggle="tooltip"  title='<g:message code="article.action.AssignTo"/>'>
-
+            <div id="assignUser" data-content="${article.id}" class="btn-group mb-sm" data-toggle="tooltip"  title='<g:message code="article.action.AssignTo"/>'>
                 <button  aria-expanded="false" type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle"  >
                     <i class="fa fa-users"></i>
                     <span class="caret"></span>
                 </button>
-                <ul role="menu" class="dropdown-menu">
-                    <li><a href="javascript:void(0);">Action</a>
-                    </li>
-                    <li><a href="javascript:void(0);">Another action</a>
-                    </li>
-                    <li><a href="javascript:void(0);">Something else here</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li><a href="javascript:void(0);">Separated link</a>
-                    </li>
-                </ul>
             </div>
 
             <div class="btn-group pull-right">
@@ -73,9 +57,33 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-    $('#somelist').on('show.bs.dropdown', function(){
-        alert($(this).attr('id'));
+    $('#assignUser').on('show.bs.dropdown', function(){
+        var obj=$('#assignUser');
+        var articleid=obj.data('content');
+        if( obj.children('ul').length==0) {
+            $.ajax({
+                type: 'POST',
+                url: '/agent/articles/assignUserlist/' + articleid
+            }).done(function (response) {
+                obj.append(response.value);
+            });
+        }
     });
+
+    $('#articlestatus').on('show.bs.dropdown', function(){
+        var obj=$('#articlestatus');
+        var articleid=obj.data('content');
+        if( obj.children('ul').length==0) {
+            $.ajax({
+                type: 'POST',
+                url: '/agent/articles/statuslist/' + articleid
+            }).done(function (response) {
+                obj.append(response.value);
+            });
+        }
+    });
+
+
 
 });
 </script>
