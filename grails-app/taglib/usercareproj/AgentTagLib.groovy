@@ -1,7 +1,5 @@
 package usercareproj
 
-import com.sh.db.map.forum.ForumDTO
-import com.sh.utils.ForumType
 import org.springframework.beans.factory.annotation.Value
 
 class AgentTagLib {
@@ -14,13 +12,13 @@ class AgentTagLib {
     def webServicesSession
 
     def searchPanel = { attrs ->
-        out << render(template: "/agent/searchPanel" , model: params)
+        out << render(template: "/agent/article/searchPanel" , model: params)
     }
 
     def listArticle={ attrs ->
         def params = attrs.params
         params.module=webServicesSession.getModuleById(0,agentTopicModuleId)
-        out << render(template: "/agent/articleList" , model: params)
+        out << render(template: "/agent/article/articleList" , model: params)
     }
 
     def forumList={attrs ->
@@ -31,13 +29,13 @@ class AgentTagLib {
 //        params.knowledgebases = webServicesSession.getForumByType(project.id, ForumType.Knowledgebase)
 //        params.helpdesks = webServicesSession.getForumByType(project.id, ForumType.HelpDesk)
 //        params.chats = webServicesSession.getForumByType(project.id, ForumType.Chat)
-        out << render(template: "/agent/searchOption/forumList" , model: params)
+        out << render(template: "/agent/article/searchOption/forumList" , model: params)
 
     }
 
     def sortBy={attrs ->
         def params = attrs.params
-        out << render(template: "/agent/searchOption/sortBy" , model: params)
+        out << render(template: "/agent/article/searchOption/sortBy" , model: params)
     }
 
 }
