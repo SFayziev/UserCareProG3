@@ -167,13 +167,7 @@ function changeCategoryImg(id){
 
 }
 
-function showModal(modalWindowId, url){
-    var modal =$(modalWindowId);
-    modal.removeData('bs.modal');
-    modal.modal({remote: url});
-    modal.modal('show');
-    return false;
-}
+
 
 function changeTopicTypeImg(id){
     showModal('#ucmodal', '/file/topicTypeSelector/' + id +"?withicon=1" )
