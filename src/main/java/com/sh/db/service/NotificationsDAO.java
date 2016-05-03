@@ -43,29 +43,21 @@ public class NotificationsDAO  extends GenericDaoImpl<NotificationsDTO> {
         return  save(notificationsDTO);
     }
     public NotificationsForumDTO changeNotifyUserForum(Integer projid, Integer userid, Integer forumid  ){
-        UserDTO userDTO=getCurrentLoggedUser();
-        if (userDTO!= null && ((userDTO.getId()==userid) || (userDTO.getUserPermissionsDTO().getManageusers()))){
-            NotificationsForumDTO notificationsForumDTO = (NotificationsForumDTO) currentSession().createQuery(" from NotificationsForumDTO nt where nt.forumid=:forumid and nt.notificationsDTO.userid=:userid  ")
-                    .setParameter("userid", userid).setParameter("forumid", forumid)
-                    .uniqueResult();
-            if (notificationsForumDTO== null ){
-                notificationsForumDTO= new NotificationsForumDTO( forumid, getNotifyByUserId(projid, userid) );
-            }
-            notificationsForumDTO.setEnabled(! notificationsForumDTO.getEnabled());
-            currentSession().saveOrUpdate(notificationsForumDTO);
-            return notificationsForumDTO;
-
+        NotificationsForumDTO notificationsForumDTO = (NotificationsForumDTO) currentSession().createQuery(" from NotificationsForumDTO nt where nt.forumid=:forumid and nt.notificationsDTO.userid=:userid  ")
+                .setParameter("userid", userid).setParameter("forumid", forumid)
+                .uniqueResult();
+        if (notificationsForumDTO== null ){
+            notificationsForumDTO= new NotificationsForumDTO( forumid, getNotifyByUserId(projid, userid) );
         }
-        return null;
+        notificationsForumDTO.setEnabled(! notificationsForumDTO.getEnabled());
+        currentSession().saveOrUpdate(notificationsForumDTO);
+        return notificationsForumDTO;
     }
 
     public void addnotifyUserForum(Integer projid, Integer userid, Integer forumid ){
-        UserDTO userDTO=getCurrentLoggedUser();
-        if (userDTO!= null && ((userDTO.getId()==userid) || (userDTO.getUserPermissionsDTO().getManageusers()))){
-            NotificationsDTO notificationsDTO= getNotifyByUserId(projid, userid);
-            notificationsDTO.addForumToList(forumid);
-            save(notificationsDTO);
-        }
+        NotificationsDTO notificationsDTO= getNotifyByUserId(projid, userid);
+        notificationsDTO.addForumToList(forumid);
+        save(notificationsDTO);
     }
 
     public List<NotificationsForumDTO> getUserNotifyForums(Integer projid, Integer userid){

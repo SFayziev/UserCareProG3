@@ -27,7 +27,6 @@ public class ArticleDTO extends IntEntity {
     private Date lastchange = new Date();
     private String  title;
     private Integer projid;
-    private Boolean privateMsg = false;
     private Boolean deleted = false;
     private Integer votes = 0;
     private Integer views = 0;
@@ -36,7 +35,7 @@ public class ArticleDTO extends IntEntity {
     private Integer comments = 0;
     private Integer voteup = 0;
     private Integer votedown = 0;
-    private Integer disabled = 0;
+    private Boolean disabled = true;
     private Integer  answerCommentid;
     private Boolean needreview = true;
 
@@ -71,13 +70,7 @@ public class ArticleDTO extends IntEntity {
         this.canVote = canVote;
     }
 
-    public Integer getDisabled() {
-        return disabled;
-    }
 
-    public void setDisabled(Integer disabled) {
-        this.disabled = disabled;
-    }
 
     public Boolean getDeleted() {
         return deleted;
@@ -241,17 +234,13 @@ public class ArticleDTO extends IntEntity {
         this.userDTO = userDTO;
     }
 
-
-    public Boolean getPrivateMsg() {
-        return privateMsg;
+    public Boolean getDisabled() {
+        return disabled;
     }
 
-    public void setPrivateMsg(Boolean privateMsg) {
-        this.privateMsg = privateMsg;
+    public void setDisabled(Boolean disabled) {
+        this.disabled = disabled;
     }
-
-
-
 
     public String toJson(String mass ){
         JSONObject resultJson = new JSONObject();

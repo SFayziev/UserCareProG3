@@ -179,7 +179,7 @@ class ArticleController {
         def id=params.getInt("id");
 
         if (params.submit=="save"){
-            def article = webServicesSession.getProjectArticle(project.id , id)
+            def article = webServicesSession.getArticlebyId(project.id , id)
             if (article!= null){
                article= webServicesSession .moveToArticle(article, params.getInt("forumid",0 ) , params.getInt("forumtypeid", 0), params.getInt("forumcategoryid", 0) )
 
@@ -219,7 +219,7 @@ class ArticleController {
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         def article = new ArticleDTO();
         if (params.int("id")){
-            article=webServicesSession.getProjectArticle( project.getId(),params.int("id") )?: article
+            article=webServicesSession.getArticlebyId( project.getId(),params.int("id") )?: article
         }
         article.id=params.int("id")
         article.setProjid(project.getId() )

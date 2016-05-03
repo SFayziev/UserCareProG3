@@ -83,7 +83,7 @@ public class ArticleDAOTest extends IntegrationTest{
 
 //    @Test
 //    @Rollback(false)
-//    public void getProjectArticle(){
+//    public void getArticlebyId(){
 //        ArticleDTO articleDTO= articleDAO.getArticle(2,150);
 //        System.out.println(articleDTO.getArticleStatsDTO());
 //

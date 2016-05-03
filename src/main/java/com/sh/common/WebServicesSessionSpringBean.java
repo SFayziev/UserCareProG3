@@ -2,6 +2,8 @@ package com.sh.common;
 
 import com.sh.db.bl.ArticleBL;
 import com.sh.db.bl.ForumBL;
+import com.sh.db.bl.ModuleBL;
+import com.sh.db.bl.PermissionBL;
 import com.sh.db.map.*;
 import com.sh.db.map.file.FileDTO;
 import com.sh.db.map.file.ImgDTO;
@@ -25,7 +27,6 @@ import com.sh.utils.ImageType;
 import com.sh.utils.ModuleDisplay;
 import com.sh.utils.ModulePosType;
 import com.sh.utils.exception.N18iException;
-import org.apache.http.client.HttpResponseException;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -45,31 +46,41 @@ public class WebServicesSessionSpringBean {
     private static final Logger LOG = Logger.getLogger(WebServicesSessionSpringBean.class);
 
     @Autowired
-    ModuleDAO moduleDAO;
+    private ModuleDAO moduleDAO;
+
+
 
     @Autowired
-    ProjectDAO projectDAO ;
+    private ModuleBL moduleBL;
 
     @Autowired
-    ArticleDAO articleDAO;
+    private  ProjectDAO projectDAO ;
 
     @Autowired
-    ArticleBL articleBL;
+    private ArticleDAO articleDAO;
+
+
 
     @Autowired
-    ForumDAO forumDAO;
+    private ForumDAO forumDAO;
 
     @Autowired
-    ForumBL forumBL ;
+    private ForumBL forumBL ;
 
     @Autowired
-    UserDAO userDAO;
+    private PermissionBL permissionBL;
 
     @Autowired
-    FileDAO fileDAO;
+    private UserDAO userDAO;
 
     @Autowired
-    I18nMessageDAO i18nMessageDAO;
+    private FileDAO fileDAO;
+
+    @Autowired
+    private I18nMessageDAO i18nMessageDAO;
+
+    @Autowired
+    private ArticleBL articleBL;
 
     public ProjectDTO getProject(HttpServletResponse response, HttpServletRequest request, HttpSession session) throws IOException {
 
@@ -109,7 +120,6 @@ public class WebServicesSessionSpringBean {
 // Projects
     public ProjectDTO updateProject(ProjectDTO projectDTO) {return  projectDAO.saveProject(projectDTO);}
     public ProjectDTO getProjectbyId(int id){return projectDAO.getProjectbyId(id);}
-//    public ProjectDTO getProjectbyName(String name){return projectDAO.getbyName(name, null);}
     public  List<LanguagesDTO> getProjectLang(Integer projid){return projectDAO.getProjectLangs(projid);}
     public  List<LanguagesDTO> getProjectActiveLangs(Integer projid){return projectDAO.getProjectActiveLangs(projid);}
     public LanguagesDTO getProjectLangbyId(Integer projid, Integer langid){return projectDAO.getProjectLangbyId(projid, langid); }
@@ -122,14 +132,13 @@ public class WebServicesSessionSpringBean {
     public ProjectDesignDTO saveProjectDesign(ProjectDesignDTO projectDesignDTO) {return  projectDAO.saveProjectDesign(projectDesignDTO);}
 
     // Articles
-//    public List<ArticleDTO> getLastArticle(Integer projectId, Integer start,Integer count, Integer status, Integer  type , String order,  Integer catid , ForumDTO  forumDTO , Integer langid){ return articleDAO.getLastArticle(projectId, start, count, status, type, order, catid, forumDTO, langid ) ; }
-//    public ItemCount getLastArticleRecCount(Integer projectId,  Integer status, Integer  type ,    Integer catid , ForumDTO  forumDTO, Integer langid) { return articleDAO.getLastArticleRecCount(projectId, status, type, catid, forumDTO, langid); }
+
     public ItemCount getLastArticleRecCount(ProjectDTO  project, Integer[] forumids, HashMap params) {return articleBL.getLastArticleRecCount(project, forumids, params, true);}
     public  List<ArticleDTO> getArticleList(ProjectDTO  project,Integer[] forumids, HashMap params) {return  articleBL.getArticleList(project, forumids, params); }
 
     public ArticleDTO getArticlebyId(Integer projid , Integer id ){return  articleDAO.getArticle(projid, id);}
-    public CommentDTO addComment(CommentDTO commentDTO) {return  articleDAO.saveArticleComment(commentDTO);}
-    public ArticleDTO addArticle(ArticleDTO  articleDTO) {return  articleDAO.saveArticle(articleDTO);}
+    public CommentDTO addComment(CommentDTO commentDTO) {return  articleBL.saveArticleComment(commentDTO);}
+    public ArticleDTO addArticle(ArticleDTO  articleDTO) {return  articleBL.saveArticle(articleDTO);}
 
     public CommentDTO commentVote(Integer commentId, Integer values, String userName, String remIP){ return  articleDAO.commentVote(commentId, values, userName, remIP); }
     public ArticleDTO articleVote(Integer projid , Integer articId, Integer values , String userName, String remIP ) throws N18iException { return  articleDAO.articleVote(projid, articId, values, userName, remIP); }
@@ -141,11 +150,11 @@ public class WebServicesSessionSpringBean {
 
     public UserDTO createLogin(UserDTO user){return  userDAO.createLogin(user);}
     public UserDTO saveProfile(UserDTO userDTO){ return  userDAO.saveProfile(userDTO);}
-    public UserPermissionsDTO saveUserPermission(UserPermissionsDTO userPermissionsDTO) throws Exception {return  userDAO.saveUserPermission(userPermissionsDTO);}
-    public void  deleteUserPermission(UserPermissionsDTO userPermissionsDTO) throws Exception { userDAO.deleteUserPermission(userPermissionsDTO);}
+    public UserPermissionsDTO saveUserPermission(UserPermissionsDTO userPermissionsDTO) throws Exception {return  permissionBL.saveUserPermission(userPermissionsDTO);}
+    public void  deleteUserPermission(UserPermissionsDTO userPermissionsDTO) throws Exception { permissionBL.deleteUserPermission(userPermissionsDTO);}
     public UserPermissionsDTO getUserPermission(Integer projid, Integer userid ) { return  userDAO.getUserPermission( projid, userid); }
     public List<UserDTO> getUsersList(Integer projId, Integer type, Integer status, String username , String email , Integer  start, Integer limit, String order ){ return  userDAO.getUsersList(projId, type, status, username, email, start, limit, order);}
-    public UserDTO createAgentUser(Integer projid,  String email){return  userDAO.createAgentUser(projid, email);}
+    public UserDTO createAgentUser(Integer projid,  String email){return  permissionBL.createAgentUser(projid, email);}
 
     public ArticleDTO assignArticle (Integer articid, Integer assignedUserId ){return articleDAO.assignArticTo(articid, assignedUserId); }
     public ArticleDTO assignArticleCategory(Integer articID, Integer catid) {return  articleDAO.assignArticleCategory(articID, catid);}
@@ -182,7 +191,6 @@ public class WebServicesSessionSpringBean {
     public TopicTypeDTO getForumTypeByid(Integer projid,  Integer id  ){return  forumDAO.getForumTypeByid(projid, id) ;}
     public TopicTypeDTO saveForumType(TopicTypeDTO topicTypeDTO ){return  forumDAO.saveForumType(topicTypeDTO);}
     public boolean moveForumType(Integer projId, Integer forunid, Integer forumTypeID, String direction){ return  forumDAO.moveForumType(projId, forunid, forumTypeID, direction); }
-//    public boolean delTypeStatusDTOs(Integer projid, Integer forumid, Integer typeid){return  forumDAO.delTypeStatusDTOs(projid, forumid, typeid);}
     public boolean delForumType(TopicTypeDTO topicTypeDTO){return  forumDAO.delForumType(topicTypeDTO); }
     public List<TopicTypeStatusDTO> getTopicTypeStatusByTopicId(Integer projid, Integer topicId){ return forumDAO.getTopicTypeStatusByTopicId(projid, topicId); }
     public TopicTypeStatusDTO getTopicTypeStatusById(Integer projid, Integer typeStatusId){return  forumDAO.getTopicTypeStatusById(projid, typeStatusId ) ;}
@@ -191,17 +199,13 @@ public class WebServicesSessionSpringBean {
     public ArticleStatusDTO getArticleStatusById(Integer projid , Integer forumid, Integer id  ){return  forumDAO.getArticleStatusById(projid, forumid, id, true);}
     public List<ArticleStatusDTO> getArticleStatusByTopicTypeId(Integer projid, Integer forumid,  Integer topicTypeid  ){return  forumDAO.getArticleStatusByTopicTypeId(projid, forumid, topicTypeid);}
     public ArticleStatusDTO saveArticleStatus(ArticleStatusDTO articleStatusDTO){ return forumDAO.saveArticleStatus(articleStatusDTO); }
-//    public List<ForumStatusDTO> getForumStatusByForumId(Integer projid,  Integer forumid  ){return  forumDAO.getForumStatusByForumId(projid, forumid ); }
-//    public ForumStatusDTO getForumStatusByid(Integer projid,  Integer id ){ return  forumDAO.getForumStatusByid( projid, id, true );}
-//    public ForumStatusDTO saveForumStatus(ForumStatusDTO forumStatusDTO){ return  forumDAO.saveForumStatus(forumStatusDTO); }
     public boolean moveTopicStatus(Integer projId, Integer topicStatusId , String direction){ return forumDAO.moveTopicStatus(projId, topicStatusId, direction); }
     public Boolean delTypeStatusbyId(Integer projid, Integer typestatusid ){return  forumDAO.delTypeStatusbyId(projid, typestatusid);}
 
-    public Boolean isFollow(Integer articid) throws N18iException { return  articleDAO.isfollow(articid);}
-    public Boolean followArticle(Integer projid , Integer articid) throws N18iException { return  articleDAO.followArticle(projid, articid);}
+    public Boolean isFollow(Integer articid) throws N18iException { return  articleBL.isfollow(articid);}
+    public Boolean followArticle(Integer projid , Integer articid) throws N18iException { return articleBL.followArticle(projid, articid);}
 
-    public UserDTO getCurentUser(){return  userDAO.getCurrentUser();}
-//    public UserDTO   createAvatar(Integer userid, InputStream stream) throws IOException {return    userDAO.createAvatar(userid, stream);}
+    public UserDTO getCurentUser(){return  permissionBL.getCurrentUser();}
 
     public FileDTO createImageFile(ImageType type, InputStream stream ) throws IOException {return fileDAO.saveImage(type, stream);  }
     public List<ImgDTO> getLocalImageByType(Integer type){return  fileDAO.getLocalImageByType(type);}
@@ -216,14 +220,14 @@ public class WebServicesSessionSpringBean {
     public Long getCommentbyUserCounts(Integer projid, Integer  userid ) {return  articleDAO.getCommentbyUserCounts(projid, userid);}
 
     public List<ArticleDTO> findTextInArticle(Integer projid ,String searchText, Integer forumid, ForumType forumType,  Integer count, String order ){return    articleDAO.findTextInArticle(projid, searchText, forumid, forumType, count, order);}
-    public List<ModuleDTO> getModuleBydisplaypos(Integer projId,  Integer forumid,  ModuleDisplay displaypos , ModulePosType modulePosType, UserDTO forUserDTO ) { return  moduleDAO.getModuleBydisplaypos(projId, forumid, displaypos, modulePosType, forUserDTO); }
+    public List<ModuleDTO> getModuleBydisplaypos(Integer projId,  Integer forumid,  ModuleDisplay displaypos , ModulePosType modulePosType, UserDTO forUserDTO ) { return  moduleBL.getModuleBydisplaypos(projId, forumid, displaypos, modulePosType, forUserDTO); }
     public ModuleDTO getModuleById(Integer projId, Integer modid ){ return  moduleDAO.getModuleById(projId, modid) ; }
     public boolean moveModule(Integer projId, Integer moduleID, ModuleDisplay moduleDisplay, String direction){return moduleDAO.moveModule(projId,moduleID,moduleDisplay,  direction ); }
     public boolean deleteModule(Integer projId, Integer moduleID){return moduleDAO.deleteModule(projId, moduleID); }
     public void addModuleParams(Integer projId, Integer moduleid, List<ModuleParamsDTO> moduleParamsDTOs) { moduleDAO.addModuleParams(projId, moduleid, moduleParamsDTOs); }
     public void addProjectParams(ProjectDTO project,  List<ProjectParamsDTO> projectParamsDTOs) { projectDAO.addProjectParams(project, projectParamsDTOs); }
     public List<ModuleTypeDTO> getModuleType(ModulePosType dispose){return  moduleDAO.getModuleType(dispose);}
-    public  Boolean createModule(Integer forumid , ModuleDisplay displaypos , ModulePosType modulePosType, Integer modType ) throws Exception { return  moduleDAO.createModule(forumid,displaypos, modulePosType, modType ); }
+    public  Boolean createModule(Integer forumid , ModuleDisplay displaypos , ModulePosType modulePosType, Integer modType ) throws Exception { return  moduleBL.createModule(forumid,displaypos, modulePosType, modType ); }
     public  List<ModuleLinkDTO> getModuleLinksDTObyModuleId(Integer modulid){return moduleDAO.getModuleLinksDTObyModuleId(modulid) ;}
     public  ModuleLinkDTO getModuleLinksDTObyId(Integer modulid, Integer linkid) { return  moduleDAO.getModuleLinksDTObyId(modulid, linkid);}
     public  boolean deleteModuleLinksDTO(Integer modulid, Integer linkid){return  moduleDAO.deleteModuleLinksDTO(modulid, linkid);}

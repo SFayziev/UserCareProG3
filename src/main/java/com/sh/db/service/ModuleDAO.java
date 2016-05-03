@@ -74,7 +74,7 @@ public class ModuleDAO extends GenericDaoImpl<ModuleDTO> {
     @CacheEvict(value = "modules" ,   allEntries = true)
     public boolean moveModule(Integer projId, Integer moduleID, ModuleDisplay moduleDisplay, String direction){
         ModuleDTO moduleDTO=getModuleById(projId, moduleID);
-        List<ModuleDTO> moduleDTOList=getModuleBydisplaypos(projId,  moduleDTO.getForumid() , moduleDisplay , moduleDTO.getModuleTypeDTO().getDispos() , null );
+        List<ModuleDTO> moduleDTOList=getModules(projId,  moduleDTO.getForumid() , moduleDisplay , moduleDTO.getModuleTypeDTO().getDispos() , null );
         ModuleDTO prevModule = null;
         Boolean change=false;
         for (ModuleDTO module:moduleDTOList){
@@ -164,43 +164,13 @@ public class ModuleDAO extends GenericDaoImpl<ModuleDTO> {
     }
 
 
-    public List<ModuleDTO> getModuleBydisplaypos(Integer projId,  Integer forumid,  ModuleDisplay displaypos , ModulePosType modulePosType, UserDTO forUserDTO ) {
-        UserDTO curUserDTO = getCurrentLoggedUser();
 
-        List<ModuleDTO> moduleDTOList = null;
-         if (displaypos == ModuleDisplay.Dashboard || displaypos == ModuleDisplay.List) {
-             moduleDTOList = getModules(projId, forumid, displaypos, curUserDTO);
-         } else if (displaypos == ModuleDisplay.ItemPanel) {
-             moduleDTOList = getItemPanelModules(projId,  forumid, modulePosType, curUserDTO);
-         }  else if (displaypos == ModuleDisplay.UserArticle || displaypos == ModuleDisplay.UserComments || displaypos == ModuleDisplay.UserNotification || displaypos == ModuleDisplay.UserProfile) {
-             moduleDTOList = getUserPanelModules(projId,  forumid, displaypos, curUserDTO);
-         } else if (displaypos == ModuleDisplay.OurTeam) {
-             moduleDTOList = getUserPanelModules(projId,  forumid, displaypos, curUserDTO);
-         } else if (displaypos == ModuleDisplay.Widget) {
-             moduleDTOList = getUserPanelModules(projId,  forumid, displaypos, curUserDTO);
-         }
 
-        return moduleDTOList;
-     }
-
-    @Cacheable( value = "modules")
-    @Transactional
-    private  List<ModuleDTO> getUserPanelModules(Integer projId,  Integer forumid, ModuleDisplay moduleDisplay,  UserDTO user) {
-        UserDTO curuser=getCurrentLoggedUser();
-        List<ModuleDTO> moduleDTOList = getModuleCriteria(projId, 0, forumid, moduleDisplay, null, 1).list();
-        moduleDTOList.addAll(getModuleCriteria(projId, 0, 0, moduleDisplay, null, 1).list() );
-        if (curuser != null) {
-            if (curuser.getUserPermissionsDTO().getManager() || curuser.getUserPermissionsDTO().getManageusers()) {
-                moduleDTOList.add( getModuleById(projId, modulAdminAction ));
-            }
-        }
-        return  moduleDTOList;
-    }
 
 
     @Cacheable( value = "modules")
     @Transactional
-    private  List<ModuleDTO> getItemPanelModules(Integer projId,  Integer forumid, ModulePosType dispos,  UserDTO user) {
+    public   List<ModuleDTO> getItemPanelModules(Integer projId,  Integer forumid, ModulePosType dispos,  UserDTO user) {
         ForumDTO forumDTO = forumDAO.getForumById(projId, forumid);
         List<ModuleDTO> moduleDTOList= new ArrayList<>();
         if (forumDTO!= null){
@@ -220,8 +190,8 @@ public class ModuleDAO extends GenericDaoImpl<ModuleDTO> {
 
     @Cacheable( value = "modules")
     @Transactional
-    private  List<ModuleDTO> getModules(Integer projId,  Integer forumid, ModuleDisplay moduleDisplay,  UserDTO user) {
-        List<ModuleDTO> moduleDTOList = getModuleCriteria(projId, 0, forumid, moduleDisplay , null, 1).list();
+    public   List<ModuleDTO> getModules(Integer projId,  Integer forumid, ModuleDisplay moduleDisplay, ModulePosType dispos,  UserDTO user) {
+        List<ModuleDTO> moduleDTOList = getModuleCriteria(projId, 0, forumid, moduleDisplay , dispos, 1).list();
         return  moduleDTOList;
     }
 
@@ -248,20 +218,9 @@ public class ModuleDAO extends GenericDaoImpl<ModuleDTO> {
     }
 
     @CacheEvict(value = "modules" ,   allEntries = true)
-    public  Boolean createModule(Integer forumid , ModuleDisplay displaypos , ModulePosType modulePosType, Integer modType ) throws Exception {
-        UserDTO userDTO=getCurrentLoggedUser();
-        if ((userDTO== null) || !userDTO.getUserPermissionsDTO().getManageusers()){
-            throw new Exception("You don't have permission " );
-        }
-        ModuleTypeDTO moduleTypeDTO=getModuleTypebyId(modType);
-        if (moduleTypeDTO== null) {
-            LOG.error("Can't find module: " + modType + " fo forum: "+ forumid);
-            return false;
-        }
-
+    public  Boolean createModule(Integer forumid , ModuleDisplay displaypos , ModulePosType modulePosType, ModuleTypeDTO moduleTypeDTO )  {
         ModuleDTO moduleDTO= new ModuleDTO(forumid, 1 << displaypos.ordinal(),  moduleTypeDTO);
         moduleDTO.setDispos(modulePosType);
-
         saveModule(moduleDTO);
         return  true;
 

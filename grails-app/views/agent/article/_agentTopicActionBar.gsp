@@ -46,7 +46,7 @@
                     <i class="fa fa-navicon"></i>
                 </button>
                 <ul style="max-height: 324px;" class="dropdown-menu pull-right" role="menu">
-                    <li><a data-action="getinfo-topic" href="#"><i class="fa fa-fw fa-info"></i> Additional information</a></li>
+                    <li><a data-action="getinfo-topic" href="#"><i class="fa fa-fw fa-info"></i>Additional information</a></li>
                     <li><a data-action="move-topic" href="#"><i class="fa fa-fw fa-arrow-right"></i> Move to another forum</a></li>
                     <li><a data-action="manage-collaborators" href="#"><i class="fa fa-fw fa-users"></i> Manage collaborators</a></li>
                 </ul>
@@ -82,8 +82,5 @@ $(document).ready(function(){
             });
         }
     });
-
-
-
 });
 </script>

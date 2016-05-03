@@ -61,19 +61,6 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
         setSessionFactory(sessionFactory);
     }
 
-//    /**
-//     * Get last project article fro index page
-//     * @param projId project id
-//     * @param start  start  record
-//     * @param count  number of record
-//     * @param status article status
-//     * @param artictype   article type
-//     * @return  list of Article
-//     */
-//    public List<ArticleDTO> getLastArticle(Integer projId, Integer start, Integer count, Integer status, Integer artictype , String order )  {
-//        return   getLastArticle(projId, start, count, status, artictype, order, null, null, null, null) ;
-//    }
-
     /**
      * Get last project article fro index page
      * @param projId project id
@@ -86,11 +73,11 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
     @Cacheable( value = "articleDTO" )
 //    @Transactional
     public List<ArticleDTO> getLastArticle(Integer projId, Integer start, Integer count, Integer status, Integer artictype , String order, Integer catId , List<ForumDTO> forumDTOs, Integer userid, Integer performerid )  {
-        UserDTO userDTO=getCurrentLoggedUser();
+//        UserDTO userDTO=getCurrentLoggedUser();
         List<ArticleDTO> articleDTOList=getArticleCriteria(projId, start,count,status,artictype , order,  catId, forumDTOs, userid, performerid).list();
-        for (ArticleDTO articleDTO:articleDTOList){
-            if (articleDTO.getUserDTO()!= null &&  userDTO!=null && articleDTO.getUserDTO().getId()==userDTO.getId()    ) articleDTO.setCanVote(false);
-        }
+//        for (ArticleDTO articleDTO:articleDTOList){
+//            if (articleDTO.getUserDTO()!= null &&  userDTO!=null && articleDTO.getUserDTO().getId()==userDTO.getId()    ) articleDTO.setCanVote(false);
+//        }
         return articleDTOList;
     }
 
@@ -115,7 +102,7 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
 
             for (ForumDTO forumDTO:forumDTOs){
                 if (forumDTO.getType().equals(ForumType.HelpDesk)) {
-                    UserDTO userDTO = getCurrentLoggedUser();
+                    UserDTO userDTO = null;
                     ArrayUtils.add(forcrit, Restrictions.sqlRestriction("userid= " + (userDTO == null?-1:userDTO.getId()) ));
                 }
                 else {
@@ -202,7 +189,8 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
      * @param commentDTO comment to save
      * @return
      */
-    @Transactional
+
+    @CacheEvict(value = "articleDTO",  allEntries = true)
     public CommentDTO saveArticleComment(CommentDTO commentDTO){
         Integer articid= commentDTO.getArticleDTO().getId();
         CommentDTO parentDTO;
@@ -222,8 +210,8 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
             }
         }
 
-        commentDTO.setUserDTO(getCurrentLoggedUser());
-        commentDTO.getArticleDTO().setUpdatedUserDTO(getCurrentLoggedUser());
+//        commentDTO.setUserDTO(getCurrentLoggedUser());
+//        commentDTO.getArticleDTO().setUpdatedUserDTO(getCurrentLoggedUser());
 
         if (Objects.equals(commentDTO.getText(), "") && (commentDTO.getStatusDTO() == null  || Objects.equals(commentDTO.getStatusDTO().getId(), commentDTO.getArticleDTO().getStatusDTO().getId()))){ return  null;};
         if (commentDTO.getStatusDTO() != null && !Objects.equals(commentDTO.getStatusDTO().getId(), commentDTO.getArticleDTO().getStatusDTO().getId())){
@@ -271,7 +259,7 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
     public void delArticle(ArticleDTO articleDTO){
         ForumDTO forumDTO=articleDTO.getForumDTO();
         articleDTO.setDeleted(true);
-        saveArticle(articleDTO);
+        saveArticle(articleDTO, articleDTO.getForumDTO().getId());
         statisticDAO.decreaseForumArticles(forumDTO);
    }
 
@@ -421,34 +409,25 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
 
 
     @CacheEvict(value = "articleDTO",  allEntries = true)
-    public ArticleDTO saveArticle(ArticleDTO articleDTO) {
+    public ArticleDTO saveArticle(ArticleDTO articleDTO, int forumid) {
         Integer previd = articleDTO.getId();
-        ForumDTO forumDTO = articleDTO.getForumDTO();
+//        ForumDTO forumDTO = articleDTO.getForumDTO();
 
-        if (articleDTO.getId() == null) {
-            articleDTO.setUserDTO(getCurrentLoggedUser());
-            statisticDAO.increaseForumArticles(articleDTO.getProjid(),  forumDTO);
-        }
+
         if (articleDTO.getStatusDTO().getId() == null) {
-            articleDTO.setStatusDTO(forumDAO.getArticleStatusById(articleDTO.getProjid(), forumDTO.getId(), articleDTO.getType().getFirstreplystatus(), true ));
+            articleDTO.setStatusDTO(forumDAO.getArticleStatusById(articleDTO.getProjid(), forumid , articleDTO.getType().getFirstreplystatus(), true ));
             if (articleDTO.getStatusDTO().getId() == null) articleDTO.setStatusDTO(forumDAO.getArticleStatusById(0, 0, 0, true));
         }
 
         articleDTO = save(articleDTO);
         if (previd == null) {
-            topicListener.sendTopicAmqpCommand( AmqpConstants.TOPICCREATED , articleDTO.getProjid(), forumDTO.getId(), articleDTO.getId());
+            topicListener.sendTopicAmqpCommand( AmqpConstants.TOPICCREATED , articleDTO.getProjid(), forumid, articleDTO.getId());
         }
        return articleDTO;
     }
 
 
-    public Boolean isfollow (Integer articid) throws N18iException {
-        UserDTO userDTO = null;
-        try {
-            userDTO = getCurrentLoggedUser();
-
-        } catch (Exception ignored) {}
-        if (userDTO == null) return false;
+    public Boolean isfollow (Integer articid, UserDTO userDTO){
         FollowDTO followDTO = (FollowDTO) getSessionFactory().getCurrentSession()
                 .createQuery("from FollowDTO as fol where fol.articleid=:articid and userid=:userid ")
                 .setParameter("articid", articid).setParameter("userid", userDTO.getId()).setCacheable(true).uniqueResult() ;
@@ -456,14 +435,7 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
         return followDTO != null;
     }
 
-    public boolean followArticle(Integer projid , Integer articid) throws N18iException {
-
-        UserDTO userDTO = null;
-        try {
-            userDTO = getCurrentLoggedUser();
-        } catch (Exception ignored) {}
-
-        if (userDTO == null) throw new N18iException( projid, N18IErrorCodes.AJAX_YOU_MUST_SIGNIN );
+    public boolean followArticle(Integer projid , Integer articid, UserDTO userDTO){
         FollowDTO followDTO= (FollowDTO) getSessionFactory().getCurrentSession()
                 .createQuery("from FollowDTO as fol where fol.articleid=:articid and userid=:userid ")
                 .setParameter("articid", articid).setParameter("userid", userDTO.getId()).setCacheable(true).uniqueResult() ;
@@ -579,7 +551,7 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
 
         }
 
-        return  saveArticle(articleDTO);
+        return  saveArticle(articleDTO, forumid);
     }
 
 
