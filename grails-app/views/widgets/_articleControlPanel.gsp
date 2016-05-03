@@ -17,7 +17,7 @@
             <a href="#" data-action="replycomment" ><i class="fa fa-reply"></i> <g:message code="article.action.Reply"/></a>
         </li>
         <li class="list-group-item">
-            <a   data-content="${article.id}" data-action="editarticle" data-forumid="${article.forumDTO.id}" ><i class="fa fa-edit"></i> <g:message code="article.action.Edit"/></a>
+            <a  href="#" data-content="${article.id}" data-action="editarticle" data-forumid="${article.forumDTO.id}" ><i class="fa fa-edit"></i> <g:message code="article.action.Edit"/></a>
         </li>
         <li class="list-group-item list-toggle">
             <a  class="accordion-toggle" href="#collapse-tags" data-toggle="collapse"><i class="fa fa-tags"></i> <g:message code="setting.leftMenu.community.tags"/></a>
