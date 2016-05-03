@@ -17,6 +17,8 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -63,11 +65,14 @@ public class UserDAO extends GenericDaoImpl<UserDTO> {
         return userDTO;
     }
 
-//    public UserDTO getByLogin(Integer projid, String login){
-//        return (UserDTO) getSessionFactory().getCurrentSession().createQuery("from UserDTO as us where us.username=:username")
-//                .setParameter("username", login).uniqueResult();
-//    }
-//
+    @Cacheable( value = "userDTO" )
+    public UserDTO getUser(String username , String alias){
+        return  (UserDTO) getSessionFactory().getCurrentSession().createQuery("from UserDTO as ud where projid in (select id  from ProjectDTO where alias=:alias) and  username=:username ")
+                .setParameter("username", username)
+                .setParameter("alias", alias)
+                .setCacheable(true).uniqueResult();
+    }
+
     @Cacheable( value = "userDTO" )
     public UserDTO getUserByEmail(Integer projid, String email) {
         return (UserDTO) getSessionFactory().getCurrentSession().createQuery("from UserDTO as us where us.projid=:projid and  us.email=:email")
@@ -80,26 +85,6 @@ public class UserDAO extends GenericDaoImpl<UserDTO> {
                 .setParameter("id", userid).setParameter("projid", projid).uniqueResult();
     }
 
-    @CacheEvict(value = "userDTO" ,   allEntries = true)
-    public UserPermissionsDTO saveUserPermission(UserPermissionsDTO userPermissionsDTO) throws Exception {
-        UserDTO userDTO= getCurrentUser();
-        if (userDTO!= null &&  (userDTO.getUserPermissionsDTO().getManager() || userDTO.getUserPermissionsDTO().getManageusers())){
-            currentSession().saveOrUpdate(userPermissionsDTO);
-            return userPermissionsDTO;
-        }
-        else {
-            throw new Exception("You don't have permission " );
-        }
-
-    }
-
-    @CacheEvict(value = "userDTO" ,    allEntries = true)
-    public void  deleteUserPermission(UserPermissionsDTO userPermissionsDTO) throws Exception {
-        UserDTO userDTO= getCurrentUser();
-        if (userDTO!= null &&  (userDTO.getUserPermissionsDTO().getManager() || userDTO.getUserPermissionsDTO().getManageusers())){
-            currentSession().delete(userPermissionsDTO);
-        } else {   throw new Exception("You don't have permission " );  }
-    }
 
     @CacheEvict(value = "userDTO" ,   allEntries = true)
     public OauthidDTO updateOAuthToken(String oAuthToken, UserDTO currentUser){
@@ -172,28 +157,14 @@ public class UserDAO extends GenericDaoImpl<UserDTO> {
         return  criteria.list();
     }
 
-
-
-//    @Cacheable( value = "userDTO" )
-    public UserDTO getCurrentUser(){
-        UserDTO userDTO=this.getCurrentLoggedUser();
-        if (userDTO== null) throw new AuthenticationServiceException("Not authorised" );
-        return  userDTO;
+    @CacheEvict(value = "userDTO" ,    allEntries = true)
+    public void delete(UserPermissionsDTO userPermissionsDTO) {
+        currentSession().delete(userPermissionsDTO);
     }
 
-//    @CacheEvict(value = "userDTO" ,   allEntries = true)
-    @Transactional
-    public UserDTO createAgentUser(Integer projid,  String email){
-        UserDTO curuser= getCurrentUser();
-        if (curuser.getUserPermissionsDTO().getManager()){
-            UserDTO userDTO=getUserByEmail(projid, email );
-            if (userDTO== null){userDTO= new UserDTO(email);}
-            userDTO.setUsertype(1);
-            return saveProfile(userDTO);
-        }
-        return null;
-
-
+    @CacheEvict(value = "userDTO" ,   allEntries = true)
+    public void save(UserPermissionsDTO userPermissionsDTO) {
+        currentSession().saveOrUpdate(userPermissionsDTO);
     }
 
 

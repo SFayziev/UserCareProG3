@@ -112,7 +112,7 @@ public class ModuleDAOTest extends IntegrationTest {
 
     @Test
     public  void testGetUserMenu() {
-         for(ModuleDTO moduleDTO: moduleDAO.getModuleBydisplaypos(testProjectid,2, ModuleDisplay.UserComments, null, null ) ) {
+         for(ModuleDTO moduleDTO: moduleDAO.getModules(testProjectid,2, ModuleDisplay.UserComments, null, null ) ) {
 
              System.out.println(moduleDTO);
          }

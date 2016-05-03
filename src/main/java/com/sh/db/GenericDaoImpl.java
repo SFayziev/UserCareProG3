@@ -43,28 +43,13 @@ public abstract class GenericDaoImpl< T > extends HibernateDaoSupport {
 //        setSessionFactory((SessionFactory) context.getBean("sessionFactory2"));
     }
 
-    public UserDTO getCurrentLoggedUser(){
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (user.isEnabled()){
-            String[] sl= user.getUsername().split("/");
-            if ((sl.length<2)) return  null;
-            return getUser(sl[1], sl[0] );
 
-        }
-        return null;
-    }
 
     public Collection<? extends GrantedAuthority> getCurrentUserAuthority(){
         return  SecurityContextHolder.getContext().getAuthentication().getAuthorities() ;
     }
 
-    @Cacheable( value = "userDTO" )
-    private UserDTO getUser(String username , String alias){
-        return  (UserDTO) getSessionFactory().getCurrentSession().createQuery("from UserDTO as ud where projid in (select id  from ProjectDTO where alias=:alias) and  username=:username ")
-                .setParameter("username", username)
-                .setParameter("alias", alias)
-                .setCacheable(true).uniqueResult();
-    }
+
     /**
      * Merges the entity, creating or updating as necessary
      *

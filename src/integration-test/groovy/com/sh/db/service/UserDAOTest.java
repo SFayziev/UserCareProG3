@@ -25,7 +25,7 @@ public class UserDAOTest extends IntegrationTest{
         userDTO.setPosition("admin");
         userDTO.getUserPermissionsDTO().setManager(!userDTO.getUserPermissionsDTO().getManager());
         userDTO.getUserPermissionsDTO().setShowinteamlist(true);
-        userDAO.saveUserPermission(userDTO.getUserPermissionsDTO() );
+//        userDAO.saveUserPermission(userDTO.getUserPermissionsDTO() );
 
         System.out.println( userDTO.getUserPermissionsDTO() );
     }
@@ -58,7 +58,7 @@ public class UserDAOTest extends IntegrationTest{
     @Test
 
     public void createUserAgent(){
-        userDAO.createAgentUser(2, "sfshuhrat@mail.ru");
+//        userDAO.createAgentUser(2, "sfshuhrat@mail.ru");
 
 
     }

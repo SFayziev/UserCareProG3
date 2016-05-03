@@ -23,7 +23,7 @@ class CommentController {
     def list(){
         def id=params.getInt("id");
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
-        def article = webServicesSession.getProjectArticle(project.id, id);
+        def article = webServicesSession.getArticlebyId(project.id, id);
         JSONObject resultJson = new JSONObject();
         resultJson.put("status","success");
         def contents = g.render(template:"/modules/itemRepliesW", model: [UCproject: project, article: article ])
@@ -36,7 +36,7 @@ class CommentController {
         def  commentid=params.getInt('commentid') ;
         def id=params.getInt("id");
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
-        def article = webServicesSession.getProjectArticle(project.id, id);
+        def article = webServicesSession.getArticlebyId(project.id, id);
 
 
         def comment= new CommentDTO();
@@ -77,7 +77,7 @@ class CommentController {
         render   resultJson.toString()
     }
     def getArticleWithRelpies(project, id){
-        def article = webServicesSession.getProjectArticle(project.id, id);
+        def article = webServicesSession.getArticlebyId(project.id, id);
 //        def comments= webServicesSession.getArticleComments(id)
 //        def answer = webServicesSession.getArticleAnswer(comments);
         def forum= article.forumDTO;

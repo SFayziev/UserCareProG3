@@ -10,6 +10,8 @@ import com.sh.utils.exception.N18iException;
 import org.apache.http.client.HttpResponseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +55,7 @@ public class ForumBL {
     }
 
     public boolean canAddNewTopic(Integer projid, Integer forumid) {
-        UserDTO userDTO = forumDAO.getCurrentLoggedUser();
+        UserDTO userDTO = permissionBL.getCurrentLoggedUser();
         ForumSpamProtectionDTO forumSpamProtectionDTO=forumDAO.getForumSpamProtectionById(projid, forumid,0);
         if (forumSpamProtectionDTO.getSanonymousfeedback()) {
             return true;

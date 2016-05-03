@@ -12,7 +12,7 @@ class MessagingController {
         def id=params.getInt("id", 0)
         def userid=params.getInt("userid", 0)
         def comment=webServicesSession.getCommentbyId( id );
-        def article=webServicesSession.getProjectArticle(project.id , comment.articleDTO.id );
+        def article=webServicesSession.getArticlebyId(project.id , comment.articleDTO.id );
 
         def user=webServicesSession.getUser(project.id , userid)
 
@@ -28,7 +28,7 @@ class MessagingController {
         def project=webServicesSession.getProject(getResponse(), getRequest(), getSession())
         def id=params.getInt("id", 0)
         def userid=params.getInt("userid", 0)
-        def article=webServicesSession.getProjectArticle(project.id , id );
+        def article=webServicesSession.getArticlebyId(project.id , id );
         def user=webServicesSession.getUser(project.id , userid)
 
         if(article!=null && user!= null){
