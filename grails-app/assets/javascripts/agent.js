@@ -15,6 +15,13 @@ function showArticle(){
     getandChangeJson ("#artilceDeatails", {'id':articleid }, "/agent/articles/articleDetail"  );
 }
 
+function  onChangeFilter(moduleid){
+    __uc_settings['module_'+ moduleid ]['filterid']=$("#filterid").val();
+    getArticleList(moduleid);
+}
+
+
+
 
 function getandChangeJson(objid,  data, url ){
     //data={'id':articid };

@@ -36,11 +36,22 @@ class ModulesTagLib {
             params.forumTypes=webServicesSession.getForumTypeByForumid(params.project.id , params.forum.id,1 )
             params.topicStatuses=webServicesSession.getTopicTypeStatusByTopicId(params.project.id , params.params.int('type', -1) )
             def articleListParams = [count: params.maxRecords, offset: params.params.offset, type: params.params.int('type'), status: params.params.int('status'), order: params.params.order, performerid: params.params.int('filter_performer_id',0), userid :params.params.int('filter_user_id',0)]
+            articleListParams.filterid=params.params.filterid
+            articleListParams.forumids=params.params.list("forumids[]")
             articleListParams.catid=params.params.int('category',0)
             if (articleListParams.catid>0){
                 params.category=webServicesSession.getCategoryById(params.project.id, articleListParams.catid )
             }
-            def forumids =ArrayUtils.add (ArrayUtils.EMPTY_INTEGER_OBJECT_ARRAY, params.forum.getId())
+            Integer[] forumids=ArrayUtils.EMPTY_INTEGER_OBJECT_ARRAY;
+            if ( module.forumid==0){
+                for(String plang:params.params.list("forumids[]") ) {
+                    forumids = ArrayUtils.add(forumids, Integer.parseInt(plang))
+                }
+
+            } else {
+                forumids=ArrayUtils.add (ArrayUtils.EMPTY_INTEGER_OBJECT_ARRAY, params.forum.getId())
+            }
+
 
             params.lastArticle = webServicesSession.getArticleList(params.project, forumids, articleListParams)
             params.pageCount = webServicesSession.getLastArticleRecCount(params.project, forumids , articleListParams)

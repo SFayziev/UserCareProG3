@@ -73,11 +73,7 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
     @Cacheable( value = "articleDTO" )
 //    @Transactional
     public List<ArticleDTO> getLastArticle(Integer projId, Integer start, Integer count, Integer status, Integer artictype , String order, Integer catId , List<ForumDTO> forumDTOs, Integer userid, Integer performerid )  {
-//        UserDTO userDTO=getCurrentLoggedUser();
         List<ArticleDTO> articleDTOList=getArticleCriteria(projId, start,count,status,artictype , order,  catId, forumDTOs, userid, performerid).list();
-//        for (ArticleDTO articleDTO:articleDTOList){
-//            if (articleDTO.getUserDTO()!= null &&  userDTO!=null && articleDTO.getUserDTO().getId()==userDTO.getId()    ) articleDTO.setCanVote(false);
-//        }
         return articleDTOList;
     }
 

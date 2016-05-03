@@ -129,6 +129,7 @@ function changeUserAvatar(userId){
 
 }
 
+
 function  getArticleList(moduleid){
     var listItems= $("#listItems");
 
@@ -136,14 +137,14 @@ function  getArticleList(moduleid){
     var type=__uc_settings['module_'+ moduleid ]['typeid'];
     var order=__uc_settings['module_'+ moduleid ]['orderid'];
 
-    var forumid=listItems.data('forumid');
     var filter_user_id =__uc_settings['module_'+ moduleid ]['filter_user_id'];
     var category = __uc_settings['module_'+ moduleid ]['category'];
     var tag = __uc_settings['module_'+ moduleid ]['tag'];
-
+    var filterid = __uc_settings['module_'+ moduleid ]['filterid'];
+    var forumids= __uc_settings['module_'+ moduleid ]['forumids'];
     var pagination=listItems.find(".pagination .active span").text();
 
-    var data= { 'tag':tag, 'category':category,  'moduleid':moduleid, 'status':status,'type':type,  'order': order, forum:forumid, 'filter_user_id': filter_user_id };
+    var data= { 'forumids':forumids, 'filterid':filterid, 'tag':tag, 'category':category,  'moduleid':moduleid, 'status':status,'type':type,  'order': order,  'filter_user_id': filter_user_id };
     $.ajax({  dataType: "json", data:data, url:  "/forum/jsonlist/"})
         .done(function( data ) {
             if (data.status=='success') {

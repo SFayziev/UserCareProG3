@@ -47,9 +47,9 @@ public class PermissionBL {
     }
 
 
-    public List<ForumDTO> checkForumListPrivacy(List<ForumDTO> forumDTOList ){
+    public List<ForumDTO> checkForumListPrivacy(List<ForumDTO> forumDTOList ) {
         List<ForumDTO> forumDTOList2 = new ArrayList<>();
-        for (ForumDTO forumDTO: forumDTOList){
+        for (ForumDTO forumDTO: forumDTOList) {
             try {
                 if (checkForumPrivacy(forumDTO)) {
                     forumDTOList2.add(forumDTO);
@@ -90,11 +90,11 @@ public class PermissionBL {
 
 
     @Transactional
-    public UserDTO createAgentUser(Integer projid,  String email){
+    public UserDTO createAgentUser(Integer projid,  String email) {
         UserDTO curuser= getCurrentLoggedUser();
-        if (curuser.getUserPermissionsDTO().getManager()){
+        if (curuser.getUserPermissionsDTO().getManager()) {
             UserDTO userDTO=userDAO.getUserByEmail(projid, email );
-            if (userDTO== null){userDTO= new UserDTO(email);}
+            if (userDTO== null) {userDTO= new UserDTO(email);}
             userDTO.setUsertype(1);
             return userDAO.saveProfile(userDTO);
         }
