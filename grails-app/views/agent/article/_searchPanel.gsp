@@ -8,9 +8,9 @@
             <div class="form-group">
                 <label >Filter</label>
                 <div class="btn-group">
-                    <select id="id_select_view_shortcut" class="form-control singleselect" onchange="onChangeShortcut();">
+                    <select id="filterid" class="form-control singleselect" onchange="onChangeFilter(16);">
                         <optgroup label="Default filters">
-                            <option value="needs_review" label="Needs review <a class='dropdown-action-link' href='http://feedback.userecho.com/topic/677295-status-needs-review/' target='_blank' title='What does it mean?'><i class='fa fa-question-circle details'></i></a>">Needs review</option>
+                            <option value="needs_review" >Needs review</option>
                             <option selected="selected" value="all">All</option>
                             <option value="opened">Opened</option>
                             <option value="assigned_to_me">Assigned to me</option>
@@ -56,7 +56,14 @@
 <!-- Initialize the plugin: -->
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#id_select_forums').multiselect();
+        $('#id_select_forums').multiselect({
+            onChange: function() {
+                __uc_settings['module_'+ 16 ]['forumids']=$('#id_select_forums').val();
+                getArticleList(16);
+                console.log($('#id_select_forums').val());
+            }
+        }
+        );
         getArticleList(16);
     });
 </script>

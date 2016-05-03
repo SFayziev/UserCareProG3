@@ -40,6 +40,7 @@ public class ArticleBL {
 
 
     public List<ArticleDTO> getArticleList(ProjectDTO project, final Integer[] forumids,  HashMap params) {
+
         List<ForumDTO> forumDTOList=forumBL.getForumByIds(project.getId(), forumids);
         return articleDAO.getArticleList(project, forumDTOList, params);
     }
