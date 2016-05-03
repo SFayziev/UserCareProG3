@@ -69,10 +69,13 @@ function startSearching(inBox){
 
 
 function  setArticleListType(moduleid, type){
-    getArticleList(moduleid,-1,type, -2, -2)
+    __uc_settings['module_'+ moduleid ]['typeid']=type;
+    getArticleList(moduleid)
+    return false;
 }
 function  setArticleListStatus(moduleid, status){
-    getArticleList(moduleid, status,-2, -2, -2)
+    __uc_settings['module_'+ moduleid ]['statusid']=status;
+    getArticleList(moduleid);
     return false;
 }
 
@@ -85,8 +88,8 @@ function setArticlePageTo(){
 
 
 function  setArticleListOrder(moduleid,order){
-    //var moduleid=$(this).closest('[data-moduleid]').attr('data-moduleid');
-    getArticleList(moduleid,-2,-2, -2, order);
+    __uc_settings['module_'+ moduleid ]['orderid']=order;
+    getArticleList(moduleid);
     return false;
 }
 
@@ -126,17 +129,13 @@ function changeUserAvatar(userId){
 
 }
 
-function  getArticleList(moduleid, status,type, offset, order){
+function  getArticleList(moduleid){
     var listItems= $("#listItems");
-    if (status==-2){
-        status=listItems.data('statusid')
-    }
-    if (type==-2){
-        type=listItems.data('typeid')
-    }
-    if (order==-2){
-        order=listItems.data('orderid')
-    }
+
+    var status=__uc_settings['module_'+ moduleid ]['statusid'];
+    var type=__uc_settings['module_'+ moduleid ]['typeid'];
+    var order=__uc_settings['module_'+ moduleid ]['orderid'];
+
     var forumid=listItems.data('forumid');
     var filter_user_id =__uc_settings['module_'+ moduleid ]['filter_user_id'];
     var category = __uc_settings['module_'+ moduleid ]['category'];
@@ -144,7 +143,7 @@ function  getArticleList(moduleid, status,type, offset, order){
 
     var pagination=listItems.find(".pagination .active span").text();
 
-    var data= { 'tag':tag, 'category':category,  'moduleid':moduleid, 'status':status,'type':type, 'offset':offset , 'order': order, forum:forumid, 'filter_user_id': filter_user_id };
+    var data= { 'tag':tag, 'category':category,  'moduleid':moduleid, 'status':status,'type':type,  'order': order, forum:forumid, 'filter_user_id': filter_user_id };
     $.ajax({  dataType: "json", data:data, url:  "/forum/jsonlist/"})
         .done(function( data ) {
             if (data.status=='success') {

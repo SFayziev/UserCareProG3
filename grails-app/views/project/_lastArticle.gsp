@@ -48,7 +48,12 @@
     <script>
         if (typeof __uc_settings == 'undefined') var __uc_settings=[];
         __uc_settings['module_${module?.id}'] = [];
-        __uc_settings['module_${module?.id}']['moduleid'] = ${module?.id};
+        __uc_settings['module_${module?.id}']['moduleid'] = '${module?.id}';
+        __uc_settings['module_${module?.id}']['statusid'] = '${catalogParams?.status}';
+        __uc_settings['module_${module?.id}']['typeid'] = '${catalogParams?.type}';
+        __uc_settings['module_${module?.id}']['orderid'] = '${catalogParams?.order}';
+
+
         <g:if test = "${maxRecords}"> __uc_settings['module_${module?.id}']['maxRecords'] = ${maxRecords};</g:if>
         __uc_settings['module_${module?.id}']['action'] = '${params.action}';
         <g:if test="${params.filter_user_id}">__uc_settings['module_${module?.id}']['filter_user_id'] = '${params.filter_user_id}';</g:if>

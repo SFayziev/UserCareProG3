@@ -42,7 +42,7 @@
             <div class="form-group">
                 <label>&nbsp;</label>
                 <div class="btn-group">
-                    <button id="id_button_update" type="submit" class="form-control btn btn-primary" onclick="getArticleList(16,0,0,0 );return false;"><i class="fa fa-refresh"></i> Refresh</button>
+                    <button id="id_button_update" type="submit" class="form-control btn btn-primary" onclick="getArticleList(16 );return false;"><i class="fa fa-refresh"></i> Refresh</button>
                 </div>
             </div>
 
@@ -57,7 +57,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('#id_select_forums').multiselect();
-        getArticleList(16,0,0,0 );
+        getArticleList(16);
     });
 </script>
 
