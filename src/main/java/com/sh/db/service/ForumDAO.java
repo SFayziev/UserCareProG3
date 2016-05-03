@@ -508,11 +508,14 @@ public class ForumDAO extends GenericDaoImpl<ForumDTO> {
     }
 
     public List<ForumDTO> getForumByIds(Integer projid, Integer[] forumids) {
-//        Criteria criteria = currentSession()
-//                .createCriteria(ForumDTO.class);
-//        criteria.add(Restrictions.eq("status",1 ));
-//        criteria.add(Restrictions.eq("projectDTO.id",:projid ));
-        return getSessionFactory().getCurrentSession().createQuery("from ForumDTO fd where fd.status=1 and  fd.projectDTO.id=:projid and fd.id in (:forumids) ")
-                .setCacheable(true).setParameter("projid", projid).setParameterList("forumids",  forumids  ) .list();
+        Criteria criteria = currentSession()
+                .createCriteria(ForumDTO.class);
+        criteria.add(Restrictions.eq("status",1 ));
+        criteria.add(Restrictions.eq("projectDTO.id",projid ));
+        if(forumids!= null && forumids.length>0) criteria.add(Restrictions.in("id",forumids));
+        return  criteria.list();
+
+//        return getSessionFactory().getCurrentSession().createQuery("from ForumDTO fd where fd.status=1 and  fd.projectDTO.id=:projid and fd.id in (:forumids) ")
+//                .setCacheable(true).setParameter("projid", projid).setParameterList("forumids",  forumids  ) .list();
     }
 }
