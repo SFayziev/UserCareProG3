@@ -56,11 +56,11 @@
 <!-- Initialize the plugin: -->
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#id_select_forums').multiselect({
+        $('#forumids').multiselect({
             onChange: function() {
-                __uc_settings['module_'+ 16 ]['forumids']=$('#id_select_forums').val();
+                __uc_settings['module_'+ 16 ]['forumids']=$('#forumids').val();
                 getArticleList(16);
-                console.log($('#id_select_forums').val());
+                console.log($('#forumids').val());
             }
         }
         );

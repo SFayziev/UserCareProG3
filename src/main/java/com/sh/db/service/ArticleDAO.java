@@ -98,11 +98,13 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
 
             for (ForumDTO forumDTO:forumDTOs){
                 if (forumDTO.getType().equals(ForumType.HelpDesk)) {
+// TODO: change algoritm for help desk forums
                     UserDTO userDTO = null;
-                    ArrayUtils.add(forcrit, Restrictions.sqlRestriction("userid= " + (userDTO == null?-1:userDTO.getId()) ));
+//                    ArrayUtils.add(forcrit, Restrictions.sqlRestriction("userid= " + (userDTO == null?-1:userDTO.getId()) ));
+                    forcrit= (Criterion[]) ArrayUtils.add(forcrit,Restrictions.sqlRestriction("forumid= " + forumDTO.getId()));
                 }
                 else {
-                    ArrayUtils.add(forcrit,Restrictions.sqlRestriction("forumid= " + forumDTO.getId()));
+                    forcrit= (Criterion[]) ArrayUtils.add(forcrit,Restrictions.sqlRestriction("forumid= " + forumDTO.getId()));
                 }
             }
             cr.add(Restrictions.or(forcrit));
