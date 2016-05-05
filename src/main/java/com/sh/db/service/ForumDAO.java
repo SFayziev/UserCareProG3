@@ -502,7 +502,7 @@ public class ForumDAO extends GenericDaoImpl<ForumDTO> {
 
     private void createModules(ForumDTO forumDTO, String modules, ModuleDisplay display ) {
         for (ModuleTypeDTO moduleTypeDTO: moduleDAO.getModuleTypebyIds(modules)) {
-            ModuleDTO moduleDTO= new ModuleDTO(forumDTO.getId(), 1<<display.ordinal(), moduleTypeDTO );
+            ModuleDTO moduleDTO = new ModuleDTO(forumDTO.getId(), 1<<display.ordinal(), moduleTypeDTO );
             moduleDAO.saveModule(moduleDTO);
         }
     }
@@ -510,12 +510,9 @@ public class ForumDAO extends GenericDaoImpl<ForumDTO> {
     public List<ForumDTO> getForumByIds(Integer projid, Integer[] forumids) {
         Criteria criteria = currentSession()
                 .createCriteria(ForumDTO.class);
-        criteria.add(Restrictions.eq("status",1 ));
-        criteria.add(Restrictions.eq("projectDTO.id",projid ));
-        if(forumids!= null && forumids.length>0) criteria.add(Restrictions.in("id",forumids));
+        criteria.add(Restrictions.eq("status",1));
+        criteria.add(Restrictions.eq("projectDTO.id", projid ));
+        if(forumids != null && forumids.length>0 ) criteria.add(Restrictions.in("id", forumids));
         return  criteria.list();
-
-//        return getSessionFactory().getCurrentSession().createQuery("from ForumDTO fd where fd.status=1 and  fd.projectDTO.id=:projid and fd.id in (:forumids) ")
-//                .setCacheable(true).setParameter("projid", projid).setParameterList("forumids",  forumids  ) .list();
     }
 }
