@@ -15,11 +15,16 @@ function showArticle(){
     getandChangeJson ("#artilceDeatails", {'id':articleid }, "/agent/articles/articleDetail"  );
 }
 
+
 function  onChangeFilter(moduleid){
     __uc_settings['module_'+ moduleid ]['filterid']=$("#filterid").val();
     getArticleList(moduleid);
 }
 
+function  onChangeOrderid(moduleid){
+    __uc_settings['module_'+ moduleid ]['orderid']=$("#orderid").val();
+    getArticleList(moduleid);
+}
 
 
 

@@ -552,5 +552,24 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
         return  saveArticle(articleDTO, forumid);
     }
 
+//    articleFilterDTO
+    @Cacheable( value = "articleFilterDTO" )
+    public List<ArtilceFilterDTO> getArticleFilterByProjId(Integer projId, Integer userid ){
+        Criteria cr = getSessionFactory().getCurrentSession().createCriteria(ArtilceFilterDTO.class);
+
+        Criterion[] forprojId= new Criterion[0];;
+        forprojId= (Criterion[]) ArrayUtils.add(forprojId,Restrictions.eq("projid",  0));
+        if(userid!=0 ){
+            forprojId= (Criterion[]) ArrayUtils.add(forprojId,Restrictions.eq("projid",  projId));
+        }
+        cr.add(Restrictions.or(forprojId));
+        Criterion[] forcrit= new Criterion[0];;
+        forcrit= (Criterion[]) ArrayUtils.add(forcrit,Restrictions.eq("userid",  0));
+        if(userid!=0 ){
+            forcrit= (Criterion[]) ArrayUtils.add(forcrit,Restrictions.eq("userid",  userid));
+        }
+        cr.add(Restrictions.or(forcrit));
+        return  cr.list();
+    }
 
 }

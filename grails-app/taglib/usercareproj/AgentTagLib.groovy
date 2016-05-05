@@ -38,4 +38,10 @@ class AgentTagLib {
         out << render(template: "/agent/article/searchOption/sortBy" , model: params)
     }
 
+    def filterBy={attrs ->
+        def params = attrs.params
+        def project = params.project;
+        params.filters=webServicesSession.getArticleFilterByProjId(project.id)
+        out << render(template: "/agent/article/searchOption/filterBy" , model: params)
+    }
 }

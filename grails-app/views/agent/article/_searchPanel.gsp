@@ -5,29 +5,9 @@
     %{--</div>--}%
     <div class="panel-body">
         <form class="navbar-form" role="search">
-            <div class="form-group">
-                <label >Filter</label>
-                <div class="btn-group">
-                    <select id="filterid" class="form-control singleselect" onchange="onChangeFilter(16);">
-                        <optgroup label="Default filters">
-                            <option value="needs_review" >Needs review</option>
-                            <option selected="selected" value="all">All</option>
-                            <option value="opened">Opened</option>
-                            <option value="assigned_to_me">Assigned to me</option>
-                            <option value="opened_and_assigned_to_me">Opened and assigned to me</option>
-                            <option value="moderation">On moderation</option>
-                        </optgroup>
-                        <optgroup label="Additional filters">
-                            <option value="custom" label="Configure <span class='dropdown-action-link'><i class='fa fa-gears'></i></span>">Configure</option>
-
-                        </optgroup>
-                    </select>
-                </div>
-            </div>
-
+            <agent:filterBy params="${[project:UCproject,  params:params]}"/>
             <agent:forumList params="${[project:UCproject,  params:params]}"/>
             <agent:sortBy params="${[project:UCproject,  params:params]}"/>
-
 
             <div class="form-group">
                 <label>Search</label>
