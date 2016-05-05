@@ -33,7 +33,7 @@
         <g:if test="${'hide' != module.params?.footerMode?.value}">
             <g:if test="${'paginate' == module.params?.footerMode?.value}">
                 <div class="text-center">
-                    <g:paginate total="${pageCount?.getRowCount()}"  maxsteps="4" max="${maxRecords}"    params="${params}" controller="forum" action="list"/>
+                    <g:paginate total="${pageCount?.getRowCount()}"  maxsteps="3" max="${maxRecords}"    params="${params}" />
                 </div>
             </g:if>
             <g:else>

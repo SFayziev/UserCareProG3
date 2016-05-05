@@ -70,7 +70,13 @@ public class ArticleDTO extends IntEntity {
         this.canVote = canVote;
     }
 
+    public Boolean getDisabled() {
+        return disabled;
+    }
 
+    public void setDisabled(Boolean disabled) {
+        this.disabled = disabled;
+    }
 
     public Boolean getDeleted() {
         return deleted;
@@ -234,13 +240,8 @@ public class ArticleDTO extends IntEntity {
         this.userDTO = userDTO;
     }
 
-    public Boolean getDisabled() {
-        return disabled;
-    }
 
-    public void setDisabled(Boolean disabled) {
-        this.disabled = disabled;
-    }
+
 
     public String toJson(String mass ){
         JSONObject resultJson = new JSONObject();

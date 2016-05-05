@@ -13,10 +13,7 @@ import com.sh.db.map.module.ModuleLinkDTO;
 import com.sh.db.map.module.ModuleParamsDTO;
 import com.sh.db.map.module.ModuleTypeDTO;
 import com.sh.db.map.project.*;
-import com.sh.db.map.topics.ArticleDTO;
-import com.sh.db.map.topics.ArticleStatusDTO;
-import com.sh.db.map.topics.ArticleTagsDTO;
-import com.sh.db.map.topics.CommentDTO;
+import com.sh.db.map.topics.*;
 import com.sh.db.map.user.OauthidDTO;
 import com.sh.db.map.user.UserDTO;
 import com.sh.db.map.user.UserPermissionsDTO;
@@ -135,7 +132,7 @@ public class WebServicesSessionSpringBean {
 
     public ItemCount getLastArticleRecCount(ProjectDTO  project, Integer[] forumids, HashMap params) {return articleBL.getLastArticleRecCount(project, forumids, params, true);}
     public  List<ArticleDTO> getArticleList(ProjectDTO  project,Integer[] forumids, HashMap params) {return  articleBL.getArticleList(project, forumids, params); }
-
+    public List<ArtilceFilterDTO> getArticleFilterByProjId(Integer projId) { return  articleBL.getArticleFilterByProjId(projId);}
     public ArticleDTO getArticlebyId(Integer projid , Integer id ){return  articleDAO.getArticle(projid, id);}
     public CommentDTO addComment(CommentDTO commentDTO) {return  articleBL.saveArticleComment(commentDTO);}
     public ArticleDTO addArticle(ArticleDTO  articleDTO) {return  articleBL.saveArticle(articleDTO);}

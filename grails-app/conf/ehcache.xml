@@ -89,6 +89,17 @@
         <persistence strategy="localTempSwap" />
     </cache>
 
+    <cache name="articleFilterDTO"
+           maxEntriesLocalHeap="10000"
+           maxEntriesLocalDisk="10000"
+           eternal="false"
+           diskSpoolBufferSizeMB="20"
+           timeToIdleSeconds="300000" timeToLiveSeconds="600000"
+           memoryStoreEvictionPolicy="LFU"
+           transactionalMode="off">
+        <persistence strategy="localTempSwap" />
+    </cache>
+
     <cache name="commentDTO"
            maxEntriesLocalHeap="10000"
            maxEntriesLocalDisk="10000"

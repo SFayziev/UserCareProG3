@@ -81,8 +81,8 @@ function  setArticleListStatus(moduleid, status){
 
 function setArticlePageTo(){
     var moduleid=$(this).closest('[data-moduleid]').attr('data-moduleid');
-    var offset= $(this).data('offset');
-    getArticleList(moduleid, -2,-2, offset, -2);
+    __uc_settings['module_'+ moduleid ]['offset']=$(this).data('offset');
+    getArticleList(moduleid);
     return false;
 }
 
@@ -92,6 +92,8 @@ function  setArticleListOrder(moduleid,order){
     getArticleList(moduleid);
     return false;
 }
+
+
 
 $('*[data-poload]').hover(function() {
     $('.popover').remove();
@@ -139,12 +141,13 @@ function  getArticleList(moduleid){
 
     var filter_user_id =__uc_settings['module_'+ moduleid ]['filter_user_id'];
     var category = __uc_settings['module_'+ moduleid ]['category'];
+    var offset = __uc_settings['module_'+ moduleid ]['offset'];
     var tag = __uc_settings['module_'+ moduleid ]['tag'];
     var filterid = __uc_settings['module_'+ moduleid ]['filterid'];
     var forumids= __uc_settings['module_'+ moduleid ]['forumids'];
     var pagination=listItems.find(".pagination .active span").text();
 
-    var data= { 'forumids':forumids, 'filterid':filterid, 'tag':tag, 'category':category,  'moduleid':moduleid, 'status':status,'type':type,  'order': order,  'filter_user_id': filter_user_id };
+    var data= { 'forumids':forumids,'offset':offset, 'filterid':filterid, 'tag':tag, 'category':category,  'moduleid':moduleid, 'status':status,'type':type,  'order': order,  'filter_user_id': filter_user_id };
     $.ajax({  dataType: "json", data:data, url:  "/forum/jsonlist/"})
         .done(function( data ) {
             if (data.status=='success') {

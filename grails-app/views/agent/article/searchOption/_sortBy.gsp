@@ -1,7 +1,7 @@
 <div class="form-group">
     <label >Sort By</label>
     <div class="btn-group">
-          <select id="order" class="form-control" onchange="onChangeShortcut();">
+          <select id="orderid" class="form-control" onchange="onChangeOrderid(16);">
               <option value="byupdatedate"><g:message code="order.type.byupdatedate" /></option>
                 <option value="bycreatedate"><g:message code="order.type.bycreatedate" /></option>
                 <option value="bycomment"><g:message code="order.type.bycomment" /></option>

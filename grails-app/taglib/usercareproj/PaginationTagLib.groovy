@@ -104,9 +104,11 @@ class PaginationTagLib {
             linkParams.offset = offset - max
             linkTagAttrs.put("data-offset",linkParams.offset);
             writer << '<li class="prev">'
-            writer << link( linkTagAttrs ) {
-                (attrs.prev ?: messageSource.getMessage('paginate.prev', null, '&laquo;', locale))
-            }
+            writer << "<a  href='#' data-action='pagination' class='step' data-offset='${linkParams.offset}'>" + (attrs.prev ?: messageSource.getMessage('paginate.prev', null, '&laquo;', locale))+ "</a>"
+
+//            writer << link( linkTagAttrs ) {
+//                (attrs.prev ?: messageSource.getMessage('paginate.prev', null, '&laquo;', locale))
+//            }
             writer << '</li>'
         }
         else {
@@ -142,7 +144,8 @@ class PaginationTagLib {
 
                 linkParams.offset = 0
                 writer << '<li>'
-                writer << link(linkTagAttrs.clone()) {firststep.toString()}
+                writer << "<a  href='#' data-action='pagination' class='step' data-offset='${linkParams.offset}'>${firststep}</a>"
+//                writer << link(linkTagAttrs.clone()) {firststep.toString()}
                 writer << '</li>'
                 writer << '<li class="disabled"><span>...</span></li>'
             }
@@ -159,7 +162,8 @@ class PaginationTagLib {
                     linkTagAttrs.remove("data-offset");
                     linkTagAttrs.put("data-offset",linkParams.offset);
                     writer << "<li>";
-                    writer << link(linkTagAttrs.clone()) {i.toString()}
+                    writer << "<a  href='#' data-action='pagination' class='step' data-offset='${linkParams.offset}'>${i}</a>"
+//                    writer << link(linkTagAttrs.clone()) {i.toString()}
                     writer << "</li>";
                 }
             }
@@ -171,7 +175,9 @@ class PaginationTagLib {
                 linkTagAttrs.remove("data-offset");
                 linkTagAttrs.put("data-offset",linkParams.offset);
                 writer << '<li>'
-                writer << link(linkTagAttrs.clone()) { laststep.toString() }
+                writer << "<a  href='#' data-action='pagination' class='step' data-offset='${linkParams.offset}'>${laststep}</a>"
+
+//                writer << link(linkTagAttrs.clone()) { laststep.toString() }
                 writer << '</li>'
             }
         }
@@ -182,9 +188,11 @@ class PaginationTagLib {
             linkTagAttrs.remove("data-offset");
             linkTagAttrs.put("data-offset",linkParams.offset);
             writer << '<li class="next">'
-            writer << link(linkTagAttrs.clone()) {
-                (attrs.next ? attrs.next : messageSource.getMessage('paginate.next', null, '&raquo;', locale))
-            }
+            writer << "<a  href='#' data-action='pagination' class='step' data-offset='${linkParams.offset}'>" + (attrs.next ? attrs.next : messageSource.getMessage('paginate.next', null, '&raquo;', locale))+ "</a>"
+//
+//            writer << link(linkTagAttrs.clone()) {
+//                (attrs.next ? attrs.next : messageSource.getMessage('paginate.next', null, '&raquo;', locale))
+//            }
             writer << '</li>'
         }
         else {
