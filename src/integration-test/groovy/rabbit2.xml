@@ -16,8 +16,6 @@
         <property name="port" value="${amgp.port}" />
     </bean>
 
-
-
     <rabbit:template id="template" connection-factory="rabbitConnFactory"  exchange="TUTORIAL-EXCHANGE"/>
 
     <bean id="amqpEvents" class="com.sh.messaging.amqp.AmqpEvents">
