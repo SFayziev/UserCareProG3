@@ -555,6 +555,8 @@ public class ArticleDAO extends GenericDaoImpl<ArticleDTO> {
 //    articleFilterDTO
     @Cacheable( value = "articleFilterDTO" )
     public List<ArtilceFilterDTO> getArticleFilterByProjId(Integer projId, Integer userid ){
+
+
         Criteria cr = getSessionFactory().getCurrentSession().createCriteria(ArtilceFilterDTO.class);
 
         Criterion[] forprojId= new Criterion[0];;
