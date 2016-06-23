@@ -31,6 +31,16 @@ apply plugin: "asset-pipeline"
 apply plugin: 'idea'
 apply plugin: "org.grails.grails-web"
 apply plugin: "org.grails.grails-gsp"
+apply plugin: "jacoco"
+apply plugin: "application"
+
+test {
+    jacoco {
+        append = false
+        destinationFile = file("$buildDir/jacoco/jacocoTest.exec")
+        classDumpFile = file("$buildDir/jacoco/classpathdumps")
+    }
+}
 
 ext {
     grailsVersion = project.grailsVersion

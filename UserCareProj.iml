@@ -33,18 +33,18 @@
           <root url="file://$MODULE_DIR$/build/assetCompile/assets" relative="/assets" />
         </webroots>
         <sourceRoots>
-          <root url="file://$MODULE_DIR$/grails-app/controllers" />
-          <root url="file://$MODULE_DIR$/grails-app/i18n" />
-          <root url="file://$MODULE_DIR$/src/main/resources" />
-          <root url="file://$MODULE_DIR$/grails-app/taglib" />
-          <root url="file://$MODULE_DIR$/grails-app/domain" />
-          <root url="file://$MODULE_DIR$/grails-app/init" />
-          <root url="file://$MODULE_DIR$/grails-app/utils" />
-          <root url="file://$MODULE_DIR$/src/main/groovy" />
           <root url="file://$MODULE_DIR$/grails-app/services" />
+          <root url="file://$MODULE_DIR$/grails-app/domain" />
+          <root url="file://$MODULE_DIR$/grails-app/controllers" />
+          <root url="file://$MODULE_DIR$/grails-app/taglib" />
+          <root url="file://$MODULE_DIR$/grails-app/utils" />
+          <root url="file://$MODULE_DIR$/src/main/java" />
+          <root url="file://$MODULE_DIR$/grails-app/init" />
+          <root url="file://$MODULE_DIR$/src/main/resources" />
+          <root url="file://$MODULE_DIR$/grails-app/i18n" />
+          <root url="file://$MODULE_DIR$/src/main/groovy" />
           <root url="file://$MODULE_DIR$/grails-app/views" />
           <root url="file://$MODULE_DIR$/grails-app/conf" />
-          <root url="file://$MODULE_DIR$/src/main/java" />
         </sourceRoots>
       </configuration>
     </facet>
@@ -78,14 +78,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="Gradle: org.springframework.boot:spring-boot-starter-logging:1.2.7.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.springframework.boot:spring-boot-starter-actuator:1.2.7.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.springframework.boot:spring-boot-autoconfigure:1.2.7.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.springframework.boot:spring-boot-starter-tomcat:1.2.7.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-web-boot:3.0.11" level="project" />
     <orderEntry type="library" exported="" name="Gradle: net.sf.ehcache:ehcache:2.10.0" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.grails.plugins:hibernate:4.3.10.7" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails.plugins:cache:3.0.1" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.hibernate:hibernate-ehcache:4.3.11.Final" level="project" />
     <orderEntry type="library" exported="" name="Gradle: joda-time:joda-time:2.9.1" level="project" />
     <orderEntry type="library" exported="" name="Gradle: javax.mail:mail:1.4.7" level="project" />
@@ -95,205 +89,1543 @@
     <orderEntry type="library" exported="" name="Gradle: org.springframework.boot:spring-boot-sample-amqp-archetype:1.0.2.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.scribe:scribe:1.3.7" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.grails.plugins:spring-security-core:3.0.3" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.springframework.security.oauth:spring-security-oauth2:2.0.8.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.slf4j:jcl-over-slf4j:1.7.12" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.slf4j:jul-to-slf4j:1.7.12" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.slf4j:log4j-over-slf4j:1.7.12" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: ch.qos.logback:logback-classic:1.1.3" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.springframework.boot:spring-boot-starter:1.2.7.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.springframework.boot:spring-boot-actuator:1.2.7.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-core:4.1.8.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.springframework.boot:spring-boot:1.2.7.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.yaml:snakeyaml:1.14" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.apache.tomcat.embed:tomcat-embed-core:8.0.28" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.apache.tomcat.embed:tomcat-embed-el:8.0.28" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.apache.tomcat.embed:tomcat-embed-logging-juli:8.0.28" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.apache.tomcat.embed:tomcat-embed-websocket:8.0.28" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-bootstrap:3.0.11" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-plugin-rest:3.0.11" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-plugin-databinding:3.0.11" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-plugin-i18n:3.0.11" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-plugin-filters:3.0.11" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-plugin-gsp:3.0.11" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-plugin-services:3.0.11" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-plugin-url-mappings:3.0.11" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-plugin-interceptors:3.0.11" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-plugin-async:3.0.11" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: com.h2database:h2:1.3.176" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.codehaus.groovy:groovy:2.4.5" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-web-common:3.0.11" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-datastore-gorm-hibernate4:4.0.7.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.jboss.logging:jboss-logging:3.1.3.GA" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.jboss.logging:jboss-logging-annotations:1.2.0.Beta1" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.hibernate:hibernate-core:4.3.11.Final" level="project" />
     <orderEntry type="library" exported="" name="Gradle: net.sf.ehcache:ehcache-core:2.4.3" level="project" />
     <orderEntry type="library" exported="" name="Gradle: javax.activation:activation:1.1" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.codehaus.jackson:jackson-core-asl:1.9.13" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-messaging:4.1.8.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.springframework.retry:spring-retry:1.1.2.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-tx:4.1.8.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: com.rabbitmq:http-client:1.0.0.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-web:4.1.8.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: com.rabbitmq:amqp-client:3.5.7" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-context:4.1.8.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.springframework.security:spring-security-core:4.0.3.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.springframework.security:spring-security-web:4.0.3.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-beans:4.1.8.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-webmvc:4.1.8.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.springframework.security:spring-security-config:3.2.8.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: commons-codec:commons-codec:1.6" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-plugin-controllers:3.0.11" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-plugin-domain-class:3.0.11" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-plugin-mimetypes:3.0.11" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-plugin-converters:3.0.11" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-plugin-codecs:3.0.11" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: ch.qos.logback:logback-core:1.1.3" level="project" />
     <orderEntry type="library" exported="" name="Gradle: commons-logging:commons-logging:1.2" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.codehaus.groovy:groovy-xml:2.4.5" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-web:3.0.11" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-plugin-datasource:3.0.11" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: com.google.code.gson:gson:2.2.4" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-core:3.0.11" level="project" />
     <orderEntry type="library" exported="" name="Gradle: commons-lang:commons-lang:2.6" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-logging:3.0.11" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-web-gsp-taglib:3.0.11" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-plugin-events:3.0.11" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-validation:3.0.11" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-databinding:3.0.11" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-encoder:3.0.11" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-gsp:3.0.11" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.codehaus.groovy:groovy-templates:2.4.5" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-context-support:4.1.8.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: dom4j:dom4j:1.6.1" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-datastore-gorm-hibernate-core:4.0.7.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.hibernate.common:hibernate-commons-annotations:4.0.5.Final" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.hibernate:hibernate-validator:5.0.3.Final" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.apache.httpcomponents:httpclient:4.3.6" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-aop:4.1.8.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-expression:4.1.8.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: aopalliance:aopalliance:1.0" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-async:3.0.11" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-plugin-validation:3.0.11" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-spring:3.0.11" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-datastore-gorm:4.0.7.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-datastore-core:4.0.7.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-datastore-simple:4.0.7.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-aspects:4.1.8.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.aspectj:aspectjrt:1.8.5" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-web-gsp:3.0.11" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-web-databinding:3.0.11" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-web-url-mappings:3.0.11" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-web-jsp:3.0.11" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-web-mvc:3.0.11" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-web-sitemesh:3.0.11" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.apache.tomcat.embed:tomcat-embed-logging-log4j:7.0.55" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-jdbc:4.1.8.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.codehaus.groovy:groovy-sql:2.4.5" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.apache.tomcat:tomcat-jdbc:7.0.55" level="project" />
     <orderEntry type="library" exported="" name="Gradle: xalan:serializer:2.7.2" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: io.projectreactor.spring:reactor-spring-context:2.0.6.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: io.projectreactor:reactor-bus:2.0.6.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: commons-validator:commons-validator:1.4.1" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.codehaus.groovy:groovy-json:2.4.5" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-taglib:3.0.11" level="project" />
     <orderEntry type="library" exported="" name="Gradle: antlr:antlr:2.7.7" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-datastore-gorm-plugin-support:4.0.7.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-orm:4.1.8.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: javax.transaction:jta:1.1" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.hibernate:hibernate-commons-annotations:3.2.0.Final" level="project" />
     <orderEntry type="library" exported="" name="Gradle: javax.validation:validation-api:1.1.0.Final" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: com.fasterxml:classmate:1.0.0" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.apache.httpcomponents:httpcore:4.3.3" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.codehaus.gpars:gpars:1.2.1" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: io.projectreactor:reactor-core:2.0.6.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: io.projectreactor:reactor-stream:2.0.6.RELEASE" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-web-taglib:3.0.11" level="project" />
     <orderEntry type="library" exported="" name="Gradle: opensymphony:sitemesh:2.4" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.apache.tomcat:tomcat-juli:7.0.55" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.codehaus.groovy:groovy-ant:2.4.5" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: com.jayway.jsonpath:json-path:0.9.0" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: io.projectreactor.spring:reactor-spring-core:2.0.6.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: com.goldmansachs:gs-collections:5.1.0" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: commons-collections:commons-collections:3.2.1" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.grails:grails-datastore-web:4.0.7.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.codehaus.jsr166-mirror:jsr166y:1.7.0" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.reactivestreams:reactive-streams:1.0.0" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.apache.ant:ant:1.9.4" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.codehaus.groovy:groovy-groovydoc:2.4.5" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.apache.ant:ant-antlr:1.9.4" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.apache.ant:ant-launcher:1.9.4" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.apache.ant:ant-junit:1.9.4" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: net.minidev:json-smart:1.2" level="project" />
     <orderEntry type="library" exported="" name="Gradle: com.goldmansachs:gs-collections-api:5.1.0" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.slf4j:slf4j-api:1.7.12" level="project" />
     <orderEntry type="library" exported="" name="Gradle: com.googlecode.concurrentlinkedhashmap:concurrentlinkedhashmap-lru:1.4.2" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec:1.0.0.Final" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.jboss:jandex:1.1.0.Final" level="project" />
     <orderEntry type="library" exported="" name="Gradle: xml-apis:xml-apis:1.0.b2" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: com.fasterxml.jackson.core:jackson-databind:2.5.1" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: com.fasterxml.jackson.core:jackson-annotations:2.5.0" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: com.fasterxml.jackson.core:jackson-core:2.5.1" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: org.aspectj:aspectjweaver:1.8.7" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.javassist:javassist:3.18.1-GA" level="project" />
     <orderEntry type="library" exported="" scope="RUNTIME" name="Gradle: mysql:mysql-connector-java:5.1.38" level="project" />
-    <orderEntry type="library" exported="" scope="RUNTIME" name="Gradle: org.grails.plugins:asset-pipeline:3.0.11" level="project" />
     <orderEntry type="library" exported="" scope="RUNTIME" name="Gradle: org.mozilla:rhino:1.7R4" level="project" />
-    <orderEntry type="library" exported="" scope="RUNTIME" name="Gradle: com.bertramlabs.plugins:asset-pipeline-core:2.6.2" level="project" />
-    <orderEntry type="library" exported="" scope="RUNTIME" name="Gradle: com.google.javascript:closure-compiler:v20141023" level="project" />
-    <orderEntry type="library" exported="" scope="RUNTIME" name="Gradle: com.google.javascript:closure-compiler-externs:v20141023" level="project" />
-    <orderEntry type="library" exported="" scope="RUNTIME" name="Gradle: args4j:args4j:2.0.26" level="project" />
-    <orderEntry type="library" exported="" scope="RUNTIME" name="Gradle: com.google.guava:guava:18.0" level="project" />
-    <orderEntry type="library" exported="" scope="RUNTIME" name="Gradle: com.google.protobuf:protobuf-java:2.5.0" level="project" />
-    <orderEntry type="library" exported="" scope="RUNTIME" name="Gradle: com.google.code.findbugs:jsr305:1.3.9" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: org.grails:grails-plugin-testing:3.0.11" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: org.grails.plugins:geb:1.0.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: cglib:cglib:2.2.2" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: org.grails:grails-test:3.0.11" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: org.springframework.boot:spring-boot-starter-test:1.2.7.RELEASE" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.spockframework:spock-spring:1.0-groovy-2.4" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.spockframework:spock-core:1.0-groovy-2.4" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: junit:junit:4.12" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: org.gebish:geb-spock:0.10.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: org.seleniumhq.selenium:selenium-support:2.43.1" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: asm:asm:3.3.1" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: org.codehaus.groovy:groovy-test:2.4.5" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.mockito:mockito-core:1.10.19" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.hamcrest:hamcrest-core:1.3" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.hamcrest:hamcrest-library:1.3" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: org.springframework:spring-test:4.1.8.RELEASE" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: org.gebish:geb-core:0.10.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: org.seleniumhq.selenium:selenium-remote-driver:2.43.1" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: org.gebish:geb-ast:0.10.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: org.gebish:geb-waiting:0.10.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: cglib:cglib-nodep:2.1_3" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: org.json:json:20080701" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: org.seleniumhq.selenium:selenium-api:2.43.1" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: com.google.guava:guava:15.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: org.apache.commons:commons-exec:1.1" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: net.java.dev.jna:jna:3.4.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: net.java.dev.jna:platform:3.4.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: org.gebish:geb-implicit-assertions:0.10.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.objenesis:objenesis:2.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.seleniumhq.selenium:selenium-htmlunit-driver:2.44.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: org.seleniumhq.selenium:selenium-remote-driver:2.44.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: net.sourceforge.htmlunit:htmlunit:2.15" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: xalan:xalan:2.7.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.apache.commons:commons-lang3:3.3.2" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: org.apache.httpcomponents:httpmime:4.3.3" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: net.sourceforge.htmlunit:htmlunit-core-js:2.15" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: xerces:xercesImpl:2.11.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: net.sourceforge.nekohtml:nekohtml:1.9.21" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: net.sourceforge.cssparser:cssparser:0.9.14" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: commons-io:commons-io:2.4" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.eclipse.jetty:jetty-websocket:8.1.15.v20140411" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: xml-apis:xml-apis:1.4.01" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.w3c.css:sac:1.3" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: org.eclipse.jetty:jetty-util:8.1.15.v20140411" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: org.eclipse.jetty:jetty-io:8.1.15.v20140411" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: org.eclipse.jetty:jetty-http:8.1.15.v20140411" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: org.seleniumhq.selenium:selenium-api:2.44.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: commons-codec:commons-codec:1.9" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: com.google.code.gson:gson:2.3" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: asm:asm:3.3.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: commons-codec:commons-codec:1.9" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: com.google.guava:guava:18.0" level="project" />
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.springframework.boot:spring-boot-starter-logging:1.3.3.RELEASE">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-logging/1.3.3.RELEASE/16b395c84f28b947f1c336aa461fda1e662bb3b6/spring-boot-starter-logging-1.3.3.RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-logging/1.3.3.RELEASE/46f42c0459e97ad98fef282e9c3ad4899925c666/spring-boot-starter-logging-1.3.3.RELEASE-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.springframework.boot:spring-boot-starter-actuator:1.3.3.RELEASE">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-actuator/1.3.3.RELEASE/ec15d8ba682e5e287a6d8cb1299ca69214a46530/spring-boot-starter-actuator-1.3.3.RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-actuator/1.3.3.RELEASE/ab660517cd9a2494c6e853210858aa1120a11fa1/spring-boot-starter-actuator-1.3.3.RELEASE-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.springframework.boot:spring-boot-autoconfigure:1.3.3.RELEASE">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-autoconfigure/1.3.3.RELEASE/e7a4a25f74dac6b335ffabc43e3e8a6e3066340e/spring-boot-autoconfigure-1.3.3.RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-autoconfigure/1.3.3.RELEASE/4cd398d2642324046f156929cd891dbfe822e0d3/spring-boot-autoconfigure-1.3.3.RELEASE-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.springframework.boot:spring-boot-starter-tomcat:1.3.3.RELEASE">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-tomcat/1.3.3.RELEASE/541468d85cc2c94d2b538b0fa07c018847bb9b78/spring-boot-starter-tomcat-1.3.3.RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-tomcat/1.3.3.RELEASE/8ff5d5d0f6e19fc8e98d75396b030c11a4e77b4a/spring-boot-starter-tomcat-1.3.3.RELEASE-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-web-boot:3.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-boot/3.1.5/e6a731e08fe54caa49ba507c4861798fbcd56238/grails-web-boot-3.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-boot/3.1.5/d0d299c67f7bdac215c9305e493c50a720033bd/grails-web-boot-3.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails.plugins:cache:3.0.2">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails.plugins/cache/3.0.2/519bc1bffb2afa10c93b92e872d49a5238e96558/cache-3.0.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails.plugins/cache/3.0.2/da572a71f5459f27e4a609a20fc9c8cb4776e78f/cache-3.0.2-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails.plugins:spring-security-oauth2-provider:3.0.0-RC1">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails.plugins/spring-security-oauth2-provider/3.0.0-RC1/76aa1c87c512bd23a8395d4e60b550b5f460ffa6/spring-security-oauth2-provider-3.0.0-RC1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails.plugins/spring-security-oauth2-provider/3.0.0-RC1/ad62a3c6578fb7913617d18a5fe1f01478055989/spring-security-oauth2-provider-3.0.0-RC1-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: ch.qos.logback:logback-classic:1.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-classic/1.1.5/92353eb144695bba80b31f7bec4f36d871f230ac/logback-classic-1.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-classic/1.1.5/4372823823e22954aea97fb0bd27c4c0dba0ede/logback-classic-1.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.slf4j:jcl-over-slf4j:1.7.16">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.slf4j/jcl-over-slf4j/1.7.16/34e48073884704ac987d3d1a1ab9b60e62028a9/jcl-over-slf4j-1.7.16.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.slf4j/jcl-over-slf4j/1.7.16/7ee69aec8f8a5f533c8e883ff418baeb21a7412/jcl-over-slf4j-1.7.16-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.slf4j:jul-to-slf4j:1.7.16">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.slf4j/jul-to-slf4j/1.7.16/2d5b546c5557dcbf08c3a381d7dc9bd275a602c1/jul-to-slf4j-1.7.16.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.slf4j/jul-to-slf4j/1.7.16/284459a82b70a3650489ca44ee01e5fad7d62319/jul-to-slf4j-1.7.16-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.slf4j:log4j-over-slf4j:1.7.16">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.slf4j/log4j-over-slf4j/1.7.16/c5922f37c8a5e4377cfb543c549f10e73d72ede0/log4j-over-slf4j-1.7.16.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.slf4j/log4j-over-slf4j/1.7.16/ebedc4e50e0eeaa6e6b4ad5f1b69089099301cc6/log4j-over-slf4j-1.7.16-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.springframework.boot:spring-boot-starter:1.3.3.RELEASE">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter/1.3.3.RELEASE/e4a71ce6ae8e42a7535dd9f1a39f91d36c538f28/spring-boot-starter-1.3.3.RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter/1.3.3.RELEASE/d205c7b607ec58295ef8e5b2fddfcb756b9cb3bf/spring-boot-starter-1.3.3.RELEASE-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.springframework.boot:spring-boot-actuator:1.3.3.RELEASE">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-actuator/1.3.3.RELEASE/7f1ae26c1ea42fb9dd5f14925cd605198f8b644/spring-boot-actuator-1.3.3.RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-actuator/1.3.3.RELEASE/ac6730132c6d23dae716a2ea4a0ed68ae7e05708/spring-boot-actuator-1.3.3.RELEASE-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.springframework.boot:spring-boot:1.3.3.RELEASE">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot/1.3.3.RELEASE/641cc375499d444e4efbc1801902260daa79758d/spring-boot-1.3.3.RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot/1.3.3.RELEASE/5e9756091cc536ab48a7f98bdb551f4246c4ed0d/spring-boot-1.3.3.RELEASE-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.apache.tomcat.embed:tomcat-embed-core:8.0.32">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-core/8.0.32/734ead0c803525cc9c7f283438101734ca9aac01/tomcat-embed-core-8.0.32.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-core/8.0.32/ecbf6e03299d1aac179b2003ec500397ce1f15b8/tomcat-embed-core-8.0.32-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.apache.tomcat.embed:tomcat-embed-el:8.0.32">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-el/8.0.32/82adf8bd959fc046d55490e6f2ce67297c91d62b/tomcat-embed-el-8.0.32.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-el/8.0.32/acc238ee9c71aa2a5048375e38262adb7fb3680d/tomcat-embed-el-8.0.32-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.apache.tomcat.embed:tomcat-embed-logging-juli:8.0.32">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-logging-juli/8.0.32/5e664b357710a6c43cad2191404c2a9d0b82cdb3/tomcat-embed-logging-juli-8.0.32.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-logging-juli/8.0.32/b18bfdec592fb810fc4ea200753ccc4af288d3a5/tomcat-embed-logging-juli-8.0.32-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.apache.tomcat.embed:tomcat-embed-websocket:8.0.32">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-websocket/8.0.32/237ca58dac66f438579750169e6cb297ac041c9d/tomcat-embed-websocket-8.0.32.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-websocket/8.0.32/7ad815be1848218d138e4debbf08ce2fcd6826a5/tomcat-embed-websocket-8.0.32-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-bootstrap:3.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-bootstrap/3.1.5/868fefcfa0852a27c76f204235163f90f6719b48/grails-bootstrap-3.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-bootstrap/3.1.5/e9393e8dcc0021b1fd34d5312245130c694b9d15/grails-bootstrap-3.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-plugin-rest:3.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-rest/3.1.5/3ee550093395b660d187e5ecfba69ba91d7fd55d/grails-plugin-rest-3.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-rest/3.1.5/b51375364f1bcb62e92c35ea509e3bb75023252/grails-plugin-rest-3.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-plugin-databinding:3.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-databinding/3.1.5/7045a867f23999cb6253fc57178c121729d0d5a8/grails-plugin-databinding-3.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-databinding/3.1.5/5e285549a429da5498dcc847decb42044ad6d6c7/grails-plugin-databinding-3.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-plugin-i18n:3.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-i18n/3.1.5/93858bb1602d613dd4fe428e96ff954e6a79bded/grails-plugin-i18n-3.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-i18n/3.1.5/2df63236aad132a2e2413cc2d2ed12b15dc6b2eb/grails-plugin-i18n-3.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-plugin-gsp:3.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-gsp/3.1.5/8791e20b04e1edcf98b878285038414fedded474/grails-plugin-gsp-3.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-gsp/3.1.5/d92616a5efd857c713ae1d3e54265bc46636384/grails-plugin-gsp-3.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-plugin-services:3.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-services/3.1.5/9f454277666d860e44288267a122dd270bfe6b07/grails-plugin-services-3.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-services/3.1.5/b1b204f5de2d4972a1b0f2889a6f30e768907405/grails-plugin-services-3.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-plugin-url-mappings:3.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-url-mappings/3.1.5/53d7e6bd39aae19466e783a559ceb951bf659b93/grails-plugin-url-mappings-3.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-url-mappings/3.1.5/20ca7f4c1ebd23074488f72a53b03d7cd8f7802a/grails-plugin-url-mappings-3.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-plugin-interceptors:3.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-interceptors/3.1.5/7268ca5790e8af1455123128bff8182f1af30d15/grails-plugin-interceptors-3.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-interceptors/3.1.5/9bff9f8c1e42fa44ea84a3b8f5c64b62c44a83a9/grails-plugin-interceptors-3.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-plugin-async:3.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-async/3.1.5/1f5413477a8330275cf1dbe1c51b4637fcdf95b5/grails-plugin-async-3.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-async/3.1.5/d0336cbf85e05dd3963ab824a422c208945ae366/grails-plugin-async-3.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: com.h2database:h2:1.4.191">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.h2database/h2/1.4.191/dec3540178ea889b2871b0ed56db14bbec9cfdfc/h2-1.4.191.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.h2database/h2/1.4.191/75ff7980393538e5028dc4b9311c613c038918f3/h2-1.4.191-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.codehaus.groovy:groovy:2.4.6">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy/2.4.6/844cb06c553a5e6a736f44aa2b67d25bf6a34fde/groovy-2.4.6.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy/2.4.6/374c945163de9e06b680d4e119110d262b841d6f/groovy-2.4.6-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.slf4j:slf4j-api:1.7.16">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.16/3a6274f658487d5bfff9af3862beff6da1e7fd52/slf4j-api-1.7.16.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.16/974c5dd98f38036bd98b3a8f7bf00ee0d91adbdd/slf4j-api-1.7.16-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-web-common:3.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-common/3.1.5/ac50d94e4c73da8c579687434cbe754570314ee8/grails-web-common-3.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-common/3.1.5/9b0269549b2236cc15d55c49271a5d7923709505/grails-web-common-3.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-datastore-gorm-hibernate4:5.0.4.RELEASE">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-datastore-gorm-hibernate4/5.0.4.RELEASE/b1ee778e94ae57799c480438898c9de4fbb7f4a4/grails-datastore-gorm-hibernate4-5.0.4.RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-datastore-gorm-hibernate4/5.0.4.RELEASE/60c16b1076c5c4500577b26d9f6b726b5f01548d/grails-datastore-gorm-hibernate4-5.0.4.RELEASE-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.jboss.logging:jboss-logging:3.3.0.Final">
+        <CLASSES>
+          <root url="jar://$MAVEN_REPOSITORY$/org/jboss/logging/jboss-logging/3.3.0.Final/jboss-logging-3.3.0.Final.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.springframework:spring-messaging:4.2.5.RELEASE">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-messaging/4.2.5.RELEASE/604103815489605ed609a742a6bbc708ae3db12c/spring-messaging-4.2.5.RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-messaging/4.2.5.RELEASE/8754020978799650881a529cea0f5ccd9630b912/spring-messaging-4.2.5.RELEASE-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.springframework:spring-tx:4.2.5.RELEASE">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-tx/4.2.5.RELEASE/7395321fe937272d9b781a13985e04ab2dcd6210/spring-tx-4.2.5.RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-tx/4.2.5.RELEASE/424b0f6388fd0778648b67deeeb9250f84e1fbb8/spring-tx-4.2.5.RELEASE-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.springframework:spring-web:4.2.5.RELEASE">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/4.2.5.RELEASE/49cd2430884b77172aa81e3fc33ef668ea1dab30/spring-web-4.2.5.RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/4.2.5.RELEASE/6d6268e82b35921d9daf4cfda9a2f1bd99afd87a/spring-web-4.2.5.RELEASE-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.springframework:spring-context:4.2.5.RELEASE">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context/4.2.5.RELEASE/a75e18322c7b362fe1daa26a245ae672ec0f3138/spring-context-4.2.5.RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context/4.2.5.RELEASE/8bcd5b15133bb5423cdc9f33da7e4ac585fd783a/spring-context-4.2.5.RELEASE-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.springframework:spring-core:4.2.5.RELEASE">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/4.2.5.RELEASE/251207b29f0f38f61e3495a2f7fb053cf1bfe8c/spring-core-4.2.5.RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/4.2.5.RELEASE/86b9af475e134ba9f5c3843f33ff3ecd6cf95883/spring-core-4.2.5.RELEASE-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.springframework.security.oauth:spring-security-oauth2:2.0.9.RELEASE">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.security.oauth/spring-security-oauth2/2.0.9.RELEASE/463758d7257eebac8435370d7b5a1aa076400657/spring-security-oauth2-2.0.9.RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.security.oauth/spring-security-oauth2/2.0.9.RELEASE/89d174d32ae662fefda5af1ef74b987c9c446ea3/spring-security-oauth2-2.0.9.RELEASE-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: com.fasterxml.jackson.core:jackson-databind:2.6.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.6.5/d50be1723a09befd903887099ff2014ea9020333/jackson-databind-2.6.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.6.5/8176652b0ade481ff1ceb1bec03c70e2eb6f1c37/jackson-databind-2.6.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-logging:3.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-logging/3.1.5/74b72b2a73e32b102a1824d4f0b9a5c1868c7341/grails-logging-3.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-logging/3.1.5/e78efef4fa26d7f7305be623b21a806ab3375651/grails-logging-3.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-async:3.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-async/3.1.5/1f5d21ecfd9ca52b45828388151333a1d7bee8a2/grails-async-3.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-async/3.1.5/4bd4c1dc9a81b25b09c2ae25937bbce116bebc21/grails-async-3.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.apache.httpcomponents:httpclient:4.5.1">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpclient/4.5.1/7e3cecc566df91338c6c67883b89ddd05a17db43/httpclient-4.5.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpclient/4.5.1/c0ecd55724129bbd48850314b4ff8a360d670662/httpclient-4.5.1-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: ch.qos.logback:logback-core:1.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-core/1.1.5/16722afde74444716e299bee1f60aec9f6d1f0dc/logback-core-1.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-core/1.1.5/a920a1f85c501420332e867740ea5ae648655da7/logback-core-1.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.yaml:snakeyaml:1.16">
+        <CLASSES>
+          <root url="jar://$MAVEN_REPOSITORY$/org/yaml/snakeyaml/1.16/snakeyaml-1.16.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.codehaus.groovy:groovy-xml:2.4.6">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-xml/2.4.6/60ed82a5601931c5b560bece47d6fd98b36e7a4f/groovy-xml-2.4.6.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-xml/2.4.6/7593c1d9a2fc6e968c2bfb13fb049e0c201bbf36/groovy-xml-2.4.6-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-web:3.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web/3.1.5/bae647fa6409631a42f2f8910fc1cb9f192e00ab/grails-web-3.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web/3.1.5/d01980dc2b2a90f3faa2c2819a8213d48d7cae0f/grails-web-3.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-plugin-controllers:3.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-controllers/3.1.5/6b80e281f481a4edf17e401d90ed0c2ff3a925c3/grails-plugin-controllers-3.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-controllers/3.1.5/223246a95436b4c26c24e676882a20707f8d823/grails-plugin-controllers-3.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-plugin-datasource:3.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-datasource/3.1.5/d74100bc512249a1c9490085b1a3457b32a18b5f/grails-plugin-datasource-3.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-datasource/3.1.5/30037f2316eafe054c67a93327d793adecf404e6/grails-plugin-datasource-3.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-core:3.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-core/3.1.5/7cb74969bb31ade99bbd9f23be816e4c150aba2e/grails-core-3.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-core/3.1.5/ccda844205ebe4fb0511ad6eba67ff9156379217/grails-core-3.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-plugin-codecs:3.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-codecs/3.1.5/6af451886e03054e1ee29d854425f19220655a97/grails-plugin-codecs-3.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-codecs/3.1.5/38ffcf0dcaf164cb8c0f352caf549b4b75d8be76/grails-plugin-codecs-3.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-web-gsp-taglib:3.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-gsp-taglib/3.1.5/b06c077878cb81b6251478f86c31d68e2cda2085/grails-web-gsp-taglib-3.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-gsp-taglib/3.1.5/7a931bf4fc934831ccb43d30cc639534eb924a5a/grails-web-gsp-taglib-3.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-plugin-events:3.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-events/3.1.5/f4065eaaddd999d1c56856fcc5512aad1db0327b/grails-plugin-events-3.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-events/3.1.5/aad43684395fefd73f99cdbe24f1ffd5cc931af5/grails-plugin-events-3.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-validation:3.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-validation/3.1.5/4ca5d8aaa991c5ea206cb585c56f0a1fb054a154/grails-validation-3.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-validation/3.1.5/88ff532929a5af55eddb17276c3534bd14d884f0/grails-validation-3.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-databinding:3.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-databinding/3.1.5/634af6638f9adef135da804d1d30320390470d8a/grails-databinding-3.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-databinding/3.1.5/8f658722265c79280ab90d489f249f83f38762f7/grails-databinding-3.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-encoder:3.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-encoder/3.1.5/d1d7b9d55a88602605d3524c430f6023ffdff2b8/grails-encoder-3.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-encoder/3.1.5/7ba662dfcfaf23062fc4f7ce5cbf347a276483b8/grails-encoder-3.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-gsp:3.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-gsp/3.1.5/dfae4a8c18d0445b12f9c8ce31197694c00ee5df/grails-gsp-3.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-gsp/3.1.5/8f43864f8a6f31bd29a9836e59668c7224cbab7b/grails-gsp-3.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.codehaus.groovy:groovy-templates:2.4.6">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-templates/2.4.6/9382365413168bc255f4cc356e1294e34d1c431e/groovy-templates-2.4.6.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-templates/2.4.6/3cac66103fe035daeb1f767e1db4bbb607fdf5b/groovy-templates-2.4.6-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.springframework:spring-webmvc:4.2.5.RELEASE">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webmvc/4.2.5.RELEASE/cf463cce3e4453eb4b9a69de2dcdfd60c3c57e0/spring-webmvc-4.2.5.RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webmvc/4.2.5.RELEASE/4defda95bd56638dee17b63637f50dc8be771283/spring-webmvc-4.2.5.RELEASE-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.springframework:spring-context-support:4.2.5.RELEASE">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context-support/4.2.5.RELEASE/72db9c52e8bd2dc3290cd51114583731f818356b/spring-context-support-4.2.5.RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context-support/4.2.5.RELEASE/fc1909a46540ac15e8accb3ed0620c32936372eb/spring-context-support-4.2.5.RELEASE-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: com.google.code.gson:gson:2.3.1">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3.1/ecb6e1f8e4b0e84c4b886c2f14a1500caf309757/gson-2.3.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3.1/563dcb685903c96ce8abbd03adf7fa49e19aa8b4/gson-2.3.1-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-datastore-gorm-hibernate-core:5.0.4.RELEASE">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-datastore-gorm-hibernate-core/5.0.4.RELEASE/9668bc9a7d9fb32355a7492a723acf652c80fb8/grails-datastore-gorm-hibernate-core-5.0.4.RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-datastore-gorm-hibernate-core/5.0.4.RELEASE/ee628a14d67e545c4fd5d4bc5a25aad7a64341f2/grails-datastore-gorm-hibernate-core-5.0.4.RELEASE-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-datastore-gorm-support:5.0.4.RELEASE">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-datastore-gorm-support/5.0.4.RELEASE/737b81782f75dd01e74b0bb375abf6209766c37e/grails-datastore-gorm-support-5.0.4.RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-datastore-gorm-support/5.0.4.RELEASE/77c5bc50a0df4858d9d51bb29002e8a0c2ddcbfa/grails-datastore-gorm-support-5.0.4.RELEASE-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.hibernate:hibernate-validator:5.2.4.Final">
+        <CLASSES>
+          <root url="jar://$MAVEN_REPOSITORY$/org/hibernate/hibernate-validator/5.2.4.Final/hibernate-validator-5.2.4.Final.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.springframework:spring-beans:4.2.5.RELEASE">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-beans/4.2.5.RELEASE/fa992ae40f6fc47117282164e0433b71da385e94/spring-beans-4.2.5.RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-beans/4.2.5.RELEASE/6135730c939697c15f33f092a64396bb21d6ba0e/spring-beans-4.2.5.RELEASE-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.springframework:spring-aop:4.2.5.RELEASE">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-aop/4.2.5.RELEASE/858d6c70909b3ce7e07b59fc936f8ccfcd81c0aa/spring-aop-4.2.5.RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-aop/4.2.5.RELEASE/436d3d6181bbf498d8409525b449eb4ed94a2c5f/spring-aop-4.2.5.RELEASE-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.springframework:spring-expression:4.2.5.RELEASE">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-expression/4.2.5.RELEASE/a42bdfb833d0be6c18429aea3fb0fba81f85c6e8/spring-expression-4.2.5.RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-expression/4.2.5.RELEASE/c55ae1e0e6858098c2b2b22a7a9638d6cd76db8d/spring-expression-4.2.5.RELEASE-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: com.fasterxml.jackson.core:jackson-annotations:2.6.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.6.5/65137ebf85056473b40c311f889601646a7612ba/jackson-annotations-2.6.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.6.5/10394a8b3d8af4885e020e2571a7633f7a0bd741/jackson-annotations-2.6.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: com.fasterxml.jackson.core:jackson-core:2.6.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.6.5/334369d7eff497f358b248c171dac0dd62c68f67/jackson-core-2.6.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.6.5/e1466f546b8261fc8c6fd4b47718a73b4005d0aa/jackson-core-2.6.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: io.projectreactor:reactor-core:2.0.7.RELEASE">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.projectreactor/reactor-core/2.0.7.RELEASE/3f7190ff62e6d8cefa8a832f64140387e473fb41/reactor-core-2.0.7.RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.projectreactor/reactor-core/2.0.7.RELEASE/8194a51178b3b28969cd33b197662e665e89297a/reactor-core-2.0.7.RELEASE-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: io.projectreactor:reactor-stream:2.0.7.RELEASE">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.projectreactor/reactor-stream/2.0.7.RELEASE/5c8d4486a6f17177a5411ae195ba68ab02f75759/reactor-stream-2.0.7.RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.projectreactor/reactor-stream/2.0.7.RELEASE/cf0005ec1abdd9d0848ca875e8053c6566e7410b/reactor-stream-2.0.7.RELEASE-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: commons-collections:commons-collections:3.2.2">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-collections/commons-collections/3.2.2/8ad72fe39fa8c91eaaf12aadb21e0c3661fe26d5/commons-collections-3.2.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-collections/commons-collections/3.2.2/78c50ebda5784937ca1615fc0e1d0cb35857d572/commons-collections-3.2.2-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.apache.httpcomponents:httpcore:4.4.4">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpcore/4.4.4/b31526a230871fbe285fbcbe2813f9c0839ae9b0/httpcore-4.4.4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpcore/4.4.4/c5c19e3e6af6b452def290cde12a3ee4c35c893c/httpcore-4.4.4-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.springframework:spring-aspects:4.2.5.RELEASE">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-aspects/4.2.5.RELEASE/ed09517441a276db2a7e0e7b60a390c52b8093af/spring-aspects-4.2.5.RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-aspects/4.2.5.RELEASE/b51d72d594f6a50607791820049fc3eb61483b36/spring-aspects-4.2.5.RELEASE-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.aspectj:aspectjrt:1.8.8">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.aspectj/aspectjrt/1.8.8/7c5b26f24375685e34a50c2d765ebc40a96a5280/aspectjrt-1.8.8.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.aspectj/aspectjrt/1.8.8/80b7f0a3ae95f1fa7c75733a38961eaa14546d61/aspectjrt-1.8.8-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.aspectj:aspectjweaver:1.8.8">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.aspectj/aspectjweaver/1.8.8/969c8d3d3d56db1e1c8721a03ef07d0c9ac3a2e4/aspectjweaver-1.8.8.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.aspectj/aspectjweaver/1.8.8/bb30663f0de5967f6a1950578680d04f1fa50992/aspectjweaver-1.8.8-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-web-gsp:3.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-gsp/3.1.5/e9cfbf55da11a2b072b477367bf2f471d4463408/grails-web-gsp-3.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-gsp/3.1.5/181b7e2bb3412394241f603ee6dc24a98ae6a062/grails-web-gsp-3.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-web-databinding:3.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-databinding/3.1.5/ce0707d3bb887db050d823a6a78dadc274a278bc/grails-web-databinding-3.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-databinding/3.1.5/c3801a3d0d0585793a803663d61530971480c603/grails-web-databinding-3.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-web-url-mappings:3.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-url-mappings/3.1.5/9abac6b0eca4e91a0ec325d9da9b5ec03f31cf65/grails-web-url-mappings-3.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-url-mappings/3.1.5/80f6ab13ef9518cbf718482da78c6d084911c5ef/grails-web-url-mappings-3.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-web-jsp:3.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-jsp/3.1.5/59e663fa38a5750c57c33d18d4cd4691fb8d621e/grails-web-jsp-3.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-jsp/3.1.5/56a1aef5dbdcb8a4a0212fbe42674d0600db6a37/grails-web-jsp-3.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-web-mvc:3.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-mvc/3.1.5/e4c5c3655621ab46c25e8af799957e42212d58e9/grails-web-mvc-3.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-mvc/3.1.5/68906e1c7a8b65d99902bc009fa37dcdac83d895/grails-web-mvc-3.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-web-sitemesh:3.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-sitemesh/3.1.5/fcbc1c6cdf2f92dc7e9ff0c7832d97e99d176eef/grails-web-sitemesh-3.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-sitemesh/3.1.5/9450d2d9cfe3e3f6fefaefd0c350d85845343635/grails-web-sitemesh-3.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-plugin-converters:3.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-converters/3.1.5/b0e771a709f36342d4ec53a5c0a160257263c91d/grails-plugin-converters-3.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-converters/3.1.5/76ca9db7903c0577d1c3b9ef25c6bc6fd4ded6ed/grails-plugin-converters-3.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-plugin-mimetypes:3.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-mimetypes/3.1.5/7d218745432f67e8111bc4073e52e177e7ed7e45/grails-plugin-mimetypes-3.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-mimetypes/3.1.5/b474f2f9b3ce538b52159449714505fdf565621d/grails-plugin-mimetypes-3.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-plugin-validation:3.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-validation/3.1.5/54d7e19663bc6de63e928deb92fccffbce604a72/grails-plugin-validation-3.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-validation/3.1.5/810427cad27c4094f097f5d7233d8b63fcf15d75/grails-plugin-validation-3.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-plugin-domain-class:3.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-domain-class/3.1.5/6a799c5dadd51a80933d7b58f43ab0f9cfef1cb/grails-plugin-domain-class-3.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-domain-class/3.1.5/37e41f8e333d03616076c1d786486f0fda48d918/grails-plugin-domain-class-3.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.apache.tomcat.embed:tomcat-embed-logging-log4j:8.0.33">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-logging-log4j/8.0.33/2607f5b35f7641042414f76cdf2a9d5ec8033294/tomcat-embed-logging-log4j-8.0.33.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-logging-log4j/8.0.33/3284737950e8a345e7242d4e0cae1a8234496866/tomcat-embed-logging-log4j-8.0.33-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.springframework:spring-jdbc:4.2.5.RELEASE">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-jdbc/4.2.5.RELEASE/205d2f1b902eac16a2ece772dc5ac6090b7e0b6f/spring-jdbc-4.2.5.RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-jdbc/4.2.5.RELEASE/8f0aaf6080b3a6d6cb7c52865ecef98b97a55f0b/spring-jdbc-4.2.5.RELEASE-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.codehaus.groovy:groovy-sql:2.4.6">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-sql/2.4.6/cd366c813eea35552ead52f07b64c59375b81dc6/groovy-sql-2.4.6.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-sql/2.4.6/f999ddba280d27bcf68b1c3a02e3ae791199ee62/groovy-sql-2.4.6-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.apache.tomcat:tomcat-jdbc:8.0.32">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-jdbc/8.0.32/55396c45fc8c34f31420a3b280fde4b1387b044d/tomcat-jdbc-8.0.32.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-jdbc/8.0.32/18a4ab8847c1cb6b5c55914bc55d9e302aa5874a/tomcat-jdbc-8.0.32-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-spring:3.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-spring/3.1.5/2dfe7f30f63c2172f6a781c11579e3ff7bb421db/grails-spring-3.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-spring/3.1.5/90b052f66fc2a0413990fb6a7cc8c65471c2e5e0/grails-spring-3.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-codecs:3.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-codecs/3.1.5/e1c36a2e8b029eded251a8c0c95b9e7a3f1a4f99/grails-codecs-3.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-codecs/3.1.5/290fbcc513c018d4eb0a75b15d3885808ace8464/grails-codecs-3.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: io.projectreactor.spring:reactor-spring-context:2.0.7.RELEASE">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.projectreactor.spring/reactor-spring-context/2.0.7.RELEASE/ca4285a0a0ab9d1f39953c086bfcfc5883c06c32/reactor-spring-context-2.0.7.RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.projectreactor.spring/reactor-spring-context/2.0.7.RELEASE/c0f3c57ef78c4faa6aedae41011a9e4ffe86114f/reactor-spring-context-2.0.7.RELEASE-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: io.projectreactor:reactor-bus:2.0.7.RELEASE">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.projectreactor/reactor-bus/2.0.7.RELEASE/8b83ef6c665ae3499f23fbc7bca5cb8c321a71c4/reactor-bus-2.0.7.RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.projectreactor/reactor-bus/2.0.7.RELEASE/4f2f2e58d68713aa6f57935c5904eb7740791ecf/reactor-bus-2.0.7.RELEASE-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.codehaus.groovy:groovy-json:2.4.6">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-json/2.4.6/febbfa4834eb8093f80281b1242c893c64761580/groovy-json-2.4.6.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-json/2.4.6/920f6e57c466d2535e51daba402c26a8b8467471/groovy-json-2.4.6-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-taglib:3.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-taglib/3.1.5/1b0bab2498204ee50284a0d8c5ba03d415a94423/grails-taglib-3.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-taglib/3.1.5/213a817b1af929a0536d57707fb280f7aac07d37/grails-taglib-3.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-datastore-gorm:5.0.4.RELEASE">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-datastore-gorm/5.0.4.RELEASE/23719eec9eb58e851545d0108d38256f8eeafa45/grails-datastore-gorm-5.0.4.RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-datastore-gorm/5.0.4.RELEASE/1b8a756c14f65dbe07ce702bf46b5c1ec325dc77/grails-datastore-gorm-5.0.4.RELEASE-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-datastore-core:5.0.4.RELEASE">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-datastore-core/5.0.4.RELEASE/c248892593de376ecf5bdb0051c6096d9cad0cf/grails-datastore-core-5.0.4.RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-datastore-core/5.0.4.RELEASE/cc36ff5ebd191f2cb0a1668fc89d1938b0f232f6/grails-datastore-core-5.0.4.RELEASE-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.springframework:spring-orm:4.2.5.RELEASE">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-orm/4.2.5.RELEASE/60625981b837ba93e603d3068d69c6397ecb3ad2/spring-orm-4.2.5.RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-orm/4.2.5.RELEASE/30e26c9f41924d5a91a33855f01b8c8028917cd5/spring-orm-4.2.5.RELEASE-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: com.fasterxml:classmate:1.1.0">
+        <CLASSES>
+          <root url="jar://$MAVEN_REPOSITORY$/com/fasterxml/classmate/1.1.0/classmate-1.1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-web-taglib:3.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-taglib/3.1.5/727c5ecd773dc699f01f8e8347c305f1fedba941/grails-web-taglib-3.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-taglib/3.1.5/5fcd2933adefef6eb74c7db8bbc7202c39cd6c09/grails-web-taglib-3.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.grails:grails-datastore-simple:5.0.4.RELEASE">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-datastore-simple/5.0.4.RELEASE/512c465e1ae8d13e554e1e2fd0639377b8b33dbe/grails-datastore-simple-5.0.4.RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-datastore-simple/5.0.4.RELEASE/5eb4865803750c0315bb2e8501e1aa779f0d3de4/grails-datastore-simple-5.0.4.RELEASE-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.apache.tomcat:tomcat-juli:8.0.32">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-juli/8.0.32/71471069cea029dfdce0735337864c7d0a3d9992/tomcat-juli-8.0.32.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.tomcat/tomcat-juli/8.0.32/7f3ddcb5c29c1d79f985e881c39c09a7f4705401/tomcat-juli-8.0.32-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.codehaus.groovy:groovy-ant:2.4.6">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-ant/2.4.6/77fc24973dd4205d3cd2d6707b39c8ea9e0aa624/groovy-ant-2.4.6.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-ant/2.4.6/e681ff3c2c99c898e1515503547b414e6816330f/groovy-ant-2.4.6-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: com.jayway.jsonpath:json-path:2.0.0">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jayway.jsonpath/json-path/2.0.0/26b8555596b3fb9652c1ffe193fa9123945b32cc/json-path-2.0.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jayway.jsonpath/json-path/2.0.0/a37794ada34a38747f692e93720c33c451e8a2e/json-path-2.0.0-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: io.projectreactor.spring:reactor-spring-core:2.0.7.RELEASE">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.projectreactor.spring/reactor-spring-core/2.0.7.RELEASE/b1045de1d670cb1b5885221954e8338bf3938ff5/reactor-spring-core-2.0.7.RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.projectreactor.spring/reactor-spring-core/2.0.7.RELEASE/c8a387f498e3839fc98d01ef77892610ce375547/reactor-spring-core-2.0.7.RELEASE-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.codehaus.groovy:groovy-groovydoc:2.4.6">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-groovydoc/2.4.6/8ff8fae45749021dd10d2cb3a5c5662a6c277881/groovy-groovydoc-2.4.6.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-groovydoc/2.4.6/89ec98a116918630081b5ecf038eae3f707eb685/groovy-groovydoc-2.4.6-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: net.minidev:json-smart:2.1.1">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.minidev/json-smart/2.1.1/922d12fb1f394e2b6999ae0f7936ab13f4dffb81/json-smart-2.1.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.minidev/json-smart/2.1.1/45cf5fe4b585af94ba39bfd26ea3c61002072d04/json-smart-2.1.1-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: net.minidev:asm:1.0.2">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.minidev/asm/1.0.2/63900a15f524db0b8c4fb2d9e24c0cb179842ea5/asm-1.0.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.minidev/asm/1.0.2/5b3717024a5fbe8b4fbac67b93910c3841701cb6/asm-1.0.2-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="" scope="RUNTIME">
+      <library name="Gradle: org.grails.plugins:asset-pipeline:3.1.3">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails.plugins/asset-pipeline/3.1.3/e550593a00b8748b8a6409edd184eaae4b742ef2/asset-pipeline-3.1.3.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails.plugins/asset-pipeline/3.1.3/23dd39154e67504a0a86bf7ae97fea785fb33e6c/asset-pipeline-3.1.3-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="" scope="RUNTIME">
+      <library name="Gradle: com.bertramlabs.plugins:asset-pipeline-core:2.7.4">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.bertramlabs.plugins/asset-pipeline-core/2.7.4/265fcda61dfc4c6e2102bdffd0375ae57aff8b9a/asset-pipeline-core-2.7.4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.bertramlabs.plugins/asset-pipeline-core/2.7.4/bdf64e692c8db986eb0661dec77dd7bbd226a3a/asset-pipeline-core-2.7.4-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="" scope="RUNTIME">
+      <library name="Gradle: com.google.javascript:closure-compiler:v20151015">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.javascript/closure-compiler/v20151015/8e20293908bc676ad6ed2013a4f52728b87af460/closure-compiler-v20151015.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.javascript/closure-compiler/v20151015/7dfe687cbda810a04eaaac616e2289f03177a27d/closure-compiler-v20151015-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library name="Gradle: org.grails:grails-plugin-testing:3.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-testing/3.1.5/344b9b06c2b41f840bd601b68a7046434ec11f08/grails-plugin-testing-3.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-plugin-testing/3.1.5/cb0739ee68a411168bec5207b68bab96a40dbd9e/grails-plugin-testing-3.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library name="Gradle: org.grails.plugins:geb:1.0.1">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails.plugins/geb/1.0.1/e18899087e1202746f44193d6c7a1657afd9260e/geb-1.0.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails.plugins/geb/1.0.1/9faeeb81c3a8db18c15c8c3c180641fd1806a7e5/geb-1.0.1-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library name="Gradle: org.grails:grails-test:3.1.5">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-test/3.1.5/fa243cf6609ad71b474ad13b435aaad7429b9abf/grails-test-3.1.5.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-test/3.1.5/282d6b7e989e1347fef1f0fc6bb38bd2f2ba1bc9/grails-test-3.1.5-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library name="Gradle: org.springframework.boot:spring-boot-starter-test:1.3.3.RELEASE">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-test/1.3.3.RELEASE/f440856dcf4c3018c9005fa229e7509f28927a73/spring-boot-starter-test-1.3.3.RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-test/1.3.3.RELEASE/7b5a6738cebbe7f18a62240fd38dac8c0dc951f/spring-boot-starter-test-1.3.3.RELEASE-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library name="Gradle: org.gebish:geb-spock:0.12.2">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.gebish/geb-spock/0.12.2/482a6922291b81e3be7fd4f4e4151fcb8f61b883/geb-spock-0.12.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.gebish/geb-spock/0.12.2/f535001e1d2483403debb5f4deb32879950f3985/geb-spock-0.12.2-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library name="Gradle: org.seleniumhq.selenium:selenium-support:2.47.1">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-support/2.47.1/52115d10dd271b1cf69c226b636716a2d1b34a19/selenium-support-2.47.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-support/2.47.1/88490f19fd4f5c9ff667cfd6d2ffa4ed2bac91d4/selenium-support-2.47.1-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library name="Gradle: org.codehaus.groovy:groovy-test:2.4.6">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-test/2.4.6/b185462b630df82768b8f3c444894af98964c9bf/groovy-test-2.4.6.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy-test/2.4.6/9a6d10f41bc6f190d4e09dccce72838007226f7e/groovy-test-2.4.6-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library name="Gradle: org.springframework:spring-test:4.2.5.RELEASE">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-test/4.2.5.RELEASE/60bd0ac25869d515717284b77644d0416d3a38c5/spring-test-4.2.5.RELEASE.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-test/4.2.5.RELEASE/be3a46bff26f49f65ee16d73a59ed22b7d5e6a34/spring-test-4.2.5.RELEASE-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library name="Gradle: org.gebish:geb-core:0.12.2">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.gebish/geb-core/0.12.2/df0c0c35ea76e74e0805e7f731fd01d0f67e3440/geb-core-0.12.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.gebish/geb-core/0.12.2/414ace57585da8dd00144620ca709b9ef1836eaa/geb-core-0.12.2-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library name="Gradle: org.gebish:geb-waiting:0.12.2">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.gebish/geb-waiting/0.12.2/21b686abe648460ec39264cc0446b51d8148cdca/geb-waiting-0.12.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.gebish/geb-waiting/0.12.2/322bb9c78783decd8ad6f8007c4e4e4fc8c4e74/geb-waiting-0.12.2-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library name="Gradle: org.gebish:geb-ast:0.12.2">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.gebish/geb-ast/0.12.2/856cce962b23ac2a156b618239f01ed9b5cceefa/geb-ast-0.12.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.gebish/geb-ast/0.12.2/5578c60c56ba01de5e6a338e3c936e9fdf98b9ae/geb-ast-0.12.2-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library name="Gradle: org.gebish:geb-exceptions:0.12.2">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.gebish/geb-exceptions/0.12.2/cb0b08a43b9c8defb71938a5acd3fd2c86fa5575/geb-exceptions-0.12.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.gebish/geb-exceptions/0.12.2/5fe0d3047371396077df1d6ba4a7d1ac1e4445f1/geb-exceptions-0.12.2-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library name="Gradle: org.gebish:geb-implicit-assertions:0.12.2">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.gebish/geb-implicit-assertions/0.12.2/ac64e03585e50aeb890053b58ac736d979aa00/geb-implicit-assertions-0.12.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.gebish/geb-implicit-assertions/0.12.2/3859a359c6e2077ac0fa18370eb57fdac81ed761/geb-implicit-assertions-0.12.2-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library name="Gradle: org.seleniumhq.selenium:selenium-remote-driver:2.47.1">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-remote-driver/2.47.1/87deeca9d7e9fd47c2adf938ab8aae322b99ebb3/selenium-remote-driver-2.47.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-remote-driver/2.47.1/6bbe3d7fdd2e3397449d82f820b67494198d29db/selenium-remote-driver-2.47.1-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library name="Gradle: org.seleniumhq.selenium:selenium-api:2.47.1">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-api/2.47.1/f586a13419a297427f01266c1013117232808373/selenium-api-2.47.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-api/2.47.1/a318b5def49a37b32e50b7fdd9934dee5156dacb/selenium-api-2.47.1-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library name="Gradle: org.apache.commons:commons-exec:1.3">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-exec/1.3/8dfb9facd0830a27b1b5f29f84593f0aeee7773b/commons-exec-1.3.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-exec/1.3/efd2543e352e55ce5a685eed6db8af028b737905/commons-exec-1.3-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library name="Gradle: net.java.dev.jna:jna:4.1.0">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.java.dev.jna/jna/4.1.0/1c12d070e602efd8021891cdd7fd18bc129372d4/jna-4.1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.java.dev.jna/jna/4.1.0/28a5d592b494fe54c120c64689087e779a7bf55b/jna-4.1.0-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library name="Gradle: net.java.dev.jna:jna-platform:4.1.0">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.java.dev.jna/jna-platform/4.1.0/23457ad1cf75c2c16763330de5565a0e67b4bc0a/jna-platform-4.1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.java.dev.jna/jna-platform/4.1.0/67d178949fe41ff82de6dbda7ef62d48f70e031c/jna-platform-4.1.0-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library name="Gradle: org.apache.httpcomponents:httpmime:4.5.1">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpmime/4.5.1/96823b9421ebb9f490dec837d9f96134e864e3a7/httpmime-4.5.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpmime/4.5.1/2aab83661676c842d50995fe934550e3e23b3c6/httpmime-4.5.1-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library name="Gradle: net.sourceforge.nekohtml:nekohtml:1.9.22">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.sourceforge.nekohtml/nekohtml/1.9.22/4f54af68ecb345f2453fb6884672ad08414154e3/nekohtml-1.9.22.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.sourceforge.nekohtml/nekohtml/1.9.22/88eb858a017e4a4ba762a9968da59ed57fc08898/nekohtml-1.9.22-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library name="Gradle: org.eclipse.jetty:jetty-util:9.2.15.v20160210">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-util/9.2.15.v20160210/ccd245541cc63311bdcfe551525bd7d82ea5e92c/jetty-util-9.2.15.v20160210.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-util/9.2.15.v20160210/2f21a8bdfcf4bde1ae1600ddfd498abb305d4227/jetty-util-9.2.15.v20160210-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library name="Gradle: org.eclipse.jetty:jetty-io:9.2.15.v20160210">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-io/9.2.15.v20160210/5a3af41803c12b0f3628ed8927a8cedb42972169/jetty-io-9.2.15.v20160210.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-io/9.2.15.v20160210/b620a050ebd7e23d66e9cb656f62803a6836aa87/jetty-io-9.2.15.v20160210-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library name="Gradle: org.eclipse.jetty:jetty-http:9.2.15.v20160210">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-http/9.2.15.v20160210/5b1f9d51b7be45c8cded46965e00c247533a14fe/jetty-http-9.2.15.v20160210.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-http/9.2.15.v20160210/7d632daadcc2f86f394fe3811fef5fb2a5a14440/jetty-http-9.2.15.v20160210-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
   </component>
 </module>
