@@ -33,6 +33,15 @@ apply plugin: "org.grails.grails-web"
 apply plugin: "org.grails.grails-gsp"
 apply plugin: "jacoco"
 apply plugin: "application"
+apply plugin: 'checkstyle'
+
+//tasks.withType(Checkstyle) {
+//    reports {
+//        xml.enabled false
+//        html.enabled true
+//        html.stylesheet resources.text.fromFile('config/xsl/checkstyle-custom.xsl')
+//    }
+//}
 
 test {
     jacoco {

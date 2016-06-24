@@ -611,17 +611,6 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library" exported="">
-      <library name="Gradle: org.apache.httpcomponents:httpclient:4.5.1">
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpclient/4.5.1/7e3cecc566df91338c6c67883b89ddd05a17db43/httpclient-4.5.1.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpclient/4.5.1/c0ecd55724129bbd48850314b4ff8a360d670662/httpclient-4.5.1-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
       <library name="Gradle: ch.qos.logback:logback-core:1.1.5">
         <CLASSES>
           <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-core/1.1.5/16722afde74444716e299bee1f60aec9f6d1f0dc/logback-core-1.1.5.jar!/" />
@@ -860,6 +849,17 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.apache.httpcomponents:httpclient:4.5.1">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpclient/4.5.1/7e3cecc566df91338c6c67883b89ddd05a17db43/httpclient-4.5.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpclient/4.5.1/c0ecd55724129bbd48850314b4ff8a360d670662/httpclient-4.5.1-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
       <library name="Gradle: org.springframework:spring-aop:4.2.5.RELEASE">
         <CLASSES>
           <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-aop/4.2.5.RELEASE/858d6c70909b3ce7e07b59fc936f8ccfcd81c0aa/spring-aop-4.2.5.RELEASE.jar!/" />
@@ -922,28 +922,6 @@
         <JAVADOC />
         <SOURCES>
           <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.projectreactor/reactor-stream/2.0.7.RELEASE/cf0005ec1abdd9d0848ca875e8053c6566e7410b/reactor-stream-2.0.7.RELEASE-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library name="Gradle: commons-collections:commons-collections:3.2.2">
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-collections/commons-collections/3.2.2/8ad72fe39fa8c91eaaf12aadb21e0c3661fe26d5/commons-collections-3.2.2.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-collections/commons-collections/3.2.2/78c50ebda5784937ca1615fc0e1d0cb35857d572/commons-collections-3.2.2-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library name="Gradle: org.apache.httpcomponents:httpcore:4.4.4">
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpcore/4.4.4/b31526a230871fbe285fbcbe2813f9c0839ae9b0/httpcore-4.4.4.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpcore/4.4.4/c5c19e3e6af6b452def290cde12a3ee4c35c893c/httpcore-4.4.4-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>
@@ -1243,6 +1221,17 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library" exported="">
+      <library name="Gradle: org.apache.httpcomponents:httpcore:4.4.4">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpcore/4.4.4/b31526a230871fbe285fbcbe2813f9c0839ae9b0/httpcore-4.4.4.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpcore/4.4.4/c5c19e3e6af6b452def290cde12a3ee4c35c893c/httpcore-4.4.4-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
       <library name="Gradle: org.grails:grails-web-taglib:3.1.5">
         <CLASSES>
           <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.grails/grails-web-taglib/3.1.5/727c5ecd773dc699f01f8e8347c305f1fedba941/grails-web-taglib-3.1.5.jar!/" />
@@ -1305,6 +1294,17 @@
         <JAVADOC />
         <SOURCES>
           <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.projectreactor.spring/reactor-spring-core/2.0.7.RELEASE/c8a387f498e3839fc98d01ef77892610ce375547/reactor-spring-core-2.0.7.RELEASE-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library name="Gradle: commons-collections:commons-collections:3.2.2">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-collections/commons-collections/3.2.2/8ad72fe39fa8c91eaaf12aadb21e0c3661fe26d5/commons-collections-3.2.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-collections/commons-collections/3.2.2/78c50ebda5784937ca1615fc0e1d0cb35857d572/commons-collections-3.2.2-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>
@@ -1474,6 +1474,17 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library" scope="TEST">
+      <library name="Gradle: org.seleniumhq.selenium:selenium-remote-driver:2.47.1">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-remote-driver/2.47.1/87deeca9d7e9fd47c2adf938ab8aae322b99ebb3/selenium-remote-driver-2.47.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-remote-driver/2.47.1/6bbe3d7fdd2e3397449d82f820b67494198d29db/selenium-remote-driver-2.47.1-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
       <library name="Gradle: org.gebish:geb-waiting:0.12.2">
         <CLASSES>
           <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.gebish/geb-waiting/0.12.2/21b686abe648460ec39264cc0446b51d8148cdca/geb-waiting-0.12.2.jar!/" />
@@ -1492,39 +1503,6 @@
         <JAVADOC />
         <SOURCES>
           <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.gebish/geb-ast/0.12.2/5578c60c56ba01de5e6a338e3c936e9fdf98b9ae/geb-ast-0.12.2-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library name="Gradle: org.gebish:geb-exceptions:0.12.2">
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.gebish/geb-exceptions/0.12.2/cb0b08a43b9c8defb71938a5acd3fd2c86fa5575/geb-exceptions-0.12.2.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.gebish/geb-exceptions/0.12.2/5fe0d3047371396077df1d6ba4a7d1ac1e4445f1/geb-exceptions-0.12.2-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library name="Gradle: org.gebish:geb-implicit-assertions:0.12.2">
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.gebish/geb-implicit-assertions/0.12.2/ac64e03585e50aeb890053b58ac736d979aa00/geb-implicit-assertions-0.12.2.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.gebish/geb-implicit-assertions/0.12.2/3859a359c6e2077ac0fa18370eb57fdac81ed761/geb-implicit-assertions-0.12.2-sources.jar!/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="TEST">
-      <library name="Gradle: org.seleniumhq.selenium:selenium-remote-driver:2.47.1">
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-remote-driver/2.47.1/87deeca9d7e9fd47c2adf938ab8aae322b99ebb3/selenium-remote-driver-2.47.1.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-remote-driver/2.47.1/6bbe3d7fdd2e3397449d82f820b67494198d29db/selenium-remote-driver-2.47.1-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>
@@ -1569,6 +1547,28 @@
         <JAVADOC />
         <SOURCES>
           <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.java.dev.jna/jna-platform/4.1.0/67d178949fe41ff82de6dbda7ef62d48f70e031c/jna-platform-4.1.0-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library name="Gradle: org.gebish:geb-exceptions:0.12.2">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.gebish/geb-exceptions/0.12.2/cb0b08a43b9c8defb71938a5acd3fd2c86fa5575/geb-exceptions-0.12.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.gebish/geb-exceptions/0.12.2/5fe0d3047371396077df1d6ba4a7d1ac1e4445f1/geb-exceptions-0.12.2-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="TEST">
+      <library name="Gradle: org.gebish:geb-implicit-assertions:0.12.2">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.gebish/geb-implicit-assertions/0.12.2/ac64e03585e50aeb890053b58ac736d979aa00/geb-implicit-assertions-0.12.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.gebish/geb-implicit-assertions/0.12.2/3859a359c6e2077ac0fa18370eb57fdac81ed761/geb-implicit-assertions-0.12.2-sources.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>
