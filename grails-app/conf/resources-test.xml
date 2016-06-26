@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:cache="http://www.springframework.org/schema/cache" xmlns:aop="http://www.springframework.org/schema/aop"
+
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+      	 http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+        <property name="defaultLocale" value="ru"/>
+    </bean>
+
+    <context:property-placeholder location="classpath:/UserCarePro.properties" file-encoding="UTF-8" system-properties-mode="OVERRIDE"/>
+
+    <context:spring-configured />
+
+    <cache:annotation-driven />
+
+    <bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.ShaPasswordEncoder">
+        <constructor-arg value="256"/>
+    </bean>
+
+    <bean id="dataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url"
+                  value="jdbc:mysql://127.0.0.1:3306/usercare?characterEncoding=UTF-8&amp;zeroDateTimeBehavior=convertToNull"/>
+        <property name="username" value="root"/>
+        <property name="password" value="dahreneg0"/>
+
+    </bean>
+
+
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="${email.main.host}" />
+        <property name="port" value="${email.main.port}" />
+        <property name="protocol" value="${email.main.protocol}" />
+        <property name="username" value="${email.main.username}" />
+        <property name="password" value="${email.main.password}" />
+        <property name="defaultEncoding" value="UTF-8"/>
+        <property name="javaMailProperties">
+
+            <props>
+                <prop key="mail.smtps.auth">test</prop>
+                <prop key="mail.smtps.starttls.enable">false</prop>
+                <prop key="mail.smtp.timeout">8500</prop>
+                <prop key="mail.smtps.debug">true</prop>
+            </props>
+
+        </property>
+    </bean>
+
+    <bean id="mailMail" class="com.sh.messaging.MailSender">
+        <property name="mailSender" ref="mailSender" />
+    </bean>
+
+    <!-- Hibernate 4 SessionFactory Bean definition -->
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="packagesToScan" value="com.sh.db.map" />
+
+        <property name="hibernateProperties">
+            <props>
+                <!--<prop key="hbm2ddl.auto">create</prop>-->
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
+                <prop key="hibernate.cache.use_second_level_cache">true</prop>
+                <prop key="hibernate.cache.use_query_cache">true</prop>
+                <!--<prop key="cache.provider_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>-->
+                <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory</prop>
+                <!--<property name="hibernate.cache.region.factory_class">net.sf.ehcache.hibernate.EhCacheRegionFactory</property>-->
+                <!--<prop key="hibernate.current_session_context_class">thread</prop>-->
+                <!--useful for debugging-->
+                <prop key="hibernate.generate_statistics">true</prop>
+                <!--<prop key="hibernate.current_session_context_class">thread</prop>-->
+                <prop key="hibernate.show_sql">true</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager"
+          p:cacheManager-ref="ehcache"/>
+    <bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"
+          p:configLocation="classpath:ehcache.xml" p:shared="true"/>
+
+    <!-- The web services API, which is used as main service in the GUI -->
+    <bean id="webServicesSession" class="com.sh.common.WebServicesSessionSpringBean">
+        <aop:scoped-proxy/>
+    </bean>
+
+
+    <!-- Enable autowiring -->
+    <context:component-scan base-package="com.sh.db.service" />
+
+    <bean id="transactionManager"
+          class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
+
+    </bean>
+
+
+    <import resource="classpath:rabbit2.xml"/>
+
+</beans>

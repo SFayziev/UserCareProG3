@@ -19,7 +19,6 @@ import java.util.Date;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:resources-test.xml")
-@TransactionConfiguration( transactionManager = "transactionManager", defaultRollback = true)
 @Transactional
 public class IntegrationTest {
     @Resource(name =  "sessionFactory")
