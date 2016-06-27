@@ -14,7 +14,6 @@ public class TimeAgoTest {
 
     @Test
     public final void testGetI18nvalue() throws Exception {
-
         System.out.println("TimeAgo class unitTest");
         TimeAgo timeAgo = new TimeAgo(new Date());
         assertNotNull(timeAgo.getI18nvalue());
