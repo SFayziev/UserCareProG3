@@ -5,11 +5,11 @@
 dataSource {
     pooled = true
     dbCreate = "update"
-    url = "jdbc:mysql://95.142.80.36:3306/usercare"
+    url = "jdbc:mysql://ip:3306/usercare"
     driverClassName = "com.mysql.jdbc.Driver"
     dialect = org.hibernate.dialect.MySQL5InnoDBDialect
-    username = "root"
-    password = "dahreneg0"
+    username = "username"
+    password = "password"
     properties {
         // Documentation for Tomcat JDBC Pool
         // http://tomcat.apache.org/tomcat-7.0-doc/jdbc-pool.html#Common_Attributes
